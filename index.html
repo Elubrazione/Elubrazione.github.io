@@ -442,18 +442,17 @@
         
         
             
+            
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/07/22/hello-world/">
+            <a class="abstract-title" href="/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">
                 
-                <span class="abstract-title-text">Hello World</span>
+                    <span class="iconfont-archer stick-top">&#xe63d;</span>
+                
+                <span class="abstract-title-text">欢迎来到我的博客</span>
             </a>
             <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo ...
+                <h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p>
             </div>
             <!-- read more -->
             
@@ -701,7 +700,7 @@ Run server1$ hexo ...
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/22</span>
-            <a class="archive-post-title" href="/2022/07/22/hello-world/">Hello World</a>
+            <a class="archive-post-title" href="/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">欢迎来到我的博客</a>
         </li>
     
     </div>
@@ -749,6 +748,28 @@ Run server1$ hexo ...
 
         <!-- import experimental options here -->
         <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
 
 
         <!-- main func -->
