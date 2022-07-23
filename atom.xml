@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-22T08:48:34.195Z</updated>
+  <updated>2022-07-23T16:13:57.155Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>1.两数之和</title>
+    <link href="http://example.com/2022/07/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <id>http://example.com/2022/07/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
+    <published>2022-07-23T16:04:09.000Z</published>
+    <updated>2022-07-23T16:13:57.155Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="两种解法"><a href="#两种解法" class="headerlink" title="两种解法"></a>两种解法</h2><span id="more"></span><h3 id="Violence"><a href="#Violence" class="headerlink" title="Violence"></a>Violence</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> &#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;    <span class="comment">//建立哈希表存放数组元素</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">2</span>, <span class="number">-1</span>)</span></span>;   <span class="comment">//存放结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.<span class="built_in">count</span>(target-nums[i])&gt;<span class="number">0</span> &amp;&amp; (a[target-nums[i]]!=i))&#123;</span><br><span class="line">                b[<span class="number">0</span>] = i;</span><br><span class="line">                b[<span class="number">1</span>] = a[target-nums[i]];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>相当于以数组元素的内容作为key，下标作为value，这样可以实现直接查找而不用遍历数组。<br>只用一层循环，假设当前的下标是i，若以target-nums[i]为key的内容存在且不是自己本身就查找成功。<br>对比发现时间开销大大减小，暴力求解O(n^2)时间开销是400ms，用hash表则是16ms。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;两种解法&quot;&gt;&lt;a href=&quot;#两种解法&quot; class=&quot;headerlink&quot; title=&quot;两种解法&quot;&gt;&lt;/a&gt;两种解法&lt;/h2&gt;</summary>
+    
+    
+    
+    
+    <category term="Leetcode" scheme="http://example.com/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>欢迎来到我的博客</title>
     <link href="http://example.com/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <id>http://example.com/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
     <published>2022-07-22T08:32:54.000Z</published>
-    <updated>2022-07-22T08:48:34.195Z</updated>
+    <updated>2022-07-23T16:17:01.748Z</updated>
     
     <content type="html"><![CDATA[<h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p><span id="more"></span>]]></content>
     
