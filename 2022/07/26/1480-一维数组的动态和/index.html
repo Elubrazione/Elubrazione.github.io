@@ -19,23 +19,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="一切都值得被记录本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。">
+    <meta name="description" content="没什么难度，仅记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的博客">
-<meta property="og:url" content="http://example.com/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="1480.一维数组的动态和">
+<meta property="og:url" content="http://example.com/2022/07/26/1480-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%92%8C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一切都值得被记录本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。">
+<meta property="og:description" content="没什么难度，仅记录">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-22T08:32:54.000Z">
-<meta property="article:modified_time" content="2022-07-23T16:17:01.748Z">
+<meta property="article:published_time" content="2022-07-25T16:57:32.000Z">
+<meta property="article:modified_time" content="2022-07-25T16:59:06.874Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="top">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>欢迎来到我的博客 · Elubrazione</title>
+    <title>1480.一维数组的动态和 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -261,7 +261,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">欢迎来到我的博客</a>
+                <a href="#" class="post-name">1480.一维数组的动态和</a>
             </div>
         </div>
     
@@ -307,7 +307,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                欢迎来到我的博客
+                1480.一维数组的动态和
             <!-- 404 -->
             
         </h1>
@@ -327,20 +327,20 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="top">top</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">42</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">48</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/22</span>
+                    <span class="post-intro-time">2022/07/26</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -495,9 +495,9 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p>
+        <p>没什么难度，仅记录</p>
 <span id="more"></span>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">runningSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// int length = nums.size();</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            nums[i] += nums[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
@@ -506,12 +506,17 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1.两数之和">
-                    <div class="nextTitle">1.两数之和</div>
+                <a href="/2022/07/26/724-%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E5%BF%83%E4%B8%8B%E6%A0%87/" title="724.寻找数组的中心下标">
+                    <div class="nextTitle">724.寻找数组的中心下标</div>
                 </a>
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/07/25/206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206.反转链表">
+                    <div class="prevTitle">206.反转链表</div>
+                </a>
             
         </li>
     </ul>
@@ -654,7 +659,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%88%87%E9%83%BD%E5%80%BC%E5%BE%97%E8%A2%AB%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">一切都值得被记录</span></a></li></ol>
+                
             </div>
         
         <!-- sidebar -->
