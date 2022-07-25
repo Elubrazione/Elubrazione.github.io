@@ -19,23 +19,18 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="两种解法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="1.两数之和">
-<meta property="og:url" content="http://example.com/2022/07/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/%E9%9A%8F%E7%AC%94/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="两种解法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-23T16:04:09.000Z">
-<meta property="article:modified_time" content="2022-07-23T16:13:57.155Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>1.两数之和 · Elubrazione</title>
+    <title>Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -223,8 +218,6 @@
         }
     </script>
     
-        <body class="post-body">
-    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -254,17 +247,6 @@
     </div>
     <!-- toggle banner for post layout -->
     
-        
-            <div class="banner">
-        
-            <div class="blog-title header-element">
-                <a href="/">Elubrazione&#39;s Studio.</a>
-            </div>
-            <div class="post-title header-element">
-                <a href="#" class="post-name">1.两数之和</a>
-            </div>
-        </div>
-    
 </header>
 
         <!-- fixed footer -->
@@ -291,79 +273,24 @@
 
 
 
-    height:50vh;
-
 ">
     
     <!-- 主页  -->
-    
-        
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index_light-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-                1.两数之和
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-                
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页 meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
-
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">275</span>Reading time: <span class="post-count reading-time">1 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <!-- 撰写日期 -->
-                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/24</span>
-                    <!-- busuanzi -->
-                    
-                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    
-                    <!-- 文章分享 -->
-                    <span class="share-wrapper">
-                        <span class="iconfont-archer share-icon">&#xe71d;</span>
-                        <span class="share-text">Share</span>
-                        <ul class="share-list">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -493,67 +420,45 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main post-page">
-    <article class="article-entry">
-        <h2 id="两种解法"><a href="#两种解法" class="headerlink" title="两种解法"></a>两种解法</h2><span id="more"></span>
-<h3 id="Violence"><a href="#Violence" class="headerlink" title="Violence"></a>Violence</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> &#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;    <span class="comment">//建立哈希表存放数组元素</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">2</span>, <span class="number">-1</span>)</span></span>;   <span class="comment">//存放结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.<span class="built_in">count</span>(target-nums[i])&gt;<span class="number">0</span> &amp;&amp; (a[target-nums[i]]!=i))&#123;</span><br><span class="line">                b[<span class="number">0</span>] = i;</span><br><span class="line">                b[<span class="number">1</span>] = a[target-nums[i]];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>相当于以数组元素的内容作为key，下标作为value，这样可以实现直接查找而不用遍历数组。<br>只用一层循环，假设当前的下标是i，若以target-nums[i]为key的内容存在且不是自己本身就查找成功。<br>对比发现时间开销大大减小，暴力求解O(n^2)时间开销是400ms，用hash表则是16ms。</p>
-
-    </article>
-    <!-- license -->
+                <main class="main index-page">
     
-    <!-- paginator -->
-    <ul class="post-paginator">
-        <li class="next">
+        
+        
+        
+        
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="15.三数之和">
-                    <div class="nextTitle">15.三数之和</div>
-                </a>
             
-        </li>
-        <li class="previous">
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/06/10/%E5%A6%82%E8%8B%A5%E8%BF%98%E8%83%BD%E4%B8%8B%E4%B8%80%E5%9C%BA2018%E5%B9%B4%E7%9A%84%E9%93%B6%E6%9D%8F%E9%9B%A8/">
+                
+                <span class="abstract-title-text">如若还能下一场2018年的银杏雨</span>
+            </a>
+            <div class="abstract-content">
+                <h3 id="在格致的那些日子"><a href="#在格致的那些日子" class="headerlink" title="在格致的那些日子"></a>在格致的那些日子</h3><h4 id="从何起笔"><a href="#从何起笔" class="headerlink" title="从何起笔"></a>从何起笔</h4><p>看到高中数学老师公众号更新了今年高考数学题的讲解视频，突然又想回高中撒一次漫天的银杏雨。</p>
+            </div>
+            <!-- read more -->
             
-                <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" title="欢迎来到我的博客">
-                    <div class="prevTitle">欢迎来到我的博客</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- comment -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/07/26">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/06/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
     
-        <div class="post-comment">
-            <!-- 来必力 City 版安装代码 -->
-
-
-            
-
-            
-
-            
-
-            <!-- utteranc评论 -->
-
-
-            <!-- partial('_partial/comment/changyan') -->
-            <!--PC版-->
-
-
-            
-            
-
-            
-
-        </div>
     
-    <!-- timeliness note -->
-    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
     
-    <!-- Mathjax -->
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+    <!-- paginator  -->
     
 </main>
 
@@ -592,13 +497,9 @@
         
     
         
-    
-        
-    
-        
-    
-        
-    
+            
+                <a href="https://weibo.com/u/5110400333" class="iconfont-archer weibo" target="_blank" title=weibo></a>
+            
         
     
         
@@ -621,8 +522,16 @@
     
         
             
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+                <a href="https://space.bilibili.com/200502258?spm_id_from=333.788.0.0" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
             
+        
+    
+        
+    
+        
+    
+        
+    
         
     
 
@@ -648,23 +557,6 @@
 
         </div>
         <!-- toc -->
-        
-            <div class="toc-wrapper toc-wrapper-loding" style=
-
-
-
-
-
-
-
-    top:50vh;
-
->
-                <div class="toc-catalog">
-                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-                </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%A7%A3%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">两种解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Violence"><span class="toc-number">1.1.</span> <span class="toc-text">Violence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash"><span class="toc-number">1.2.</span> <span class="toc-text">hash</span></a></li></ol></li></ol>
-            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -732,7 +624,18 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
         
         
         
@@ -795,7 +698,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 12
         </div>
         <!-- search  -->
         
@@ -819,12 +722,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">07/26</span>
             <a class="archive-post-title" href="/2022/07/26/1480-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%92%8C/">1480.一维数组的动态和</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/26</span>
-            <a class="archive-post-title" href="/2022/07/26/724-%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E5%BF%83%E4%B8%8B%E6%A0%87/">724.寻找数组的中心下标</a>
         </li>
     
         
@@ -865,14 +762,26 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span>
-            <a class="archive-post-title" href="/2022/07/24/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a>
+            <span class="archive-post-date">07/22</span>
+            <a class="archive-post-title" href="/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">欢迎来到我的博客</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">07/22</span>
-            <a class="archive-post-title" href="/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">欢迎来到我的博客</a>
+            <span class="archive-post-date">07/14</span>
+            <a class="archive-post-title" href="/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/13</span>
+            <a class="archive-post-title" href="/2022/07/13/724-%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E5%BF%83%E4%B8%8B%E6%A0%87/">724.寻找数组的中心下标</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/%E5%A6%82%E8%8B%A5%E8%BF%98%E8%83%BD%E4%B8%8B%E4%B8%80%E5%9C%BA2018%E5%B9%B4%E7%9A%84%E9%93%B6%E6%9D%8F%E9%9B%A8/">如若还能下一场2018年的银杏雨</a>
         </li>
     
     </div>
@@ -889,6 +798,11 @@
             <span class="sidebar-tag-name" data-tags="Leetcode">
                 <span class="iconfont-archer">&#xe606;</span>
                 Leetcode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
             </span>
         
     </div>
@@ -965,16 +879,7 @@
         
         <!-- async load share.js -->
         
-            <script src="/scripts/share.js?v=20211217" async></script>
-        
         <!-- mermaid -->
-        
-            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
-            <script>
-                if (window.mermaid) {
-                    mermaid.initialize({theme: 'dark'});
-                }
-            </script>
         
     </body>
 </html>
