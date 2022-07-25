@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-25T17:03:29.567Z</updated>
+  <updated>2022-07-25T18:48:19.353Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>876.链表的中间结点</title>
+    <link href="http://example.com/2022/07/26/876-%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E7%BB%93%E7%82%B9/"/>
+    <id>http://example.com/2022/07/26/876-%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E7%BB%93%E7%82%B9/</id>
+    <published>2022-07-25T18:37:23.000Z</published>
+    <updated>2022-07-25T18:48:19.353Z</updated>
+    
+    <content type="html"><![CDATA[<p>比较简单，仅作记录</p><span id="more"></span><ul><li>注意本题目有头结点！由于在循环最后一句会使cur指向下一个结点，所以只要循环到待查结点的前驱结点即可，设头结点下标为0。假设当N&#x3D;6时，除去头结点有五个结点，中间的为第三个，需要循环到下标为2的结点，为（N&#x2F;2-1）；当N&#x3D;7时，除去头结点有六个结点，中间的为第四个，需要循环到下标为3的结点，为（N&#x2F;2-0.5）。所以循环以length&#x2F;2为界限。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *cur = head;</span><br><span class="line">        <span class="type">int</span> length = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            length++;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = head;</span><br><span class="line">        length = length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(length)&#123;</span><br><span class="line">            length--;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;比较简单，仅作记录&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Leetcode" scheme="http://example.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>724.寻找数组的中心下标</title>
