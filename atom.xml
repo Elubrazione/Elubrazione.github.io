@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-25T18:48:19.353Z</updated>
+  <updated>2022-07-26T17:09:50.122Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>142.环形链表Ⅱ</title>
+    <link href="http://example.com/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/"/>
+    <id>http://example.com/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/</id>
+    <published>2022-07-26T16:32:36.000Z</published>
+    <updated>2022-07-26T17:09:50.122Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="快慢指针和万恶的数学推理"><a href="#快慢指针和万恶的数学推理" class="headerlink" title="快慢指针和万恶的数学推理"></a>快慢指针和万恶的数学推理</h3><span id="more"></span><ul><li>快指针fast比慢指针slow多走两步，如果有环fast会追上slow，它们一定会相遇，同时<strong>它们相遇了说明在环内</strong>。此为第一次相遇。</li><li>假设头结点到入环口有a个结点（不包括环的第一个结点），环的结点数为b。相遇时<strong>fast走的路程为2nb，slow走的路程为nb</strong>，n是fast比slow多走的圈数，证明过程如下。且慢指针<strong>再走a就能到达入环口</strong>，证明过程如下。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//证明1</span><br><span class="line">1. 首先，fast走的路是slow路程的两倍，即f=2s；</span><br><span class="line">2. 其次，第一次相遇时fast比slow多走了n个环的路程，即f=s+nb;</span><br><span class="line">3. 联立上述两式，可解得：f=2nb，s=nb。</span><br><span class="line"></span><br><span class="line">//证明2</span><br><span class="line">1. 走到入环口的路程公式是：k=a+nb；</span><br><span class="line">2. 目前slow走了nb，再走a就能走到入环口。</span><br></pre></td></tr></table></figure></li><li>而<strong>head到入环口的距离刚好就是a</strong>，但是问题是a的值是<strong>未知</strong>的，所以需要用一个指针指向head（这里就用原来的快指针），一步一步地走来计数，同时慢指针也一步一步走，当它们相等时为第二次相遇，此时刚好走了a步。所以也就是说该指针具有如下性质：<strong>它和慢指针一起走a步后它们俩可以再入环口相遇</strong></li></ul><p>代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//慢指针cur，快指针nex，都指向第一个结点，重合</span></span><br><span class="line">        <span class="comment">//判断是否有环的变量hasCycle，初始为false</span></span><br><span class="line">        ListNode *cur = head, *nex = head;</span><br><span class="line">        <span class="type">bool</span> hasCycle = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//保证慢指针和快指针不为空</span></span><br><span class="line">        <span class="keyword">while</span>(nex!=<span class="literal">NULL</span> &amp;&amp; nex-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            nex = nex-&gt;next-&gt;next;</span><br><span class="line">            <span class="comment">//相等说明fast和slow相遇了，而它们必定在环内相遇，所以有环。</span></span><br><span class="line">            <span class="keyword">if</span>(nex == cur)&#123;</span><br><span class="line">                hasCycle = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//若有环</span></span><br><span class="line">        <span class="keyword">if</span>(hasCycle)&#123;</span><br><span class="line">            <span class="comment">//使nex指向第一个结点，固定cur，此时cur为</span></span><br><span class="line">            nex = head;</span><br><span class="line">            <span class="keyword">while</span>(cur != nex)&#123;</span><br><span class="line">                cur = cur-&gt;next;</span><br><span class="line">                nex = nex-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> nex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;快慢指针和万恶的数学推理&quot;&gt;&lt;a href=&quot;#快慢指针和万恶的数学推理&quot; class=&quot;headerlink&quot; title=&quot;快慢指针和万恶的数学推理&quot;&gt;&lt;/a&gt;快慢指针和万恶的数学推理&lt;/h3&gt;</summary>
+    
+    
+    
+    
+    <category term="Leetcode" scheme="http://example.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>876.链表的中间结点</title>
