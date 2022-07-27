@@ -19,18 +19,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+    <meta name="description" content="动态规划 dp数组用来存放当前对于当前来说股票最大收益 假设当天i是收益最大的一天，那么一定是在0到i-1天买入的，算出其最低点求出差就是收益。所以遍历数组求出每个卖出世纪最大的差值，再从中取最大值。  代码如下： 1234567891011121314class Solution &amp;#123;public:    int maxProfit(vector&lt;int&gt;&amp; pric">
+<meta property="og:type" content="article">
+<meta property="og:title" content="121.卖股票的最佳时期">
+<meta property="og:url" content="http://example.com/2022/07/28/121-%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%9F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="动态规划 dp数组用来存放当前对于当前来说股票最大收益 假设当天i是收益最大的一天，那么一定是在0到i-1天买入的，算出其最低点求出差就是收益。所以遍历数组求出每个卖出世纪最大的差值，再从中取最大值。  代码如下： 1234567891011121314class Solution &amp;#123;public:    int maxProfit(vector&lt;int&gt;&amp; pric">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-27T16:22:50.000Z">
+<meta property="article:modified_time" content="2022-07-27T16:52:16.118Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>Elubrazione</title>
+    <title>121.卖股票的最佳时期 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -218,6 +223,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -247,6 +254,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Elubrazione&#39;s Studio.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">121.卖股票的最佳时期</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
@@ -273,24 +291,79 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index_light-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                121.卖股票的最佳时期
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">157</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/07/28</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -420,377 +493,61 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul>
+<li>dp数组用来存放当前对于当前来说股票最大收益</li>
+<li>假设当天i是收益最大的一天，那么一定是在0到i-1天买入的，算出其最低点求出差就是收益。所以遍历数组求出每个卖出世纪最大的差值，再从中取最大值。</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> length = prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> minprice = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(length, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;length; i++)&#123;</span><br><span class="line">            minprice = <span class="built_in">min</span>(prices[i], minprice);</span><br><span class="line">            dp[i] = <span class="built_in">max</span>(dp[i<span class="number">-1</span>], prices[i]-minprice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[length<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license -->
     
-        
-        
-        
-        
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/28/121-%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%9F/">
-                
-                <span class="abstract-title-text">121.卖股票的最佳时期</span>
-            </a>
-            <div class="abstract-content">
-                动态规划
-dp数组用来存放当前对于当前来说股票最大收益
-假设当天i是收益最大的一天，那么一定是在0到i-1天买入的，算出其最低点求出差就是收益。所以遍历数组求出每个卖出世纪最大的差值，再从中取最大值。
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/" title="142.环形链表Ⅱ">
+                    <div class="prevTitle">142.环形链表Ⅱ</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
 
-代码如下：
-1234567891011121314class Solution &#123;public:    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;        int length = prices.size();        int minprice = prices[0];        vector&lt;i...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/28</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/">
-                
-                <span class="abstract-title-text">142.环形链表Ⅱ</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="快慢指针和万恶的数学推理"><a href="#快慢指针和万恶的数学推理" class="headerlink" title="快慢指针和万恶的数学推理"></a>快慢指针和万恶的数学推理</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/27</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/26/876-%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E7%BB%93%E7%82%B9/">
-                
-                <span class="abstract-title-text">876.链表的中间结点</span>
-            </a>
-            <div class="abstract-content">
-                <p>比较简单，仅作记录</p>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/26</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/26/1480-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%92%8C/">
-                
-                <span class="abstract-title-text">1480.一维数组的动态和</span>
-            </a>
-            <div class="abstract-content">
-                <p>没什么难度，仅记录</p>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/26</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/25/206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
-                
-                <span class="abstract-title-text">206.反转链表</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="链表的操作"><a href="#链表的操作" class="headerlink" title="链表的操作"></a>链表的操作</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/25</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
+            <!-- utteranc评论 -->
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/25/21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">
-                
-                <span class="abstract-title-text">21.合并两个有序链表</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/25</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/25/392-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/">
-                
-                <span class="abstract-title-text">392.判断子序列</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="算法：双指针"><a href="#算法：双指针" class="headerlink" title="算法：双指针"></a>算法：双指针</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/25</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/24/11-%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8/">
-                
-                <span class="abstract-title-text">11.盛水最多的容器</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="算法：双指针"><a href="#算法：双指针" class="headerlink" title="算法：双指针"></a>算法：双指针</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/24</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/24/16-%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
-                
-                <span class="abstract-title-text">16.最接近的三数之和</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="算法：双指针-排序"><a href="#算法：双指针-排序" class="headerlink" title="算法：双指针+排序"></a>算法：双指针+排序</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/24</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
-                
-                <span class="abstract-title-text">15.三数之和</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="算法：双指针-排序"><a href="#算法：双指针-排序" class="headerlink" title="算法：双指针+排序"></a>算法：双指针+排序</h3>
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/24</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+        </div>
     
-    <!-- paginator  -->
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
     
-        <nav class="page-nav">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
-        </nav>
+    <!-- Mathjax -->
     
 </main>
 
@@ -889,6 +646,23 @@ dp数组用来存放当前对于当前来说股票最大收益
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">动态规划</span></a></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1249,7 +1023,16 @@ dp数组用来存放当前对于当前来说股票最大收益
         
         <!-- async load share.js -->
         
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
         <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
         
     </body>
 </html>

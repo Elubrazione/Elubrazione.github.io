@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-26T17:09:50.122Z</updated>
+  <updated>2022-07-27T16:52:16.118Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>121.卖股票的最佳时期</title>
+    <link href="http://example.com/2022/07/28/121-%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%9F/"/>
+    <id>http://example.com/2022/07/28/121-%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%9F/</id>
+    <published>2022-07-27T16:22:50.000Z</published>
+    <updated>2022-07-27T16:52:16.118Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><ul><li>dp数组用来存放当前对于当前来说股票最大收益</li><li>假设当天i是收益最大的一天，那么一定是在0到i-1天买入的，算出其最低点求出差就是收益。所以遍历数组求出每个卖出世纪最大的差值，再从中取最大值。</li></ul><p>代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> length = prices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> minprice = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(length, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;length; i++)&#123;</span><br><span class="line">            minprice = <span class="built_in">min</span>(prices[i], minprice);</span><br><span class="line">            dp[i] = <span class="built_in">max</span>(dp[i<span class="number">-1</span>], prices[i]-minprice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[length<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;动态规划&quot;&gt;&lt;a href=&quot;#动态规划&quot; class=&quot;headerlink&quot; title=&quot;动态规划&quot;&gt;&lt;/a&gt;动态规划&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;dp数组用来存放当前对于当前来说股票最大收益&lt;/li&gt;
+&lt;li&gt;假设当天i是收益最大的一天，那么一定是在0到i-</summary>
+      
+    
+    
+    
+    
+    <category term="Leetcode" scheme="http://example.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>142.环形链表Ⅱ</title>
@@ -188,26 +212,6 @@
   </entry>
   
   <entry>
-    <title>欢迎来到我的博客</title>
-    <link href="http://example.com/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2022/07/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
-    <published>2022-07-22T08:32:54.000Z</published>
-    <updated>2022-07-26T17:16:24.196Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p><h2 id="做总比什么都不做好"><a href="#做总比什么都不做好" class="headerlink" title="做总比什么都不做好"></a>做总比什么都不做好</h2><p>我想以诗成名，却又不进而投师访友，相与切磋琢磨。与此同时，又不屑与凡夫俗子为伍。这都是我那怯弱的自尊心和妄自尊大的羞耻心在作怪。我深怕自己本非美玉，故而不敢加以刻苦琢磨，却又半信自己是块美玉，故又不肯庸庸碌碌，与瓦砥为伍。</p><span id="more"></span>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一切都值得被记录&quot;&gt;&lt;a href=&quot;#一切都值得被记录&quot; class=&quot;headerlink&quot; title=&quot;一切都值得被记录&quot;&gt;&lt;/a&gt;一切都值得被记录&lt;/h2&gt;&lt;p&gt;本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。&lt;/p&gt;
-&lt;h2 id=&quot;做总比什么都不做好&quot;&gt;&lt;a href=&quot;#做总比什么都不做好&quot; class=&quot;headerlink&quot; title=&quot;做总比什么都不做好&quot;&gt;&lt;/a&gt;做总比什么都不做好&lt;/h2&gt;&lt;p&gt;我想以诗成名，却又不进而投师访友，相与切磋琢磨。与此同时，又不屑与凡夫俗子为伍。这都是我那怯弱的自尊心和妄自尊大的羞耻心在作怪。我深怕自己本非美玉，故而不敢加以刻苦琢磨，却又半信自己是块美玉，故又不肯庸庸碌碌，与瓦砥为伍。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="top" scheme="http://example.com/tags/top/"/>
-    
-  </entry>
-  
-  <entry>
     <title>1.两数之和</title>
     <link href="http://example.com/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <id>http://example.com/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
@@ -261,6 +265,26 @@
     
     
     <category term="随笔" scheme="http://example.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>欢迎来到我的博客</title>
+    <link href="http://example.com/2022/05/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2022/05/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
+    <published>2022-05-22T08:32:54.000Z</published>
+    <updated>2022-07-27T12:13:28.980Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p><h2 id="做总比什么都不做好"><a href="#做总比什么都不做好" class="headerlink" title="做总比什么都不做好"></a>做总比什么都不做好</h2><p>我想以诗成名，却又不进而投师访友，相与切磋琢磨。与此同时，又不屑与凡夫俗子为伍。这都是我那怯弱的自尊心和妄自尊大的羞耻心在作怪。我深怕自己本非美玉，故而不敢加以刻苦琢磨，却又半信自己是块美玉，故又不肯庸庸碌碌，与瓦砥为伍。</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一切都值得被记录&quot;&gt;&lt;a href=&quot;#一切都值得被记录&quot; class=&quot;headerlink&quot; title=&quot;一切都值得被记录&quot;&gt;&lt;/a&gt;一切都值得被记录&lt;/h2&gt;&lt;p&gt;本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。&lt;/p&gt;
+&lt;h2 id=&quot;做总比什么都不做好&quot;&gt;&lt;a href=&quot;#做总比什么都不做好&quot; class=&quot;headerlink&quot; title=&quot;做总比什么都不做好&quot;&gt;&lt;/a&gt;做总比什么都不做好&lt;/h2&gt;&lt;p&gt;我想以诗成名，却又不进而投师访友，相与切磋琢磨。与此同时，又不屑与凡夫俗子为伍。这都是我那怯弱的自尊心和妄自尊大的羞耻心在作怪。我深怕自己本非美玉，故而不敢加以刻苦琢磨，却又半信自己是块美玉，故又不肯庸庸碌碌，与瓦砥为伍。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="top" scheme="http://example.com/tags/top/"/>
     
   </entry>
   
