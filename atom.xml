@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-31T17:15:46.963Z</updated>
+  <updated>2022-08-03T19:52:31.992Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>409.最长回文串</title>
+    <link href="http://example.com/2022/08/04/409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/"/>
+    <id>http://example.com/2022/08/04/409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/</id>
+    <published>2022-08-03T19:51:07.000Z</published>
+    <updated>2022-08-03T19:52:31.992Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="hash-table"><a href="#hash-table" class="headerlink" title="hash table"></a>hash table</h3><h5 id="比较简单，仅作记录"><a href="#比较简单，仅作记录" class="headerlink" title="比较简单，仅作记录"></a>比较简单，仅作记录</h5><span id="more"></span><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;</span><br><span class="line">        <span class="type">int</span> length = <span class="number">0</span>, flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.<span class="built_in">count</span>(s[i])&gt;<span class="number">0</span>)</span><br><span class="line">                a[s[i]]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(s[i], <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[s[i]] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(a[s[i]]%<span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                length += a[s[i]];</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                length += (a[s[i]]<span class="number">-1</span>);</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            a[s[i]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>) length++;</span><br><span class="line">        <span class="keyword">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;hash-table&quot;&gt;&lt;a href=&quot;#hash-table&quot; class=&quot;headerlink&quot; title=&quot;hash table&quot;&gt;&lt;/a&gt;hash table&lt;/h3&gt;&lt;h5 id=&quot;比较简单，仅作记录&quot;&gt;&lt;a href=&quot;#比较简单，仅作记录&quot; class=&quot;headerlink&quot; title=&quot;比较简单，仅作记录&quot;&gt;&lt;/a&gt;比较简单，仅作记录&lt;/h5&gt;</summary>
+    
+    
+    
+    
+    <category term="Leetcode" scheme="http://example.com/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>39.组合总和</title>
