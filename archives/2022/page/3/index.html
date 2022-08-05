@@ -19,23 +19,18 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="算法：双指针+排序">
-<meta property="og:type" content="article">
-<meta property="og:title" content="15.三数之和">
-<meta property="og:url" content="http://example.com/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2022/page/3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="算法：双指针+排序">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-24T04:37:54.000Z">
-<meta property="article:modified_time" content="2022-07-28T23:05:52.875Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>15.三数之和 · Elubrazione</title>
+    <title>Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -223,8 +218,6 @@
         }
     </script>
     
-        <body class="post-body">
-    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -254,17 +247,6 @@
     </div>
     <!-- toggle banner for post layout -->
     
-        
-            <div class="banner">
-        
-            <div class="blog-title header-element">
-                <a href="/">Elubrazione&#39;s Studio.</a>
-            </div>
-            <div class="post-title header-element">
-                <a href="#" class="post-name">15.三数之和</a>
-            </div>
-        </div>
-    
 </header>
 
         <!-- fixed footer -->
@@ -291,79 +273,24 @@
 
 
 
-    height:50vh;
-
 ">
     
     <!-- 主页  -->
-    
-        
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index_light-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-                15.三数之和
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-                
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页 meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
-    
-</div>
-
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <!-- 撰写日期 -->
-                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/24</span>
-                    <!-- busuanzi -->
-                    
-                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    
-                    <!-- 文章分享 -->
-                    <span class="share-wrapper">
-                        <span class="iconfont-archer share-icon">&#xe71d;</span>
-                        <span class="share-text">Share</span>
-                        <ul class="share-list">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -493,75 +420,125 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main post-page">
-    <article class="article-entry">
-        <h3 id="算法：双指针-排序"><a href="#算法：双指针-排序" class="headerlink" title="算法：双指针+排序"></a>算法：双指针+排序</h3><span id="more"></span>
-<h4 id="两遍哈希-⇒-O-n-2"><a href="#两遍哈希-⇒-O-n-2" class="headerlink" title="两遍哈希 ⇒ O(n^2)"></a>两遍哈希 ⇒ O(n^2)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//试试hash能不能做</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; b;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a.<span class="built_in">count</span>(<span class="number">0</span>-nums[i]-nums[j])&gt;<span class="number">0</span> &amp;&amp; (a[-nums[i]-nums[j]]!=i) &amp;&amp; (a[-nums[i]-nums[j]]!=j))&#123;</span><br><span class="line">                    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(<span class="number">3</span>, <span class="number">-1</span>)</span></span>;</span><br><span class="line">                    c[<span class="number">0</span>] = nums[i];</span><br><span class="line">                    c[<span class="number">1</span>] = nums[j];</span><br><span class="line">                    c[<span class="number">2</span>] = <span class="number">0</span>-nums[i]-nums[j];</span><br><span class="line">                    std::<span class="built_in">sort</span>(c.<span class="built_in">begin</span>(), c.<span class="built_in">end</span>());</span><br><span class="line">                    b.<span class="built_in">push_back</span>(c);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        std::<span class="built_in">sort</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;::iterator iter = <span class="built_in">unique</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">end</span>());</span><br><span class="line">        b.<span class="built_in">erase</span>(iter,b.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>‼️问题：时间超了</p>
-<h4 id="双指针-排序"><a href="#双指针-排序" class="headerlink" title="双指针+排序"></a>双指针+排序</h4><p>题目中要求找到所有「不重复」且和为 0的三元组，这个「不重复」的要求使得我们无法简单地使用三重循环枚举所有的三元组。这是因为在最坏的情况下，数组中的元素全部为 0。任意一个三元组的和都为 0。如果我们直接使用三重循环枚举三元组，会得到 O(N^3)个满足题目要求的三元组（其中 N 是数组的长度）时间复杂度至少为 O(N^3)。在这之后，我们还需要使用哈希表进行去重操作，得到不包含重复三元组的最终答案，又消耗了大量的空间。这个做法的时间复杂度和空间复杂度都很高，因此我们要换一种思路来考虑这个问题。</p>
-<p>不重复的本质：</p>
-<ul>
-<li>第二重循环枚举到的元素不小于第一重循环枚举到的元素。</li>
-<li>第三重循环枚举到的元素不小于第二重循环枚举到的元素。</li>
-</ul>
-<p>所以我们要做的事情是对原有的数组进行排列，且由于对于每一重循环相邻枚举的元素相等也会造成重复（比如对于i第一次枚举到0，i+1后枚举的还是0就和上一次一样了）</p>
-<p><strong>而若固定了前两重循环a、b，第三重循环就应该有唯一的数c与它们对应构成解。当第二重循环往后枚举一个元素b’且b’&gt;b，对于第三重循环就一定有c’&lt;c。即c’一定出现在c左侧。所以我们可以从小到大枚举b，从大到小枚举c，即第二重循环和第三重循环实际上是并列的关系。</strong></p>
-<p><strong>所以可以保持第二重循环不变，而将第三重循环变成一个从数组最右端开始向左移动的指针。</strong></p>
-<p><strong>这就是双指针，</strong>当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2)减少至 O(N)。为什么是 O(N)呢？这是因为在枚举的过程每一步中，「左指针」会向右移动一个位置（也就是题目中的b），而「右指针」会向左移动若干个位置，这个与数组的元素有关，但我们知道它一共会移动的位置数为 O(N)，均摊下来，每次也向左移动一个位置，因此时间复杂度为 O(N)。还有第一重循环，时间复杂度为O(N)，因此枚举的总时间复杂度为O(N^2)。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//排序+双指针</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; b;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="comment">//1-如果和上一次枚举的相同</span></span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; nums[i]==nums[i<span class="number">-1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">//1-和上一次枚举的不相同</span></span><br><span class="line">            <span class="type">int</span> k = n<span class="number">-1</span>;    <span class="comment">//second pointer: right to left</span></span><br><span class="line">            <span class="type">int</span> target = -nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="comment">//2-如果和上一次枚举的相同</span></span><br><span class="line">                <span class="keyword">if</span>(j&gt;i+<span class="number">1</span> &amp;&amp; nums[j]==nums[j<span class="number">-1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="comment">//2-和上一次枚举的不相同</span></span><br><span class="line">                <span class="keyword">while</span>(j&lt;k &amp;&amp; nums[j]+nums[k]&gt;target)</span><br><span class="line">                    k--;</span><br><span class="line">                <span class="keyword">if</span>(j==k)    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]+nums[k]==target)</span><br><span class="line">                    b.<span class="built_in">push_back</span>(&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    </article>
-    <!-- license -->
+                <main class="main index-page">
     
-    <!-- paginator -->
-    <ul class="post-paginator">
-        <li class="next">
+        
+        
+        
+        
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/16-%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="16.最接近的三数之和">
-                    <div class="nextTitle">16.最接近的三数之和</div>
-                </a>
             
-        </li>
-        <li class="previous">
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/07/12/1480-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%92%8C/">
+                
+                <span class="abstract-title-text">1480.一维数组的动态和</span>
+            </a>
+            <div class="abstract-content">
+                <p>没什么难度，仅记录</p>
+            </div>
+            <!-- read more -->
             
-                <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1.两数之和">
-                    <div class="prevTitle">1.两数之和</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- comment -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/07/29">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/07/12</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
     
-        <div class="post-comment">
-            <!-- 来必力 City 版安装代码 -->
-
-
-            
-
-            
-
-            
-
-            <!-- utteranc评论 -->
-
-
-            <!-- partial('_partial/comment/changyan') -->
-            <!--PC版-->
-
-
-            
-            
-
-            
-
-        </div>
     
-    <!-- timeliness note -->
-    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
     
-    <!-- Mathjax -->
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/06/10/%E5%A6%82%E8%8B%A5%E8%BF%98%E8%83%BD%E4%B8%8B%E4%B8%80%E5%9C%BA2018%E5%B9%B4%E7%9A%84%E9%93%B6%E6%9D%8F%E9%9B%A8/">
+                
+                <span class="abstract-title-text">如若还能下一场2018年的银杏雨</span>
+            </a>
+            <div class="abstract-content">
+                <h3 id="从何起笔"><a href="#从何起笔" class="headerlink" title="从何起笔"></a>从何起笔</h3><p>看到高中数学老师公众号更新了今年高考数学题的讲解视频，突然又想回高中撒一次漫天的银杏雨。</p>
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/07/26">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/06/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/05/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+                
+                    <span class="iconfont-archer stick-top">&#xe63d;</span>
+                
+                <span class="abstract-title-text">欢迎来到我的博客</span>
+            </a>
+            <div class="abstract-content">
+                <h2 id="一切都值得被记录"><a href="#一切都值得被记录" class="headerlink" title="一切都值得被记录"></a>一切都值得被记录</h2><p>本博客主要用于记录个人学习记录、生活日常、灵感等任何我认为值得记录的事情。</p>
+<h2 id="生来是瓦砾，却也学美玉"><a href="#生来是瓦砾，却也学美玉" class="headerlink" title="生来是瓦砾，却也学美玉"></a>生来是瓦砾，却也学美玉</h2><p>我想以诗成名，却又不进而投师访友，相与切磋琢磨。与此同时，又不屑与凡夫俗子为伍。这都是我那怯弱的自尊心和妄自尊大的羞耻心在作怪。我深怕自己本非美玉，故而不敢加以刻苦琢磨，却又半信自己是块美玉，故又不肯庸庸碌碌、与瓦砥为伍。</p>
+<h2 id="我会有光明的未来"><a href="#我会有光明的未来" class="headerlink" title="我会有光明的未来"></a>我会有光明的未来</h2><p>放假来到幼年时期住过的小镇，半夜我躺在床上，隐隐约约感受到墙壁里传来的几年前的我的哭声。我想我真的已经离开了这里去了很远的地方，今夜我可以安安静静地听完这些哭声，然后告诉几年前的自己：没关系的，哭也没事。你现在过得很好，你长大了，你可以保护好你自己了。别放弃，好好活下去，继续往前走。</p>
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/04">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/05/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="top">top</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+    <!-- paginator  -->
+    
+        <nav class="page-nav">
+            <a class="extend prev" rel="prev" href="/archives/2022/page/2/">&lt; PREV</a><a class="page-number" href="/archives/2022/">1</a><a class="page-number" href="/archives/2022/page/2/">2</a><span class="page-number current">3</span>
+        </nav>
     
 </main>
 
@@ -660,23 +637,6 @@
 
         </div>
         <!-- toc -->
-        
-            <div class="toc-wrapper toc-wrapper-loding" style=
-
-
-
-
-
-
-
-    top:50vh;
-
->
-                <div class="toc-catalog">
-                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-                </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88-%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">算法：双指针+排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E9%81%8D%E5%93%88%E5%B8%8C-%E2%87%92-O-n-2"><span class="toc-number">1.1.</span> <span class="toc-text">两遍哈希 ⇒ O(n^2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88-%E6%8E%92%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">双指针+排序</span></a></li></ol></li></ol>
-            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1224,16 +1184,7 @@
         
         <!-- async load share.js -->
         
-            <script src="/scripts/share.js?v=20211217" async></script>
-        
         <!-- mermaid -->
-        
-            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
-            <script>
-                if (window.mermaid) {
-                    mermaid.initialize({theme: 'dark'});
-                }
-            </script>
         
     </body>
 </html>

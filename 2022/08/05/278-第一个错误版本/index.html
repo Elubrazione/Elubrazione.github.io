@@ -19,15 +19,15 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="算法：双指针+排序">
+    <meta name="description" content="简单二分查找，只要注意int溢出即可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="15.三数之和">
-<meta property="og:url" content="http://example.com/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:title" content="278.第一个错误版本">
+<meta property="og:url" content="http://example.com/2022/08/05/278-%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%E7%89%88%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="算法：双指针+排序">
+<meta property="og:description" content="简单二分查找，只要注意int溢出即可">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-24T04:37:54.000Z">
-<meta property="article:modified_time" content="2022-07-28T23:05:52.875Z">
+<meta property="article:published_time" content="2022-08-05T13:16:56.000Z">
+<meta property="article:modified_time" content="2022-08-05T13:19:19.127Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>15.三数之和 · Elubrazione</title>
+    <title>278.第一个错误版本 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -261,7 +261,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">15.三数之和</a>
+                <a href="#" class="post-name">278.第一个错误版本</a>
             </div>
         </div>
     
@@ -307,7 +307,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                15.三数之和
+                278.第一个错误版本
             <!-- 404 -->
             
         </h1>
@@ -334,13 +334,13 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">116</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/24</span>
+                    <span class="post-intro-time">2022/08/05</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -495,21 +495,8 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <h3 id="算法：双指针-排序"><a href="#算法：双指针-排序" class="headerlink" title="算法：双指针+排序"></a>算法：双指针+排序</h3><span id="more"></span>
-<h4 id="两遍哈希-⇒-O-n-2"><a href="#两遍哈希-⇒-O-n-2" class="headerlink" title="两遍哈希 ⇒ O(n^2)"></a>两遍哈希 ⇒ O(n^2)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//试试hash能不能做</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; b;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a.<span class="built_in">count</span>(<span class="number">0</span>-nums[i]-nums[j])&gt;<span class="number">0</span> &amp;&amp; (a[-nums[i]-nums[j]]!=i) &amp;&amp; (a[-nums[i]-nums[j]]!=j))&#123;</span><br><span class="line">                    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(<span class="number">3</span>, <span class="number">-1</span>)</span></span>;</span><br><span class="line">                    c[<span class="number">0</span>] = nums[i];</span><br><span class="line">                    c[<span class="number">1</span>] = nums[j];</span><br><span class="line">                    c[<span class="number">2</span>] = <span class="number">0</span>-nums[i]-nums[j];</span><br><span class="line">                    std::<span class="built_in">sort</span>(c.<span class="built_in">begin</span>(), c.<span class="built_in">end</span>());</span><br><span class="line">                    b.<span class="built_in">push_back</span>(c);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        std::<span class="built_in">sort</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;::iterator iter = <span class="built_in">unique</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">end</span>());</span><br><span class="line">        b.<span class="built_in">erase</span>(iter,b.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>‼️问题：时间超了</p>
-<h4 id="双指针-排序"><a href="#双指针-排序" class="headerlink" title="双指针+排序"></a>双指针+排序</h4><p>题目中要求找到所有「不重复」且和为 0的三元组，这个「不重复」的要求使得我们无法简单地使用三重循环枚举所有的三元组。这是因为在最坏的情况下，数组中的元素全部为 0。任意一个三元组的和都为 0。如果我们直接使用三重循环枚举三元组，会得到 O(N^3)个满足题目要求的三元组（其中 N 是数组的长度）时间复杂度至少为 O(N^3)。在这之后，我们还需要使用哈希表进行去重操作，得到不包含重复三元组的最终答案，又消耗了大量的空间。这个做法的时间复杂度和空间复杂度都很高，因此我们要换一种思路来考虑这个问题。</p>
-<p>不重复的本质：</p>
-<ul>
-<li>第二重循环枚举到的元素不小于第一重循环枚举到的元素。</li>
-<li>第三重循环枚举到的元素不小于第二重循环枚举到的元素。</li>
-</ul>
-<p>所以我们要做的事情是对原有的数组进行排列，且由于对于每一重循环相邻枚举的元素相等也会造成重复（比如对于i第一次枚举到0，i+1后枚举的还是0就和上一次一样了）</p>
-<p><strong>而若固定了前两重循环a、b，第三重循环就应该有唯一的数c与它们对应构成解。当第二重循环往后枚举一个元素b’且b’&gt;b，对于第三重循环就一定有c’&lt;c。即c’一定出现在c左侧。所以我们可以从小到大枚举b，从大到小枚举c，即第二重循环和第三重循环实际上是并列的关系。</strong></p>
-<p><strong>所以可以保持第二重循环不变，而将第三重循环变成一个从数组最右端开始向左移动的指针。</strong></p>
-<p><strong>这就是双指针，</strong>当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2)减少至 O(N)。为什么是 O(N)呢？这是因为在枚举的过程每一步中，「左指针」会向右移动一个位置（也就是题目中的b），而「右指针」会向左移动若干个位置，这个与数组的元素有关，但我们知道它一共会移动的位置数为 O(N)，均摊下来，每次也向左移动一个位置，因此时间复杂度为 O(N)。还有第一重循环，时间复杂度为O(N)，因此枚举的总时间复杂度为O(N^2)。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//排序+双指针</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; b;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="comment">//1-如果和上一次枚举的相同</span></span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; nums[i]==nums[i<span class="number">-1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">//1-和上一次枚举的不相同</span></span><br><span class="line">            <span class="type">int</span> k = n<span class="number">-1</span>;    <span class="comment">//second pointer: right to left</span></span><br><span class="line">            <span class="type">int</span> target = -nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="comment">//2-如果和上一次枚举的相同</span></span><br><span class="line">                <span class="keyword">if</span>(j&gt;i+<span class="number">1</span> &amp;&amp; nums[j]==nums[j<span class="number">-1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="comment">//2-和上一次枚举的不相同</span></span><br><span class="line">                <span class="keyword">while</span>(j&lt;k &amp;&amp; nums[j]+nums[k]&gt;target)</span><br><span class="line">                    k--;</span><br><span class="line">                <span class="keyword">if</span>(j==k)    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]+nums[k]==target)</span><br><span class="line">                    b.<span class="built_in">push_back</span>(&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h3 id="简单二分查找，只要注意int溢出即可"><a href="#简单二分查找，只要注意int溢出即可" class="headerlink" title="简单二分查找，只要注意int溢出即可"></a>简单二分查找，只要注意int溢出即可</h3><span id="more"></span>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The API isBadVersion is defined for you.</span></span><br><span class="line"><span class="comment">// bool isBadVersion(int version);</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> low = <span class="number">1</span>, high = n, mid;</span><br><span class="line">        <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//注意这个mid的计算方法，要防止low+high的运算结果的溢出</span></span><br><span class="line">            mid = low+(high-low)/<span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isBadVersion</span>(mid)==<span class="literal">true</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">isBadVersion</span>(mid<span class="number">-1</span>)==<span class="literal">false</span>)</span><br><span class="line">                    <span class="keyword">return</span> mid;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">isBadVersion</span>(mid+<span class="number">1</span>)==<span class="literal">true</span>)</span><br><span class="line">                    <span class="keyword">return</span> mid+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    low = mid+<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
@@ -517,17 +504,12 @@
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/16-%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="16.最接近的三数之和">
-                    <div class="nextTitle">16.最接近的三数之和</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1.两数之和">
-                    <div class="prevTitle">1.两数之和</div>
+                <a href="/2022/08/05/704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="704.二分查找">
+                    <div class="prevTitle">704.二分查找</div>
                 </a>
             
         </li>
@@ -675,7 +657,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88-%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">算法：双指针+排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E9%81%8D%E5%93%88%E5%B8%8C-%E2%87%92-O-n-2"><span class="toc-number">1.1.</span> <span class="toc-text">两遍哈希 ⇒ O(n^2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88-%E6%8E%92%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">双指针+排序</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%8C%E5%8F%AA%E8%A6%81%E6%B3%A8%E6%84%8Fint%E6%BA%A2%E5%87%BA%E5%8D%B3%E5%8F%AF"><span class="toc-number">1.</span> <span class="toc-text">简单二分查找，只要注意int溢出即可</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
