@@ -19,23 +19,33 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="两种解法">
+    <meta name="description" content="本篇笔记整理自bilibili教程：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1g64y1474s?p&#x3D;1&amp;vd_source&#x3D;935b54413853f97509619fe1f544b3bb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.两数之和">
-<meta property="og:url" content="http://example.com/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:title" content="Lightroom">
+<meta property="og:url" content="http://example.com/2022/08/06/LR-Begin-with-RGB-CMYK/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="两种解法">
+<meta property="og:description" content="本篇笔记整理自bilibili教程：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1g64y1474s?p&#x3D;1&amp;vd_source&#x3D;935b54413853f97509619fe1f544b3bb">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-13T16:04:09.000Z">
-<meta property="article:modified_time" content="2022-07-25T19:38:06.963Z">
+<meta property="og:image" content="http://example.com/upload/LR/color.png">
+<meta property="og:image" content="http://example.com/upload/LR/threeorigin.png">
+<meta property="og:image" content="http://example.com/upload/LR/zhifang.png">
+<meta property="og:image" content="http://example.com/upload/LR/heisi1.png">
+<meta property="og:image" content="http://example.com/upload/LR/sediao.png">
+<meta property="og:image" content="http://example.com/upload/LR/compare.png">
+<meta property="og:image" content="http://example.com/upload/LR/xiguan.png">
+<meta property="og:image" content="http://example.com/upload/LR/canshu.png">
+<meta property="og:image" content="http://example.com/upload/LR/dian.png">
+<meta property="article:published_time" content="2022-08-05T18:54:18.000Z">
+<meta property="article:modified_time" content="2022-08-06T02:55:24.579Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="摄影">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/upload/LR/color.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>1.两数之和 · Elubrazione</title>
+    <title>Lightroom · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -261,7 +271,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">1.两数之和</a>
+                <a href="#" class="post-name">Lightroom</a>
             </div>
         </div>
     
@@ -307,7 +317,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                1.两数之和
+                Lightroom
             <!-- 404 -->
             
         </h1>
@@ -327,20 +337,20 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="摄影">摄影</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">275</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/14</span>
+                    <span class="post-intro-time">2022/08/06</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -495,12 +505,96 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <h3 id="两种解法"><a href="#两种解法" class="headerlink" title="两种解法"></a>两种解法</h3><span id="more"></span>
-<h4 id="Violence"><a href="#Violence" class="headerlink" title="Violence"></a>Violence</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> &#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;    <span class="comment">//建立哈希表存放数组元素</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">2</span>, <span class="number">-1</span>)</span></span>;   <span class="comment">//存放结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.<span class="built_in">count</span>(target-nums[i])&gt;<span class="number">0</span> &amp;&amp; (a[target-nums[i]]!=i))&#123;</span><br><span class="line">                b[<span class="number">0</span>] = i;</span><br><span class="line">                b[<span class="number">1</span>] = a[target-nums[i]];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>相当于以数组元素的内容作为key，下标作为value，这样可以实现直接查找而不用遍历数组。<br>只用一层循环，假设当前的下标是i，若以target-nums[i]为key的内容存在且不是自己本身就查找成功。<br>对比发现时间开销大大减小，暴力求解O(n^2)时间开销是400ms，用hash表则是16ms。</p>
+        <p>本篇笔记整理自bilibili教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1g64y1474s?p=1&amp;vd_source=935b54413853f97509619fe1f544b3bb">https://www.bilibili.com/video/BV1g64y1474s?p=1&amp;vd_source=935b54413853f97509619fe1f544b3bb</a></p>
+<span id="more"></span>
+<h3 id="色彩"><a href="#色彩" class="headerlink" title="色彩"></a>色彩</h3><p><img src="/./upload/LR/color.png" alt="color" title="color"></p>
+<ol>
+<li>互补色-180°</li>
+</ol>
+<ul>
+<li>蓝色和黄色</li>
+<li>红色和青色C</li>
+<li>绿色和品红色</li>
+</ul>
+<ol start="2">
+<li>对比色-120°</li>
+<li>中差色-90°</li>
+<li>邻近色-60°</li>
+<li>类似色-30°</li>
+</ol>
+<p><img src="/./upload/LR/threeorigin.png" alt="color"></p>
+<h3 id="图片整理和预览"><a href="#图片整理和预览" class="headerlink" title="图片整理和预览"></a>图片整理和预览</h3><ul>
+<li>放大视图G，网格视图G</li>
+<li>图片左上角有序号，在左右下角可以进行旋转操作，还可以打星，超过五星之后图片会有颜色背景，还可以统一打星。</li>
+<li>右侧直方图也可以<strong>快速</strong>修改照片</li>
+<li>还可以通过选中两张图片通过比较视图C来对两张图进行比较，打上选用&#x2F;不选用进行筛选。</li>
+<li>通过关键词标记列出关键词，把图片拖到标签上从而对图片打上标签</li>
+<li>在左侧的智能收藏夹内设定条件对打过标签的图片进行过滤</li>
+</ul>
+<h3 id="风光大片的基础调节"><a href="#风光大片的基础调节" class="headerlink" title="风光大片的基础调节"></a>风光大片的基础调节</h3><ol>
+<li><strong>直方图：包含感光度、焦距、光圈、快门等，还有很多颜色的区域</strong><br><img src="/./upload/LR/zhifang.png" alt="zhifang" title="zhifang"></li>
+</ol>
+<ul>
+<li>光影的信息都存在于这个直方图中，从左至右：黑色色阶-&gt;阴影-&gt;曝光度-&gt;高光-&gt;白色色阶<blockquote>
+<ul>
+<li>左右上角都有两个箭头，表示“黑死”和“过曝”，单纯增加曝光虽然会改善黑死但是可能会带来某些区域的过曝。所以我们可以把黑色色阶向右边拉，同时把高光给压低从而获得更多的细节等。<br><img src="/./upload/LR/heisi1.png" alt="heisi"></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li><strong>色调：就是亮度</strong></li>
+</ol>
+<p><img src="/./upload/LR/sediao.png" alt="sediao"></p>
+<ul>
+<li>曝光度：调整明暗。向左变暗，向右提亮。</li>
+<li>对比度：向左减少明亮反差，向右增加明亮反差。</li>
+<li>高光：对高光部分的明亮调整，向左压暗，向右提亮。</li>
+<li>阴影：对阴影部分的明亮调整，向左压暗，向右提亮。</li>
+<li>白色色阶：对最亮部分的明暗调整，左暗右亮。</li>
+<li>黑色色阶：对最暗部分的明暗调整，左暗右亮。</li>
+<li>白色不够白，黑色不够黑，画面灰灰的就可以通过黑白色阶进行调整。</li>
+</ul>
+<blockquote>
+<ul>
+<li>提高曝光降低高光</li>
+<li>提高一些阴影，白色色阶适当降低，再进行一些偏好参数（如鲜艳度、饱和度，去朦胧和清晰度可以增加质感和细节）<br><img src="/./upload/LR/compare.png" alt="compare"></li>
+</ul>
+<ol start="3">
+<li><strong>白平衡：对色彩进行调整来达到让白色的物体呈现白色的状态，简单来说就是还原物体本来的颜色</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li>高色温图像偏冷色调，低色温图像偏暖色调。色调是一副图像整体的色彩基调，比如讲偏红偏蓝，色温可以是一副图像的基本色调所体现的在人主观上产生的温暖或寒冷的感觉，用k（开尔文）表示。色温越低，颜色看起来越红越黄。色温越高，画面看起来越蓝。</li>
+</ul>
+<blockquote>
+<ul>
+<li>选蓝画面变黄，选黄画面变蓝，无法选择中性色。<br><img src="/./upload/LR/xiguan.png" alt="xiguan"></li>
+</ul>
+</blockquote>
+<ul>
+<li>还可以使用预定好的（有自动、日光、阴天等）</li>
+</ul>
+<ol start="3">
+<li><strong>偏好</strong></li>
+</ol>
+<ul>
+<li>纹理：物体表面的质感，向左模糊，向右锐化</li>
+<li>清晰度：纹理是针对物体表面的质感进行锐化，清晰度则是更多对物体的边缘和轮廓进行锐化。向左模糊，向右锐化</li>
+<li>去朦胧：是否有雾一样的感觉</li>
+<li>鲜艳度：只对画面中间调的色彩进行调整，使其颜色更加鲜艳或暗淡</li>
+<li>饱和度：对画面中所有颜色进行调整，使其颜色更加鲜艳或暗淡</li>
+</ul>
+<ol start="4">
+<li>色调曲线</li>
+</ol>
+<ul>
+<li>参数曲线，参数类型。有高光、亮色、暗色、阴影。<br><img src="/./upload/LR/canshu.png" alt="canshu"></li>
+<li>点曲线。下面有输入和输出，现在的曲线是y&#x3D;x，输入等于输出。若向左移动曲线整个曲线是变亮，输出值比真实值更亮。<strong>让亮度更亮</strong>。下面向右移动，上面向左就造成了过曝和黑死，增加了对比度。可以试试<strong>牛奶曲线S型</strong>，只对画面亮的地方亮一点，暗的地方稍微亮一点，如图。<br><img src="/./upload/LR/dian.png" alt="dian"></li>
+<li>通过颜色曲线来增加氛围感</li>
+</ul>
+<h3 id="黑金调色思路"><a href="#黑金调色思路" class="headerlink" title="黑金调色思路"></a>黑金调色思路</h3><p><strong>核心是去除画面中的杂色，让其只有黑色和金色</strong></p>
+<h3 id="赛博朋克调色"><a href="#赛博朋克调色" class="headerlink" title="赛博朋克调色"></a>赛博朋克调色</h3><p><strong>蓝色和紫红色，色温向左托，色调向右拖</strong></p>
 
     </article>
     <!-- license -->
@@ -509,17 +603,12 @@
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="15.三数之和">
-                    <div class="nextTitle">15.三数之和</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/07/13/724-%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E5%BF%83%E4%B8%8B%E6%A0%87/" title="724.寻找数组的中心下标">
-                    <div class="prevTitle">724.寻找数组的中心下标</div>
+                <a href="/2022/08/05/278-%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%E7%89%88%E6%9C%AC/" title="278.第一个错误版本">
+                    <div class="prevTitle">278.第一个错误版本</div>
                 </a>
             
         </li>
@@ -667,7 +756,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%A7%A3%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">两种解法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Violence"><span class="toc-number">1.1.</span> <span class="toc-text">Violence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hash"><span class="toc-number">1.2.</span> <span class="toc-text">hash</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%89%B2%E5%BD%A9"><span class="toc-number">1.</span> <span class="toc-text">色彩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%95%B4%E7%90%86%E5%92%8C%E9%A2%84%E8%A7%88"><span class="toc-number">2.</span> <span class="toc-text">图片整理和预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A3%8E%E5%85%89%E5%A4%A7%E7%89%87%E7%9A%84%E5%9F%BA%E7%A1%80%E8%B0%83%E8%8A%82"><span class="toc-number">3.</span> <span class="toc-text">风光大片的基础调节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E9%87%91%E8%B0%83%E8%89%B2%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">黑金调色思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B%E8%B0%83%E8%89%B2"><span class="toc-number">5.</span> <span class="toc-text">赛博朋克调色</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
