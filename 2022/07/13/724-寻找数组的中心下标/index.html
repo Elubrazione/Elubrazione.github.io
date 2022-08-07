@@ -499,7 +499,7 @@
 <h4 id="自己写的暴力解法"><a href="#自己写的暴力解法" class="headerlink" title="自己写的暴力解法"></a>自己写的暴力解法</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pivotIndex</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n=nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">runningSum</span>(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[n<span class="number">-1</span>]-nums[i] == <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i<span class="number">-1</span>] == nums[n<span class="number">-1</span>]-nums[i])</span><br><span class="line">                    <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">runningSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            nums[i] += nums[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="前缀和找规律解法"><a href="#前缀和找规律解法" class="headerlink" title="前缀和找规律解法"></a>前缀和找规律解法</h4><ul>
 <li>计数组的全部之和为total，当遍历到第i个元素时，设其左侧元素之和为sum，右侧元素之和则为tota-nums[i]-sum。左右侧元素相等即为sum&#x3D;total-nums[i]-sum，即2*sum+nums[i]&#x3D;total</li>
-<li><strong>accmulate()函数的用法：</strong> 头文件是#include <numeric>，第一个参数是起始元素序号，第二个参数是最后一个元素序号，第三个参数是初始和的值。</li>
+<li><strong>accmulate()函数的用法：</strong> 头文件是#include <numeric>，第一个参数是起始元素序号，第二个参数是最后一个元素序号，第三个参数是初始和的值。</numeric></li>
 <li><strong>nums.size() 表示数组的大小；nums.begin() 表示数组的起始元素下标；nums.end() 表示数组最后一个元素下标（可用于为未知数组长度时</strong></li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pivotIndex</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> total = <span class="built_in">accumulate</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">2</span>*sum+nums[i]==total)&#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -964,22 +964,6 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     
     
     
@@ -1150,14 +1134,14 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Leetcode">
                 <span class="iconfont-archer">&#xe606;</span>
                 Leetcode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
             </span>
         
             <span class="sidebar-tag-name" data-tags="随笔">
@@ -1165,9 +1149,9 @@
                 随笔
             </span>
         
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                top
             </span>
         
     </div>
