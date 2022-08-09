@@ -19,18 +19,25 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/06/index.html">
+    <meta name="description" content="一些关于哈希表的题目和解答">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表">
+<meta property="og:url" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一些关于哈希表的题目和解答">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
+<meta property="article:published_time" content="2022-08-09T20:13:49.000Z">
+<meta property="article:modified_time" content="2022-08-09T20:39:05.440Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>Elubrazione</title>
+    <title>哈希表 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -218,6 +225,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -247,6 +256,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">Elubrazione&#39;s Studio.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">哈希表</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
@@ -273,24 +293,79 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index_light-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                哈希表
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">473</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/08/10</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -420,45 +495,72 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>一些关于哈希表的题目和解答</p>
+<span id="more"></span>
+<h3 id="299-猜数字游戏"><a href="#299-猜数字游戏" class="headerlink" title="[299] 猜数字游戏"></a>[299] 猜数字游戏</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>你在和朋友一起玩 猜数字（Bulls and Cows）游戏，该游戏规则如下：<br>写出一个秘密数字，并请朋友猜这个数字是多少。朋友每猜测一次，你就会给他一个包含下述信息的提示：</p>
+<ul>
+<li>猜测数字中有多少位属于数字和确切位置都猜对了（称为 “Bulls”，公牛）；</li>
+<li>有多少位属于数字猜对了但是位置不对（称为 “Cows”，奶牛）。也就是说，这次猜测中有多少位非公牛数字可以通过重新排列转换成公牛数字。</li>
+</ul>
+<p>给你一个秘密数字 secret 和朋友猜测的数字 guess ，请你返回对朋友这次猜测的提示。提示的格式为 “xAyB” ，x 是公牛个数， y 是奶牛个数，A 表示公牛，B 表示奶牛。请注意秘密数字和朋友猜测的数字都可能含有重复数字.</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h5 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h5><blockquote>
+<p><strong>输入：</strong> secret &#x3D; “1807”, guess &#x3D; “7810”<br><strong>输出：</strong> “1A3B”</p>
+</blockquote>
+<h5 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h5><blockquote>
+<p><strong>输入：</strong> secret &#x3D; “1123”, guess &#x3D; “0111”<br><strong>输出：</strong> “1A1B”</p>
+</blockquote>
+<h4 id="本人垃圾代码"><a href="#本人垃圾代码" class="headerlink" title="本人垃圾代码"></a>本人垃圾代码</h4><p>仅作记录，不是重点。</p>
+<p><img src="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png" alt="rubbish_code" title="rubbish_code"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getHint</span><span class="params">(string secret, string guess)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; hash, bulls, cows;</span><br><span class="line">        <span class="type">int</span> ans_b = <span class="number">0</span>, ans_c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.<span class="built_in">count</span>(secret[i])&gt;<span class="number">0</span>)</span><br><span class="line">                hash[secret[i]]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                hash.<span class="built_in">insert</span>(map&lt;<span class="type">char</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(secret[i], <span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(secret[i] == guess[i])&#123;</span><br><span class="line">                <span class="keyword">if</span>(bulls.<span class="built_in">count</span>(secret[i])&gt;<span class="number">0</span>)</span><br><span class="line">                    bulls[secret[i]]++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    bulls.<span class="built_in">insert</span>(map&lt;<span class="type">char</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(secret[i], <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;guess.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.<span class="built_in">count</span>(guess[i])&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(cows.<span class="built_in">count</span>(guess[i])&gt;<span class="number">0</span>)</span><br><span class="line">                    cows[guess[i]]++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    cows.<span class="built_in">insert</span>(map&lt;<span class="type">char</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(guess[i], <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            ans_b += bulls[guess[i]];</span><br><span class="line">            ans_c += <span class="built_in">min</span>(cows[guess[i]], hash[guess[i]]) - bulls[guess[i]];</span><br><span class="line">            cows[guess[i]]  = <span class="number">0</span>;</span><br><span class="line">            bulls[guess[i]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">to_string</span>(ans_b)+<span class="string">&quot;A&quot;</span>+<span class="built_in">to_string</span>(ans_c)+<span class="string">&quot;B&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license -->
     
-        
-        
-        
-        
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
             
+        </li>
+        <li class="previous">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/06/10/%E5%A6%82%E8%8B%A5%E8%BF%98%E8%83%BD%E4%B8%8B%E4%B8%80%E5%9C%BA2018%E5%B9%B4%E7%9A%84%E9%93%B6%E6%9D%8F%E9%9B%A8/">
-                
-                <span class="abstract-title-text">如若还能下一场2018年的银杏雨</span>
-            </a>
-            <div class="abstract-content">
-                <h3 id="从何起笔"><a href="#从何起笔" class="headerlink" title="从何起笔"></a>从何起笔</h3><p>看到高中数学老师公众号更新了今年高考数学题的讲解视频，突然又想回高中撒一次漫天的银杏雨。</p>
-            </div>
-            <!-- read more -->
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                    <div class="prevTitle">动态规划</div>
+                </a>
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/07/26">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/06/10</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
+        </li>
+    </ul>
+    <!-- comment -->
     
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
-    
-</div>
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
     
-    <!-- paginator  -->
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
     
 </main>
 
@@ -557,6 +659,23 @@
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#299-%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F"><span class="toc-number">1.</span> <span class="toc-text">[299] 猜数字游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">实例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">实例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">实例2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E4%BA%BA%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">本人垃圾代码</span></a></li></ol></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1158,7 +1277,16 @@
         
         <!-- async load share.js -->
         
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
         <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
         
     </body>
 </html>

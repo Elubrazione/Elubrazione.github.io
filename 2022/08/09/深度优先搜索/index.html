@@ -19,20 +19,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="article">
-<meta property="og:title" content="DFS">
-<meta property="og:url" content="http://example.com/2022/08/09/DFS/index.html">
+    <meta name="description" content="一些有关DFS的题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度优先搜索">
+<meta property="og:url" content="http://example.com/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一些有关DFS的题目">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-08T21:37:46.000Z">
-<meta property="article:modified_time" content="2022-08-08T21:37:46.391Z">
+<meta property="article:published_time" content="2022-08-09T02:27:41.000Z">
+<meta property="article:modified_time" content="2022-08-09T15:05:02.663Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>DFS · Elubrazione</title>
+    <title>深度优先搜索 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -258,7 +261,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">DFS</a>
+                <a href="#" class="post-name">深度优先搜索</a>
             </div>
         </div>
     
@@ -304,7 +307,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                DFS
+                深度优先搜索
             <!-- 404 -->
             
         </h1>
@@ -321,9 +324,17 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
+    
+</div>
+
+                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">0</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">272</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -484,13 +495,23 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        
+        <p>一些有关DFS的题目</p>
+<span id="more"></span>
+<h4 id="733-图像渲染"><a href="#733-图像渲染" class="headerlink" title="733-图像渲染"></a>733-图像渲染</h4><p>* </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> n, m, val;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; image, <span class="type">int</span> sr, <span class="type">int</span> sc, <span class="type">int</span> color)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sr&lt;<span class="number">0</span> || sr&gt;=n || sc&lt;<span class="number">0</span> || sc&gt;=m || image[sr][sc]!=val || image[sr][sc]==color)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        image[sr][sc] = color;</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr<span class="number">-1</span>, sc, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr+<span class="number">1</span>, sc, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr, sc<span class="number">-1</span>, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr, sc+<span class="number">1</span>, color);</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">floodFill</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; image, <span class="type">int</span> sr, <span class="type">int</span> sc, <span class="type">int</span> color) &#123;</span><br><span class="line">        n = image.<span class="built_in">size</span>();</span><br><span class="line">        m = image[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        val = image[sr][sc];</span><br><span class="line">        <span class="keyword">if</span>(val != color)</span><br><span class="line">            <span class="built_in">DFS</span>(image, sr, sc, color);</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200-岛屿数量"></a>200-岛屿数量</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid, <span class="type">int</span> r, <span class="type">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(r&lt;<span class="number">0</span> || r&gt;=n || c&lt;<span class="number">0</span> || c&gt;=m || grid[r][c]== <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        grid[r][c] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r<span class="number">-1</span>, c);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r+<span class="number">1</span>, c);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r, c+<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r, c<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numIslands</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        n = grid.<span class="built_in">size</span>();</span><br><span class="line">        m = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                    <span class="built_in">DFS</span>(grid, i, j);</span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                    <div class="nextTitle">动态规划</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -645,7 +666,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                
+                <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#733-%E5%9B%BE%E5%83%8F%E6%B8%B2%E6%9F%93"><span class="toc-number">1.</span> <span class="toc-text">733-图像渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#200-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">200-岛屿数量</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -779,7 +800,37 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -948,7 +999,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 24
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -964,8 +1015,20 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/DFS/">DFS</a>
+            <a class="archive-post-title" href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/09</span>
+            <a class="archive-post-title" href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">深度优先搜索</a>
         </li>
     
         
