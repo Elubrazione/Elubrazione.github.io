@@ -19,23 +19,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="遍历、搜索树等">
+    <meta name="description" content="LC75_Level_1中有关树的题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树的操作">
+<meta property="og:title" content="LC75_1_树">
 <meta property="og:url" content="http://example.com/2022/08/08/%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="遍历、搜索树等">
+<meta property="og:description" content="LC75_Level_1中有关树的题目">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-07T18:18:32.000Z">
-<meta property="article:modified_time" content="2022-08-08T20:53:03.181Z">
+<meta property="article:modified_time" content="2022-08-12T02:30:55.217Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="树">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>树的操作 · Elubrazione</title>
+    <title>LC75_1_树 · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -261,7 +261,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">树的操作</a>
+                <a href="#" class="post-name">LC75_1_树</a>
             </div>
         </div>
     
@@ -307,7 +307,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                树的操作
+                LC75_1_树
             <!-- 404 -->
             
         </h1>
@@ -327,14 +327,14 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Leetcode">Leetcode</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树">树</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">909</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">911</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -495,7 +495,7 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>遍历、搜索树等</p>
+        <p>LC75_Level_1中有关树的题目</p>
 <span id="more"></span>
 <h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><h4 id="589-N叉树的前序遍历"><a href="#589-N叉树的前序遍历" class="headerlink" title="589.N叉树的前序遍历"></a>589.N叉树的前序遍历</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">helper</span><span class="params">(<span class="type">const</span> Node*root, vector&lt;<span class="type">int</span>&gt; &amp;res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        res.<span class="built_in">emplace_back</span>(root-&gt;val);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp; ch: root-&gt;children)</span><br><span class="line">            <span class="built_in">helper</span>(ch, res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">preorder</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">helper</span>(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -524,8 +524,8 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="深度优先搜索">
-                    <div class="nextTitle">深度优先搜索</div>
+                <a href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="LC75_1_DFS">
+                    <div class="nextTitle">LC75_1_DFS</div>
                 </a>
             
         </li>
@@ -1023,6 +1023,8 @@
         
         
         
+        
+        
     
     
     
@@ -1046,31 +1048,31 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2022/08/10/%E6%A0%88/">栈</a>
+            <a class="archive-post-title" href="/2022/08/10/%E6%A0%88/">LC75_1_栈</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+            <a class="archive-post-title" href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/">LC75_1_哈希表</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            <a class="archive-post-title" href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LC75_1_DP</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">深度优先搜索</a>
+            <a class="archive-post-title" href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">LC75_1_DFS</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/08</span>
-            <a class="archive-post-title" href="/2022/08/08/%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C/">树的操作</a>
+            <a class="archive-post-title" href="/2022/08/08/%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C/">LC75_1_树</a>
         </li>
     
         
@@ -1216,19 +1218,44 @@
                 Leetcode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="摄影">
-                <span class="iconfont-archer">&#xe606;</span>
-                摄影
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
                 随笔
             </span>
         
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DP">
+                <span class="iconfont-archer">&#xe606;</span>
+                DP
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希表">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
                 top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
             </span>
         
     </div>
