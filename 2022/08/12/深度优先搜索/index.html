@@ -19,25 +19,26 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="LeetCode75_Level_1中一些关于哈希表的题目和解答">
+    <meta name="description" content="LeetCode75_Level_1一些有关DFS的题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC75_1_哈希表">
-<meta property="og:url" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
+<meta property="og:title" content="LC75_1_DFS">
+<meta property="og:url" content="http://example.com/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode75_Level_1中一些关于哈希表的题目和解答">
+<meta property="og:description" content="LeetCode75_Level_1一些有关DFS的题目">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
-<meta property="article:published_time" content="2022-08-09T20:13:49.000Z">
-<meta property="article:modified_time" content="2022-08-13T21:56:01.162Z">
+<meta property="og:image" content="http://example.com/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/eg1.jpg">
+<meta property="article:published_time" content="2022-08-12T02:27:41.000Z">
+<meta property="article:modified_time" content="2022-08-14T00:04:13.554Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="DFS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
+<meta name="twitter:image" content="http://example.com/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/eg1.jpg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>LC75_1_哈希表 · Elubrazione</title>
+    <title>LC75_1_DFS · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -263,7 +264,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">LC75_1_哈希表</a>
+                <a href="#" class="post-name">LC75_1_DFS</a>
             </div>
         </div>
     
@@ -309,7 +310,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                LC75_1_哈希表
+                LC75_1_DFS
             <!-- 404 -->
             
         </h1>
@@ -329,20 +330,22 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="哈希表">哈希表</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="LeetCode">LeetCode</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DFS">DFS</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">595</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">795</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/08/10</span>
+                    <span class="post-intro-time">2022/08/12</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -497,32 +500,28 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>LeetCode75_Level_1中一些关于哈希表的题目和解答</p>
+        <p>LeetCode75_Level_1一些有关DFS的题目</p>
 <span id="more"></span>
-<h3 id="299-猜数字游戏"><a href="#299-猜数字游戏" class="headerlink" title="[299] 猜数字游戏"></a>[299] 猜数字游戏</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>你在和朋友一起玩 猜数字（Bulls and Cows）游戏，该游戏规则如下：<br>写出一个秘密数字，并请朋友猜这个数字是多少。朋友每猜测一次，你就会给他一个包含下述信息的提示：</p>
-<ul>
-<li>猜测数字中有多少位属于数字和确切位置都猜对了（称为 “Bulls”，公牛）；</li>
-<li>有多少位属于数字猜对了但是位置不对（称为 “Cows”，奶牛）。也就是说，这次猜测中有多少位非公牛数字可以通过重新排列转换成公牛数字。</li>
-</ul>
-<p>给你一个秘密数字 secret 和朋友猜测的数字 guess ，请你返回对朋友这次猜测的提示。提示的格式为 “xAyB” ，x 是公牛个数， y 是奶牛个数，A 表示公牛，B 表示奶牛。请注意秘密数字和朋友猜测的数字都可能含有重复数字.</p>
+<h3 id="733-图像渲染"><a href="#733-图像渲染" class="headerlink" title="[733] 图像渲染"></a>[733] 图像渲染</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>有一幅以 m x n 的二维整数数组表示的图画image，其中image[i][j]表示该图画的像素值大小。</p>
+<p>你也被给予三个整数sr, sc和newColor。你应该从像素 image[sr][sc]开始对图像进行上色填充 。</p>
+<p>为了完成上色工作，从初始像素开始，记录初始坐标的 上下左右四个方向上 像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应 四个方向上 像素值与初始坐标相同的相连像素点，……，重复该过程。将所有有记录的像素点的颜色值改为newColor。</p>
+<p>最后返回 经过上色渲染后的图像 。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h5><blockquote>
+<p><strong>输入:</strong> image&#x3D;[ [1,1,1], [1,1,0], [1,0,1] ]，sr&#x3D;1, sc&#x3D;1, newColor&#x3D;2<br><strong>输出:</strong> [ [2,2,2], [2,2,0], [2,0,1] ]<br><strong>解析:</strong> 在图像的正中间，(坐标(sr,sc)&#x3D;(1,1)),在路径上所有符合条件的像素点的颜色都被更改成2。<br>注意，右下角的像素没有更改为2，因为它不是在上下左右四个方向上与初始点相连的像素点.<br><img src="/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/eg1.jpg" alt="eg.1"></p>
+</blockquote>
+<h5 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h5><blockquote>
+<p><strong>输入:</strong> image&#x3D;[ [0,0,0],[0,0,0]], sr&#x3D;0, sc&#x3D;0, newColor&#x3D;2<br><strong>输出:</strong> [ [2,2,2], [2,2,0], [2,0,1] ]</p>
+</blockquote>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> n, m, val;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; image, <span class="type">int</span> sr, <span class="type">int</span> sc, <span class="type">int</span> color)</span></span>&#123;</span><br><span class="line">        <span class="comment">//退出搜索条件</span></span><br><span class="line">        <span class="keyword">if</span>(sr&lt;<span class="number">0</span> || sr&gt;=n || sc&lt;<span class="number">0</span> || sc&gt;=m || image[sr][sc]!=val || image[sr][sc]==color)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        image[sr][sc] = color;</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr<span class="number">-1</span>, sc, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr+<span class="number">1</span>, sc, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr, sc<span class="number">-1</span>, color);</span><br><span class="line">        <span class="built_in">DFS</span>(image, sr, sc+<span class="number">1</span>, color);</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">floodFill</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; image, <span class="type">int</span> sr, <span class="type">int</span> sc, <span class="type">int</span> color) &#123;</span><br><span class="line">        n = image.<span class="built_in">size</span>();</span><br><span class="line">        m = image[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        val = image[sr][sc];</span><br><span class="line">        <span class="keyword">if</span>(val != color)</span><br><span class="line">            <span class="built_in">DFS</span>(image, sr, sc, color);</span><br><span class="line">        <span class="keyword">return</span> image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="[200] 岛屿数量"></a>[200] 岛屿数量</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。<br>岛屿总是被水包围，并且每座岛屿只能由水平方向和&#x2F;或竖直方向上相邻的陆地连接形成。<br>此外，你可以假设该网格的四条边均被水包围。</p>
 <h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h5 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h5><blockquote>
-<p><strong>输入：</strong> secret &#x3D; “1807”, guess &#x3D; “7810”<br><strong>输出：</strong> “1A3B”</p>
+<p><strong>输入：</strong> grid &#x3D; [<br>  [“1”,”1”,”1”,”1”,”0”],<br>  [“1”,”1”,”0”,”1”,”0”],<br>  [“1”,”1”,”0”,”0”,”0”],<br>  [“0”,”0”,”0”,”0”,”0”]<br>]<br><strong>输出：</strong> 1</p>
 </blockquote>
 <h5 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h5><blockquote>
-<p><strong>输入：</strong> secret &#x3D; “1123”, guess &#x3D; “0111”<br><strong>输出：</strong> “1A1B”</p>
+<p><strong>输入：</strong> grid &#x3D; [<br>  [“1”,”1”,”0”,”0”,”0”],<br>  [“1”,”1”,”0”,”0”,”0”],<br>  [“0”,”0”,”1”,”0”,”0”],<br>  [“0”,”0”,”0”,”1”,”1”]<br>]<br><strong>输出：</strong> 3</p>
 </blockquote>
-<h4 id="本人垃圾代码"><a href="#本人垃圾代码" class="headerlink" title="本人垃圾代码"></a>本人垃圾代码</h4><p>仅作记录，不是重点。</p>
-<p><img src="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png" alt="rubbish_code" title="rubbish_code"></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getHint</span><span class="params">(string secret, string guess)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; hash, bulls, cows;</span><br><span class="line">        <span class="type">int</span> ans_b = <span class="number">0</span>, ans_c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            hash[secret[i]]++;</span><br><span class="line">            <span class="keyword">if</span>(secret[i] == guess[i])</span><br><span class="line">                bulls[secret[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;guess.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.<span class="built_in">count</span>(guess[i])&gt;<span class="number">0</span>)</span><br><span class="line">                cows[guess[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            ans_b += bulls[guess[i]];</span><br><span class="line">            ans_c += <span class="built_in">min</span>(cows[guess[i]], hash[guess[i]]) - bulls[guess[i]];</span><br><span class="line">            cows[guess[i]]  = <span class="number">0</span>;</span><br><span class="line">            bulls[guess[i]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        string ret = <span class="built_in">to_string</span>(ans_b)+<span class="string">&quot;A&quot;</span>+<span class="built_in">to_string</span>(ans_c)+<span class="string">&quot;B&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="官方解答"><a href="#官方解答" class="headerlink" title="官方解答"></a>官方解答</h4><h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><ul>
-<li>只用了两次遍历(对比之下我的代码用了三次遍历).</li>
-</ul>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getHint</span><span class="params">(string secret, string guess)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> bulls = <span class="number">0</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">cntS</span><span class="params">(<span class="number">10</span>)</span>, <span class="title">cntG</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; secret.<span class="built_in">length</span>(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (secret[i] == guess[i]) &#123;</span><br><span class="line">                ++bulls;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++cntS[secret[i] - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">                ++cntG[guess[i] - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> cows = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">            cows += <span class="built_in">min</span>(cntS[i], cntG[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">to_string</span>(bulls) + <span class="string">&quot;A&quot;</span> + <span class="built_in">to_string</span>(cows) + <span class="string">&quot;B&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><ul>
-<li>时间复杂度：O(N)，其中N是字符串secret的长度。</li>
-<li>空间复杂度：O(C)。需要常数个空间统计字符出现次数，由于我们统计的是数字字符，因此 C&#x3D;10。</li>
-</ul>
-
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid, <span class="type">int</span> r, <span class="type">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="comment">//退出搜索条件:越界/遇到水&#x27;0&#x27;</span></span><br><span class="line">        <span class="keyword">if</span>(r&lt;<span class="number">0</span> || r&gt;=n || c&lt;<span class="number">0</span> || c&gt;=m || grid[r][c]== <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        grid[r][c] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r<span class="number">-1</span>, c);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r+<span class="number">1</span>, c);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r, c+<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">DFS</span>(grid, r, c<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numIslands</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        n = grid.<span class="built_in">size</span>();</span><br><span class="line">        m = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">                    <span class="built_in">DFS</span>(grid, i, j);</span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
@@ -531,16 +530,16 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2022/08/10/%E6%A0%88/" title="LC75_1_栈">
-                    <div class="nextTitle">LC75_1_栈</div>
+                <a href="/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="LC75_1_哈希表">
+                    <div class="nextTitle">LC75_1_哈希表</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="LC75_1_DP">
-                    <div class="prevTitle">LC75_1_DP</div>
+                <a href="/2022/08/10/%E6%A0%88/" title="LC75_1_栈">
+                    <div class="prevTitle">LC75_1_栈</div>
                 </a>
             
         </li>
@@ -688,7 +687,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#299-%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F"><span class="toc-number">1.</span> <span class="toc-text">[299] 猜数字游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">实例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">实例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">实例2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E4%BA%BA%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">本人垃圾代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E7%AD%94"><span class="toc-number">1.4.</span> <span class="toc-text">官方解答</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">1.4.1.</span> <span class="toc-text">解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.4.3.</span> <span class="toc-text">复杂度分析</span></a></li></ol></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#733-%E5%9B%BE%E5%83%8F%E6%B8%B2%E6%9F%93"><span class="toc-number">1.</span> <span class="toc-text">[733] 图像渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">示例2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#200-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">[200] 岛屿数量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">实例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B1"><span class="toc-number">2.2.1.</span> <span class="toc-text">实例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B2"><span class="toc-number">2.2.2.</span> <span class="toc-text">实例2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -837,7 +836,24 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1038,7 +1054,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 27
+        Total : 28
         </div>
         <!-- search  -->
         
@@ -1054,26 +1070,32 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2022/08/14/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">LC75_1_滑动窗口</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/">LC75_1_哈希表</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/12</span>
+            <a class="archive-post-title" href="/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">LC75_1_DFS</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
             <a class="archive-post-title" href="/2022/08/10/%E6%A0%88/">LC75_1_栈</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/">LC75_1_哈希表</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
             <a class="archive-post-title" href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LC75_1_DP</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">LC75_1_DFS</a>
         </li>
     
         
@@ -1091,7 +1113,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/05</span>
-            <a class="archive-post-title" href="/2022/08/05/704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分法</a>
+            <a class="archive-post-title" href="/2022/08/05/%E4%BA%8C%E5%88%86%E6%B3%95/">LC75_1_二分法</a>
         </li>
     
         
@@ -1220,19 +1242,19 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="Leetcode">
+            <span class="sidebar-tag-name" data-tags="哈希表">
                 <span class="iconfont-archer">&#xe606;</span>
-                Leetcode
+                哈希表
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
+            <span class="sidebar-tag-name" data-tags="LeetCode">
                 <span class="iconfont-archer">&#xe606;</span>
-                随笔
+                LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="DP">
@@ -1240,9 +1262,39 @@
                 DP
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希表">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                哈希表
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="回溯法">
+                <span class="iconfont-archer">&#xe606;</span>
+                回溯法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二分法">
+                <span class="iconfont-archer">&#xe606;</span>
+                二分法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
             </span>
         
             <span class="sidebar-tag-name" data-tags="栈">
@@ -1255,14 +1307,19 @@
                 树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
                 top
             </span>
         
-            <span class="sidebar-tag-name" data-tags="DFS">
+            <span class="sidebar-tag-name" data-tags="滑动窗口">
                 <span class="iconfont-archer">&#xe606;</span>
-                DFS
+                滑动窗口
             </span>
         
     </div>
@@ -1275,6 +1332,11 @@
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Algorithm">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Algorithm
+        </span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

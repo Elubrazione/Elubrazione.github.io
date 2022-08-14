@@ -19,16 +19,17 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="LC75_Level_1中一些关于栈的题目">
+    <meta name="description" content="LeetCode75_Level_1中一些关于栈的题目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LC75_1_栈">
 <meta property="og:url" content="http://example.com/2022/08/10/%E6%A0%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LC75_Level_1中一些关于栈的题目">
+<meta property="og:description" content="LeetCode75_Level_1中一些关于栈的题目">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-10T01:56:00.000Z">
-<meta property="article:modified_time" content="2022-08-12T02:31:33.129Z">
+<meta property="article:modified_time" content="2022-08-14T00:03:14.051Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -327,6 +328,8 @@
                     <div class= post-intro-tags >
     
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="LeetCode">LeetCode</a>
+    
         <a class="post-tag" href="javascript:void(0);" data-tags="栈">栈</a>
     
 </div>
@@ -495,18 +498,18 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>LC75_Level_1中一些关于栈的题目</p>
+        <p>LeetCode75_Level_1中一些关于栈的题目</p>
 <span id="more"></span>
 <h3 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="[394] 字符串解码"></a>[394] 字符串解码</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
 <p>编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。</p>
 <p>你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。</p>
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h5 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h5><blockquote>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h5><blockquote>
 <p><strong>输入：</strong> s &#x3D; “3[a]2[bc]”<br><strong>输出：</strong> “aaabcbc”</p>
 </blockquote>
-<h5 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h5><blockquote>
+<h5 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h5><blockquote>
 <p><strong>输入：</strong> s &#x3D; “3[a2[c]]”<br><strong>输出：</strong> “accaccacc”</p>
 </blockquote>
-<h5 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h5><blockquote>
+<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><blockquote>
 <p><strong>输入：</strong> s &#x3D; “abc3[cd]xyz”<br><strong>输出：</strong> “abccdcdcdxyz”</p>
 </blockquote>
 <h4 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getDigits</span><span class="params">(string &amp;s, <span class="type">int</span> &amp;i)</span></span>&#123;</span><br><span class="line">        <span class="comment">//注意是引用,i增加!!</span></span><br><span class="line">        string ret = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">            ret.<span class="built_in">push_back</span>(s[i++]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">string <span class="title">getString</span><span class="params">(vector&lt;string&gt; &amp;v)</span></span>&#123;</span><br><span class="line">        string ret;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span> &amp;s: v)&#123;</span><br><span class="line">            ret += s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">string <span class="title">decodeString</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; stack;</span><br><span class="line">        <span class="comment">//typedef unsigned long long size_t</span></span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="comment">//isdigit()用来判断一个数是不是数字</span></span><br><span class="line">            <span class="comment">//是数字将数字解析出来入栈</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">                string digits = <span class="built_in">getDigits</span>(s, i);</span><br><span class="line">                stack.<span class="built_in">push_back</span>(digits);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//是字母或者左括号,就入栈</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isalpha</span>(s[i]) || s[i]==<span class="string">&#x27;[&#x27;</span>)</span><br><span class="line">                <span class="comment">//获取一个字母进栈并让i自增</span></span><br><span class="line">                stack.<span class="built_in">push_back</span>(<span class="built_in">string</span>(<span class="number">1</span>, s[i++]));</span><br><span class="line">            <span class="keyword">else</span>&#123;   <span class="comment">//是右括号</span></span><br><span class="line">                i++;    <span class="comment">//下一次循环用的</span></span><br><span class="line">                vector&lt;string&gt; sub;</span><br><span class="line">                <span class="keyword">while</span>(stack.<span class="built_in">back</span>() != <span class="string">&quot;[&quot;</span>)&#123;</span><br><span class="line">                    sub.<span class="built_in">push_back</span>(stack.<span class="built_in">back</span>());</span><br><span class="line">                    stack.<span class="built_in">pop_back</span>();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">reverse</span>(sub.<span class="built_in">begin</span>(), sub.<span class="built_in">end</span>());</span><br><span class="line">                <span class="comment">//左括号出栈</span></span><br><span class="line">                stack.<span class="built_in">pop_back</span>();</span><br><span class="line">                <span class="comment">//此时栈顶为当前 sub 对应的字符串应该出现的次数</span></span><br><span class="line">                <span class="type">int</span> count = <span class="built_in">stoi</span>(stack.<span class="built_in">back</span>());</span><br><span class="line">                stack.<span class="built_in">pop_back</span>();</span><br><span class="line">                string t, o = <span class="built_in">getString</span>(sub);</span><br><span class="line">                <span class="keyword">while</span>(count--)  t += o;</span><br><span class="line">                stack.<span class="built_in">push_back</span>(t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getString</span>(stack);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -517,12 +520,17 @@
     <ul class="post-paginator">
         <li class="next">
             
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" title="LC75_1_DFS">
+                    <div class="nextTitle">LC75_1_DFS</div>
+                </a>
+            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="LC75_1_哈希表">
-                    <div class="prevTitle">LC75_1_哈希表</div>
+                <a href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="LC75_1_DP">
+                    <div class="prevTitle">LC75_1_DP</div>
                 </a>
             
         </li>
@@ -670,7 +678,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">[394] 字符串解码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">实例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">实例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">实例2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B3"><span class="toc-number">1.2.3.</span> <span class="toc-text">实例3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">答案</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">[394] 字符串解码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">示例1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">示例2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B3"><span class="toc-number">1.2.3.</span> <span class="toc-text">示例3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">答案</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -819,7 +827,24 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1020,7 +1045,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 27
+        Total : 28
         </div>
         <!-- search  -->
         
@@ -1036,26 +1061,32 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2022/08/14/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">LC75_1_滑动窗口</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/">LC75_1_哈希表</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/12</span>
+            <a class="archive-post-title" href="/2022/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">LC75_1_DFS</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
             <a class="archive-post-title" href="/2022/08/10/%E6%A0%88/">LC75_1_栈</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2022/08/10/%E5%93%88%E5%B8%8C%E8%A1%A8/">LC75_1_哈希表</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/09</span>
             <a class="archive-post-title" href="/2022/08/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">LC75_1_DP</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">LC75_1_DFS</a>
         </li>
     
         
@@ -1073,7 +1104,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/05</span>
-            <a class="archive-post-title" href="/2022/08/05/704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分法</a>
+            <a class="archive-post-title" href="/2022/08/05/%E4%BA%8C%E5%88%86%E6%B3%95/">LC75_1_二分法</a>
         </li>
     
         
@@ -1202,19 +1233,19 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="Leetcode">
+            <span class="sidebar-tag-name" data-tags="哈希表">
                 <span class="iconfont-archer">&#xe606;</span>
-                Leetcode
+                哈希表
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
+            <span class="sidebar-tag-name" data-tags="LeetCode">
                 <span class="iconfont-archer">&#xe606;</span>
-                随笔
+                LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="摄影">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                摄影
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="DP">
@@ -1222,9 +1253,39 @@
                 DP
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希表">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                哈希表
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="回溯法">
+                <span class="iconfont-archer">&#xe606;</span>
+                回溯法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="摄影">
+                <span class="iconfont-archer">&#xe606;</span>
+                摄影
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二分法">
+                <span class="iconfont-archer">&#xe606;</span>
+                二分法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
             </span>
         
             <span class="sidebar-tag-name" data-tags="栈">
@@ -1237,14 +1298,19 @@
                 树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
                 top
             </span>
         
-            <span class="sidebar-tag-name" data-tags="DFS">
+            <span class="sidebar-tag-name" data-tags="滑动窗口">
                 <span class="iconfont-archer">&#xe606;</span>
-                DFS
+                滑动窗口
             </span>
         
     </div>
@@ -1257,6 +1323,11 @@
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Algorithm">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Algorithm
+        </span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
