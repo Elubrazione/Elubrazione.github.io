@@ -26,14 +26,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="LeetCode75_Level_1中一些关于哈希表的题目和解答">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
 <meta property="article:published_time" content="2022-08-12T20:13:49.000Z">
-<meta property="article:modified_time" content="2022-08-14T23:44:12.779Z">
+<meta property="article:modified_time" content="2022-08-18T09:30:28.651Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="哈希表">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
@@ -515,7 +513,6 @@
 <p><strong>输入：</strong> secret &#x3D; “1123”, guess &#x3D; “0111”<br><strong>输出：</strong> “1A1B”</p>
 </blockquote>
 <h4 id="本人垃圾代码"><a href="#本人垃圾代码" class="headerlink" title="本人垃圾代码"></a>本人垃圾代码</h4><p>仅作记录，不是重点。</p>
-<p><img src="/2022/08/13/%E5%93%88%E5%B8%8C%E8%A1%A8/rubbishcode.png" alt="rubbish_code" title="rubbish_code"></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getHint</span><span class="params">(string secret, string guess)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; hash, bulls, cows;</span><br><span class="line">        <span class="type">int</span> ans_b = <span class="number">0</span>, ans_c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            hash[secret[i]]++;</span><br><span class="line">            <span class="keyword">if</span>(secret[i] == guess[i])</span><br><span class="line">                bulls[secret[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;guess.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(hash.<span class="built_in">count</span>(guess[i])&gt;<span class="number">0</span>)</span><br><span class="line">                cows[guess[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;secret.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            ans_b += bulls[guess[i]];</span><br><span class="line">            ans_c += <span class="built_in">min</span>(cows[guess[i]], hash[guess[i]]) - bulls[guess[i]];</span><br><span class="line">            cows[guess[i]]  = <span class="number">0</span>;</span><br><span class="line">            bulls[guess[i]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        string ret = <span class="built_in">to_string</span>(ans_b)+<span class="string">&quot;A&quot;</span>+<span class="built_in">to_string</span>(ans_c)+<span class="string">&quot;B&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="官方解答"><a href="#官方解答" class="headerlink" title="官方解答"></a>官方解答</h4><h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><ul>
 <li>只用了两次遍历(对比之下我的代码用了三次遍历).因为有十个数字,所以直接开两个大小为10的vector,而不用先统计需要用的数字从而减小时间开销(本质是以空间换空间,但是hash表要用的空间更大所以又节约了空间).</li>
@@ -1073,6 +1070,8 @@
         
         
         
+        
+        
     
     
     
@@ -1096,13 +1095,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/17</span>
-            <a class="archive-post-title" href="/2022/08/17/628-%E4%B8%89%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/">628.三个数的最大乘积</a>
+            <a class="archive-post-title" href="/2022/08/17/414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/">414.第三大的数</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/17</span>
-            <a class="archive-post-title" href="/2022/08/17/414-%E7%AC%AC%E4%B8%89%E5%A4%A7%E7%9A%84%E6%95%B0/">414.第三大的数</a>
+            <a class="archive-post-title" href="/2022/08/17/628-%E4%B8%89%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/">628.三个数的最大乘积</a>
         </li>
     
         
@@ -1324,14 +1323,14 @@
                 数组遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
-                <span class="iconfont-archer">&#xe606;</span>
-                随笔
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="摄影">
                 <span class="iconfont-archer">&#xe606;</span>
                 摄影
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
             </span>
         
             <span class="sidebar-tag-name" data-tags="二分法">
@@ -1339,14 +1338,14 @@
                 二分法
             </span>
         
-            <span class="sidebar-tag-name" data-tags="树">
-                <span class="iconfont-archer">&#xe606;</span>
-                树
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树">
+                <span class="iconfont-archer">&#xe606;</span>
+                树
             </span>
         
             <span class="sidebar-tag-name" data-tags="top">
@@ -1354,14 +1353,14 @@
                 top
             </span>
         
-            <span class="sidebar-tag-name" data-tags="滑动窗口">
-                <span class="iconfont-archer">&#xe606;</span>
-                滑动窗口
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="DFS">
                 <span class="iconfont-archer">&#xe606;</span>
                 DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="滑动窗口">
+                <span class="iconfont-archer">&#xe606;</span>
+                滑动窗口
             </span>
         
     </div>
