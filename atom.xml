@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-08-21T14:34:55.677Z</updated>
+  <updated>2022-09-06T15:25:39.142Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Call Me By Your Name</title>
+    <link href="http://example.com/2022/09/06/Call-Me-By-Your-Name/"/>
+    <id>http://example.com/2022/09/06/Call-Me-By-Your-Name/</id>
+    <published>2022-09-06T08:20:59.000Z</published>
+    <updated>2022-09-06T15:25:39.142Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="If-Not-Later-When"><a href="#If-Not-Later-When" class="headerlink" title="If Not Later, When?"></a>If Not Later, When?</h3><span id="more"></span><ol><li><p>I’d never heard anyone who use “later” to say goodbye before. It sounded harsh, curt, and dismissive, spoken with the veiled indifference of people who may not see or hear from you again.</p><ul><li>harsh: adj.严厉的、刺耳的</li><li>curt: adj.唐突失礼的</li><li>dismissive: adj.轻蔑的</li><li>veiled: adj.含蓄的</li></ul></li><li><p>I shut my eyes, say the word, and I’m back in Italy, so many years ago, walking down the tree-lined driveway, watching him step out of the cab, billowy blue shirt, wide-open collar, sun-glasses, straw hat, skin everywhere.</p><ul><li>billowy: adj.波涛汹涌;巨浪似的;汹涌的;波浪起伏的</li><li>collar: n.领子</li><li>straw: adj.稻草的</li><li>espadrilles: n.帆布鞋</li><li>split the fare: 分摊费用</li></ul></li><li><p>No name added, no jest to smooth out the ruffled leave-taking, nothing. His one-word send-off: brisk, bold, and blunted——take your pick, he couldn’t be bothered which. What a gruff, slapdash <em>Later!</em></p><ul><li>ruffle: v.弄乱;使不平整; n.荷叶边</li><li>jest: v.开玩笑</li><li>brisk: adj.轻快的</li><li>bold: adj.大胆的</li><li>blunt: 迟钝的;钝的;不锋利的;嘴直的;直言的</li><li>take your pick: 随你便</li><li>gruff: adj.粗暴的;生硬的;低沉粗哑的;冷淡的;态度生硬的</li><li>slapdash: adj.仓促马虎的;毛躁的;潦草的</li></ul></li><li><p>My father, who was reserved and shy in private, loved nothing better than to have some precocious rising expert in a field keep the conversation going in a few languages while the hot summer sun, after a few glasses of <em>rosatello</em>, ushered in the unavoidable afternoon torpor. We named the task <em>dinner drudgery</em>——and, after a while, so did most of our six-week guests.</p></li><li><p>I took a long swill from a large bottle of mineral water, passed it to him, then drank from it again. I spilled some on my hand and rubbed my face with it, running my wet fingers through my hair. The water was insuffiently cold, not fizzy enough, leaving behing and unslaked likeness of thirst.</p></li><li><p><em>“What did one do around here?”</em><br> <em>“Nothing. Wait for summer to end.”</em><br> <em>“What did one do in the winter, then?”</em><br> <em>“Don’t tell me: wait for summer to come, right?”</em></p></li><li><p>What unsettled me, though, was not the fency footwork needed to redeem myself. It was the unwelcome misgivings with which it finally dawned on me, both then and during our casual conversation by the train tracks, that I had all along, without seeming to, without even admitting it, already been trying——and failing——to win him over.</p></li><li></li></ol><p>. Maybe it started soon after arrival during one of those grinding lunches when he sat next to me and it finally dawned on me that, despite a light tan acquired during his brief stay in Sicily earlier that summer, the color on the palms of his hands was the same as the pale, soft skin of his soles, of his throat, of the bottom of his forearms, which hadn’t really been exposed to much sun. Almost like pink, as glistening and smooth as the underside of a lizard’s belly. Private, chaste, unfledged, like a blush on athlete’s face or an instance of dawn on a stormy night.</p><p>. Today, the pain, the stoking, the thrill of someone new, the promise of so much bliss hovering a fingertip away, the fumbling around people I might misread and don’t want to lose and must second-guess at every turn, the desperate cunning I bring to everyone I want and crave to be wanted by, the screens I put up as though between me and the world there were not just one but layers of rice-paper sliding doors, the urge to scramble and unscramble what was never really coded in the first place——all these started the summer Oliver came into our house. They are embossed on every song that was a hit that summer, in every novel I read during and after his stay, on anything from the smell of rosemary on hot days to the frantic rattle of the cicadas in the afternoon——smells and sounds I’d grown up with and known every year of my life until then but that had suddenly turned on me and acquired an inflection forever colored by the events of that summer.</p>]]></content>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;If-Not-Later-When&quot;&gt;&lt;a href=&quot;#If-Not-Later-When&quot; class=&quot;headerlink&quot; title=&quot;If Not Later, When?&quot;&gt;&lt;/a&gt;If Not Later, When?&lt;/h3&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>628.三个数的最大乘积</title>
@@ -446,29 +463,6 @@
     
     
     <summary type="html">&lt;p&gt;比较简单，仅作记录&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
-    
-    
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
-    
-    <category term="链表" scheme="http://example.com/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>206.反转链表</title>
-    <link href="http://example.com/2022/07/25/206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
-    <id>http://example.com/2022/07/25/206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</id>
-    <published>2022-07-25T14:09:33.000Z</published>
-    <updated>2022-08-14T00:05:27.293Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="链表的操作"><a href="#链表的操作" class="headerlink" title="链表的操作"></a>链表的操作</h3><span id="more"></span><ul><li>用一个指针cur指向原链表的头结点，指针before指向NULL。当cur不为空时，用一个中间变量next保存cur下一个结点，让cur的next成员修改为前一个结点从而改变链表的方向，再使before和cur都指向下一个结点。最后cur指向了NULL，before指向了原链表的最后一个结点，且此时链表的方向已完全调转，返回before即可。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *cur = head;</span><br><span class="line">        ListNode *before = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            ListNode *next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = before;</span><br><span class="line">            before = cur;</span><br><span class="line">            cur = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> before;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;链表的操作&quot;&gt;&lt;a href=&quot;#链表的操作&quot; class=&quot;headerlink&quot; title=&quot;链表的操作&quot;&gt;&lt;/a&gt;链表的操作&lt;/h3&gt;</summary>
     
     
     

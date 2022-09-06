@@ -19,24 +19,22 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="两种解法">
+    <meta name="description" content="If Not Later, When?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.两数之和">
-<meta property="og:url" content="http://example.com/2022/07/14/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:title" content="Call Me By Your Name">
+<meta property="og:url" content="http://example.com/2022/09/06/Call-Me-By-Your-Name/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="两种解法">
+<meta property="og:description" content="If Not Later, When?">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-13T16:04:09.000Z">
-<meta property="article:modified_time" content="2022-08-14T00:04:35.903Z">
+<meta property="article:published_time" content="2022-09-06T08:20:59.000Z">
+<meta property="article:modified_time" content="2022-09-06T15:25:39.142Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="哈希表">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>1.两数之和 · Elubrazione</title>
+    <title>Call Me By Your Name · Elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -262,7 +260,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">1.两数之和</a>
+                <a href="#" class="post-name">Call Me By Your Name</a>
             </div>
         </div>
     
@@ -308,7 +306,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                1.两数之和
+                Call Me By Your Name
             <!-- 404 -->
             
         </h1>
@@ -325,25 +323,15 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="哈希表">哈希表</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="LeetCode">LeetCode</a>
-    
-</div>
-
-                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">275</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">762</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2022/07/14</span>
+                    <span class="post-intro-time">2022/09/06</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -498,12 +486,49 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <h3 id="两种解法"><a href="#两种解法" class="headerlink" title="两种解法"></a>两种解法</h3><span id="more"></span>
-<h4 id="Violence"><a href="#Violence" class="headerlink" title="Violence"></a>Violence</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>; j&lt;nums.<span class="built_in">size</span>(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> &#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; a;    <span class="comment">//建立哈希表存放数组元素</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">2</span>, <span class="number">-1</span>)</span></span>;   <span class="comment">//存放结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">            a.<span class="built_in">insert</span>(map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::<span class="built_in">value_type</span>(nums[i], i));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.<span class="built_in">count</span>(target-nums[i])&gt;<span class="number">0</span> &amp;&amp; (a[target-nums[i]]!=i))&#123;</span><br><span class="line">                b[<span class="number">0</span>] = i;</span><br><span class="line">                b[<span class="number">1</span>] = a[target-nums[i]];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>相当于以数组元素的内容作为key，下标作为value，这样可以实现直接查找而不用遍历数组。<br>只用一层循环，假设当前的下标是i，若以target-nums[i]为key的内容存在且不是自己本身就查找成功。<br>对比发现时间开销大大减小，暴力求解O(n^2)时间开销是400ms，用hash表则是16ms。</p>
+        <h3 id="If-Not-Later-When"><a href="#If-Not-Later-When" class="headerlink" title="If Not Later, When?"></a>If Not Later, When?</h3><span id="more"></span>
+<ol>
+<li><p>I’d never heard anyone who use “later” to say goodbye before. It sounded harsh, curt, and dismissive, spoken with the veiled indifference of people who may not see or hear from you again.</p>
+<ul>
+<li>harsh: adj.严厉的、刺耳的</li>
+<li>curt: adj.唐突失礼的</li>
+<li>dismissive: adj.轻蔑的</li>
+<li>veiled: adj.含蓄的</li>
+</ul>
+</li>
+<li><p>I shut my eyes, say the word, and I’m back in Italy, so many years ago, walking down the tree-lined driveway, watching him step out of the cab, billowy blue shirt, wide-open collar, sun-glasses, straw hat, skin everywhere.</p>
+<ul>
+<li>billowy: adj.波涛汹涌;巨浪似的;汹涌的;波浪起伏的</li>
+<li>collar: n.领子</li>
+<li>straw: adj.稻草的</li>
+<li>espadrilles: n.帆布鞋</li>
+<li>split the fare: 分摊费用</li>
+</ul>
+</li>
+<li><p>No name added, no jest to smooth out the ruffled leave-taking, nothing. His one-word send-off: brisk, bold, and blunted——take your pick, he couldn’t be bothered which. What a gruff, slapdash <em>Later!</em></p>
+<ul>
+<li>ruffle: v.弄乱;使不平整; n.荷叶边</li>
+<li>jest: v.开玩笑</li>
+<li>brisk: adj.轻快的</li>
+<li>bold: adj.大胆的</li>
+<li>blunt: 迟钝的;钝的;不锋利的;嘴直的;直言的</li>
+<li>take your pick: 随你便</li>
+<li>gruff: adj.粗暴的;生硬的;低沉粗哑的;冷淡的;态度生硬的</li>
+<li>slapdash: adj.仓促马虎的;毛躁的;潦草的</li>
+</ul>
+</li>
+<li><p>My father, who was reserved and shy in private, loved nothing better than to have some precocious rising expert in a field keep the conversation going in a few languages while the hot summer sun, after a few glasses of <em>rosatello</em>, ushered in the unavoidable afternoon torpor. We named the task <em>dinner drudgery</em>——and, after a while, so did most of our six-week guests.</p>
+</li>
+<li><p>I took a long swill from a large bottle of mineral water, passed it to him, then drank from it again. I spilled some on my hand and rubbed my face with it, running my wet fingers through my hair. The water was insuffiently cold, not fizzy enough, leaving behing and unslaked likeness of thirst.</p>
+</li>
+<li><p><em>“What did one do around here?”</em><br> <em>“Nothing. Wait for summer to end.”</em><br> <em>“What did one do in the winter, then?”</em><br> <em>“Don’t tell me: wait for summer to come, right?”</em></p>
+</li>
+<li><p>What unsettled me, though, was not the fency footwork needed to redeem myself. It was the unwelcome misgivings with which it finally dawned on me, both then and during our casual conversation by the train tracks, that I had all along, without seeming to, without even admitting it, already been trying——and failing——to win him over.</p>
+</li>
+<li></li>
+</ol>
+<p>. Maybe it started soon after arrival during one of those grinding lunches when he sat next to me and it finally dawned on me that, despite a light tan acquired during his brief stay in Sicily earlier that summer, the color on the palms of his hands was the same as the pale, soft skin of his soles, of his throat, of the bottom of his forearms, which hadn’t really been exposed to much sun. Almost like pink, as glistening and smooth as the underside of a lizard’s belly. Private, chaste, unfledged, like a blush on athlete’s face or an instance of dawn on a stormy night.</p>
+<p>. Today, the pain, the stoking, the thrill of someone new, the promise of so much bliss hovering a fingertip away, the fumbling around people I might misread and don’t want to lose and must second-guess at every turn, the desperate cunning I bring to everyone I want and crave to be wanted by, the screens I put up as though between me and the world there were not just one but layers of rice-paper sliding doors, the urge to scramble and unscramble what was never really coded in the first place——all these started the summer Oliver came into our house. They are embossed on every song that was a hit that summer, in every novel I read during and after his stay, on anything from the smell of rosemary on hot days to the frantic rattle of the cicadas in the afternoon——smells and sounds I’d grown up with and known every year of my life until then but that had suddenly turned on me and acquired an inflection forever colored by the events of that summer.</p>
 
     </article>
     <!-- license -->
@@ -512,17 +537,12 @@
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="15.三数之和">
-                    <div class="nextTitle">15.三数之和</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2022/07/13/724-%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E5%BF%83%E4%B8%8B%E6%A0%87/" title="724.寻找数组的中心下标">
-                    <div class="prevTitle">724.寻找数组的中心下标</div>
+                <a href="/2022/08/17/628-%E4%B8%89%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/" title="628.三个数的最大乘积">
+                    <div class="prevTitle">628.三个数的最大乘积</div>
                 </a>
             
         </li>
@@ -670,7 +690,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E8%A7%A3%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">两种解法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Violence"><span class="toc-number">1.1.</span> <span class="toc-text">Violence</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hash"><span class="toc-number">1.2.</span> <span class="toc-text">hash</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#If-Not-Later-When"><span class="toc-number">1.</span> <span class="toc-text">If Not Later, When?</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
