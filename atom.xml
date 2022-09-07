@@ -121,9 +121,9 @@
     <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
     
     
-    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     
   </entry>
   
@@ -190,9 +190,9 @@
     <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
     
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
-    
     <category term="DP" scheme="http://example.com/tags/DP/"/>
+    
+    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
   </entry>
   
@@ -304,9 +304,9 @@
     <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
     
     
-    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
-    
     <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    
+    <category term="哈希表" scheme="http://example.com/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     
   </entry>
   
@@ -423,9 +423,9 @@
     <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
     
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
-    
     <category term="DP" scheme="http://example.com/tags/DP/"/>
+    
+    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
     
   </entry>
   
