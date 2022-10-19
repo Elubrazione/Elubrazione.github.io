@@ -19,15 +19,15 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="Refs 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。  我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件">
+    <meta name="description" content="Refs 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。 我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Refs and the DOM">
 <meta property="og:url" content="http://example.com/2022/10/17/Refs-and-the-DOM/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Refs 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。  我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件">
+<meta property="og:description" content="Refs 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。 我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-17T14:39:15.000Z">
-<meta property="article:modified_time" content="2022-10-17T17:35:46.261Z">
+<meta property="article:modified_time" content="2022-10-19T08:17:32.115Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="React">
@@ -498,9 +498,7 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <ul>
-<li><code>Refs</code> 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。</li>
-</ul>
+        <p><code>Refs</code> 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。</p>
 <p><strong>我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件</strong></p>
 <span id="more"></span>
 <h3 id="Refs创建"><a href="#Refs创建" class="headerlink" title="Refs创建"></a>Refs创建</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">myRef</span> = <span class="title class_">React</span>.<span class="title function_">createRef</span>();</span><br></pre></td></tr></table></figure>
