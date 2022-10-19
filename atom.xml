@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-17T16:32:30.270Z</updated>
+  <updated>2022-10-17T17:35:46.261Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Refs and the DOM</title>
+    <link href="http://example.com/2022/10/17/Refs-and-the-DOM/"/>
+    <id>http://example.com/2022/10/17/Refs-and-the-DOM/</id>
+    <published>2022-10-17T14:39:15.000Z</published>
+    <updated>2022-10-17T17:35:46.261Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><code>Refs</code> 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。</li></ul><p><strong>我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件</strong></p><span id="more"></span><h3 id="Refs创建"><a href="#Refs创建" class="headerlink" title="Refs创建"></a>Refs创建</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">myRef</span> = <span class="title class_">React</span>.<span class="title function_">createRef</span>();</span><br></pre></td></tr></table></figure><h3 id="Refs访问"><a href="#Refs访问" class="headerlink" title="Refs访问"></a>Refs访问</h3><ol><li>作为传递给 <code>render</code> 的元素时，可用 <code>current</code> 属性访问DOM节点；<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> node = <span class="variable language_">this</span>.<span class="property">myRef</span>.<span class="property">current</span>;</span><br></pre></td></tr></table></figure></li><li><code>class</code> 组件的ref接受组件的挂载实例作为他的current属性；<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">textInput</span>.<span class="property">current</span>.<span class="title function_">focusTextInput</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>不能在函数组件上使用 ref 属性，因为它们没有实例。在函数组件中使用ref，可以使用 <code>forwardRef</code>；</li><li>在父节点中访问子节点的DOM节点，可以通过ref转发暴露子节点的ref。（在子组件中增加一些代码的时候用的）</li></ol><h3 id="Refs回调"><a href="#Refs回调" class="headerlink" title="Refs回调"></a>Refs回调</h3><ol><li>用于设置refs和解除refs；</li><li>通过传递函数的方式，接受react组件或者HTML DOM节点为参数；</li></ol><h3 id="Refs的使用场景"><a href="#Refs的使用场景" class="headerlink" title="Refs的使用场景"></a>Refs的使用场景</h3><ol><li>管理焦点、文本选择、媒体播放</li><li>触发强制动画</li><li>集成第三方DOM库</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Refs&lt;/code&gt; 是可在render方法里创建、让我们访问DOM节点或class实例的一种元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;我的理解是：React的应用级组件是很抽象的，而有些组件却要用到DOM操作，DOM是底层的节点不能直接操作，想要操作的话可以通过Refs来操作。其必须指向一个DOM元素或class组件&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="http://example.com/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack</title>
+    <link href="http://example.com/2022/10/16/Webpack/"/>
+    <id>http://example.com/2022/10/16/Webpack/</id>
+    <published>2022-10-16T03:36:28.000Z</published>
+    <updated>2022-10-17T17:37:29.316Z</updated>
+    
+    
+    
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="打包" scheme="http://example.com/tags/%E6%89%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>七月的最后一个周末</title>
