@@ -27,7 +27,7 @@
 <meta property="og:description" content="一些Webpack相关的笔记">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-16T03:36:28.000Z">
-<meta property="article:modified_time" content="2022-10-19T08:20:26.992Z">
+<meta property="article:modified_time" content="2022-10-19T08:28:08.868Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="打包">
@@ -337,7 +337,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">508</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">512</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -513,15 +513,18 @@
 <li>Webpack自身只能处理JavaScript，但是通过 <code>loader</code> 就可以处理任何类型的文件</li>
 <li>在 <code>module</code> 对象里定义 <code>rules</code> 属性，包含了两个必须属性：<br>1.<code>test</code>：标识要被转换的文件<br>2.<code>use</code>：转换时使用哪个loader，可以指定多个<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.txt$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">&#x27;style-loader&#x27;</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">            <span class="attr">options</span>: &#123; <span class="attr">modules</span>: <span class="literal">true</span> &#125;&#125;</span><br><span class="line">        ]&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="常用的loader-use"><a href="#常用的loader-use" class="headerlink" title="常用的loader_use"></a>常用的loader_use</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev css-loader   <span class="comment">//加载css文件</span></span><br><span class="line">npm install --save-dev ts-loader    <span class="comment">//将TypeScript转为JavaScript</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="常用的loader-use"><a href="#常用的loader-use" class="headerlink" title="常用的loader_use"></a>常用的loader_use</h4><ul>
+<li>如下<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev css-loader   <span class="comment">//加载css文件</span></span><br><span class="line">npm install --save-dev ts-loader    <span class="comment">//将TypeScript转为JavaScript</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h2><ul>
 <li>插件，具有 <code>apply</code> 属性的 <code>JavaScript</code> 对象。<code>apply</code> 属性会被编译器调用，并且编译的对象可以在整个编译生命周期访问。</li>
 <li>解决 <code>loader</code> 无法实现的其他事。如果要使用一个插件，就 <code>require</code> 该插件，然后添加到 <code>plugins</code> 属性中。</li>
 <li>可以携带参数，必须在配置中向 <code>plugins</code> 属性传入 <code>new</code> 实例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">UglifyJsPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;<span class="attr">template</span>: <span class="string">&#x27;./src/index.html&#x27;</span>&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h2><p>在最后导出<code>config</code>的时候，可以选择<code>mode</code>参数，可以选择<code>production</code>或者<code>development</code>；不同的参数可以告诉webpack使用对应模式下的内置优化。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">export</span> = &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h2><ul>
+<li>在最后导出<code>config</code>的时候，可以选择<code>mode</code>参数，可以选择<code>production</code>或者<code>development</code>；不同的参数可以告诉webpack使用对应模式下的内置优化。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">export</span> = &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </article>
     <!-- license -->
     
