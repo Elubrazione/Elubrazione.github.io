@@ -481,6 +481,52 @@
         
         
             
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/React/">
+                
+                <span class="abstract-title-text">React笔记</span>
+            </a>
+            <div class="abstract-content">
+                Hooksmemo原型memo的对象是组件component，一般是在父组件中为需要用的子组件套上，减少子组件渲染次数。即当父组件有多个子组件时，使用 memo，可以让没有 props 变化的子组件不渲染
+1const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
+
+使用
+当重新渲染某个组件的时候，React 也会渲染它全部的子组件，这就会导致渲染的过程很慢。因此当组件的参数 props 和上一次是一样的时候其实就可以让它跳过，避免重复工作。只有当 name 改变时才会重新渲染 Greeting。
+123const Gre...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/23">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="前端">前端</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Webpack">Webpack</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Eslint">Eslint</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
             
         
         <article class="index-post">
@@ -988,7 +1034,20 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1029,7 +1088,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 8
+        Total : 9
         </div>
         <!-- search  -->
         
@@ -1043,6 +1102,12 @@
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/React/">React笔记</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/17</span>
@@ -1140,6 +1205,16 @@
             <span class="sidebar-tag-name" data-tags="打包">
                 <span class="iconfont-archer">&#xe606;</span>
                 打包
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
             </span>
         
     </div>
