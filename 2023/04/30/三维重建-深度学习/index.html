@@ -27,8 +27,10 @@
 <meta property="og:description" content="文献综述">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png">
+<meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png">
+<meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png">
 <meta property="article:published_time" content="2023-04-30T08:51:01.000Z">
-<meta property="article:modified_time" content="2023-05-02T09:05:57.591Z">
+<meta property="article:modified_time" content="2023-05-02T15:26:48.430Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="计算机视觉">
 <meta property="article:tag" content="三维重建">
@@ -342,7 +344,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.5k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -527,25 +529,57 @@
 </ul>
 <h2 id="mathcal-3-space-方法梳理"><a href="#mathcal-3-space-方法梳理" class="headerlink" title="$\mathcal{3} \space 方法梳理$"></a><a id="section-3"></a>$\mathcal{3} \space 方法梳理$</h2><p>本章节选取了一些基于深度学习的三维重建方法，按照章节<a href="#section-2.2">$2.2$</a>提到的输出数据格式进来分类介绍和详细分析。</p>
 <h3 id="mathcal-3-1-space-体素"><a href="#mathcal-3-1-space-体素" class="headerlink" title="$\mathcal{3.1} \space 体素$"></a>$\mathcal{3.1} \space 体素$</h3><p>本部分选取了$Choy$<a href="#ref-4">$[4]$</a>提出的3D-R2N2网络架构、$Park$<a href="#ref-5">$[5]$</a>提出的DeepSDF技术以及$Varol$<a href="#ref-6">$[6]$</a>提出的一种叫做BodyNet的神经网络结构进行介绍。</p>
-<h4 id="mathcal-3-1-1-space-3D-R2N2"><a href="#mathcal-3-1-1-space-3D-R2N2" class="headerlink" title="$\mathcal{3.1.1} \space 3D-R2N2$"></a>$\mathcal{3.1.1} \space 3D-R2N2$</h4><p>本篇文章提出了一种基于LSTM和GRU网络的循环神经网络的新型架构，称为3D Recurrent Reconstruction Neural Network（3D-R2N2）。网络的目标是执行单视角和多视角的三维重建，主要思想是利用LSTM的能力，保留先前的观察结果并随着更多观察结果的出现逐步优化输出重建结果。该网络由三个组件组成：一个由二维卷积神经网络的编码器、一种名为三维卷积LSTM的新型架构和一个由三维反卷积神经网络构成的解码器。给定来自任意视角的一个或多个物体的图像，编码器将每个输入图像 $x$ 编码为低维特征 $T(x)$。然后，3D卷积LSTM单元通过选择性地更新它们的细胞状态或通过关闭输入门来保留状态。最后，解码器解码LSTM单元的隐藏状态并生成三维概率体素重建结果。总体结构如图1所示。</p>
+<h4 id="mathcal-3-1-1-space-3D-R2N2"><a href="#mathcal-3-1-1-space-3D-R2N2" class="headerlink" title="$\mathcal{3.1.1} \space 3D-R2N2$"></a>$\mathcal{3.1.1} \space 3D-R2N2$</h4><p>本篇文章提出了一种基于LSTM和GRU网络的循环神经网络的新型架构，称为3D Recurrent Reconstruction Neural Network（3D-R2N2），网络的目标是实现单视角和多视角的三维重建。该网络由三个部分组成：一个由二维卷积神经网络构成的编码器、一种名为三维卷积LSTM的新型架构和一个由三维反卷积神经网络构成的解码器。给定来自任意视角的一个或多个物体的图像，编码器将每个输入图像 $x$ 编码为低维特征 $T(x)$；然后，3D卷积LSTM单元通过选择性地更新它们的细胞状态或通过关闭输入门来保留状态；最后，解码器解码LSTM单元的隐藏状态并生成三维概率体素重建结果。总体结构如图1所示。</p>
 <p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png" alt="3D-R2N2" title="图1. 3D-R2N2网络结构图"></p>
-<p><strong>编码器</strong> 有标准前馈CNN网络和深度残差变体两种：</p>
+<p><strong>编码器</strong>有标准前馈CNN网络和深度残差变体两种：</p>
 <ul>
 <li>标准前馈CNN由标准卷积层、池化层和Leaky ReLU激活函数组成，最后接一个全连接层，可以将输入图像转换为高维特征向量；</li>
 <li>深度残差变体是在标准前馈CNN的基础上进行改进的。它添加了残差连接来解决深度神经网络中梯度消失和梯度爆炸等问题。具体来说，每个残差块包含两个卷积层和一个跳跃连接，可以将输入直接传递到输出中。</li>
 </ul>
-<p><strong>3D-Convolutional-LSTM</strong> 根据有无输出门有以下两种。在每个时间步骤中，每个LSTM单元接收来自编码器的相同特征向量以及其邻居的隐藏状态作为输入。这些输入通过一个3× 3 × 3卷积核进行卷积操作，并传递给LSTM单元进行处理。然后，LSTM单元将其输出传递给下一个时间步骤，并将其隐藏状态传递给其邻居。在没有输出门的版本中，LSTM单元直接将其隐藏状态作为输出。而在带有输出门的GRU版本中，LSTM单元还会根据当前输入和先前隐藏状态计算一个输出门，并使用该门来控制其输出。</p>
-<p><strong>解码器</strong> 使用一个全连接层将中间表示转换为一个低分辨率3D体素模型；然后使用多个反卷积层来逐步增加输出分辨率，并生成更高分辨率的3D体素模型；最后，使用一个Sigmoid激活函数将输出限制在0到1之间。同时在训练过程中，为了提高网络性能并减少过拟合现象，模型使用了Progressive Growing的技术来逐步增加输入图像分辨率和输出网格分辨率。</p>
-<h4 id="mathcal-3-1-2-space-DeepSDF"><a href="#mathcal-3-1-2-space-DeepSDF" class="headerlink" title="$\mathcal{3.1.2} \space DeepSDF$"></a>$\mathcal{3.1.2} \space DeepSDF$</h4><h4 id="mathcal-3-1-3-space-BodyNet"><a href="#mathcal-3-1-3-space-BodyNet" class="headerlink" title="$\mathcal{3.1.3} \space BodyNet$"></a>$\mathcal{3.1.3} \space BodyNet$</h4><h3 id="mathcal-3-2-space-点云"><a href="#mathcal-3-2-space-点云" class="headerlink" title="$\mathcal{3.2} \space 点云$"></a>$\mathcal{3.2} \space 点云$</h3><h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><h2 id="mathcal-4-space-比较与优缺点"><a href="#mathcal-4-space-比较与优缺点" class="headerlink" title="$\mathcal{4} \space 比较与优缺点$"></a><a id="section-4"></a>$\mathcal{4} \space 比较与优缺点$</h2><h2 id="mathcal-5-space-未来与展望"><a href="#mathcal-5-space-未来与展望" class="headerlink" title="$\mathcal{5} \space 未来与展望$"></a><a id="section-5"></a>$\mathcal{5} \space 未来与展望$</h2><h2 id="mathcal-6-space-参考文献"><a href="#mathcal-6-space-参考文献" class="headerlink" title="$\mathcal{6} \space 参考文献$"></a><a id="section-6"></a>$\mathcal{6} \space 参考文献$</h2><ol>
+<p><strong>3D-Convolutional-LSTM</strong>根据有无输出门有以下两种。在每个时间步骤中，每个LSTM单元接收来自编码器的相同特征向量以及其邻居的隐藏状态作为输入。这些输入通过一个3×3×3卷积核进行卷积操作，并传递给LSTM单元进行处理。然后，LSTM单元将其输出传递给下一个时间步骤，并将其隐藏状态传递给其邻居。在没有输出门的版本中，LSTM单元直接将其隐藏状态作为输出。而在带有输出门的GRU版本中，LSTM单元还会根据当前输入和先前隐藏状态计算一个输出门，并使用该门来控制其输出。</p>
+<p><strong>解码器</strong>使用一个全连接层将中间表示转换为一个低分辨率3D体素模型；然后使用多个反卷积层来逐步增加输出分辨率，并生成更高分辨率的3D体素模型；最后，使用一个Sigmoid激活函数将输出限制在0到1之间。同时在训练过程中，为了提高网络性能并减少过拟合现象，模型使用了Progressive Growing的技术来逐步增加输入图像分辨率和输出网格分辨率。</p>
+<h4 id="mathcal-3-1-2-space-DeepSDF"><a href="#mathcal-3-1-2-space-DeepSDF" class="headerlink" title="$\mathcal{3.1.2} \space DeepSDF$"></a>$\mathcal{3.1.2} \space DeepSDF$</h4><p>与上一种方法的输入为2D图像不同的是，DeepSDF的输入也是三维的，因为它是一种用于处理三维几何图形的方法。本篇文章定义了一种叫做有符号距离函数（Signed Distance Functions，后简称SDF）的连续函数，对于给定的空间点，输出该点到最近表面的距离，并用符号表示该点在表面内部或外部。基于此，将问题转换为使用深度神经网络直接回归点样本的连续SDF，形成一个决策边界作为三维几何图形的表面，对点做在表面外或内的二元分类，从而生成新的几何模型。如图2所示。</p>
+<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png" alt="DeepSDF" title="图2. DeepSDF在兔子3D模型重建上的应用"></p>
+<p><strong>SDF</strong>定义公式如下：</p>
+<ul>
+<li>$SDF(\mathbf{x}) &#x3D; s : \mathbf{x} \in \mathbb{R}^3 , \space s \in \mathbb{R}. $</li>
+</ul>
+<p>对于给定的三维空间点 $x$，$SDF(x)$ 表示该点到最近表面的距离，并且根据该点在表面内部或外部的位置标定正负号。其中，$s$ 表示 $x$ 到最近表面的距离，如果 $x$ 在表面内部，则 $s$ 为负数；如果 $x$ 在表面外部，则 $s$ 为正数。</p>
+<p>用来生成连续SDF所使用的模型，其结构是一种前馈神经网络。训练该网络的目标是，对于给定的空间坐标和其SDF值：</p>
+<ul>
+<li>$ X :&#x3D; {(\mathbf{x}, s) : SDF(\mathbf{x}) &#x3D; s }.$</li>
+</ul>
+<p>可以训练出一个神经网络模型 $f_{\theta}$，使得在任意一个目标域中：</p>
+<ul>
+<li>$ f_{\theta}(\mathbf{x}) \approx SDF(\mathbf{x}), \space \forall \mathbf{x} \in \Omega. $</li>
+</ul>
+<p>而按照功能分，模型则可以分为编码器和解码器两部分，都是由多个卷积层和池化层交替堆叠，再加上全连接层构成。</p>
+<p>为了适应不同的应用场景，文章中提出了两种形状表示方式 1）单形状DeepSDF 2）编码形状DeepSDF。</p>
+<ul>
+<li>单形状DeepSDF适用于对单个形状进行建模和重建的场景。在这种情况下，只需要训练一个神经网络来表示该形状的连续有符号距离函数，并使用该网络来生成新的几何形状。</li>
+<li>编码形状DeepSDF适用于对多个相关形状进行建模和重建的场景。在这种情况下，就需要找到一些共同属性，并将它们嵌入到低维潜在空间中。通过学习潜在空间和对应的连续有符号距离函数，以生成新的几何形状，并且可以通过修改代码向量来控制生成的几何形状。</li>
+</ul>
+<p>因此，在单形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$，其输出潜在向量 $z$ 作为解码器的输入，最终输出SDF；在编码形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$ 和一个控制生成几何形状的代码向量 $c$ 的拼接，其输出潜在向量 $z$ 和前面提到的三维点坐标一起作为解码器的输入，最终输出SDF。</p>
+<h4 id="mathcal-3-1-3-space-BodyNet"><a href="#mathcal-3-1-3-space-BodyNet" class="headerlink" title="$\mathcal{3.1.3} \space BodyNet$"></a>$\mathcal{3.1.3} \space BodyNet$</h4><p>本文介绍了一种名为BodyNet的神经网络，它可以从单个图像中直接推断出三维人体形状。与上面两种方法不同的是，该网络的设计旨在解决视频编辑、动画和时尚等领域中的人体模型估计问题。BodyNet包括四个自网络，分别是二维姿态估计子网络、二维深体部位分割子网络、三维姿态估计子网络以及三维形状估计子网络。每个子网络都是由一个沙漏结构构成，其是一种常用的卷积神经网络结构，由编码器和解码器组成，可以有效地提取特征并保留空间信息。其中编码器将输入图像转换为特征向量，解码器将特征向量转换回三维体积表示。</p>
+<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png" alt="BodyNet" title="图3. BodyNet网络结构"></p>
+<p>BodyNet中通过四个子网结构来处理不同任务，并共享特征以提高整个系统的性能，各个子网络之间通过特征融合和级联的方式进行联合。输入RGB图像后，首先经过二维姿态估计子网络和二维身体部位分割子网络，得到对应的二维姿态估计结果和身体部位分割掩模。然后将这些结果与RGB图像特征一起输入到三维姿态估计子网络中，得到对应的三维姿态估计结果。最后，将三维姿态估计结果与身体部位分割掩模一起输入到体积重建子网络中，得到对应的三维人体形状。在这个过程中，每个子网络都有自己的损失函数，并且各自通过反向传播算法来更新自己的权重和共享层的权重，最后各个损失函数通过加权平均的方式进行特征融合和级联。</p>
+<h3 id="mathcal-3-2-space-点云"><a href="#mathcal-3-2-space-点云" class="headerlink" title="$\mathcal{3.2} \space 点云$"></a>$\mathcal{3.2} \space 点云$</h3><p>本部分选取了点云表示方法的开山之作<a href="#ref-8">$[8]$</a>来具体介绍点云表示方法，同时选取了</p>
+<h4 id="mathcal-3-2-1-space-点云表示方法"><a href="#mathcal-3-2-1-space-点云表示方法" class="headerlink" title="$\mathcal{3.2.1} \space 点云表示方法$"></a>$\mathcal{3.2.1} \space 点云表示方法$</h4><h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><h2 id="mathcal-4-space-比较与优缺点"><a href="#mathcal-4-space-比较与优缺点" class="headerlink" title="$\mathcal{4} \space 比较与优缺点$"></a><a id="section-4"></a>$\mathcal{4} \space 比较与优缺点$</h2><h2 id="mathcal-5-space-未来与展望"><a href="#mathcal-5-space-未来与展望" class="headerlink" title="$\mathcal{5} \space 未来与展望$"></a><a id="section-5"></a>$\mathcal{5} \space 未来与展望$</h2><h2 id="mathcal-6-space-参考文献"><a href="#mathcal-6-space-参考文献" class="headerlink" title="$\mathcal{6} \space 参考文献$"></a><a id="section-6"></a>$\mathcal{6} \space 参考文献$</h2><ol>
 <li><a id="ref-1"></a> A. Laurentini, “The visual hull concept for silhouette-based image understanding,” IEEE TPAMI, vol. 16, no. 2, pp. 150–162, 1994.</li>
-<li><a id="ref-2"></a> R. Hartley and A. Zisserman, “Multiple view geometry in computer vision”. Cambridge university press, 2003.</li>
-<li><a id="ref-3"></a> Han Xian-Feng, Laga Hamid, and Bennamoun Mohammed. “Image-based 3D object reconstruction: State-of-the-art and trends in the deep learning era，” IEEE Transactions on Pattern Analysis and Machine Intelligence 43, 5 (2019), 1578–1604.</li>
+<li><a id="ref-2"></a> R. Hartley and A. Zisserman, “Multiple view geometry in computer vision,”. Cambridge university press, 2003.</li>
+<li><a id="ref-3"></a> Han Xian-Feng, Laga Hamid, and Bennamoun Mohammed. “Image-based 3D object reconstruction: State-of-the-art and trends in the deep learning era,” IEEE Transactions on Pattern Analysis and Machine Intelligence 43, 5 (2019), 1578–1604.</li>
 <li><a id="ref-4"></a> C. B. Choy, D. Xu, J. Gwak, K. Chen, and S. Savarese, “3DR2N2: A unified approach for single and multi-view 3D object reconstruction,” in ECCV, 2016, pp. 628–644</li>
 <li><a id="ref-5"></a> J. J. Park, P. Florence, J. Straub, R. Newcombe, and S. Lovegrove, “DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation,” in IEEE CVPR, 2019, pp. 165–174.</li>
 <li><a id="ref-6"></a> G. Varol, D. Ceylan, B. Russell, J. Yang, E. Yumer, I. Laptev, and C. Schmid, “BodyNet: Volumetric Inference of 3D Human Body Shapes,” in ECCV, 2018.</li>
 <li><a id="ref-7"></a> David Eigen, Christian Puhrsch, and Rob Fergus, “Depth map prediction from a single image using a multi-scale deep network,” in Advances in neural information processing systems, 2014.</li>
+<li><a id="ref-8"></a> Fan H., Su H., Guibas L.J. “A point set generation network for 3D object reconstruction from a single image,” Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition; Honolulu, HI, USA. 21–26 June 2017; pp. 605–613.</li>
+<li>Y. Sun, Y. Wang, Z. Liu, J. E. Siegel, and S. E. Sarma, “PointGrow: Autoregressively learned point cloud generation with selfattention,” arXiv:1810.05591, 2018.</li>
+<li>K. Li, T. Pham, H. Zhan, and I. Reid, “Efficient dense point cloud<br>object reconstruction using deformation vector fields,” in ECCV,<br>2018, pp. 497–513.</li>
+<li>E. Insafutdinov and A. Dosovitskiy, “Unsupervised learning of shape and pose with differentiable point clouds,” in NIPS, 2018, pp. 2802–2812.</li>
+<li>C.-L. Li, M. Zaheer, Y. Zhang, B. Poczos, and R. Salakhutdinov, “Point cloud GAN,” ICLR Workshop on Deep Generative Models for Highly Structured Data, 2019.</li>
+<li>K. Li, R. Garg, M. Cai, and I. Reid, “Single-view object shape reconstruction using deep shape prior and silhouette,” arXiv:1811.11921, 2019.</li>
 </ol>
-<!-- <a id="ref-6"></a> L. Mescheder, M. Oechsle, M. Niemeyer, S. Nowozin, and A. Geiger, "Occupancy Networks: Learning 3D Reconstruction in Function Space," IEEE CVPR, 2019. -->
+<!-- <a id="ref-6"></a> L. Mescheder, M. Oechsle, M. Niemeyer, S. Nowozin, and A. Geiger, "Ocupancy Networks: Learning 3D Reconstruction in Function Space," IEEE CVPR, 2019. -->
     </article>
     <!-- license -->
     
@@ -713,7 +747,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-1-space-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">$\mathcal{1} \space 介绍$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-2-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">$\mathcal{2} \space 问题描述和分类$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-1-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">$\mathcal{2.1} \space 问题描述$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-2-space-%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">$\mathcal{2.2} \space 分类$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-3-space-%E6%96%B9%E6%B3%95%E6%A2%B3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">$\mathcal{3} \space 方法梳理$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-1-space-%E4%BD%93%E7%B4%A0"><span class="toc-number">3.1.</span> <span class="toc-text">$\mathcal{3.1} \space 体素$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-1-space-3D-R2N2"><span class="toc-number">3.1.1.</span> <span class="toc-text">$\mathcal{3.1.1} \space 3D-R2N2$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-2-space-DeepSDF"><span class="toc-number">3.1.2.</span> <span class="toc-text">$\mathcal{3.1.2} \space DeepSDF$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-3-space-BodyNet"><span class="toc-number">3.1.3.</span> <span class="toc-text">$\mathcal{3.1.3} \space BodyNet$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-2-space-%E7%82%B9%E4%BA%91"><span class="toc-number">3.2.</span> <span class="toc-text">$\mathcal{3.2} \space 点云$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-3-space-%E7%BD%91%E6%A0%BC"><span class="toc-number">3.3.</span> <span class="toc-text">$\mathcal{3.3} \space 网格$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-4-space-%E6%AF%94%E8%BE%83%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">$\mathcal{4} \space 比较与优缺点$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-5-space-%E6%9C%AA%E6%9D%A5%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">5.</span> <span class="toc-text">$\mathcal{5} \space 未来与展望$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-6-space-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">$\mathcal{6} \space 参考文献$</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-1-space-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">$\mathcal{1} \space 介绍$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-2-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">$\mathcal{2} \space 问题描述和分类$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-1-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">$\mathcal{2.1} \space 问题描述$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-2-space-%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">$\mathcal{2.2} \space 分类$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-3-space-%E6%96%B9%E6%B3%95%E6%A2%B3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">$\mathcal{3} \space 方法梳理$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-1-space-%E4%BD%93%E7%B4%A0"><span class="toc-number">3.1.</span> <span class="toc-text">$\mathcal{3.1} \space 体素$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-1-space-3D-R2N2"><span class="toc-number">3.1.1.</span> <span class="toc-text">$\mathcal{3.1.1} \space 3D-R2N2$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-2-space-DeepSDF"><span class="toc-number">3.1.2.</span> <span class="toc-text">$\mathcal{3.1.2} \space DeepSDF$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-3-space-BodyNet"><span class="toc-number">3.1.3.</span> <span class="toc-text">$\mathcal{3.1.3} \space BodyNet$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-2-space-%E7%82%B9%E4%BA%91"><span class="toc-number">3.2.</span> <span class="toc-text">$\mathcal{3.2} \space 点云$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-2-1-space-%E7%82%B9%E4%BA%91%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">$\mathcal{3.2.1} \space 点云表示方法$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-3-space-%E7%BD%91%E6%A0%BC"><span class="toc-number">3.3.</span> <span class="toc-text">$\mathcal{3.3} \space 网格$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-4-space-%E6%AF%94%E8%BE%83%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">$\mathcal{4} \space 比较与优缺点$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-5-space-%E6%9C%AA%E6%9D%A5%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">5.</span> <span class="toc-text">$\mathcal{5} \space 未来与展望$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-6-space-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">$\mathcal{6} \space 参考文献$</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
