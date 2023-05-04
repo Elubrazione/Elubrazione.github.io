@@ -29,8 +29,9 @@
 <meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png">
 <meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png">
 <meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png">
+<meta property="og:image" content="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/5.png">
 <meta property="article:published_time" content="2023-04-30T08:51:01.000Z">
-<meta property="article:modified_time" content="2023-05-02T17:11:33.530Z">
+<meta property="article:modified_time" content="2023-05-04T07:36:28.647Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="计算机视觉">
 <meta property="article:tag" content="三维重建">
@@ -344,7 +345,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">3.9k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                        <span>Word count: <span class="post-count word-count">5.4k</span>Reading time: <span class="post-count reading-time">19 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -510,7 +511,7 @@
 
 <h2 id="mathcal-1-space-介绍"><a href="#mathcal-1-space-介绍" class="headerlink" title="$\mathcal{1} \space 介绍$"></a><a id="section-1"></a>$\mathcal{1} \space 介绍$</h2><p>三维重建是一种计算机视觉技术，旨在从二维图像或视频中推导出三维场景或物体的形状和结构。</p>
 <p>2014年以前的传统方法的技术侧重点往往在于数学的立体几何，通常需要大量手动操作和专业知识，并且由于需要使用多个传感器来获取数据，这些方法往往会受到各种因素的干扰和限制，难以处理复杂场景。如$Laurentini$<a href="#ref-1">$[1]$</a>提出的基于轮廓的视觉壳体方法，对于透明物体其重建效果会比较差；此外，该方法也需要准确的轮廓提取，对于物体表面存在遮挡、纹理不清晰等情况时，其重建效果也会受到影响。$Hartley$和 $Zisserman$<a href="#ref-2">$[2]$</a>提出的传统多视图几何方法只能使用几何信息进行重建，除了对噪声、缺失数据和误匹配等问题比较敏感外，对于非刚性或非刚性变形的物体，其重建效果会受到很大的限制。</p>
-<p>而自2014年，$David$<a href="#ref-7">$[7]$</a>等人基于体素的形式，将单张RGB图像作为输入，直接使用神经网络进行深度图恢复，开启了将深度学习方法应用于三维重建领域的大门。此后，深度学习开始被广泛运用在三维重建问题上且在之后的数年里被广泛证实十分有效。目前深度学习技术在三维重建领域的应用已经取得了很大的进展，并且在许多应用领域中都有着广泛的应用前景，例如机器人、自主导航、图形和娱乐等方面。本文选取了几种应用于三维重建的深度学习方法，对每种方法的相关技术进行分类介绍、梳理与回顾（章节<a href="#section-3">$3$</a>），将各个方法进行比较并给出各个方法的优缺点（章节<a href="#section-4">$4$</a>）。</p>
+<p>而自2014年，$David$<a href="#ref-7">$[7]$</a>等人基于体素的形式，将单张RGB图像作为输入，直接使用神经网络进行深度图恢复，开启了将深度学习方法应用于三维重建领域的大门。此后，深度学习开始被广泛运用在三维重建问题上且在之后的数年里被广泛证实十分有效。目前深度学习技术在三维重建领域的应用已经取得了很大的进展，并且在许多应用领域中都有着广泛的应用前景，例如机器人、自主导航、图形和娱乐等方面。本文选取了几种应用于三维重建的深度学习方法，对每种方法的相关技术进行分类（章节<a href="#section-2.2">$2.2$</a>）介绍、梳理与回顾（章节<a href="#section-3">$3$</a>），将各个方法进行比较并给出各个方法的优缺点（章节<a href="#section-4">$4$</a>）。</p>
 <h2 id="mathcal-2-space-问题描述和分类"><a href="#mathcal-2-space-问题描述和分类" class="headerlink" title="$\mathcal{2} \space 问题描述和分类$"></a><a id="section-2"></a>$\mathcal{2} \space 问题描述和分类$</h2><h3 id="mathcal-2-1-space-问题描述"><a href="#mathcal-2-1-space-问题描述" class="headerlink" title="$\mathcal{2.1} \space 问题描述$"></a><a id="section-2.1"></a>$\mathcal{2.1} \space 问题描述$</h3><p>三维重建的问题可以描述为如下数学公式</p>
 <p>$Input: I &#x3D; { I_{k}, k &#x3D; 1, …, n } ;$</p>
 <p>$Loss \space function: \mathcal{L}(I) &#x3D; d(f_{\theta}(I), X)$</p>
@@ -564,7 +565,25 @@
 <p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png" alt="BodyNet" title="图3. BodyNet网络结构"></p>
 <p>BodyNet中通过四个子网结构来处理不同任务，并共享特征以提高整个系统的性能，各个子网络之间通过特征融合和级联的方式进行联合。输入RGB图像后，首先经过二维姿态估计子网络和二维身体部位分割子网络，得到对应的二维姿态估计结果和身体部位分割掩模。然后将这些结果与RGB图像特征一起输入到三维姿态估计子网络中，得到对应的三维姿态估计结果。最后，将三维姿态估计结果与身体部位分割掩模一起输入到体积重建子网络中，得到对应的三维人体形状。在这个过程中，每个子网络都有自己的损失函数，并且各自通过反向传播算法来更新自己的权重和共享层的权重，最后各个损失函数通过加权平均的方式进行特征融合和级联。</p>
 <h3 id="mathcal-3-2-space-点云"><a href="#mathcal-3-2-space-点云" class="headerlink" title="$\mathcal{3.2} \space 点云$"></a>$\mathcal{3.2} \space 点云$</h3><p>本部分选取了$K.Li$<a href="#ref-8">$[8]$</a>所使用的变形向量场方法、$Insafutdinov$<a href="#ref-9">$[9]$</a>使用的一种基于无监督学习的方法和 $Zaheer$<a href="#ref-10">$[10]$</a>基于GAN网络的方法进行介绍。</p>
-<h4 id="mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields"><a href="#mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields" class="headerlink" title="$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$"></a>$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$</h4><h4 id="mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning"><a href="#mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning" class="headerlink" title="$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$"></a>$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$</h4><h4 id="mathcal-3-2-3-space-Based-space-on-space-GAN"><a href="#mathcal-3-2-3-space-Based-space-on-space-GAN" class="headerlink" title="$\mathcal{3.2.3} \space Based \space on \space GAN$"></a>$\mathcal{3.2.3} \space Based \space on \space GAN$</h4><h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><h2 id="mathcal-4-space-比较与优缺点"><a href="#mathcal-4-space-比较与优缺点" class="headerlink" title="$\mathcal{4} \space 比较与优缺点$"></a><a id="section-4"></a>$\mathcal{4} \space 比较与优缺点$</h2><h2 id="mathcal-5-space-未来与展望"><a href="#mathcal-5-space-未来与展望" class="headerlink" title="$\mathcal{5} \space 未来与展望$"></a><a id="section-5"></a>$\mathcal{5} \space 未来与展望$</h2><h2 id="mathcal-6-space-参考文献"><a href="#mathcal-6-space-参考文献" class="headerlink" title="$\mathcal{6} \space 参考文献$"></a><a id="section-6"></a>$\mathcal{6} \space 参考文献$</h2><ol>
+<h4 id="mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields"><a href="#mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields" class="headerlink" title="$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$"></a>$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$</h4><p>这篇文章提出了一种新型的单视角3D物体重建方法，主要分为深度图预测和点云重建两个步骤。</p>
+<p><strong>深度图预测</strong>阶段，使用了U-Net作为编码器-解码器的结构基础。模型输入一张RGB图像在U-Net中进行特征提取和编码，然后再解码器部分使用反卷积层和上采样层将特征图还原为深度图。同时，还在解码器中引入了残差块的使用，以保留更多的细节，最后输出物体的深度图（一种灰度图，其中每个像素表示该点到相机的距离）。</p>
+<p><strong>点云重建</strong>阶段，作者定义了一个规则的二维网络，并将深度图上的每个像素点映射到该网格上；然后，使用变形向量场对该网格进行变形，并将变形后的网格中的每个像素点映射回深度图上；最后，通过将深度图上的像素点和它们在变形后的网格中对应的位置一一配对，得到一个点云表示。在这个过程中，变形向量场起到了关键作用。变形向量场是一种二维向量场，它描述了物体表面上每个像素点的变形情况。在本文中，对于每个像素点都计算出一个变形向量，该向量表示从深度图中的一个像素点到点云中对应点的偏移量。</p>
+<p>在训练阶段，作者使用了一种组合的损失函数，它包括了单视角损失和多视角一致性损失，公式如下。其中，$L_{single}$表示单视角损失，$L_{multi}$表示多视角一致性损失，$λ1$和$λ2$是两个超参数，用于控制两个损失函数的权重。</p>
+<ul>
+<li>$L &#x3D; λ1 * L_{single} + λ2 * L_{multi}$</li>
+</ul>
+<p>具体如下：</p>
+<ul>
+<li><strong>单视角损失</strong>：先将真实点云投影到深度图上，并计算每个像素点到最近点的距离。然后，将预测点云投影到同样的深度图上，并计算每个像素点到最近点的距离。最后，我们可以通过计算这些距离之间的平均值来得到单视角损失。</li>
+<li><strong>多视角一致性损失</strong>：先将预测点云投影到多个视角上，并计算每个视角下的距离场。然后，对于每个像素点，在所有视角下计算其距离场的平均值。最后，通过计算预测点云和真实点云之间的距离误差，并将其乘以距离场的平均值来得到多视角一致性损失。</li>
+</ul>
+<h4 id="mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning"><a href="#mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning" class="headerlink" title="$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$"></a>$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$</h4><p>本文提出了一种使用可微分点云的无监督学习方法，用于从未标记类别的特定图像集合中学习准确的3D形状以及相机的位置和方法（原文中叫做camera pose，后翻译为相机姿态）。模型由三个部分组成：一个用于预测物体的3D形状，一个用于预测相机姿态，和一个将点云渲染为图像的点云渲染器。模型总体框架如下图中的（b）所示；图（a）则展示了物体从不同的角度观察时，投影非常相似而导致相机的位置和方向存在多种可能性的问题。</p>
+<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/5.png" alt="unsupervised" title="无监督学习模型"></p>
+<p><strong>物体3D形状预测</strong>部分，模型包括一个卷积神经网络和一个多层感知器。模型接收两张相同物体的RGB图像作为输入，在CNN中使用具有不同步长的卷积核进行特征提取，提取后的特征被送入MLP进行进一步处理和预测。最终，该模型输出一个点云表示物体3D形状。</p>
+<p><strong>相机姿态预测</strong>部分，模型也是由一个卷积神经网络和一个多层感知器组成，该模型接收两张RGB图像作为输入，并输出一个四元数表示相机在该图像中的姿态，这个四元数可以用来计算相机在三维空间中的位置和方向。这个模型和上面做物体形状预测的模型共享大部分CNN的参数，这使得模型可以同时预测物体的3D形状和相机姿态，并且可以更好地利用训练数据进行训练。</p>
+<p>此外，本模型还使用了一个可微分的点云渲染器来将预测的3D形状和相机姿态转换为图像，渲染器简称为$π$。$π$使用了一种称为“投影”的技术来将点云转换为图像，它将每个点在三维空间中投影到二维平面上，并根据其距离和颜色值在该平面上生成一个像素。这其中使用了前面模型的点云图和生成的相机姿态矩阵，投影转换的过程中涉及到了相机的焦距、主点和像素大小等信息，并使用双线性插值来计算每个像素的颜色值。</p>
+<p>最终生成的这个图像可以与真实图像进行比较，以计算模型预测的准确性。由于$π$是可微分的，因此它可以与CNN一起训练，并且可以通过反向传播算法来计算梯度，这使得模型可以同时学习如何预测物体3D形状、相机姿态和如何将它们转换为图像。也正是其可以将点云最终转换为图像，才实现了仅通过最小化预测图像与真实图像之间的差异来训练模型的无监督学习。</p>
+<h4 id="mathcal-3-2-3-space-Based-space-on-space-GAN"><a href="#mathcal-3-2-3-space-Based-space-on-space-GAN" class="headerlink" title="$\mathcal{3.2.3} \space Based \space on \space GAN$"></a>$\mathcal{3.2.3} \space Based \space on \space GAN$</h4><h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><h2 id="mathcal-4-space-比较与优缺点"><a href="#mathcal-4-space-比较与优缺点" class="headerlink" title="$\mathcal{4} \space 比较与优缺点$"></a><a id="section-4"></a>$\mathcal{4} \space 比较与优缺点$</h2><h2 id="mathcal-5-space-未来与展望"><a href="#mathcal-5-space-未来与展望" class="headerlink" title="$\mathcal{5} \space 未来与展望$"></a><a id="section-5"></a>$\mathcal{5} \space 未来与展望$</h2><h2 id="mathcal-6-space-参考文献"><a href="#mathcal-6-space-参考文献" class="headerlink" title="$\mathcal{6} \space 参考文献$"></a><a id="section-6"></a>$\mathcal{6} \space 参考文献$</h2><ol>
 <li><a id="ref-1"></a> A. Laurentini, “The visual hull concept for silhouette-based image understanding,” IEEE TPAMI, vol. 16, no. 2, pp. 150–162, 1994.</li>
 <li><a id="ref-2"></a> R. Hartley and A. Zisserman, “Multiple view geometry in computer vision,”. Cambridge university press, 2003.</li>
 <li><a id="ref-3"></a> Han Xian-Feng, Laga Hamid, and Bennamoun Mohammed. “Image-based 3D object reconstruction: State-of-the-art and trends in the deep learning era,” IEEE Transactions on Pattern Analysis and Machine Intelligence 43, 5 (2019), 1578–1604.</li>
@@ -574,10 +593,9 @@
 <li><a id="ref-7"></a> David Eigen, Christian Puhrsch, and Rob Fergus, “Depth map prediction from a single image using a multi-scale deep network,” in Advances in neural information processing systems, 2014.</li>
 <li><a id="ref-8"></a>K. Li, T. Pham, H. Zhan, and I. Reid, “Efficient dense point cloud object reconstruction using deformation vector fields,” in ECCV, 2018, pp. 497–513.</li>
 <li><a id="ref-9"></a>E. Insafutdinov and A. Dosovitskiy, “Unsupervised learning of shape and pose with differentiable point clouds,” in NIPS, 2018, pp. 2802–2812.</li>
-<li><a id="ref-10"></a>C.-L. Li, M. Zaheer, Y. Zhang, B. Poczos, and R. Salakhutdinov, “Point cloud GAN,” ICLR Workshop on Deep Generative Models for Highly Structured Data, 2019.</li>
-<li><a id="ref-11"></a>K. Li, R. Garg, M. Cai, and I. Reid, “Single-view object shape reconstruction using deep shape prior and silhouette,” arXiv:1811.11921, 2019.</li>
+<li><a id="ref-10"></a>C.-L. Li, M. Zaheer, Y. Zhang, B. Poczos, and R. Salakhutdinov, “Point cloud GAN,” ICLR Workshop on Deep Generative Models for Highly Structured Data, 2019.<!-- 11. <a id="ref-11"></a>K. Li, R. Garg, M. Cai, and I. Reid, "Single-view object shape reconstruction using deep shape prior and silhouette," arXiv:1811.11921, 2019. --></li>
 </ol>
-<!-- <a id="ref-6"></a> L. Mescheder, M. Oechsle, M. Niemeyer, S. Nowozin, and A. Geiger, "Ocupancy Networks: Learning 3D Reconstruction in Function Space," IEEE CVPR, 2019. -->
+
     </article>
     <!-- license -->
     
