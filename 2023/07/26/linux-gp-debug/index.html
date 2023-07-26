@@ -19,25 +19,28 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="Transcript of Podcast">
+    <meta name="description" content="如题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Psychology of your 20&#39;s">
-<meta property="og:url" content="http://example.com/2023/05/17/Psychology-of-your-20-s/index.html">
+<meta property="og:title" content="针对Greenplum跑实验遇到的问题记录">
+<meta property="og:url" content="http://example.com/2023/07/26/linux-gp-debug/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Transcript of Podcast">
+<meta property="og:description" content="如题">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/05/17/Psychology-of-your-20-s/67.png">
-<meta property="article:published_time" content="2023-05-17T14:41:52.000Z">
-<meta property="article:modified_time" content="2023-05-17T15:06:56.506Z">
+<meta property="og:image" content="http://example.com/2023/07/26/linux-gp-debug/1.png">
+<meta property="og:image" content="http://example.com/2023/07/26/linux-gp-debug/2.png">
+<meta property="article:published_time" content="2023-07-25T18:02:23.000Z">
+<meta property="article:modified_time" content="2023-07-26T06:58:11.234Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Transcript">
+<meta property="article:tag" content="Linux磁盘扩容">
+<meta property="article:tag" content="debug记录">
+<meta property="article:tag" content="Greenplum操作">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/05/17/Psychology-of-your-20-s/67.png">
+<meta name="twitter:image" content="http://example.com/2023/07/26/linux-gp-debug/1.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>Psychology of your 20&#39;s · elubrazione</title>
+    <title>针对Greenplum跑实验遇到的问题记录 · elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -263,7 +266,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">Psychology of your 20's</a>
+                <a href="#" class="post-name">针对Greenplum跑实验遇到的问题记录</a>
             </div>
         </div>
     
@@ -309,7 +312,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                Psychology of your 20's
+                针对Greenplum跑实验遇到的问题记录
             <!-- 404 -->
             
         </h1>
@@ -329,20 +332,24 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Transcript">Transcript</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux磁盘扩容">Linux磁盘扩容</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="debug记录">debug记录</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Greenplum操作">Greenplum操作</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">8</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.6k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2023/05/17</span>
+                    <span class="post-intro-time">2023/07/26</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -497,9 +504,65 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>Transcript of Podcast</p>
+        <p>如题</p>
 <span id="more"></span>
-<h2 id="67-Embracing-your-authentic-self"><a href="#67-Embracing-your-authentic-self" class="headerlink" title="[67] Embracing your authentic self"></a>[67] Embracing your authentic self</h2><p><a target="_blank" rel="noopener" href="https://open.spotify.com/episode/3MgSIScowCgKJIHxoIzfYX?si=d7617cdecfe24db7"><img src="/2023/05/17/Psychology-of-your-20-s/67.png" alt="psychology"></a></p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><a href="#section-1">1. Greenplum数据库xlog文件清理</a><br><a href="#section-2">2. 根文件系统扩容</a><br><a href="#section-3">3. 无法适用psycofg2连接postgreSQL</a><br><a href="#section-4">4. 查看openbox的可视化结果</a></p>
+<h3 id="Greenplum数据库xlog文件清理"><a href="#Greenplum数据库xlog文件清理" class="headerlink" title="Greenplum数据库xlog文件清理"></a><a id="section-1"></a>Greenplum数据库xlog文件清理</h3><blockquote>
+<p>问题：跑实验跑到一半报磁盘空间不足，前面跑的那次迭代到100次的时候都没有出现磁盘空间不足的情况，但是新的一次迭代几次就出现了这种情况。因此初步怀疑是之前跑的实验留下来的日志等文件没有被释放掉，占了很大的空间。</p>
+</blockquote>
+<p>一开始的想法是找到那些文件夹(在配置文件里<code>DATA_DIRECTORY</code>设置的文件夹下)并删掉.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看磁盘使用情况</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前文件夹下各文件的大小</span></span><br><span class="line"><span class="built_in">du</span> -h --max-depth=1 | <span class="built_in">sort</span> -hr</span><br><span class="line"></span><br><span class="line"><span class="comment"># /users/jelly/greenplum/primary/gpsne0/xlog</span></span><br></pre></td></tr></table></figure>
+
+<p>找着找着发现每个节点的内部的<code>base</code>和<code>xlog</code>占用了好几个G，反而是一开始怀疑的<code>pg_log</code>文件夹没多大，所以开始琢磨怎么清理<code>xlog</code>里面的东西。xlog下面是一堆以十六进制编码命名的文件，这些文件是数据库的事务日志（WAL）文件。在Greenplum中，这些文件记录了数据库的所有修改操作，以保证数据库的持久性和一致性。直接删肯定是会出问题的。</p>
+<p>操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止所有服务</span></span><br><span class="line">gpstop</span><br><span class="line"></span><br><span class="line"><span class="comment"># pg_controldata命令读取pg_control里存储路径的元数据信息</span></span><br><span class="line"><span class="built_in">cd</span> ./greenplum/primary/gpsne1</span><br><span class="line"></span><br><span class="line">pg_controldata ./ | grep -E <span class="string">&quot;Latest checkpoint&#x27;s NextXID|Latest checkpoint&#x27;s NextOID&quot;</span></span><br><span class="line">&gt; Latest checkpoint<span class="string">&#x27;s NextXID:          0/4837</span></span><br><span class="line"><span class="string">  Latest checkpoint&#x27;</span>s NextOID:          196775</span><br><span class="line"></span><br><span class="line"><span class="comment"># -o 为查询到的NextOID，-x为查询到的NextXID，-f对应的数据存储目录</span></span><br><span class="line">pg_resetxlog -o 196775 -x 4837 -f ./</span><br><span class="line">&gt; WARNING: Do not use this on Greenplum. pg_resetxlog might cause data loss</span><br><span class="line">and render system irrecoverable. Do you wish to proceed? [<span class="built_in">yes</span>/no] <span class="built_in">yes</span></span><br><span class="line">Transaction <span class="built_in">log</span> reset</span><br></pre></td></tr></table></figure>
+
+<p>最后应该是清理了5G这样，继续跑实验其实还是会出现磁盘空间不够（差一点卡临界值），搞了半天顿悟到：把所有节点和配置文件删掉重新gpinit效果也是一样的。</p>
+<p>被搞烦了（暴躁），与其交给运气不如remake一把。</p>
+<h3 id="根文件系统扩容"><a href="#根文件系统扩容" class="headerlink" title="根文件系统扩容"></a><a id="section-2"></a>根文件系统扩容</h3><blockquote>
+<p>上面提到，挂载在”&quot;下的<code>/dev/nvme0n1p1</code>的空间大小只有16G，非常痛苦，根本不够用，现在来进行一个彻底的解决。</p>
+</blockquote>
+<p>先看一下初始情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br><span class="line">&gt; Filesystem                           Size  Used Avail Use% Mounted on</span><br><span class="line">udev                                  63G     0   63G   0%  /dev</span><br><span class="line">tmpfs                                 13G  2.1M   13G   1%  /run</span><br><span class="line">/dev/nvme0n1p1                        16G   13G  2.0G  87%  /</span><br><span class="line">tmpfs                                 63G   56K   63G   1%  /dev/shm</span><br><span class="line">tmpfs                                5.0M     0  5.0M   0%  /run/lock</span><br><span class="line">tmpfs                                 63G     0   63G   0%  /sys/fs/cgroup</span><br><span class="line">ops.utah.cloudlab.us:/share           19T   15G   19T   1%  /share</span><br><span class="line">ops.utah.cloudlab.us:/proj/risb-PG0  100G  256K  100G   1%  /proj/risb-PG0</span><br><span class="line">tmpfs                                 13G     0   13G   0%  /run/user/20001</span><br></pre></td></tr></table></figure>
+
+<p>给分区扩容时会用到一个工具<code>parted</code>，先进行安装；删除和新建分区用fdisk就行；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install parted</span><br></pre></td></tr></table></figure>
+
+<p>使用lsblk或者fdisk命令查看当前的分区情况，确认要调整的目标分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br><span class="line">&gt; NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">nvme0n1     259:1    0  1.5T  0 disk</span><br><span class="line">├─nvme0n1p1 259:4    0   16G  0 part /</span><br><span class="line">├─nvme0n1p2 259:5    0    3G  0 part</span><br><span class="line">├─nvme0n1p3 259:6    0    3G  0 part [SWAP]</span><br><span class="line">└─nvme0n1p4 259:7    0  1.4T  0 part</span><br><span class="line">nvme1n1     259:3    0  1.5T  0 disk</span><br><span class="line"></span><br><span class="line"><span class="comment"># sudo fdisk -l /dev/nvme0n1</span></span><br></pre></td></tr></table></figure>
+
+<p>根据上述输出，可得到如下信息：<br>系统中有两个NVMe硬盘，分别是nvme0n1和nvme1n1。<br>nvme0n1硬盘有以下分区：</p>
+<ul>
+<li>nvme0n1p1：分区大小为16GB，挂载在&#x2F;目录，根分区，即操作系统所在的分区。</li>
+<li>nvme0n1p2：分区大小为3GB，类型为part，可能是一个其他用途的分区。</li>
+<li>nvme0n1p3：分区大小为3GB，类型为part，是交换空间（SWAP）分区，用于交换数据和内存管理。</li>
+<li>nvme0n1p4：分区大小为1.4TB，类型为part，可能是另一个用途的分区。</li>
+</ul>
+<p>nvme1n1硬盘没有分区信息，它是一个1.5TB大小的未分区硬盘。</p>
+<p>现在要做的事情是 ① 把nvme0n1硬盘里2到4号的分区删掉；② 把空间几乎全挪给1号；③ 最后再腾出一小段空间重新分配一个分区，再将其设置为交换区。注意原先的3号由于是交换区，删掉前要先将其禁用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用交换区</span></span><br><span class="line">sudo swapoff /dev/nvme0n1p3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除旧分区</span></span><br><span class="line">sudo fdisk /dev/nvme0n1</span><br><span class="line">(d删除) | n新建 | w保存 | <span class="built_in">print</span>查看各区情况 | q退出</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给一号区扩容</span></span><br><span class="line">sudo parted /dev/nvme0n1</span><br><span class="line">resizepart</span><br><span class="line">1   <span class="comment"># 扩容分区号</span></span><br><span class="line">+1200G  <span class="comment"># 代表分配1200G，自动计算结束位置，不用+则代表结束位置地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建新的2号分区，新建类型选择默认（p）即可</span></span><br><span class="line">sudo fdisk /dev/nvme0n1</span><br><span class="line">d删除 | (n新建) | w保存 | <span class="built_in">print</span>查看各区情况 | q退出</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意保存完再退出</span></span><br></pre></td></tr></table></figure>
+
+<p>假设resize完<code>nvme0n1p1</code>后，新建的待设置为交换区的分区为<code>nvme0n1p2</code>，执行下列操作，将<code>nvme0n1p2</code> 设置为交换区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置和启用</span></span><br><span class="line">sudo mkswap /dev/nvme0n1p2</span><br><span class="line">sudo swapon /dev/nvme0n1p2</span><br></pre></td></tr></table></figure>
+
+<p>上述操作结束后还要对<code>/etc/fstab</code>进行调整，该文件记录了系统引导时需要挂载的分区信息，调整该文件以确保系统可以正确地挂载分区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid</span><br><span class="line">&gt; /dev/nvme0n1p1: UUID=<span class="string">&quot;5fac4c69-51f6-47af-9773-a0d722426942&quot;</span> TYPE=<span class="string">&quot;ext3&quot;</span> PTTYPE=<span class="string">&quot;dos&quot;</span> PARTUUID=<span class="string">&quot;90909090-01&quot;</span></span><br><span class="line">  /dev/nvme0n1p2: UUID=<span class="string">&quot;d9fa5d04-4799-4b8a-affd-69cbd1a0c808&quot;</span> TYPE=<span class="string">&quot;swap&quot;</span> PARTUUID=<span class="string">&quot;90909090-02&quot;</span></span><br><span class="line">  /dev/nvme0n1: PTUUID=<span class="string">&quot;90909090&quot;</span> PTTYPE=<span class="string">&quot;dos&quot;</span></span><br><span class="line"></span><br><span class="line">sudo vim /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>修改对应的UUID号，下图中只需修改swap区的UUID号即可。将紫色第二行改为上述查询到的<code>/dev/nvme0n1p2</code>的UUID（<code>d9fa5d04-4799-4b8a-affd-69cbd1a0c808</code>）。</p>
+<p><img src="/2023/07/26/linux-gp-debug/1.png" alt="/etc/fstab文件"></p>
+<p>检查一下别填错了（慎重），保存退出后执行<code>sudo reboot</code>即可，可能需要等待一会才能重新连接服务器（连不上先别慌）</p>
+<p>重新连上后执行如下命令来扩展文件系统以适应分区大小并重新查看一下结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/nvme0n1p1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/07/26/linux-gp-debug/2.png" alt="resize_out"></p>
+<h3 id="无法适用psycofg2连接postgreSQL"><a href="#无法适用psycofg2连接postgreSQL" class="headerlink" title="无法适用psycofg2连接postgreSQL"></a><a id="section-3"></a>无法适用psycofg2连接postgreSQL</h3><p>参考 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5500332/cant-connect-the-postgresql-with-psycopg2">这篇帖子</a>，报错如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; conn=psycopg2.connect(database=<span class="string">&quot;demo&quot;</span>, user=<span class="string">&quot;&quot;</span>, password=<span class="string">&quot;123&quot;</span>,port=5432)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  psycopg2.OperationalError: could not connect to server: No such file or directory</span><br><span class="line">    Is the server running locally and accepting</span><br><span class="line">    connections on Unix domain socket <span class="string">&quot;/var/run/postgresql/.s.PGSQL.5432&quot;</span>?</span><br></pre></td></tr></table></figure>
+
+<p>执行如下命令，如果显示<code>/var/run/postgresql/.s.PGSQL.5432</code>已存在，先删掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">ln</span> -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看openbox的可视化结果"><a href="#查看openbox的可视化结果" class="headerlink" title="查看openbox的可视化结果"></a><a id="section-4"></a>查看openbox的可视化结果</h3><p>操作如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line">python3 -m http.server 7000   <span class="comment"># 随便指定一个没占用的端口号</span></span><br></pre></td></tr></table></figure>
+<p>启动后找到对应.html文件即可</p>
 
     </article>
     <!-- license -->
@@ -512,8 +575,8 @@
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/05/14/May-2023-LeetCode/" title="May 2023 LeetCode">
-                    <div class="prevTitle">May 2023 LeetCode</div>
+                <a href="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="基于深度学习的三维重建">
+                    <div class="prevTitle">基于深度学习的三维重建</div>
                 </a>
             
         </li>
@@ -548,21 +611,6 @@
     <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
     
     <!-- Mathjax -->
-    
-        
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-            }
-        };
-    </script>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
-
-
     
 </main>
 
@@ -668,7 +716,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#67-Embracing-your-authentic-self"><span class="toc-number">1.</span> <span class="toc-text">[67] Embracing your authentic self</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Greenplum%E6%95%B0%E6%8D%AE%E5%BA%93xlog%E6%96%87%E4%BB%B6%E6%B8%85%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Greenplum数据库xlog文件清理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9"><span class="toc-number">3.</span> <span class="toc-text">根文件系统扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%82%E7%94%A8psycofg2%E8%BF%9E%E6%8E%A5postgreSQL"><span class="toc-number">4.</span> <span class="toc-text">无法适用psycofg2连接postgreSQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bopenbox%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%93%E6%9E%9C"><span class="toc-number">5.</span> <span class="toc-text">查看openbox的可视化结果</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -782,22 +830,7 @@
         
         
         
-        
-        
-        
-        
-        
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -934,7 +967,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 20
         </div>
         <!-- search  -->
         
@@ -950,14 +983,8 @@
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">05/17</span>
-            <a class="archive-post-title" href="/2023/05/17/Psychology-of-your-20-s/">Psychology of your 20's</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/14</span>
-            <a class="archive-post-title" href="/2023/05/14/May-2023-LeetCode/">May 2023 LeetCode</a>
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/linux-gp-debug/">针对Greenplum跑实验遇到的问题记录</a>
         </li>
     
         
@@ -1239,9 +1266,19 @@
                 MySQL
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Transcript">
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
                 <span class="iconfont-archer">&#xe606;</span>
-                Transcript
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
             </span>
         
     </div>
@@ -1260,19 +1297,14 @@
             Algorithm
         </span>
     
-        <span class="sidebar-category-name" data-categories="腾讯AI训练营2023春">
-            <span class="iconfont-archer">&#xe60a;</span>
-            腾讯AI训练营2023春
-        </span>
-    
         <span class="sidebar-category-name" data-categories="HUST_COURSE">
             <span class="iconfont-archer">&#xe60a;</span>
             HUST_COURSE
         </span>
     
-        <span class="sidebar-category-name" data-categories="Podcast">
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
-            Podcast
+            腾讯AI训练营
         </span>
     
     </div>
