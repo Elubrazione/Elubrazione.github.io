@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="description" content="如题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="针对Greenplum跑实验遇到的问题记录">
+<meta property="og:title" content="Greenplum操作遇到的问题记录">
 <meta property="og:url" content="http://example.com/2023/07/26/linux-gp-debug/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="如题">
@@ -29,18 +29,18 @@
 <meta property="og:image" content="http://example.com/2023/07/26/linux-gp-debug/1.png">
 <meta property="og:image" content="http://example.com/2023/07/26/linux-gp-debug/2.png">
 <meta property="article:published_time" content="2023-07-25T18:02:23.000Z">
-<meta property="article:modified_time" content="2023-07-26T06:58:11.234Z">
+<meta property="article:modified_time" content="2023-07-26T07:00:28.748Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Greenplum操作">
 <meta property="article:tag" content="Linux磁盘扩容">
 <meta property="article:tag" content="debug记录">
-<meta property="article:tag" content="Greenplum操作">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/07/26/linux-gp-debug/1.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>针对Greenplum跑实验遇到的问题记录 · elubrazione</title>
+    <title>Greenplum操作遇到的问题记录 · elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -266,7 +266,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">针对Greenplum跑实验遇到的问题记录</a>
+                <a href="#" class="post-name">Greenplum操作遇到的问题记录</a>
             </div>
         </div>
     
@@ -312,7 +312,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                针对Greenplum跑实验遇到的问题记录
+                Greenplum操作遇到的问题记录
             <!-- 404 -->
             
         </h1>
@@ -332,11 +332,11 @@
                     <div class= post-intro-tags >
     
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="Greenplum操作">Greenplum操作</a>
+    
         <a class="post-tag" href="javascript:void(0);" data-tags="Linux磁盘扩容">Linux磁盘扩容</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="debug记录">debug记录</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Greenplum操作">Greenplum操作</a>
     
 </div>
 
@@ -506,8 +506,8 @@
     <article class="article-entry">
         <p>如题</p>
 <span id="more"></span>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><a href="#section-1">1. Greenplum数据库xlog文件清理</a><br><a href="#section-2">2. 根文件系统扩容</a><br><a href="#section-3">3. 无法适用psycofg2连接postgreSQL</a><br><a href="#section-4">4. 查看openbox的可视化结果</a></p>
-<h3 id="Greenplum数据库xlog文件清理"><a href="#Greenplum数据库xlog文件清理" class="headerlink" title="Greenplum数据库xlog文件清理"></a><a id="section-1"></a>Greenplum数据库xlog文件清理</h3><blockquote>
+
+<h2 id="Greenplum数据库xlog文件清理"><a href="#Greenplum数据库xlog文件清理" class="headerlink" title="Greenplum数据库xlog文件清理"></a><a id="section-1"></a>Greenplum数据库xlog文件清理</h2><blockquote>
 <p>问题：跑实验跑到一半报磁盘空间不足，前面跑的那次迭代到100次的时候都没有出现磁盘空间不足的情况，但是新的一次迭代几次就出现了这种情况。因此初步怀疑是之前跑的实验留下来的日志等文件没有被释放掉，占了很大的空间。</p>
 </blockquote>
 <p>一开始的想法是找到那些文件夹(在配置文件里<code>DATA_DIRECTORY</code>设置的文件夹下)并删掉.</p>
@@ -519,7 +519,7 @@
 
 <p>最后应该是清理了5G这样，继续跑实验其实还是会出现磁盘空间不够（差一点卡临界值），搞了半天顿悟到：把所有节点和配置文件删掉重新gpinit效果也是一样的。</p>
 <p>被搞烦了（暴躁），与其交给运气不如remake一把。</p>
-<h3 id="根文件系统扩容"><a href="#根文件系统扩容" class="headerlink" title="根文件系统扩容"></a><a id="section-2"></a>根文件系统扩容</h3><blockquote>
+<h2 id="根文件系统扩容"><a href="#根文件系统扩容" class="headerlink" title="根文件系统扩容"></a><a id="section-2"></a>根文件系统扩容</h2><blockquote>
 <p>上面提到，挂载在”&quot;下的<code>/dev/nvme0n1p1</code>的空间大小只有16G，非常痛苦，根本不够用，现在来进行一个彻底的解决。</p>
 </blockquote>
 <p>先看一下初始情况</p>
@@ -554,13 +554,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo resize2fs /dev/nvme0n1p1</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/07/26/linux-gp-debug/2.png" alt="resize_out"></p>
-<h3 id="无法适用psycofg2连接postgreSQL"><a href="#无法适用psycofg2连接postgreSQL" class="headerlink" title="无法适用psycofg2连接postgreSQL"></a><a id="section-3"></a>无法适用psycofg2连接postgreSQL</h3><p>参考 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5500332/cant-connect-the-postgresql-with-psycopg2">这篇帖子</a>，报错如下</p>
+<h2 id="无法适用psycofg2连接postgreSQL"><a href="#无法适用psycofg2连接postgreSQL" class="headerlink" title="无法适用psycofg2连接postgreSQL"></a><a id="section-3"></a>无法适用psycofg2连接postgreSQL</h2><p>参考 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5500332/cant-connect-the-postgresql-with-psycopg2">这篇帖子</a>，报错如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; conn=psycopg2.connect(database=<span class="string">&quot;demo&quot;</span>, user=<span class="string">&quot;&quot;</span>, password=<span class="string">&quot;123&quot;</span>,port=5432)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  psycopg2.OperationalError: could not connect to server: No such file or directory</span><br><span class="line">    Is the server running locally and accepting</span><br><span class="line">    connections on Unix domain socket <span class="string">&quot;/var/run/postgresql/.s.PGSQL.5432&quot;</span>?</span><br></pre></td></tr></table></figure>
 
 <p>执行如下命令，如果显示<code>/var/run/postgresql/.s.PGSQL.5432</code>已存在，先删掉</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">ln</span> -s /tmp/.s.PGSQL.5432 /var/run/postgresql/.s.PGSQL.5432</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看openbox的可视化结果"><a href="#查看openbox的可视化结果" class="headerlink" title="查看openbox的可视化结果"></a><a id="section-4"></a>查看openbox的可视化结果</h3><p>操作如下</p>
+<h2 id="查看openbox的可视化结果"><a href="#查看openbox的可视化结果" class="headerlink" title="查看openbox的可视化结果"></a><a id="section-4"></a>查看openbox的可视化结果</h2><p>操作如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line">python3 -m http.server 7000   <span class="comment"># 随便指定一个没占用的端口号</span></span><br></pre></td></tr></table></figure>
 <p>启动后找到对应.html文件即可</p>
 
@@ -716,7 +716,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Greenplum%E6%95%B0%E6%8D%AE%E5%BA%93xlog%E6%96%87%E4%BB%B6%E6%B8%85%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Greenplum数据库xlog文件清理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9"><span class="toc-number">3.</span> <span class="toc-text">根文件系统扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%82%E7%94%A8psycofg2%E8%BF%9E%E6%8E%A5postgreSQL"><span class="toc-number">4.</span> <span class="toc-text">无法适用psycofg2连接postgreSQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bopenbox%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%93%E6%9E%9C"><span class="toc-number">5.</span> <span class="toc-text">查看openbox的可视化结果</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Greenplum%E6%95%B0%E6%8D%AE%E5%BA%93xlog%E6%96%87%E4%BB%B6%E6%B8%85%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">Greenplum数据库xlog文件清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%89%A9%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">根文件系统扩容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%B3%95%E9%80%82%E7%94%A8psycofg2%E8%BF%9E%E6%8E%A5postgreSQL"><span class="toc-number">3.</span> <span class="toc-text">无法适用psycofg2连接postgreSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bopenbox%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">查看openbox的可视化结果</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -961,6 +961,8 @@
         
         
         
+        
+        
     
     
     
@@ -984,7 +986,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/26</span>
-            <a class="archive-post-title" href="/2023/07/26/linux-gp-debug/">针对Greenplum跑实验遇到的问题记录</a>
+            <a class="archive-post-title" href="/2023/07/26/linux-gp-debug/">Greenplum操作遇到的问题记录</a>
         </li>
     
         
@@ -1116,6 +1118,11 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="LeetCode">
                 <span class="iconfont-archer">&#xe606;</span>
                 LeetCode
@@ -1126,49 +1133,9 @@
                 双指针
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
-                <span class="iconfont-archer">&#xe606;</span>
-                链表
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="剪枝">
                 <span class="iconfont-archer">&#xe606;</span>
                 剪枝
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="随笔">
-                <span class="iconfont-archer">&#xe606;</span>
-                随笔
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="前端">
-                <span class="iconfont-archer">&#xe606;</span>
-                前端
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="React">
-                <span class="iconfont-archer">&#xe606;</span>
-                React
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="打包">
-                <span class="iconfont-archer">&#xe606;</span>
-                打包
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Webpack">
-                <span class="iconfont-archer">&#xe606;</span>
-                Webpack
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Eslint">
-                <span class="iconfont-archer">&#xe606;</span>
-                Eslint
             </span>
         
             <span class="sidebar-tag-name" data-tags="微服务架构">
@@ -1216,6 +1183,26 @@
                 迁移学习
             </span>
         
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="what-if索引推荐">
                 <span class="iconfont-archer">&#xe606;</span>
                 what-if索引推荐
@@ -1231,24 +1218,14 @@
                 数据库
             </span>
         
+            <span class="sidebar-tag-name" data-tags="打包">
+                <span class="iconfont-archer">&#xe606;</span>
+                打包
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="MongoDB">
@@ -1266,6 +1243,11 @@
                 MySQL
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
                 <span class="iconfont-archer">&#xe606;</span>
                 Linux磁盘扩容
@@ -1276,9 +1258,29 @@
                 debug记录
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+            <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
-                Greenplum操作
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
     </div>
@@ -1297,14 +1299,14 @@
             Algorithm
         </span>
     
-        <span class="sidebar-category-name" data-categories="HUST_COURSE">
-            <span class="iconfont-archer">&#xe60a;</span>
-            HUST_COURSE
-        </span>
-    
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
             腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="HUST_COURSE">
+            <span class="iconfont-archer">&#xe60a;</span>
+            HUST_COURSE
         </span>
     
     </div>
