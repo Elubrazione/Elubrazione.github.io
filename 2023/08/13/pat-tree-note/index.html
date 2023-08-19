@@ -21,24 +21,26 @@
     <meta name="description" content="">
     <meta name="description" content="PAT考试树相关笔记与真题解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树和二叉树">
+<meta property="og:title" content="PAT树笔记">
 <meta property="og:url" content="http://example.com/2023/08/13/pat-tree-note/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="PAT考试树相关笔记与真题解析">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/08/13/pat-tree-note/1099.png">
 <meta property="article:published_time" content="2023-08-12T17:11:05.000Z">
-<meta property="article:modified_time" content="2023-08-14T17:52:37.463Z">
+<meta property="article:modified_time" content="2023-08-19T17:53:24.161Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="树的遍历">
 <meta property="article:tag" content="二叉搜索树">
 <meta property="article:tag" content="完全二叉树">
 <meta property="article:tag" content="AVL树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/08/13/pat-tree-note/1099.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>树和二叉树 · elubrazione</title>
+    <title>PAT树笔记 · elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -264,7 +266,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">树和二叉树</a>
+                <a href="#" class="post-name">PAT树笔记</a>
             </div>
         </div>
     
@@ -310,7 +312,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                树和二叉树
+                PAT树笔记
             <!-- 404 -->
             
         </h1>
@@ -343,7 +345,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">4.1k</span>Reading time: <span class="post-count reading-time">21 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4.5k</span>Reading time: <span class="post-count reading-time">22 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -605,7 +607,7 @@
 <h3 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h3><h4 id="1043-Is-It-a-Binary-Search-Tree"><a href="#1043-Is-It-a-Binary-Search-Tree" class="headerlink" title="[1043] Is It a Binary Search Tree"></a>[1043] Is It a Binary Search Tree</h4><blockquote>
 <p>⼆叉搜索树BST</p>
 </blockquote>
-<h5 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h5><p>给定⼀个整数键值序列，判断这是否是对⼀棵⼆叉搜索树或其镜像进⾏前序遍历的结果。</p>
+<h5 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h5><p>给出N个正整数来作为一棵二叉排序树的结点插入顺序，问这串序列是否是该二叉排序树的先序序列或是该二叉排序树的镜像树的先序序列。所谓镜像树是指交换二叉树的所有结点的左右子树而形成的树（也即左子树所有结点数据域大于或等于根结点，而根结点数据域小于右子树所有结点的数据域）。如果是，则输出“YES”，并输出对应的树的后序序列;否则，输出“NO”</p>
 <h5 id="分析与注意点-9"><a href="#分析与注意点-9" class="headerlink" title="分析与注意点"></a>分析与注意点</h5><ul>
 <li>简单的，考前稍微康康</li>
 </ul>
@@ -616,16 +618,20 @@
 </blockquote>
 <h5 id="题目-10"><a href="#题目-10" class="headerlink" title="题目"></a>题目</h5><p>给⼀串构成树的序列，已知该树是完全⼆叉搜索树，求它的层序遍历的序列</p>
 <h5 id="分析与注意点-10"><a href="#分析与注意点-10" class="headerlink" title="分析与注意点"></a>分析与注意点</h5><ul>
-<li>简单的，考前稍微康康</li>
+<li>完全二叉树：除了最下面一层之外，其余层的结点个数都达到了当层能达到的最大结点数，且最下面一层只从左至右连续存在若干结点，而这些结点右边的结点全部不存在。</li>
+<li>因为⼆叉搜索树的中序是⼀组序列的从⼩到⼤排列，所以只需将所给序列排序即可得到中序数组 <code>node</code>；</li>
+<li>假设把树按从左到右、从上到下的顺序依次编号，根节点为1，则从根结点$root &#x3D; 1$开始中序遍历， root结点的左孩⼦下标是 $root * 2$，右孩⼦下标是 $root * 2 + 1$，通过这个下标规则计算出左右结点在 <code>cbt</code> 数组中的位置下标；</li>
+<li>因为是中序遍历，所以遍历结果与中序数组 <code>node</code> 中的值从1开始依次递增的结果相同，那么只需要一个<code>id</code> 来得到当前结点的权值，即 <code>node[id++]</code>（id从1开始），最后将<code>node[id++]</code> 赋值给 <code>cbt[x]</code> 数组</li>
 </ul>
-<h5 id="代码-10"><a href="#代码-10" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, idx = <span class="number">0</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; node;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">  <span class="type">int</span> order;</span><br><span class="line">  <span class="type">int</span> val;</span><br><span class="line">  TreeNode* left;</span><br><span class="line">  TreeNode* right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(TreeNode* &amp;root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].first &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* l = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    l -&gt; order = mp[root-&gt;order].first;</span><br><span class="line">    root -&gt; left = l;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; left);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; left = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].second &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* r = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    r -&gt; order = mp[root-&gt;order].second;</span><br><span class="line">    root -&gt; right = r;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; right);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; right = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inOrderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; left);</span><br><span class="line">  root -&gt; val = node[idx++];</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">levelTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  queue&lt;TreeNode*&gt; q;</span><br><span class="line">  q.<span class="built_in">push</span>(root);</span><br><span class="line">  <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    TreeNode* cur = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line">    cout &lt;&lt; cur -&gt; val;</span><br><span class="line">    num++;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; n)  cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; left)  q.<span class="built_in">push</span>(cur -&gt; left);</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; right)  q.<span class="built_in">push</span>(cur -&gt; right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    mp[i] = <span class="built_in">make_pair</span>(a, b);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    cin &gt;&gt; k;</span><br><span class="line">    node.<span class="built_in">push_back</span>(k);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(node.<span class="built_in">begin</span>(), node.<span class="built_in">end</span>());</span><br><span class="line">  TreeNode* root = <span class="keyword">new</span> TreeNode;</span><br><span class="line">  root -&gt; order = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">insert</span>(root);</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root);</span><br><span class="line">  <span class="built_in">levelTraversal</span>(root);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="代码-10"><a href="#代码-10" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, idx = <span class="number">0</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; node, cbt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉排序树的中序遍历是递增的，按顺序赋值给cbt</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inOrderTraversal</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x &gt; n)  <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(x * <span class="number">2</span>);  <span class="comment">// 左子树</span></span><br><span class="line">  cbt[x] = node[idx++];</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(x * <span class="number">2</span> + <span class="number">1</span>);  <span class="comment">// 右子树</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  cbt.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    cin &gt;&gt; k;</span><br><span class="line">    node.<span class="built_in">push_back</span>(k);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(node.<span class="built_in">begin</span>(), node.<span class="built_in">end</span>());</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(<span class="number">1</span>);  <span class="comment">// 编号从1开始，如果从0开始则左子树是(x*2+1)，右子树是(x*2+2)</span></span><br><span class="line">  <span class="comment">// cbt数组按顺序输出就是其层序遍历</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    cout &lt;&lt; cbt[i];</span><br><span class="line">    <span class="keyword">if</span> (i &lt; n)  cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="1099-Build-A-Binary-Search-Tree"><a href="#1099-Build-A-Binary-Search-Tree" class="headerlink" title="[1099] Build A Binary Search Tree"></a>[1099] Build A Binary Search Tree</h4><blockquote>
 <p>⼆叉搜索树BST</p>
 </blockquote>
-<h5 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h5><p>给出⼀棵⼆叉搜索树（给出每个结点的左右孩⼦），且已知根结点为0，求并且给出应该插⼊这个⼆叉搜索树的数值，求这棵⼆叉树的层序遍历</p>
+<h5 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h5><p>二叉树有 $N$ 个结点（结点编号为 $0$ ~ $N-1$），给出每个结点的左右孩子结点的编号（不存在用-1表示）。接着给出一个个整数的序列，需要把这个整数填入二叉树的结点中，使得二叉树成为一棵二叉查找树。输出这棵二叉查找树的层序遍历序列。</p>
+<p><img src="/2023/08/13/pat-tree-note/1099.png" alt="1099"></p>
 <h5 id="分析与注意点-11"><a href="#分析与注意点-11" class="headerlink" title="分析与注意点"></a>分析与注意点</h5><ul>
-<li>简单的，考前稍微康康</li>
+<li>还是利用二叉搜索树中序遍历是递增的这个特性，将输入的序列直接进行排序就得到了中序遍历的结果。先根据输入得到的结果建立树的结构；然后和上题一样，进行一次中序遍历，这次在中序遍历的时候将得到的权值填入 <code>root-&gt;val</code>。</li>
 </ul>
 <h5 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, idx = <span class="number">0</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; node;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">  <span class="type">int</span> order;</span><br><span class="line">  <span class="type">int</span> val;</span><br><span class="line">  TreeNode* left;</span><br><span class="line">  TreeNode* right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(TreeNode* &amp;root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].first &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* l = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    l -&gt; order = mp[root-&gt;order].first;</span><br><span class="line">    root -&gt; left = l;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; left);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; left = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].second &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* r = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    r -&gt; order = mp[root-&gt;order].second;</span><br><span class="line">    root -&gt; right = r;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; right);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; right = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inOrderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; left);</span><br><span class="line">  root -&gt; val = node[idx++];</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">levelTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  queue&lt;TreeNode*&gt; q;</span><br><span class="line">  q.<span class="built_in">push</span>(root);</span><br><span class="line">  <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    TreeNode* cur = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line">    cout &lt;&lt; cur -&gt; val;</span><br><span class="line">    num++;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; n)  cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; left)  q.<span class="built_in">push</span>(cur -&gt; left);</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; right)  q.<span class="built_in">push</span>(cur -&gt; right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    mp[i] = <span class="built_in">make_pair</span>(a, b);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    cin &gt;&gt; k;</span><br><span class="line">    node.<span class="built_in">push_back</span>(k);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(node.<span class="built_in">begin</span>(), node.<span class="built_in">end</span>());</span><br><span class="line">  TreeNode* root = <span class="keyword">new</span> TreeNode;</span><br><span class="line">  root -&gt; order = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">insert</span>(root);</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root);</span><br><span class="line">  <span class="built_in">levelTraversal</span>(root);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
@@ -634,6 +640,11 @@
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/08/20/pat-graph-note/" title="PAT图笔记">
+                    <div class="nextTitle">PAT图笔记</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -914,7 +925,22 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1059,7 +1085,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 22
         </div>
         <!-- search  -->
         
@@ -1075,8 +1101,14 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/13</span>
-            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">树和二叉树</a>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
         </li>
     
         
@@ -1234,21 +1266,6 @@
                 剪枝
             </span>
         
-            <span class="sidebar-tag-name" data-tags="微服务架构">
-                <span class="iconfont-archer">&#xe606;</span>
-                微服务架构
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="云计算">
-                <span class="iconfont-archer">&#xe606;</span>
-                云计算
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Web应用程序">
-                <span class="iconfont-archer">&#xe606;</span>
-                Web应用程序
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="故障诊断">
                 <span class="iconfont-archer">&#xe606;</span>
                 故障诊断
@@ -1257,11 +1274,6 @@
             <span class="sidebar-tag-name" data-tags="异常检测">
                 <span class="iconfont-archer">&#xe606;</span>
                 异常检测
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="生成式对抗网络">
-                <span class="iconfont-archer">&#xe606;</span>
-                生成式对抗网络
             </span>
         
             <span class="sidebar-tag-name" data-tags="磁盘故障">
@@ -1322,11 +1334,6 @@
             <span class="sidebar-tag-name" data-tags="MongoDB">
                 <span class="iconfont-archer">&#xe606;</span>
                 MongoDB
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="打包">
-                <span class="iconfont-archer">&#xe606;</span>
-                打包
             </span>
         
             <span class="sidebar-tag-name" data-tags="Neo4j">
@@ -1397,6 +1404,31 @@
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dijkstra">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dijkstra
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="BellmanFord">
+                <span class="iconfont-archer">&#xe606;</span>
+                BellmanFord
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SPFA">
+                <span class="iconfont-archer">&#xe606;</span>
+                SPFA
             </span>
         
     </div>
