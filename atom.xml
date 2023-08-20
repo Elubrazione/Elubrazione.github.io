@@ -3,14 +3,14 @@
   <title>Hexo</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://elubrazione.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://elubrazione.github.io/"/>
   <updated>2023-08-19T21:03:52.022Z</updated>
-  <id>http://example.com/</id>
+  <id>https://elubrazione.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Elubrazione</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>PAT图笔记</title>
-    <link href="http://example.com/2023/08/20/pat-graph-note/"/>
-    <id>http://example.com/2023/08/20/pat-graph-note/</id>
+    <link href="https://elubrazione.github.io/2023/08/20/pat-graph-note/"/>
+    <id>https://elubrazione.github.io/2023/08/20/pat-graph-note/</id>
     <published>2023-08-19T17:48:54.000Z</published>
     <updated>2023-08-19T21:03:52.022Z</updated>
     
@@ -30,27 +30,27 @@
     
     
     
-    <category term="PAT" scheme="http://example.com/categories/PAT/"/>
+    <category term="PAT" scheme="https://elubrazione.github.io/categories/PAT/"/>
     
-    <category term="Algorithm" scheme="http://example.com/categories/PAT/Algorithm/"/>
+    <category term="Algorithm" scheme="https://elubrazione.github.io/categories/PAT/Algorithm/"/>
     
     
-    <category term="图的遍历" scheme="http://example.com/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/"/>
+    <category term="图的遍历" scheme="https://elubrazione.github.io/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/"/>
     
-    <category term="最短路径" scheme="http://example.com/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"/>
+    <category term="最短路径" scheme="https://elubrazione.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"/>
     
-    <category term="Dijkstra" scheme="http://example.com/tags/Dijkstra/"/>
+    <category term="Dijkstra" scheme="https://elubrazione.github.io/tags/Dijkstra/"/>
     
-    <category term="BellmanFord" scheme="http://example.com/tags/BellmanFord/"/>
+    <category term="BellmanFord" scheme="https://elubrazione.github.io/tags/BellmanFord/"/>
     
-    <category term="SPFA" scheme="http://example.com/tags/SPFA/"/>
+    <category term="SPFA" scheme="https://elubrazione.github.io/tags/SPFA/"/>
     
   </entry>
   
   <entry>
     <title>PAT树笔记</title>
-    <link href="http://example.com/2023/08/13/pat-tree-note/"/>
-    <id>http://example.com/2023/08/13/pat-tree-note/</id>
+    <link href="https://elubrazione.github.io/2023/08/13/pat-tree-note/"/>
+    <id>https://elubrazione.github.io/2023/08/13/pat-tree-note/</id>
     <published>2023-08-12T17:11:05.000Z</published>
     <updated>2023-08-19T20:00:27.884Z</updated>
     
@@ -61,25 +61,25 @@
     
     
     
-    <category term="PAT" scheme="http://example.com/categories/PAT/"/>
+    <category term="PAT" scheme="https://elubrazione.github.io/categories/PAT/"/>
     
-    <category term="Algorithm" scheme="http://example.com/categories/PAT/Algorithm/"/>
+    <category term="Algorithm" scheme="https://elubrazione.github.io/categories/PAT/Algorithm/"/>
     
     
-    <category term="树的遍历" scheme="http://example.com/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
+    <category term="树的遍历" scheme="https://elubrazione.github.io/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
     
-    <category term="二叉搜索树" scheme="http://example.com/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+    <category term="二叉搜索树" scheme="https://elubrazione.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
     
-    <category term="完全二叉树" scheme="http://example.com/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <category term="完全二叉树" scheme="https://elubrazione.github.io/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
-    <category term="AVL树" scheme="http://example.com/tags/AVL%E6%A0%91/"/>
+    <category term="AVL树" scheme="https://elubrazione.github.io/tags/AVL%E6%A0%91/"/>
     
   </entry>
   
   <entry>
     <title>Greenplum操作遇到的问题记录</title>
-    <link href="http://example.com/2023/07/26/linux-gp-debug/"/>
-    <id>http://example.com/2023/07/26/linux-gp-debug/</id>
+    <link href="https://elubrazione.github.io/2023/07/26/linux-gp-debug/"/>
+    <id>https://elubrazione.github.io/2023/07/26/linux-gp-debug/</id>
     <published>2023-07-25T18:02:23.000Z</published>
     <updated>2023-07-26T07:00:28.748Z</updated>
     
@@ -90,21 +90,21 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="Greenplum操作" scheme="http://example.com/tags/Greenplum%E6%93%8D%E4%BD%9C/"/>
+    <category term="Greenplum操作" scheme="https://elubrazione.github.io/tags/Greenplum%E6%93%8D%E4%BD%9C/"/>
     
-    <category term="Linux磁盘扩容" scheme="http://example.com/tags/Linux%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    <category term="Linux磁盘扩容" scheme="https://elubrazione.github.io/tags/Linux%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
     
-    <category term="debug记录" scheme="http://example.com/tags/debug%E8%AE%B0%E5%BD%95/"/>
+    <category term="debug记录" scheme="https://elubrazione.github.io/tags/debug%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>基于深度学习的三维重建</title>
-    <link href="http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://example.com/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-04-30T08:51:01.000Z</published>
     <updated>2023-05-05T05:47:56.486Z</updated>
     
@@ -115,21 +115,21 @@
     
     
     
-    <category term="HUST_COURSE" scheme="http://example.com/categories/HUST-COURSE/"/>
+    <category term="HUST_COURSE" scheme="https://elubrazione.github.io/categories/HUST-COURSE/"/>
     
     
-    <category term="计算机视觉" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    <category term="计算机视觉" scheme="https://elubrazione.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
-    <category term="三维重建" scheme="http://example.com/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
+    <category term="三维重建" scheme="https://elubrazione.github.io/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/"/>
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习" scheme="https://elubrazione.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>Greenplum &amp; PostgreSQL</title>
-    <link href="http://example.com/2023/04/28/database/"/>
-    <id>http://example.com/2023/04/28/database/</id>
+    <link href="https://elubrazione.github.io/2023/04/28/database/"/>
+    <id>https://elubrazione.github.io/2023/04/28/database/</id>
     <published>2023-04-28T01:43:16.000Z</published>
     <updated>2023-07-25T18:05:19.149Z</updated>
     
@@ -140,19 +140,19 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="https://elubrazione.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>HUST大数据管理lab4教程</title>
-    <link href="http://example.com/2023/04/26/bdmlab4/"/>
-    <id>http://example.com/2023/04/26/bdmlab4/</id>
+    <link href="https://elubrazione.github.io/2023/04/26/bdmlab4/"/>
+    <id>https://elubrazione.github.io/2023/04/26/bdmlab4/</id>
     <published>2023-04-25T22:38:20.000Z</published>
     <updated>2023-05-06T08:28:36.490Z</updated>
     
@@ -163,50 +163,50 @@
     
     
     
-    <category term="HUST_COURSE" scheme="http://example.com/categories/HUST-COURSE/"/>
+    <category term="HUST_COURSE" scheme="https://elubrazione.github.io/categories/HUST-COURSE/"/>
     
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="https://elubrazione.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="MongoDB" scheme="http://example.com/tags/MongoDB/"/>
+    <category term="MongoDB" scheme="https://elubrazione.github.io/tags/MongoDB/"/>
     
-    <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
+    <category term="MySQL" scheme="https://elubrazione.github.io/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>HUST大数据管理lab3教程</title>
-    <link href="http://example.com/2023/04/13/bdmlab3/"/>
-    <id>http://example.com/2023/04/13/bdmlab3/</id>
+    <link href="https://elubrazione.github.io/2023/04/13/bdmlab3/"/>
+    <id>https://elubrazione.github.io/2023/04/13/bdmlab3/</id>
     <published>2023-04-13T06:42:33.000Z</published>
     <updated>2023-05-06T08:28:31.916Z</updated>
     
-    <content type="html"><![CDATA[<p>任务三：多数据库交互应用实验</p><span id="more"></span><h3 id="3-1"><a href="#3-1" class="headerlink" title="3-1"></a>3-1</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>使用Neo4j查找：找出包含的商家种类超过10类的城市（记得去重），并在Neo4j以表格形式输出满足以上条件的每个城市中的商家信息：城市，商家名称，商家地址。</p><h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (c:CityNode)<span class="operator">&lt;</span><span class="operator">-</span>[:IN_CITY]<span class="operator">-</span>(b:BusinessNode)<span class="operator">-</span>[:IN_CATEGORY]<span class="operator">-</span><span class="operator">&gt;</span>(a:CategoryNode)</span><br><span class="line"><span class="keyword">WITH</span> c, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> a) <span class="keyword">AS</span> category_count</span><br><span class="line"><span class="keyword">WHERE</span> category_count <span class="operator">&gt;</span> <span class="number">10</span></span><br><span class="line"><span class="keyword">MATCH</span> (c)<span class="operator">&lt;</span><span class="operator">-</span>[:IN_CITY]<span class="operator">-</span>(b:BusinessNode)</span><br><span class="line"><span class="keyword">RETURN</span> c.city <span class="keyword">AS</span> city, b.name <span class="keyword">AS</span> name, b.address <span class="keyword">AS</span> address</span><br></pre></td></tr></table></figure><h3 id="3-2"><a href="#3-2" class="headerlink" title="3-2"></a>3-2</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>将1得到的结果导入MongoDB，并使用该表格数据，统计其中所有出现的商家名及该商家名对应的出现次数，并按照出现次数降序排序:<br>(1) 使用aggregate和mapreduce两种方式实现<br>(2) 比较这两种方式的执行效率并分析其原因。</p><h4 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h4><h5 id="Neo4j结果导入MongoDB"><a href="#Neo4j结果导入MongoDB" class="headerlink" title="Neo4j结果导入MongoDB"></a>Neo4j结果导入MongoDB</h5><p>1.将刚刚neo4j中的输出结果用csv格式下载到本地。打开终端，cd到刚刚csv保存的目录下，输入以下命令将数据导入到服务器上。</p><ul><li>这里的3-1.csv是刚刚保存的输出结果的文件名</li><li><a href="mailto:&#114;&#x6f;&#111;&#x74;&#64;&#x31;&#50;&#x34;&#x2e;&#x37;&#x31;&#x2e;&#x31;&#52;&#54;&#46;&#x31;&#55;&#56;">&#114;&#x6f;&#111;&#x74;&#64;&#x31;&#50;&#x34;&#x2e;&#x37;&#x31;&#x2e;&#x31;&#52;&#54;&#46;&#x31;&#55;&#56;</a>是服务器用户名和IP地址</li><li>:&#x2F;root&#x2F; 代表上传目标路径</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./3-1.csv root@124.71.146.178:/root/</span><br></pre></td></tr></table></figure><p>运行命令后，输入服务器密码即可，如下</p><p><img src="/2023/04/13/bdmlab3/3-2-2.png" alt="image3-2-2"></p><p>在服务器上可以看到root&#x2F;下以有我们导入的数据</p><p><img src="/2023/04/13/bdmlab3/3-2-3.png" alt="image3-2-3"></p><p>2.切换到mongoDB的yelp数据集并创建一个新的集合，这里叫做CityBusiness</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use yelp</span><br><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;CityBusiness&quot;</span>)</span><br><span class="line">show collections</span><br></pre></td></tr></table></figure><p><img src="/2023/04/13/bdmlab3/3-2-1.png" alt="image3-2-1"></p><p>3.退出mongoDB，回到~，把数据导入到mongoDB中的yelp数据集的CityBusiness集合中。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -d=yelp -c=CityBusiness --type=csv --headerline ./3-1.csv</span><br></pre></td></tr></table></figure><p>运行后显示导入成功</p><p><img src="/2023/04/13/bdmlab3/3-2-4.png" alt="image3-2-4"></p><p>进入mongoDB查询看看，可以查到数据</p><p><img src="/2023/04/13/bdmlab3/3-2-5.png" alt="image3-2-5"></p><h5 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h5><p><strong>1. Aggregate</strong><br>按照name字段对文档进行分组，使用<code>$sum</code>操作符对每组文档的数量进行求和，生成一个新的count字段。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">CityBusiness</span>.<span class="title function_">aggregate</span>([</span><br><span class="line">  &#123; <span class="attr">$group</span>: &#123; <span class="attr">_id</span>: <span class="string">&#x27;$name&#x27;</span>, <span class="attr">count</span>: &#123; <span class="attr">$sum</span>: <span class="number">1</span> &#125; &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">$sort</span>: &#123; <span class="attr">count</span>: -<span class="number">1</span> &#125; &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure><p><strong>2. Mapreduce</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">CityBusiness</span>.<span class="title function_">mapReduce</span>(</span><br><span class="line">  <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">emit</span>(<span class="variable language_">this</span>.<span class="property">name</span>, <span class="number">1</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span>(<span class="params">key, values</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">sum</span>(values);</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">out</span>: &#123; <span class="attr">inline</span>: <span class="number">1</span> &#125;,</span><br><span class="line">    <span class="attr">finalize</span>: <span class="keyword">function</span>(<span class="params">key, reducedValue</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: reducedValue &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h5 id="比较分析"><a href="#比较分析" class="headerlink" title="比较分析"></a>比较分析</h5><p>结果是aggregate方法特别快、无等待感，但是mapreduce要特别久，下图是mapreduce输出结果</p><p><img src="/2023/04/13/bdmlab3/3-2-8.png" alt="image3-2-8"></p><p>分析如下</p><ul><li><p>操作数据的过程中不需要频繁地读写磁盘，aggregate操作可以在内存中完成。相比之下，mapreduce 需要对所有输入数据进行读取和写入，对磁盘的操作比较频繁，效率相对较低。</p></li><li><p>aggregate 支持多个操作符的串联使用，因此可以将多个操作合并在一起执行，减少操作次数和磁盘 I&#x2F;O。而 mapreduce 的过程中，由于需要进行两个阶段的操作，会产生较多的数据中间输出和磁盘读写操作，导致效率相对较低。</p></li></ul><h3 id="3-3"><a href="#3-3" class="headerlink" title="3-3"></a>3-3</h3><h4 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h4><p>在Neo4j中查找所有商家，要求返回商家的名字，所在城市、商铺类。<br>(1) 将查找结果导入MongoDB中实现对数据的去重（提示：使用aggregate，仅保留城市、商铺类型即可）<br>(2) 将去重后的结果导入Neo4j中的新库result中，完成（City-[Has]-&gt;Category）图谱的构建。</p><h4 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h4><p>1.Neo4j数据库查询操作</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (b:BusinessNode)<span class="operator">-</span>[:IN_CATEGORY]<span class="operator">-</span><span class="operator">&gt;</span>(c:CategoryNode)</span><br><span class="line"><span class="keyword">RETURN</span> b.name <span class="keyword">AS</span> business_name, b.city <span class="keyword">AS</span> city, c.category <span class="keyword">AS</span> category</span><br></pre></td></tr></table></figure><p>可以看到结果条数</p><p><img src="/2023/04/13/bdmlab3/3-3-1.png" alt="image3-3-1"></p><p>2.导入服务器和MongoDB操作不再赘述，请看本文档的3-2章节。这里新的集合名叫做BusinessAll</p><p><img src="/2023/04/13/bdmlab3/3-3-2.png" alt="image3-3-2"></p><p><img src="/2023/04/13/bdmlab3/3-3-3.png" alt="iamge3-3-3"></p><p><img src="/2023/04/13/bdmlab3/3-3-4.png" alt="iamge3-3-4"></p><p>3.去重操作<br>使用<code>$group</code>将BusinessAll集合中所有的文档按照city和category字段进行分组，然后用<code>$forEach</code>将前面结果中的数据插入到BusiDistinct集合中；BusiDistinct集合中的所有文档，即为不重复的城市和类别组合。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;BusiDistinct&quot;</span>)</span><br><span class="line">db.<span class="property">BusinessAll</span>.<span class="title function_">aggregate</span>([</span><br><span class="line">  &#123; <span class="attr">$group</span>: &#123; <span class="attr">_id</span>: &#123; <span class="attr">city</span>: <span class="string">&#x27;$city&#x27;</span>, <span class="attr">category</span>: <span class="string">&#x27;$category&#x27;</span> &#125; &#125; &#125;</span><br><span class="line">]).<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123; db.<span class="property">BusiDistinct</span>.<span class="title function_">insert</span>( item.<span class="property">_id</span> ) &#125; )</span><br></pre></td></tr></table></figure><p>查看结果</p><p><img src="/2023/04/13/bdmlab3/3-3-5.png" alt="image3-3-5"></p><p>4.导出BusiDistinct集合的内容为csv文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d yelp -c BusiDistinct --type=csv --fields city,category --out result.csv</span><br></pre></td></tr></table></figure><p><img src="/2023/04/13/bdmlab3/3-3-6.png" alt="image3-3-6"></p><p>5.上一步导出后，result.csv文件位于~路径下，用cp命令把他放到neo4j安装目录的的import路径下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/neo4j-community-4.0.9/import</span><br><span class="line">cp /root/result.csv ./</span><br></pre></td></tr></table></figure><p>6.在neo4j网页数据库中输入以下命令，要对空值做处理</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV <span class="keyword">WITH</span> HEADERS <span class="keyword">FROM</span> &quot;file:///result.csv&quot; <span class="keyword">AS</span> f</span><br><span class="line"><span class="keyword">MERGE</span> (c:CityNode &#123;city: <span class="built_in">COALESCE</span>(f.city, &quot;&quot;)&#125;)</span><br><span class="line"><span class="keyword">MERGE</span> (a:CategoryNode &#123;category: <span class="built_in">COALESCE</span>(f.category, &quot;&quot;)&#125;)</span><br><span class="line"><span class="keyword">CREATE</span> (c) <span class="operator">-</span>[:Has]<span class="operator">-</span><span class="operator">&gt;</span> (a)</span><br></pre></td></tr></table></figure><p>结果如下</p><p><img src="/2023/04/13/bdmlab3/3-3-7.png" alt="image3-3-7"></p><p>查看一下图谱</p><p><img src="/2023/04/13/bdmlab3/3-3-8.png" alt="image3-3-8"></p>]]></content>
+    <content type="html"><![CDATA[<p>任务三：多数据库交互应用实验</p><span id="more"></span><h3 id="3-1"><a href="#3-1" class="headerlink" title="3-1"></a>3-1</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>使用Neo4j查找：找出包含的商家种类超过10类的城市（记得去重），并在Neo4j以表格形式输出满足以上条件的每个城市中的商家信息：城市，商家名称，商家地址。</p><h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (c:CityNode)<span class="operator">&lt;</span><span class="operator">-</span>[:IN_CITY]<span class="operator">-</span>(b:BusinessNode)<span class="operator">-</span>[:IN_CATEGORY]<span class="operator">-</span><span class="operator">&gt;</span>(a:CategoryNode)</span><br><span class="line"><span class="keyword">WITH</span> c, <span class="built_in">count</span>(<span class="keyword">DISTINCT</span> a) <span class="keyword">AS</span> category_count</span><br><span class="line"><span class="keyword">WHERE</span> category_count <span class="operator">&gt;</span> <span class="number">10</span></span><br><span class="line"><span class="keyword">MATCH</span> (c)<span class="operator">&lt;</span><span class="operator">-</span>[:IN_CITY]<span class="operator">-</span>(b:BusinessNode)</span><br><span class="line"><span class="keyword">RETURN</span> c.city <span class="keyword">AS</span> city, b.name <span class="keyword">AS</span> name, b.address <span class="keyword">AS</span> address</span><br></pre></td></tr></table></figure><h3 id="3-2"><a href="#3-2" class="headerlink" title="3-2"></a>3-2</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>将1得到的结果导入MongoDB，并使用该表格数据，统计其中所有出现的商家名及该商家名对应的出现次数，并按照出现次数降序排序:<br>(1) 使用aggregate和mapreduce两种方式实现<br>(2) 比较这两种方式的执行效率并分析其原因。</p><h4 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h4><h5 id="Neo4j结果导入MongoDB"><a href="#Neo4j结果导入MongoDB" class="headerlink" title="Neo4j结果导入MongoDB"></a>Neo4j结果导入MongoDB</h5><p>1.将刚刚neo4j中的输出结果用csv格式下载到本地。打开终端，cd到刚刚csv保存的目录下，输入以下命令将数据导入到服务器上。</p><ul><li>这里的3-1.csv是刚刚保存的输出结果的文件名</li><li><a href="mailto:&#114;&#111;&#111;&#x74;&#x40;&#49;&#50;&#x34;&#46;&#x37;&#x31;&#x2e;&#x31;&#x34;&#54;&#x2e;&#x31;&#55;&#x38;">&#114;&#111;&#111;&#x74;&#x40;&#49;&#50;&#x34;&#46;&#x37;&#x31;&#x2e;&#x31;&#x34;&#54;&#x2e;&#x31;&#55;&#x38;</a>是服务器用户名和IP地址</li><li>:&#x2F;root&#x2F; 代表上传目标路径</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./3-1.csv root@124.71.146.178:/root/</span><br></pre></td></tr></table></figure><p>运行命令后，输入服务器密码即可，如下</p><p><img src="/2023/04/13/bdmlab3/3-2-2.png" alt="image3-2-2"></p><p>在服务器上可以看到root&#x2F;下以有我们导入的数据</p><p><img src="/2023/04/13/bdmlab3/3-2-3.png" alt="image3-2-3"></p><p>2.切换到mongoDB的yelp数据集并创建一个新的集合，这里叫做CityBusiness</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use yelp</span><br><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;CityBusiness&quot;</span>)</span><br><span class="line">show collections</span><br></pre></td></tr></table></figure><p><img src="/2023/04/13/bdmlab3/3-2-1.png" alt="image3-2-1"></p><p>3.退出mongoDB，回到~，把数据导入到mongoDB中的yelp数据集的CityBusiness集合中。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoimport -d=yelp -c=CityBusiness --type=csv --headerline ./3-1.csv</span><br></pre></td></tr></table></figure><p>运行后显示导入成功</p><p><img src="/2023/04/13/bdmlab3/3-2-4.png" alt="image3-2-4"></p><p>进入mongoDB查询看看，可以查到数据</p><p><img src="/2023/04/13/bdmlab3/3-2-5.png" alt="image3-2-5"></p><h5 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h5><p><strong>1. Aggregate</strong><br>按照name字段对文档进行分组，使用<code>$sum</code>操作符对每组文档的数量进行求和，生成一个新的count字段。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">CityBusiness</span>.<span class="title function_">aggregate</span>([</span><br><span class="line">  &#123; <span class="attr">$group</span>: &#123; <span class="attr">_id</span>: <span class="string">&#x27;$name&#x27;</span>, <span class="attr">count</span>: &#123; <span class="attr">$sum</span>: <span class="number">1</span> &#125; &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">$sort</span>: &#123; <span class="attr">count</span>: -<span class="number">1</span> &#125; &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure><p><strong>2. Mapreduce</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">CityBusiness</span>.<span class="title function_">mapReduce</span>(</span><br><span class="line">  <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">emit</span>(<span class="variable language_">this</span>.<span class="property">name</span>, <span class="number">1</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span>(<span class="params">key, values</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Array</span>.<span class="title function_">sum</span>(values);</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">out</span>: &#123; <span class="attr">inline</span>: <span class="number">1</span> &#125;,</span><br><span class="line">    <span class="attr">finalize</span>: <span class="keyword">function</span>(<span class="params">key, reducedValue</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: reducedValue &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h5 id="比较分析"><a href="#比较分析" class="headerlink" title="比较分析"></a>比较分析</h5><p>结果是aggregate方法特别快、无等待感，但是mapreduce要特别久，下图是mapreduce输出结果</p><p><img src="/2023/04/13/bdmlab3/3-2-8.png" alt="image3-2-8"></p><p>分析如下</p><ul><li><p>操作数据的过程中不需要频繁地读写磁盘，aggregate操作可以在内存中完成。相比之下，mapreduce 需要对所有输入数据进行读取和写入，对磁盘的操作比较频繁，效率相对较低。</p></li><li><p>aggregate 支持多个操作符的串联使用，因此可以将多个操作合并在一起执行，减少操作次数和磁盘 I&#x2F;O。而 mapreduce 的过程中，由于需要进行两个阶段的操作，会产生较多的数据中间输出和磁盘读写操作，导致效率相对较低。</p></li></ul><h3 id="3-3"><a href="#3-3" class="headerlink" title="3-3"></a>3-3</h3><h4 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h4><p>在Neo4j中查找所有商家，要求返回商家的名字，所在城市、商铺类。<br>(1) 将查找结果导入MongoDB中实现对数据的去重（提示：使用aggregate，仅保留城市、商铺类型即可）<br>(2) 将去重后的结果导入Neo4j中的新库result中，完成（City-[Has]-&gt;Category）图谱的构建。</p><h4 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h4><p>1.Neo4j数据库查询操作</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (b:BusinessNode)<span class="operator">-</span>[:IN_CATEGORY]<span class="operator">-</span><span class="operator">&gt;</span>(c:CategoryNode)</span><br><span class="line"><span class="keyword">RETURN</span> b.name <span class="keyword">AS</span> business_name, b.city <span class="keyword">AS</span> city, c.category <span class="keyword">AS</span> category</span><br></pre></td></tr></table></figure><p>可以看到结果条数</p><p><img src="/2023/04/13/bdmlab3/3-3-1.png" alt="image3-3-1"></p><p>2.导入服务器和MongoDB操作不再赘述，请看本文档的3-2章节。这里新的集合名叫做BusinessAll</p><p><img src="/2023/04/13/bdmlab3/3-3-2.png" alt="image3-3-2"></p><p><img src="/2023/04/13/bdmlab3/3-3-3.png" alt="iamge3-3-3"></p><p><img src="/2023/04/13/bdmlab3/3-3-4.png" alt="iamge3-3-4"></p><p>3.去重操作<br>使用<code>$group</code>将BusinessAll集合中所有的文档按照city和category字段进行分组，然后用<code>$forEach</code>将前面结果中的数据插入到BusiDistinct集合中；BusiDistinct集合中的所有文档，即为不重复的城市和类别组合。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;BusiDistinct&quot;</span>)</span><br><span class="line">db.<span class="property">BusinessAll</span>.<span class="title function_">aggregate</span>([</span><br><span class="line">  &#123; <span class="attr">$group</span>: &#123; <span class="attr">_id</span>: &#123; <span class="attr">city</span>: <span class="string">&#x27;$city&#x27;</span>, <span class="attr">category</span>: <span class="string">&#x27;$category&#x27;</span> &#125; &#125; &#125;</span><br><span class="line">]).<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123; db.<span class="property">BusiDistinct</span>.<span class="title function_">insert</span>( item.<span class="property">_id</span> ) &#125; )</span><br></pre></td></tr></table></figure><p>查看结果</p><p><img src="/2023/04/13/bdmlab3/3-3-5.png" alt="image3-3-5"></p><p>4.导出BusiDistinct集合的内容为csv文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -d yelp -c BusiDistinct --type=csv --fields city,category --out result.csv</span><br></pre></td></tr></table></figure><p><img src="/2023/04/13/bdmlab3/3-3-6.png" alt="image3-3-6"></p><p>5.上一步导出后，result.csv文件位于~路径下，用cp命令把他放到neo4j安装目录的的import路径下</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/neo4j-community-4.0.9/import</span><br><span class="line">cp /root/result.csv ./</span><br></pre></td></tr></table></figure><p>6.在neo4j网页数据库中输入以下命令，要对空值做处理</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOAD CSV <span class="keyword">WITH</span> HEADERS <span class="keyword">FROM</span> &quot;file:///result.csv&quot; <span class="keyword">AS</span> f</span><br><span class="line"><span class="keyword">MERGE</span> (c:CityNode &#123;city: <span class="built_in">COALESCE</span>(f.city, &quot;&quot;)&#125;)</span><br><span class="line"><span class="keyword">MERGE</span> (a:CategoryNode &#123;category: <span class="built_in">COALESCE</span>(f.category, &quot;&quot;)&#125;)</span><br><span class="line"><span class="keyword">CREATE</span> (c) <span class="operator">-</span>[:Has]<span class="operator">-</span><span class="operator">&gt;</span> (a)</span><br></pre></td></tr></table></figure><p>结果如下</p><p><img src="/2023/04/13/bdmlab3/3-3-7.png" alt="image3-3-7"></p><p>查看一下图谱</p><p><img src="/2023/04/13/bdmlab3/3-3-8.png" alt="image3-3-8"></p>]]></content>
     
     
     <summary type="html">&lt;p&gt;任务三：多数据库交互应用实验&lt;/p&gt;</summary>
     
     
     
-    <category term="HUST_COURSE" scheme="http://example.com/categories/HUST-COURSE/"/>
+    <category term="HUST_COURSE" scheme="https://elubrazione.github.io/categories/HUST-COURSE/"/>
     
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="https://elubrazione.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="MongoDB" scheme="http://example.com/tags/MongoDB/"/>
+    <category term="MongoDB" scheme="https://elubrazione.github.io/tags/MongoDB/"/>
     
-    <category term="Neo4j" scheme="http://example.com/tags/Neo4j/"/>
+    <category term="Neo4j" scheme="https://elubrazione.github.io/tags/Neo4j/"/>
     
   </entry>
   
   <entry>
     <title>Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</title>
-    <link href="http://example.com/2023/04/04/Slalom/"/>
-    <id>http://example.com/2023/04/04/Slalom/</id>
+    <link href="https://elubrazione.github.io/2023/04/04/Slalom/"/>
+    <id>https://elubrazione.github.io/2023/04/04/Slalom/</id>
     <published>2023-04-04T06:23:42.000Z</published>
     <updated>2023-07-25T18:05:26.972Z</updated>
     
@@ -217,21 +217,21 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="what-if索引推荐" scheme="http://example.com/tags/what-if%E7%B4%A2%E5%BC%95%E6%8E%A8%E8%8D%90/"/>
+    <category term="what-if索引推荐" scheme="https://elubrazione.github.io/tags/what-if%E7%B4%A2%E5%BC%95%E6%8E%A8%E8%8D%90/"/>
     
-    <category term="列存分区" scheme="http://example.com/tags/%E5%88%97%E5%AD%98%E5%88%86%E5%8C%BA/"/>
+    <category term="列存分区" scheme="https://elubrazione.github.io/tags/%E5%88%97%E5%AD%98%E5%88%86%E5%8C%BA/"/>
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>HUST大数据管理lab2教程</title>
-    <link href="http://example.com/2023/03/24/bdmlab2/"/>
-    <id>http://example.com/2023/03/24/bdmlab2/</id>
+    <link href="https://elubrazione.github.io/2023/03/24/bdmlab2/"/>
+    <id>https://elubrazione.github.io/2023/03/24/bdmlab2/</id>
     <published>2023-03-24T03:10:22.000Z</published>
     <updated>2023-05-06T08:28:28.379Z</updated>
     
@@ -242,21 +242,21 @@
     
     
     
-    <category term="HUST_COURSE" scheme="http://example.com/categories/HUST-COURSE/"/>
+    <category term="HUST_COURSE" scheme="https://elubrazione.github.io/categories/HUST-COURSE/"/>
     
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="https://elubrazione.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="Neo4j" scheme="http://example.com/tags/Neo4j/"/>
+    <category term="Neo4j" scheme="https://elubrazione.github.io/tags/Neo4j/"/>
     
   </entry>
   
   <entry>
     <title>HUST大数据管理lab1教程</title>
-    <link href="http://example.com/2023/03/12/bdmlab1/"/>
-    <id>http://example.com/2023/03/12/bdmlab1/</id>
+    <link href="https://elubrazione.github.io/2023/03/12/bdmlab1/"/>
+    <id>https://elubrazione.github.io/2023/03/12/bdmlab1/</id>
     <published>2023-03-12T04:20:20.000Z</published>
     <updated>2023-05-06T08:28:24.437Z</updated>
     
@@ -267,21 +267,21 @@
     
     
     
-    <category term="HUST_COURSE" scheme="http://example.com/categories/HUST-COURSE/"/>
+    <category term="HUST_COURSE" scheme="https://elubrazione.github.io/categories/HUST-COURSE/"/>
     
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-    <category term="教程" scheme="http://example.com/tags/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="https://elubrazione.github.io/tags/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="MongoDB" scheme="http://example.com/tags/MongoDB/"/>
+    <category term="MongoDB" scheme="https://elubrazione.github.io/tags/MongoDB/"/>
     
   </entry>
   
   <entry>
     <title>AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</title>
-    <link href="http://example.com/2023/01/22/AutoMap/"/>
-    <id>http://example.com/2023/01/22/AutoMap/</id>
+    <link href="https://elubrazione.github.io/2023/01/22/AutoMap/"/>
+    <id>https://elubrazione.github.io/2023/01/22/AutoMap/</id>
     <published>2023-01-22T03:55:44.000Z</published>
     <updated>2023-08-19T17:55:52.158Z</updated>
     
@@ -292,17 +292,17 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="故障诊断" scheme="http://example.com/tags/%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/"/>
+    <category term="故障诊断" scheme="https://elubrazione.github.io/tags/%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/"/>
     
   </entry>
   
   <entry>
     <title>Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</title>
-    <link href="http://example.com/2023/01/19/Lifelong-Disk-Failure/"/>
-    <id>http://example.com/2023/01/19/Lifelong-Disk-Failure/</id>
+    <link href="https://elubrazione.github.io/2023/01/19/Lifelong-Disk-Failure/"/>
+    <id>https://elubrazione.github.io/2023/01/19/Lifelong-Disk-Failure/</id>
     <published>2023-01-19T02:08:23.000Z</published>
     <updated>2023-08-19T17:56:03.119Z</updated>
     
@@ -313,19 +313,19 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="异常检测" scheme="http://example.com/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    <category term="异常检测" scheme="https://elubrazione.github.io/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
-    <category term="磁盘故障" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%95%85%E9%9A%9C/"/>
+    <category term="磁盘故障" scheme="https://elubrazione.github.io/tags/%E7%A3%81%E7%9B%98%E6%95%85%E9%9A%9C/"/>
     
   </entry>
   
   <entry>
     <title>Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</title>
-    <link href="http://example.com/2023/01/15/Minority-Disk-Failure/"/>
-    <id>http://example.com/2023/01/15/Minority-Disk-Failure/</id>
+    <link href="https://elubrazione.github.io/2023/01/15/Minority-Disk-Failure/"/>
+    <id>https://elubrazione.github.io/2023/01/15/Minority-Disk-Failure/</id>
     <published>2023-01-15T01:08:04.000Z</published>
     <updated>2023-07-25T18:05:07.688Z</updated>
     
@@ -336,21 +336,21 @@
     
     
     
-    <category term="腾讯AI训练营" scheme="http://example.com/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
+    <category term="腾讯AI训练营" scheme="https://elubrazione.github.io/categories/%E8%85%BE%E8%AE%AFAI%E8%AE%AD%E7%BB%83%E8%90%A5/"/>
     
     
-    <category term="磁盘故障" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%95%85%E9%9A%9C/"/>
+    <category term="磁盘故障" scheme="https://elubrazione.github.io/tags/%E7%A3%81%E7%9B%98%E6%95%85%E9%9A%9C/"/>
     
-    <category term="机器学习" scheme="http://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="机器学习" scheme="https://elubrazione.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="迁移学习" scheme="http://example.com/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/"/>
+    <category term="迁移学习" scheme="https://elubrazione.github.io/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>React笔记</title>
-    <link href="http://example.com/2022/10/22/React/"/>
-    <id>http://example.com/2022/10/22/React/</id>
+    <link href="https://elubrazione.github.io/2022/10/22/React/"/>
+    <id>https://elubrazione.github.io/2022/10/22/React/</id>
     <published>2022-10-22T06:43:41.000Z</published>
     <updated>2022-10-23T15:24:48.976Z</updated>
     
@@ -362,20 +362,20 @@
     
     
     
-    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="https://elubrazione.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="React" scheme="http://example.com/tags/React/"/>
+    <category term="React" scheme="https://elubrazione.github.io/tags/React/"/>
     
-    <category term="Webpack" scheme="http://example.com/tags/Webpack/"/>
+    <category term="Webpack" scheme="https://elubrazione.github.io/tags/Webpack/"/>
     
-    <category term="Eslint" scheme="http://example.com/tags/Eslint/"/>
+    <category term="Eslint" scheme="https://elubrazione.github.io/tags/Eslint/"/>
     
   </entry>
   
   <entry>
     <title>Refs and the DOM</title>
-    <link href="http://example.com/2022/10/17/Refs-and-the-DOM/"/>
-    <id>http://example.com/2022/10/17/Refs-and-the-DOM/</id>
+    <link href="https://elubrazione.github.io/2022/10/17/Refs-and-the-DOM/"/>
+    <id>https://elubrazione.github.io/2022/10/17/Refs-and-the-DOM/</id>
     <published>2022-10-17T14:39:15.000Z</published>
     <updated>2022-10-19T08:17:32.115Z</updated>
     
@@ -388,16 +388,16 @@
     
     
     
-    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="https://elubrazione.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="React" scheme="http://example.com/tags/React/"/>
+    <category term="React" scheme="https://elubrazione.github.io/tags/React/"/>
     
   </entry>
   
   <entry>
     <title>Webpack</title>
-    <link href="http://example.com/2022/10/16/Webpack/"/>
-    <id>http://example.com/2022/10/16/Webpack/</id>
+    <link href="https://elubrazione.github.io/2022/10/16/Webpack/"/>
+    <id>https://elubrazione.github.io/2022/10/16/Webpack/</id>
     <published>2022-10-16T03:36:28.000Z</published>
     <updated>2023-08-19T17:55:00.157Z</updated>
     
@@ -409,14 +409,14 @@
     
     
     
-    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="https://elubrazione.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>七月的最后一个周末</title>
-    <link href="http://example.com/2022/08/04/%E4%B8%83%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/"/>
-    <id>http://example.com/2022/08/04/%E4%B8%83%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/</id>
+    <link href="https://elubrazione.github.io/2022/08/04/%E4%B8%83%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/"/>
+    <id>https://elubrazione.github.io/2022/08/04/%E4%B8%83%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/</id>
     <published>2022-08-03T20:45:24.000Z</published>
     <updated>2022-10-17T16:32:30.270Z</updated>
     
@@ -431,14 +431,14 @@
     
     
     
-    <category term="随笔" scheme="http://example.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://elubrazione.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>18.四数之和</title>
-    <link href="http://example.com/2022/07/29/18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://example.com/2022/07/29/18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
+    <link href="https://elubrazione.github.io/2022/07/29/18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <id>https://elubrazione.github.io/2022/07/29/18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
     <published>2022-07-28T22:05:41.000Z</published>
     <updated>2022-08-14T00:04:58.035Z</updated>
     
@@ -449,21 +449,21 @@
     
     
     
-    <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://elubrazione.github.io/categories/Algorithm/"/>
     
     
-    <category term="双指针" scheme="http://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <category term="LeetCode" scheme="https://elubrazione.github.io/tags/LeetCode/"/>
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    <category term="双指针" scheme="https://elubrazione.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
-    <category term="剪枝" scheme="http://example.com/tags/%E5%89%AA%E6%9E%9D/"/>
+    <category term="剪枝" scheme="https://elubrazione.github.io/tags/%E5%89%AA%E6%9E%9D/"/>
     
   </entry>
   
   <entry>
     <title>142.环形链表Ⅱ</title>
-    <link href="http://example.com/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/"/>
-    <id>http://example.com/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/</id>
+    <link href="https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/"/>
+    <id>https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/</id>
     <published>2022-07-26T16:32:36.000Z</published>
     <updated>2022-08-14T00:05:23.721Z</updated>
     
@@ -474,19 +474,19 @@
     
     
     
-    <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://elubrazione.github.io/categories/Algorithm/"/>
     
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    <category term="链表" scheme="https://elubrazione.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
-    <category term="链表" scheme="http://example.com/tags/%E9%93%BE%E8%A1%A8/"/>
+    <category term="LeetCode" scheme="https://elubrazione.github.io/tags/LeetCode/"/>
     
   </entry>
   
   <entry>
     <title>15.三数之和</title>
-    <link href="http://example.com/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://example.com/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
+    <link href="https://elubrazione.github.io/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <id>https://elubrazione.github.io/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
     <published>2022-07-24T04:37:54.000Z</published>
     <updated>2022-08-14T00:04:49.631Z</updated>
     
@@ -497,12 +497,12 @@
     
     
     
-    <category term="Algorithm" scheme="http://example.com/categories/Algorithm/"/>
+    <category term="Algorithm" scheme="https://elubrazione.github.io/categories/Algorithm/"/>
     
     
-    <category term="双指针" scheme="http://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <category term="LeetCode" scheme="https://elubrazione.github.io/tags/LeetCode/"/>
     
-    <category term="LeetCode" scheme="http://example.com/tags/LeetCode/"/>
+    <category term="双指针" scheme="https://elubrazione.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
   </entry>
   

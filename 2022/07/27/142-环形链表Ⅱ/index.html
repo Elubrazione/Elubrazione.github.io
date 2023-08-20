@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
     <!-- title -->
 
 
@@ -12,9 +12,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Elubrazione">
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="John Doe">
+    <meta name="copyright" content="Elubrazione">
     
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
@@ -22,15 +22,15 @@
     <meta name="description" content="快慢指针和万恶的数学推理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="142.环形链表Ⅱ">
-<meta property="og:url" content="http://example.com/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/index.html">
+<meta property="og:url" content="https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="快慢指针和万恶的数学推理">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale">
 <meta property="article:published_time" content="2022-07-26T16:32:36.000Z">
 <meta property="article:modified_time" content="2022-08-14T00:05:23.721Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="链表">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -328,16 +328,16 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="LeetCode">LeetCode</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags="链表">链表</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="LeetCode">LeetCode</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">513</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">513</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -508,6 +508,14 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//慢指针cur，快指针nex，都指向第一个结点，重合</span></span><br><span class="line">        <span class="comment">//判断是否有环的变量hasCycle，初始为false</span></span><br><span class="line">        ListNode *cur = head, *nex = head;</span><br><span class="line">        <span class="type">bool</span> hasCycle = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//保证慢指针和快指针不为空</span></span><br><span class="line">        <span class="keyword">while</span>(nex!=<span class="literal">NULL</span> &amp;&amp; nex-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            nex = nex-&gt;next-&gt;next;</span><br><span class="line">            <span class="comment">//相等说明fast和slow相遇了，而它们必定在环内相遇，所以有环。</span></span><br><span class="line">            <span class="keyword">if</span>(nex == cur)&#123;</span><br><span class="line">                hasCycle = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//若有环</span></span><br><span class="line">        <span class="keyword">if</span>(hasCycle)&#123;</span><br><span class="line">            <span class="comment">//使nex指向第一个结点，固定cur，此时cur为</span></span><br><span class="line">            nex = head;</span><br><span class="line">            <span class="keyword">while</span>(cur != nex)&#123;</span><br><span class="line">                cur = cur-&gt;next;</span><br><span class="line">                nex = nex-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> nex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
+            <p>原文链接：<a href="https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/">https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/</a>
+            <p>发表日期：<a href="https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/">July 27th 2022, 12:32:36 am</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/">August 14th 2022, 8:05:23 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator -->
     <ul class="post-paginator">
@@ -1105,9 +1113,9 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -1115,9 +1123,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -1245,26 +1253,6 @@
                 SPFA
             </span>
         
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="完全二叉树">
-                <span class="iconfont-archer">&#xe606;</span>
-                完全二叉树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="AVL树">
-                <span class="iconfont-archer">&#xe606;</span>
-                AVL树
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
                 随笔
@@ -1283,6 +1271,26 @@
             <span class="sidebar-tag-name" data-tags="深度学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
             </span>
         
             <span class="sidebar-tag-name" data-tags="top">
@@ -1341,9 +1349,9 @@
         siteMetaRoot = '/'
     }
     var siteMeta = {
-        url: "http://example.com",
+        url: "https://elubrazione.github.io",
         root: siteMetaRoot,
-        author: "John Doe"
+        author: "Elubrazione"
     }
 </script>
 
