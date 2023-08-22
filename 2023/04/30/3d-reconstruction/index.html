@@ -22,27 +22,27 @@
     <meta name="description" content="2023春计算机视觉结课作业，文献综述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于深度学习的三维重建">
-<meta property="og:url" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:url" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="2023春计算机视觉结课作业，文献综述">
 <meta property="og:locale">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/5.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/6.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/7.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/8.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/9.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/10.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/1.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/3.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/4.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/5.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/6.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/7.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/8.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/9.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/10.png">
 <meta property="article:published_time" content="2023-04-30T08:51:01.000Z">
-<meta property="article:modified_time" content="2023-05-05T05:47:56.486Z">
+<meta property="article:modified_time" content="2023-08-20T19:28:26.746Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="计算机视觉">
 <meta property="article:tag" content="三维重建">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/1.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
@@ -536,7 +536,7 @@
 <h2 id="mathcal-3-space-方法梳理"><a href="#mathcal-3-space-方法梳理" class="headerlink" title="$\mathcal{3} \space 方法梳理$"></a><a id="section-3"></a>$\mathcal{3} \space 方法梳理$</h2><p>本章节选取了一些基于深度学习的三维重建方法，按照章节<a href="#section-2.2">$2.2$</a>提到的输出数据格式进来分类介绍和详细分析。</p>
 <h3 id="mathcal-3-1-space-体素"><a href="#mathcal-3-1-space-体素" class="headerlink" title="$\mathcal{3.1} \space 体素$"></a>$\mathcal{3.1} \space 体素$</h3><p>本部分选取了$Choy$<a href="#ref-4">$[4]$</a>提出的3D-R2N2网络架构、$Park$<a href="#ref-5">$[5]$</a>提出的DeepSDF技术以及$Varol$<a href="#ref-6">$[6]$</a>提出的一种叫做BodyNet的神经网络结构进行介绍。</p>
 <h4 id="mathcal-3-1-1-space-3D-R2N2"><a href="#mathcal-3-1-1-space-3D-R2N2" class="headerlink" title="$\mathcal{3.1.1} \space 3D-R2N2$"></a>$\mathcal{3.1.1} \space 3D-R2N2$</h4><p>本篇文章提出了一种基于LSTM和GRU网络的循环神经网络的新型架构，称为3D Recurrent Reconstruction Neural Network（3D-R2N2），网络的目标是实现单视角和多视角的三维重建。该网络由三个部分组成：一个由二维卷积神经网络构成的编码器、一种名为三维卷积LSTM的新型架构和一个由三维反卷积神经网络构成的解码器。给定来自任意视角的一个或多个物体的图像，编码器将每个输入图像 $x$ 编码为低维特征 $T(x)$；然后，3D卷积LSTM单元通过选择性地更新它们的细胞状态或通过关闭输入门来保留状态；最后，解码器解码LSTM单元的隐藏状态并生成三维概率体素重建结果。总体结构如图1所示。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png" alt="3D-R2N2" title="图1. 3D-R2N2网络结构图"></p>
+<p><img src="/2023/04/30/3d-reconstruction/1.png" alt="3D-R2N2" title="图1. 3D-R2N2网络结构图"></p>
 <p><strong>编码器</strong>有标准前馈CNN网络和深度残差变体两种：</p>
 <ul>
 <li>标准前馈CNN由标准卷积层、池化层和Leaky ReLU激活函数组成，最后接一个全连接层，可以将输入图像转换为高维特征向量；</li>
@@ -545,7 +545,7 @@
 <p><strong>3D-Convolutional-LSTM</strong>根据有无输出门有以下两种。在每个时间步骤中，每个LSTM单元接收来自编码器的相同特征向量以及其邻居的隐藏状态作为输入。这些输入通过一个3×3×3卷积核进行卷积操作，并传递给LSTM单元进行处理。然后，LSTM单元将其输出传递给下一个时间步骤，并将其隐藏状态传递给其邻居。在没有输出门的版本中，LSTM单元直接将其隐藏状态作为输出。而在带有输出门的GRU版本中，LSTM单元还会根据当前输入和先前隐藏状态计算一个输出门，并使用该门来控制其输出。</p>
 <p><strong>解码器</strong>使用一个全连接层将中间表示转换为一个低分辨率3D体素模型；然后使用多个反卷积层来逐步增加输出分辨率，并生成更高分辨率的3D体素模型；最后，使用一个Sigmoid激活函数将输出限制在0到1之间。同时在训练过程中，为了提高网络性能并减少过拟合现象，模型使用了Progressive Growing的技术来逐步增加输入图像分辨率和输出网格分辨率。</p>
 <h4 id="mathcal-3-1-2-space-DeepSDF"><a href="#mathcal-3-1-2-space-DeepSDF" class="headerlink" title="$\mathcal{3.1.2} \space DeepSDF$"></a>$\mathcal{3.1.2} \space DeepSDF$</h4><p>与上一种方法的输入为2D图像不同的是，DeepSDF的输入也是三维的，因为它是一种用于处理三维几何图形的方法。本篇文章中定义了一种叫做有符号距离函数（Signed Distance Functions，后简称SDF）的连续函数，对于给定的空间点，输出该点到最近表面的距离，并用符号表示该点在表面内部或外部。基于此，将问题转换为使用深度神经网络直接回归点样本的连续SDF，形成一个决策边界作为三维几何图形的表面，对点做在表面外或内的二元分类，从而生成新的几何模型。如图2所示。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/3.png" alt="DeepSDF" title="图2. DeepSDF在兔子3D模型重建上的应用"></p>
+<p><img src="/2023/04/30/3d-reconstruction/3.png" alt="DeepSDF" title="图2. DeepSDF在兔子3D模型重建上的应用"></p>
 <p><strong>SDF</strong>定义公式如下：<br>$$SDF(\mathbf{x}) &#x3D; s : \mathbf{x} \in \mathbb{R}^3 , \space s \in \mathbb{R}. $$</p>
 <p>对于给定的三维空间点 $x$，$SDF(x)$ 表示该点到最近表面的距离，并且根据该点在表面内部或外部的位置标定正负号。其中，$s$ 表示 $x$ 到最近表面的距离，如果 $x$ 在表面内部，则 $s$ 为负数；如果 $x$ 在表面外部，则 $s$ 为正数。</p>
 <p>用来生成连续SDF所使用的模型，其结构是一种前馈神经网络。训练该网络的目标是，对于给定的空间坐标和其SDF值：<br>$$ X :&#x3D; {(\mathbf{x}, s) : SDF(\mathbf{x}) &#x3D; s }.$$</p>
@@ -558,7 +558,7 @@
 </ul>
 <p>因此，在单形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$，其输出潜在向量 $z$ 作为解码器的输入，最终输出SDF；在编码形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$ 和一个控制生成几何形状的代码向量 $c$ 的拼接，其输出潜在向量 $z$ 和前面提到的三维点坐标一起作为解码器的输入，最终输出SDF。</p>
 <h4 id="mathcal-3-1-3-space-BodyNet"><a href="#mathcal-3-1-3-space-BodyNet" class="headerlink" title="$\mathcal{3.1.3} \space BodyNet$"></a>$\mathcal{3.1.3} \space BodyNet$</h4><p>本文介绍了一种名为BodyNet的神经网络，它可以从单个图像中直接推断出三维人体形状。与上面两种方法不同的是，该网络的设计旨在解决视频编辑、动画和时尚等领域中的人体模型估计问题。BodyNet包括四个自网络，分别是二维姿态估计子网络、二维深体部位分割子网络、三维姿态估计子网络以及三维形状估计子网络。每个子网络都是由一个沙漏结构构成，其是一种常用的卷积神经网络结构，由编码器和解码器组成，可以有效地提取特征并保留空间信息。其中编码器将输入图像转换为特征向量，解码器将特征向量转换回三维体积表示。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/4.png" alt="BodyNet" title="图3. BodyNet网络结构"></p>
+<p><img src="/2023/04/30/3d-reconstruction/4.png" alt="BodyNet" title="图3. BodyNet网络结构"></p>
 <p>BodyNet中通过四个子网结构来处理不同任务，并共享特征以提高整个系统的性能，各个子网络之间通过特征融合和级联的方式进行联合。输入RGB图像后，首先经过二维姿态估计子网络和二维身体部位分割子网络，得到对应的二维姿态估计结果和身体部位分割掩模。然后将这些结果与RGB图像特征一起输入到三维姿态估计子网络中，得到对应的三维姿态估计结果。最后，将三维姿态估计结果与身体部位分割掩模一起输入到体积重建子网络中，得到对应的三维人体形状。在这个过程中，每个子网络都有自己的损失函数，并且各自通过反向传播算法来更新自己的权重和共享层的权重，最后各个损失函数通过加权平均的方式进行特征融合和级联。</p>
 <h3 id="mathcal-3-2-space-点云"><a href="#mathcal-3-2-space-点云" class="headerlink" title="$\mathcal{3.2} \space 点云$"></a>$\mathcal{3.2} \space 点云$</h3><p>本部分选取了$Li$<a href="#ref-8">$[8]$</a>所使用的变形向量场方法、$Insafutdinov$<a href="#ref-9">$[9]$</a>使用的一种基于无监督学习的方法和 $Li$<a href="#ref-10">$[10]$</a>基于基于深度形状先验和轮廓的方法进行介绍。</p>
 <h4 id="mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields"><a href="#mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields" class="headerlink" title="$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$"></a>$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$</h4><p>这篇文章提出了一种新型的单视角3D物体重建方法，主要分为深度图预测和点云重建两个步骤。</p>
@@ -572,7 +572,7 @@
 <li><strong>多视角一致性损失</strong>：先将预测点云投影到多个视角上，并计算每个视角下的距离场。然后，对于每个像素点，在所有视角下计算其距离场的平均值。最后，通过计算预测点云和真实点云之间的距离误差，并将其乘以距离场的平均值来得到多视角一致性损失。</li>
 </ul>
 <h4 id="mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning"><a href="#mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning" class="headerlink" title="$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$"></a>$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$</h4><p>本文提出了一种使用可微分点云的无监督学习方法，用于从未标记类别的特定图像集合中学习准确的3D形状以及相机的位置和方法（原文中叫做camera pose，后翻译为相机姿态）。模型由三个部分组成：一个用于预测物体的3D形状，一个用于预测相机姿态，和一个将点云渲染为图像的点云渲染器。模型总体框架如下图中的（b）所示；图（a）则展示了物体从不同的角度观察时，投影非常相似而导致相机的位置和方向存在多种可能性的问题。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/5.png" alt="unsupervised" title="无监督学习模型"></p>
+<p><img src="/2023/04/30/3d-reconstruction/5.png" alt="unsupervised" title="无监督学习模型"></p>
 <p><strong>物体3D形状预测</strong>部分，模型包括一个卷积神经网络和一个多层感知器。模型接收两张相同物体的RGB图像作为输入，在CNN中使用具有不同步长的卷积核进行特征提取，提取后的特征被送入MLP进行进一步处理和预测。最终，该模型输出一个点云表示物体3D形状。</p>
 <p><strong>相机姿态预测</strong>部分，模型也是由一个卷积神经网络和一个多层感知器组成，该模型接收两张RGB图像作为输入，并输出一个四元数表示相机在该图像中的姿态，这个四元数可以用来计算相机在三维空间中的位置和方向。这个模型和上面做物体形状预测的模型共享大部分CNN的参数，这使得模型可以同时预测物体的3D形状和相机姿态，并且可以更好地利用训练数据进行训练。</p>
 <p>此外，本模型还使用了一个可微分的<strong>点云渲染器</strong>来将预测的3D形状和相机姿态转换为图像，渲染器简称为$π$。$π$使用了一种称为“投影”的技术来将点云转换为图像，它将每个点在三维空间中投影到二维平面上，并根据其距离和颜色值在该平面上生成一个像素。这其中使用了前面模型的点云图和生成的相机姿态矩阵，投影转换的过程中涉及到了相机的焦距、主点和像素大小等信息，并使用双线性插值来计算每个像素的颜色值。</p>
@@ -590,7 +590,7 @@
 <p>其中，$\theta_x$、$\theta_y$、$\theta_z$分别表示绕$x$、$y$、$z$轴旋转的角度，$(t_x,t_y,t_z)$表示3D物体在空间中的平移向量。</p>
 <h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><p>本部分选取了$Wang$<a href="#ref-11">$[11]$</a>的Pixel2Mesh模型、$Hu$<a href="#ref-12">$[12]$</a>的SMR模型进行介绍。</p>
 <h4 id="mathcal-3-3-1-space-Pixel2Mesh"><a href="#mathcal-3-3-1-space-Pixel2Mesh" class="headerlink" title="$\mathcal{3.3.1} \space Pixel2Mesh$"></a>$\mathcal{3.3.1} \space Pixel2Mesh$</h4><p>本文提出了一种全新的端到端深度学习架构，可以从单个RGB图像中生成三角形网格的3D形状。该方法使用了基于图的卷积神经网络来表示3D网格，并通过逐步变形椭球来产生正确的几何形状。此外，作者还设计了一个投影层，将感知图像特征融入到GCN所表示的3D几何中，并采用粗到细的方式预测3D几何。整体框架如下图所示。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/6.png" alt="Pixel2Mesh" title="Pixel2Mesh"></p>
+<p><img src="/2023/04/30/3d-reconstruction/6.png" alt="Pixel2Mesh" title="Pixel2Mesh"></p>
 <p>对于一张给定的输入图像，Pixel2Mesh初始化一个固定大小的椭球体作为其初始的形状，整个网络分为上下两个部分，上部分使用CNN做图像的特征提取，下部分是一个级联网格变形。</p>
 <p>上下两部分之间连接的部分是Perceptual Feature Pooling，它被用于将图像中提取出来特征与3D网格特征结合起来。在上部分CNN网络的conv3_3、conv4_3和conv5_3层之后，Perceptual Feature Pooling将每个顶点的3D坐标投影到输入图像平面上，并使用双线性插值从四个相邻像素中汇聚特征，从而形成感知特征。然后将每一个形成的感知特征拼接起来形成一个总维度为1280的总感知特征。这个1280维的感知特征又会与输入网格的128维3D特征连接起来，形成一个总维度为1408的特征向量。最后这个向量会被输入到一个全连接层中，以生成每个顶点的3D坐标传输给下部分网络。</p>
 <p>在下部分级联网格变形网络中，Pixel2Mesh使用了三个变形块来逐步将椭球体网格变形为所需的3D模型。每个变形块包含一个GCN模块和一个Graph Unpooling。GCN模块用于学习每个顶点之间的关系，并更新每个顶点的位置。Graph Unpooling用于将当前椭球体网格分解为更精细的子网格、增加GCN的顶点数，并将子网格之间的关系表示为图结构。下图(a)展示了Graph Unpooling添加黑色顶点和虚线边。而Graph Unpooling层有两种实现方式：Face-based和Edge-based。</p>
@@ -598,12 +598,12 @@
 <li>Face-based方法是一种直接将新顶点添加到三角形面中心的方法，然后连接它与三角形面上的三个顶点。这种方法简单易行，但会导致不平衡的顶点度数，即每个顶点连接的边数不同。</li>
 <li>为了解决上述问题，Pixel2Mesh采用了Edge-based方法。Edge-based方法是一种类似于网格细分算法中使用的策略，它在每条边上添加一个新顶点，并将其连接到该边两端的现有顶点。新添加的顶点特征被设置为其两个邻居特征值的平均值。如下图(b)所示，Face-based会导致不平衡的顶点度数，而edge-basd的则保持规则。</li>
 </ul>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/7.png" alt="Graph Unpooling" title="Graph Unpooling"></p>
+<p><img src="/2023/04/30/3d-reconstruction/7.png" alt="Graph Unpooling" title="Graph Unpooling"></p>
 <h4 id="mathcal-3-3-2-space-SMR"><a href="#mathcal-3-3-2-space-SMR" class="headerlink" title="$\mathcal{3.3.2} \space SMR$"></a>$\mathcal{3.3.2} \space SMR$</h4><p>本文提出了一种名为“自监督三维网格重建”（Self-supervised Mesh Reconstruction）的方法，实现从单个图像中重建特定类别的三维网格对象，仅使用轮廓掩码注释。即在训练的过程中不需要3D ground truth，只使用2D标注，就能实现三维重建并且可以推广到不同类别的自然对象。下图展示了SMR的整体框架。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/8.png" alt="self-supervised" title="Self-supervised"></p>
+<p><img src="/2023/04/30/3d-reconstruction/8.png" alt="self-supervised" title="Self-supervised"></p>
 <p>SMR通过属性编码器预测相机、形状、纹理和光等3D属性，并在2D图像和3D网格级别上进行监督。属性编码器采用了一种基于卷积神经网络的结构，包括多个卷积层和池化层。该网络由一个共享的特征提取器和四个分支组成，每个分支对应一个3D属性且每个分支都包括两个全连接层和一个softmax层或一个线性层。其损失函数由两部分组成：分类损失和回归损失。分类损失用于预测相机、形状和纹理等离散变量，而回归损失用于预测光等连续变量。分类损失使用交叉熵损失函数，而回归损失使用均方误差损失函数。在训练过程中，使用自监督回归来优化属性编码器，并使用插补一致性和关键点一致性来提高重建精度。</p>
 <p>对于自监督学习：在2D层面，SMR使用单个2D图像作为输入，并使用渲染引擎将其转换为3D模型。然后将这个3D模型渲染回多个视角下的2D图像，并将这些图像作为标注用于自监督训练。在训练过程中，使用前面提到的多任务损失函数计算预测值与真实值之间的误差，并使用反向传播算法更新模型参数。在3D层面，SMR使用插补一致性（Interpolated Consistency）和关键点一致性（Landmark Consistency）两种方法来优化3D属性。具体细节过程如下图所示。</p>
-<p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/9.png" alt="details" title="details"></p>
+<p><img src="/2023/04/30/3d-reconstruction/9.png" alt="details" title="details"></p>
 <ul>
 <li>插补一致性是指在模型将2D图像转为3D模型后的步骤里，随机选择两个不同的3D模型，计算它们之间的距离，然后在这两个3D模型之间进行线性插值，从而生成一个新的3D模型，并将其作为标注用于自监督训练。</li>
 <li>关键点一致性是指使用重建后的3D网格模型中的点作为关键点，并对每个关键点的特征进行分类。在分类操作中，SMR将每个关键点周围的3D坐标和法向量作为输入，并使用一个分类器对其进行分类。然后将预测值与真实值之间的误差作为损失函数，并使用反向传播算法更新模型参数。</li>
@@ -730,16 +730,16 @@
 <li><a id="ref-11"></a> Wang, Nanyang, et al. “Pixel2mesh: Generating 3d mesh models from single rgb images.” Proceedings of the European conference on computer vision (ECCV). 2018.</li>
 <li><a id="ref-12"></a> Hu, Tao, et al. “Self-supervised 3D mesh reconstruction from single images.” Proceedings of the IEEE&#x2F;CVF conference on computer vision and pattern recognition. 2021.</li>
 </ol>
-<h2 id="mathcal-7-space-查重结果"><a href="#mathcal-7-space-查重结果" class="headerlink" title="$\mathcal{7} \space 查重结果$"></a><a id="section-7"></a>$\mathcal{7} \space 查重结果$</h2><p><img src="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/10.png" alt="report"></p>
+<h2 id="mathcal-7-space-查重结果"><a href="#mathcal-7-space-查重结果" class="headerlink" title="$\mathcal{7} \space 查重结果$"></a><a id="section-7"></a>$\mathcal{7} \space 查重结果$</h2><p><img src="/2023/04/30/3d-reconstruction/10.png" alt="report"></p>
 
     </article>
     <!-- license -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
-            <p>原文链接：<a href="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</a>
-            <p>发表日期：<a href="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">April 30th 2023, 4:51:01 pm</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">May 5th 2023, 1:47:56 pm</a>
+            <p>原文链接：<a href="https://elubrazione.github.io/2023/04/30/3d-reconstruction/">https://elubrazione.github.io/2023/04/30/3d-reconstruction/</a>
+            <p>发表日期：<a href="https://elubrazione.github.io/2023/04/30/3d-reconstruction/">April 30th 2023, 4:51:01 pm</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/04/30/3d-reconstruction/">August 21st 2023, 3:28:26 am</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1036,7 +1036,16 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
         
         
         
@@ -1193,7 +1202,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -1207,6 +1216,12 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/20</span>
@@ -1228,7 +1243,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/30</span>
-            <a class="archive-post-title" href="/2023/04/30/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">基于深度学习的三维重建</a>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">基于深度学习的三维重建</a>
         </li>
     
         
@@ -1240,49 +1255,49 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/26</span>
-            <a class="archive-post-title" href="/2023/04/26/bdmlab4/">HUST大数据管理lab4教程</a>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/13</span>
-            <a class="archive-post-title" href="/2023/04/13/bdmlab3/">HUST大数据管理lab3教程</a>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/04</span>
-            <a class="archive-post-title" href="/2023/04/04/Slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+            <a class="archive-post-title" href="/2023/04/04/slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span>
-            <a class="archive-post-title" href="/2023/03/24/bdmlab2/">HUST大数据管理lab2教程</a>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">03/12</span>
-            <a class="archive-post-title" href="/2023/03/12/bdmlab1/">HUST大数据管理lab1教程</a>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">01/22</span>
-            <a class="archive-post-title" href="/2023/01/22/AutoMap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+            <a class="archive-post-title" href="/2023/01/22/automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">01/19</span>
-            <a class="archive-post-title" href="/2023/01/19/Lifelong-Disk-Failure/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+            <a class="archive-post-title" href="/2023/01/19/lifelong-disk-failure/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">01/15</span>
-            <a class="archive-post-title" href="/2023/01/15/Minority-Disk-Failure/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+            <a class="archive-post-title" href="/2023/01/15/minority-disk-failure/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
         </li>
     
         
@@ -1297,55 +1312,55 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/22</span>
-            <a class="archive-post-title" href="/2022/10/22/React/">React笔记</a>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/17</span>
-            <a class="archive-post-title" href="/2022/10/17/Refs-and-the-DOM/">Refs and the DOM</a>
+            <a class="archive-post-title" href="/2022/10/17/refs-and-the-dom/">Refs and the DOM</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/16</span>
-            <a class="archive-post-title" href="/2022/10/16/Webpack/">Webpack</a>
+            <a class="archive-post-title" href="/2022/10/16/webpack/">Webpack</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/04</span>
-            <a class="archive-post-title" href="/2022/08/04/%E4%B8%83%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/">七月的最后一个周末</a>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
-            <a class="archive-post-title" href="/2022/07/29/18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/">18.四数之和</a>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/27</span>
-            <a class="archive-post-title" href="/2022/07/27/142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%85%A1/">142.环形链表Ⅱ</a>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span>
-            <a class="archive-post-title" href="/2022/07/24/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">15.三数之和</a>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">06/10</span>
-            <a class="archive-post-title" href="/2022/06/10/%E5%A6%82%E8%8B%A5%E8%BF%98%E8%83%BD%E4%B8%8B%E4%B8%80%E5%9C%BA2018%E5%B9%B4%E7%9A%84%E9%93%B6%E6%9D%8F%E9%9B%A8/">如若还能下一场2018年的银杏雨</a>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">05/22</span>
-            <a class="archive-post-title" href="/2022/05/22/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">欢迎来到我的博客</a>
+            <a class="archive-post-title" href="/2022/05/22/welcome/">欢迎来到我的博客</a>
         </li>
     
     </div>
@@ -1353,6 +1368,56 @@
 
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
@@ -1367,11 +1432,6 @@
             <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
                 双指针
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="故障诊断">
-                <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -1389,71 +1449,6 @@
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="迁移学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                迁移学习
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="前端">
-                <span class="iconfont-archer">&#xe606;</span>
-                前端
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="React">
-                <span class="iconfont-archer">&#xe606;</span>
-                React
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Webpack">
-                <span class="iconfont-archer">&#xe606;</span>
-                Webpack
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Eslint">
-                <span class="iconfont-archer">&#xe606;</span>
-                Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
-                <span class="iconfont-archer">&#xe606;</span>
-                what-if索引推荐
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数据库">
-                <span class="iconfont-archer">&#xe606;</span>
-                数据库
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="教程">
-                <span class="iconfont-archer">&#xe606;</span>
-                教程
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MongoDB">
-                <span class="iconfont-archer">&#xe606;</span>
-                MongoDB
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                Neo4j
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 Greenplum操作
@@ -1469,49 +1464,14 @@
                 debug记录
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图的遍历">
+            <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
+                机器学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="最短路径">
+            <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                最短路径
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Dijkstra">
-                <span class="iconfont-archer">&#xe606;</span>
-                Dijkstra
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="BellmanFord">
-                <span class="iconfont-archer">&#xe606;</span>
-                BellmanFord
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="SPFA">
-                <span class="iconfont-archer">&#xe606;</span>
-                SPFA
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="随笔">
-                <span class="iconfont-archer">&#xe606;</span>
-                随笔
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
+                迁移学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="树的遍历">
@@ -1534,6 +1494,71 @@
                 AVL树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dijkstra">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dijkstra
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="BellmanFord">
+                <span class="iconfont-archer">&#xe606;</span>
+                BellmanFord
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SPFA">
+                <span class="iconfont-archer">&#xe606;</span>
+                SPFA
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
+                <span class="iconfont-archer">&#xe606;</span>
+                what-if索引推荐
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
                 top
@@ -1550,11 +1575,6 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Algorithm">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Algorithm
-        </span>
-    
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
             腾讯AI训练营
@@ -1563,6 +1583,11 @@
         <span class="sidebar-category-name" data-categories="HUST_COURSE">
             <span class="iconfont-archer">&#xe60a;</span>
             HUST_COURSE
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Algorithm">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Algorithm
         </span>
     
         <span class="sidebar-category-name" data-categories="PAT">
