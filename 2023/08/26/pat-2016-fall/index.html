@@ -21,20 +21,24 @@
     <meta name="description" content="">
     <meta name="description" content="PAT考试真题解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pat-2016-fall">
+<meta property="og:title" content="PAT甲级2016秋真题">
 <meta property="og:url" content="https://elubrazione.github.io/2023/08/26/pat-2016-fall/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="PAT考试真题解析">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-08-26T10:52:31.000Z">
-<meta property="article:modified_time" content="2023-08-26T10:53:50.519Z">
+<meta property="article:modified_time" content="2023-08-28T00:22:50.281Z">
 <meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="素数">
+<meta property="article:tag" content="逻辑题">
+<meta property="article:tag" content="并查集">
+<meta property="article:tag" content="树的遍历">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>pat-2016-fall · elubrazione</title>
+    <title>PAT甲级2016秋真题 · elubrazione</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -260,7 +264,7 @@
                 <a href="/">Elubrazione&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">pat-2016-fall</a>
+                <a href="#" class="post-name">PAT甲级2016秋真题</a>
             </div>
         </div>
     
@@ -306,7 +310,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                pat-2016-fall
+                PAT甲级2016秋真题
             <!-- 404 -->
             
         </h1>
@@ -323,9 +327,23 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="素数">素数</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="逻辑题">逻辑题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并查集">并查集</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="树的遍历">树的遍历</a>
+    
+</div>
+
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">7</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -488,7 +506,61 @@
     <article class="article-entry">
         <p>PAT考试真题解析</p>
 <span id="more"></span>
+<h1 id="1116-Come-on-Let’s-C-20"><a href="#1116-Come-on-Let’s-C-20" class="headerlink" title="[1116] Come on! Let’s C (20)"></a>[1116] Come on! Let’s C (20)</h1><blockquote>
+<p>素数</p>
+</blockquote>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>“Let’s C” is a popular and fun programming contest hosted by the College of Computer Science and Technology, Zhejiang University. Since the idea of the contest is for fun, the award rules are funny as the following:</p>
+<ul>
+<li>0、 The Champion will receive a “Mystery Award” (such as a BIG collection of students’ research papers…).</li>
+<li>1、 Those who ranked as a prime number will receive the best award – the Minions (小黄人)!</li>
+<li>2、 Everyone else will receive chocolates.</li>
+</ul>
+<p>Given the final ranklist and a sequence of contestant ID’s, you are supposed to tell the corresponding awards.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer $N (≤10^4)$, the total number of contestants. Then N lines of the ranklist follow, each in order gives a contestant’s ID (a 4-digit number). After the ranklist, there is a positive integer K followed by K query ID’s.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each query, print in a line <code>ID: award</code> where the award is <code>Mystery Award</code>, or <code>Minion</code>, or <code>Chocolate</code>. If the ID is not in the ranklist, print <code>Are you kidding?</code> instead. If the ID has been checked before, print <code>ID: Checked</code>.</p>
+<h2 id="注意点与解析"><a href="#注意点与解析" class="headerlink" title="注意点与解析"></a>注意点与解析</h2><ul>
+<li>0和1注意特判，不是素数也不是合数；</li>
+<li>排名从1开始。</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e4</span>;</span><br><span class="line"><span class="type">int</span> n, id, k;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">info</span><span class="params">(N)</span>, <span class="title">vis</span><span class="params">(N, <span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">p</span><span class="params">(N + <span class="number">1</span>, <span class="literal">false</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">findPrime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  p[<span class="number">1</span>] = p[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!p[i]) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = i + i; j &lt;= N; j += i)</span><br><span class="line">        p[j] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="built_in">findPrime</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;id);</span><br><span class="line">    info[id] = i;</span><br><span class="line">    vis[id] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  cin &gt;&gt; k;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;id);</span><br><span class="line">    <span class="keyword">if</span> (!vis[id])</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%04d: Are you kidding?\n&quot;</span>, id);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (vis[id] == <span class="number">-1</span>)</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%04d: Checked\n&quot;</span>, id);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (info[id] == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%04d: Mystery Award\n&quot;</span>, id);</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p[info[id]+<span class="number">1</span>] == <span class="literal">false</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%04d: Minion\n&quot;</span>, id);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%04d: Chocolate\n&quot;</span>, id);</span><br><span class="line">      vis[id] = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="1117-Eddington-Number-25"><a href="#1117-Eddington-Number-25" class="headerlink" title="[1117] Eddington Number (25)"></a>[1117] Eddington Number (25)</h1><blockquote>
+<p>逻辑题</p>
+</blockquote>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>British astronomer Eddington liked to ride a bike. It is said that in order to show off his skill, he has even defined an “Eddington number”, $E$ – that is, the maximum integer $E$ such that it is for $E$ days that one rides more than $E$ miles. Eddington’s own $E$ was 87.</p>
+<p>Now given everyday’s distances that one rides for $N$ days, you are supposed to find the corresponding $E (≤N)$.</p>
+<h3 id="Input-Specification-1"><a href="#Input-Specification-1" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer $N (≤10^5)$, the days of continuous riding. Then $N$ non-negative integers are given in the next line, being the riding distances of everyday.</p>
+<h3 id="Output-Specification-1"><a href="#Output-Specification-1" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each case, print in a line the Eddington number for these $N$ days.</p>
+<h2 id="注意点与解析-1"><a href="#注意点与解析-1" class="headerlink" title="注意点与解析"></a>注意点与解析</h2><ul>
+<li>满足有E天骑⻋超过E英⾥的最大整数E，从大到小排序后找到第d天，当前 <code>d &gt; vec[d]</code> ，此时满足条件，而前一天 <code>vec[d-1]</code> 不满足条件，<code>vec[d-1]-1</code> 满足，且是最大的E。</li>
+</ul>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, i;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  vec.<span class="built_in">resize</span>(n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)  cin &gt;&gt; vec[i];</span><br><span class="line">  <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">if</span> (i + <span class="number">1</span> &gt; vec[i])  <span class="keyword">break</span>;</span><br><span class="line">  cout &lt;&lt; vec[i<span class="number">-1</span>] - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="1118-Birds-in-Forest-25"><a href="#1118-Birds-in-Forest-25" class="headerlink" title="[1118] Birds in Forest (25)"></a>[1118] Birds in Forest (25)</h1><blockquote>
+<p>并查集</p>
+</blockquote>
+<h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>Some scientists took pictures of thousands of birds in a forest. Assume that all the birds appear in the same picture belong to the same tree. You are supposed to help the scientists to count the maximum number of trees in the forest, and for any pair of birds, tell if they are on the same tree.</p>
+<h3 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains a positive number $N (≤10^4)$ which is the number of pictures. Then $N$ lines follow, each describes a picture in the format:</p>
+<p>$K$ $B_1$ $B_2$ $…$ $B_K$</p>
+<p>where $K$ is the number of birds in this picture, and $B_i$’s are the indices of birds. It is guaranteed that the birds in all the pictures are numbered continuously from 1 to some number that is no more than $10^4$.</p>
+<p>After the pictures there is a positive number $Q (≤10^4)$ which is the number of queries. Then $Q$ lines follow, each contains the indices of two birds.</p>
+<h3 id="Output-Specification-2"><a href="#Output-Specification-2" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, first output in a line the maximum possible number of trees and the number of birds. Then for each query, print in a line <code>Yes</code> if the two birds belong to the same tree, or <code>No</code> if not.</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">1e4</span> + <span class="number">1</span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">vis</span><span class="params">(maxn, <span class="literal">false</span>)</span></span>;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">father</span><span class="params">(maxn, <span class="number">0</span>)</span>, <span class="title">isRoot</span><span class="params">(maxn, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">findFather</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> a = x;</span><br><span class="line">  <span class="keyword">while</span> (x != father[x])</span><br><span class="line">    x = father[x];</span><br><span class="line">  <span class="keyword">while</span> (a != father[a]) &#123;</span><br><span class="line">    <span class="type">int</span> z = a;</span><br><span class="line">    a = father[a];</span><br><span class="line">    father[z] = x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> faa = <span class="built_in">findFather</span>(a);</span><br><span class="line">  <span class="type">int</span> fab = <span class="built_in">findFather</span>(b);</span><br><span class="line">  <span class="keyword">if</span> (faa != fab) &#123;</span><br><span class="line">    father[faa] = fab;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= maxn; i++)</span><br><span class="line">    father[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; <span class="title">countTrees</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> ans = <span class="number">0</span>, birds = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= maxn; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (vis[i]) &#123;</span><br><span class="line">      isRoot[<span class="built_in">findFather</span>(i)]++;</span><br><span class="line">      birds++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= maxn; i++)</span><br><span class="line">    <span class="keyword">if</span> (isRoot[i])  ans++;</span><br><span class="line">  pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; num = <span class="built_in">make_pair</span>(ans, birds);</span><br><span class="line">  <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, k, b, q, c1, c2;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="built_in">init</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; k;</span><br><span class="line">    <span class="keyword">if</span> (k != <span class="number">0</span>) &#123;</span><br><span class="line">      cin &gt;&gt; c1;</span><br><span class="line">      vis[c1] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; k; j++) &#123;</span><br><span class="line">      cin &gt;&gt; c2;</span><br><span class="line">      vis[c2] = <span class="literal">true</span>;</span><br><span class="line">      <span class="built_in">Union</span>(c1, c2);</span><br><span class="line">      c1 = c2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; ans = <span class="built_in">countTrees</span>();</span><br><span class="line">  cout &lt;&lt; ans.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ans.second &lt;&lt; endl;</span><br><span class="line">  cin &gt;&gt; q;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">    cin &gt;&gt; c1 &gt;&gt; c2;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">findFather</span>(c1) == <span class="built_in">findFather</span>(c2))</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span>  cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="1119-Pre-and-Post-order-Traversals-30"><a href="#1119-Pre-and-Post-order-Traversals-30" class="headerlink" title="[1119] Pre- and Post-order Traversals (30)"></a>[1119] Pre- and Post-order Traversals (30)</h1><blockquote>
+<p>前序和后序求树中序</p>
+</blockquote>
+<h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences, or preorder and inorder traversal sequences. However, if only the postorder and preorder traversal sequences are given, the corresponding tree may no longer be unique.</p>
+<p>Now given a pair of postorder and preorder traversal sequences, you are supposed to output the corresponding inorder traversal sequence of the tree. If the tree is not unique, simply output any one of them.</p>
+<h3 id="Input-Specification-3"><a href="#Input-Specification-3" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer $N (≤ 30)$, the total number of nodes in the binary tree. The second line gives the preorder sequence and the third line gives the postorder sequence. All the numbers in a line are separated by a space.</p>
+<h3 id="Output-Specification-3"><a href="#Output-Specification-3" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, first printf in a line <code>Yes</code> if the tree is unique, or <code>No</code> if not. Then print in the next line the inorder traversal sequence of the corresponding binary tree. If the solution is not unique, any answer would do. It is guaranteed that at least one solution exists. All the numbers in a line must be separated by exactly one space, and there must be no extra space at the end of the line.</p>
+<h2 id="注意点与解析-2"><a href="#注意点与解析-2" class="headerlink" title="注意点与解析"></a>注意点与解析</h2><ul>
+<li>前序和后序不能唯一确定一颗树，前序是根左右，后序是左右根，前序遍历的第一个节点 <code>preL</code> 肯定是等于后序遍历的最后一个节点 <code>postR</code>，<code>preL + 1</code> 是左孩子（当左孩子不存在，就是右孩子），<code>postR - 1</code> 是右孩子（同理若有孩子不存在则是左孩子）；</li>
+<li>如果发现 <code>preL + 1</code> 的节点是等于 <code>postR - 1</code> 的节点，那么根据遍历的性质，它即可以是左孩子也可以是右孩子，这里我们就无法确定了，题目要求不唯一就随便输出一条，所以我们把他当成左右都可以。因此我们可以在前序找点，也可以在后序找点，然后划分左右区间。</li>
+<li>中序的求解可以直接放在求解树结构的函数里，由于是递归，将中序的访问放在左右孩子递归之间即可。</li>
+<li>注意特判，<code>preL == preR</code>.</li>
+</ul>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">  <span class="type">int</span> val;</span><br><span class="line">  TreeNode *left, *right;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; pre, post, in;</span><br><span class="line"></span><br><span class="line"><span class="function">TreeNode* <span class="title">create</span><span class="params">(<span class="type">int</span> preL, <span class="type">int</span> preR, <span class="type">int</span> postL, <span class="type">int</span> postR)</span> </span>&#123;</span><br><span class="line">  TreeNode *root = <span class="keyword">new</span> TreeNode;</span><br><span class="line">  root -&gt; val = pre[preL];</span><br><span class="line">  root -&gt; left = root -&gt; right = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="keyword">if</span> (preL == preR) &#123;</span><br><span class="line">    in.<span class="built_in">push_back</span>(pre[preL]);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="type">int</span> k = preL + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (k &lt;= preR &amp;&amp; pre[k] != post[postR<span class="number">-1</span>])  k++;</span><br><span class="line">  <span class="type">int</span> len = k - preL - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (len &gt; <span class="number">0</span>)</span><br><span class="line">    root -&gt; left = <span class="built_in">create</span>(preL + <span class="number">1</span>, k - <span class="number">1</span>, postL, postL + len - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">else</span>  flag = <span class="literal">false</span>;</span><br><span class="line">  in.<span class="built_in">push_back</span>(post[postR]);</span><br><span class="line">  root -&gt; right = <span class="built_in">create</span>(k, preR, postL + len, postR - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  pre.<span class="built_in">resize</span>(n);</span><br><span class="line">  post.<span class="built_in">resize</span>(n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; pre[i];</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; post[i];</span><br><span class="line">  TreeNode *root = <span class="built_in">create</span>(<span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s\n%d&quot;</span>, flag == <span class="literal">true</span> ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>, in[<span class="number">0</span>]);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; in.<span class="built_in">size</span>(); i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>, in[i]);</span><br><span class="line">  cout &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
@@ -496,13 +568,18 @@
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
             <p>原文链接：<a href="https://elubrazione.github.io/2023/08/26/pat-2016-fall/">https://elubrazione.github.io/2023/08/26/pat-2016-fall/</a>
             <p>发表日期：<a href="https://elubrazione.github.io/2023/08/26/pat-2016-fall/">August 26th 2023, 6:52:31 pm</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/26/pat-2016-fall/">August 26th 2023, 6:53:50 pm</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/26/pat-2016-fall/">August 28th 2023, 8:22:50 am</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/08/27/pat-simulation-math-note/" title="PAT模拟和数学问题笔记">
+                    <div class="nextTitle">PAT模拟和数学问题笔记</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -664,7 +741,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1116-Come-on-Let%E2%80%99s-C-20"><span class="toc-number">1.</span> <span class="toc-text">[1116] Come on! Let’s C (20)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification"><span class="toc-number">1.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification"><span class="toc-number">1.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">注意点与解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1117-Eddington-Number-25"><span class="toc-number">2.</span> <span class="toc-text">[1117] Eddington Number (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E4%B8%8E%E8%A7%A3%E6%9E%90-1"><span class="toc-number">2.2.</span> <span class="toc-text">注意点与解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1118-Birds-in-Forest-25"><span class="toc-number">3.</span> <span class="toc-text">[1118] Birds in Forest (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-2"><span class="toc-number">3.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1119-Pre-and-Post-order-Traversals-30"><span class="toc-number">4.</span> <span class="toc-text">[1119] Pre- and Post-order Traversals (30)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-3"><span class="toc-number">4.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E4%B8%8E%E8%A7%A3%E6%9E%90-2"><span class="toc-number">4.2.</span> <span class="toc-text">注意点与解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">4.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -808,7 +885,82 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -997,7 +1149,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 31
         </div>
         <!-- search  -->
         
@@ -1013,8 +1165,32 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2023/08/28/idsm-r-star-tree/">The R*-tree：An Efficient and Robust AccessMethod for Points and Rectangles+</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-primary-note/">PAT初级算法笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-simulation-math-note/">PAT模拟和数学问题笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/26</span>
-            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">pat-2016-fall</a>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
         </li>
     
         
@@ -1039,6 +1215,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">08/20</span>
             <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
         </li>
     
         
@@ -1182,21 +1364,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
@@ -1210,6 +1377,21 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="Neo4j">
@@ -1267,6 +1449,21 @@
                 迁移学习
             </span>
         
+            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
+                <span class="iconfont-archer">&#xe606;</span>
+                what-if索引推荐
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
                 链表
@@ -1285,6 +1482,26 @@
             <span class="sidebar-tag-name" data-tags="剪枝">
                 <span class="iconfont-archer">&#xe606;</span>
                 剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -1307,16 +1524,6 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
-                <span class="iconfont-archer">&#xe606;</span>
-                what-if索引推荐
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="哈希表">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希表
@@ -1325,11 +1532,6 @@
             <span class="sidebar-tag-name" data-tags="排序">
                 <span class="iconfont-archer">&#xe606;</span>
                 排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="并查集">
-                <span class="iconfont-archer">&#xe606;</span>
-                并查集
             </span>
         
             <span class="sidebar-tag-name" data-tags="二叉搜索树">
@@ -1357,14 +1559,19 @@
                 SPFA
             </span>
         
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="进制转换">
+                <span class="iconfont-archer">&#xe606;</span>
+                进制转换
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -1385,11 +1592,6 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
             </span>
         
     </div>

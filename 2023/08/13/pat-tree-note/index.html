@@ -27,12 +27,15 @@
 <meta property="og:description" content="PAT考试树相关笔记">
 <meta property="og:locale">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/13/pat-tree-note/1099.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/08/13/pat-tree-note/1.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/08/13/pat-tree-note/2.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/08/13/pat-tree-note/3.png">
 <meta property="article:published_time" content="2023-08-12T17:11:05.000Z">
-<meta property="article:modified_time" content="2023-08-20T19:38:14.498Z">
+<meta property="article:modified_time" content="2023-08-29T05:09:26.197Z">
 <meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="树的遍历">
 <meta property="article:tag" content="完全二叉树">
 <meta property="article:tag" content="二叉搜索树">
-<meta property="article:tag" content="树的遍历">
 <meta property="article:tag" content="AVL树">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2023/08/13/pat-tree-note/1099.png">
@@ -332,11 +335,11 @@
                     <div class= post-intro-tags >
     
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="树的遍历">树的遍历</a>
+    
         <a class="post-tag" href="javascript:void(0);" data-tags="完全二叉树">完全二叉树</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="二叉搜索树">二叉搜索树</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="树的遍历">树的遍历</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="AVL树">AVL树</a>
     
@@ -345,7 +348,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4.5k</span>阅读时长: <span class="post-count reading-time">22 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.9k</span>阅读时长: <span class="post-count reading-time">24 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -634,6 +637,34 @@
 <li>还是利用二叉搜索树中序遍历是递增的这个特性，将输入的序列直接进行排序就得到了中序遍历的结果。先根据输入得到的结果建立树的结构；然后和上题一样，进行一次中序遍历，这次在中序遍历的时候将得到的权值填入 <code>root-&gt;val</code>。</li>
 </ul>
 <h3 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, idx = <span class="number">0</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; node;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">  <span class="type">int</span> order;</span><br><span class="line">  <span class="type">int</span> val;</span><br><span class="line">  TreeNode* left;</span><br><span class="line">  TreeNode* right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(TreeNode* &amp;root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].first &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* l = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    l -&gt; order = mp[root-&gt;order].first;</span><br><span class="line">    root -&gt; left = l;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; left);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; left = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (mp[root-&gt;order].second &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    TreeNode* r = <span class="keyword">new</span> TreeNode;</span><br><span class="line">    r -&gt; order = mp[root-&gt;order].second;</span><br><span class="line">    root -&gt; right = r;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; right);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    root -&gt; right = <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inOrderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; left);</span><br><span class="line">  root -&gt; val = node[idx++];</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root -&gt; right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">levelTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root)  <span class="keyword">return</span>;</span><br><span class="line">  queue&lt;TreeNode*&gt; q;</span><br><span class="line">  q.<span class="built_in">push</span>(root);</span><br><span class="line">  <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    TreeNode* cur = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line">    cout &lt;&lt; cur -&gt; val;</span><br><span class="line">    num++;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; n)  cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; left)  q.<span class="built_in">push</span>(cur -&gt; left);</span><br><span class="line">    <span class="keyword">if</span> (cur -&gt; right)  q.<span class="built_in">push</span>(cur -&gt; right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    mp[i] = <span class="built_in">make_pair</span>(a, b);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    cin &gt;&gt; k;</span><br><span class="line">    node.<span class="built_in">push_back</span>(k);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(node.<span class="built_in">begin</span>(), node.<span class="built_in">end</span>());</span><br><span class="line">  TreeNode* root = <span class="keyword">new</span> TreeNode;</span><br><span class="line">  root -&gt; order = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">insert</span>(root);</span><br><span class="line">  <span class="built_in">inOrderTraversal</span>(root);</span><br><span class="line">  <span class="built_in">levelTraversal</span>(root);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h1><blockquote>
+<p>AVL树仍是一颗二叉查找树，但对AVL树来说，其左子树和右子树的高度之差的绝对值不超过1，其中左子树和右子树的高度只差称为该结点的平衡因子。<br>因为需要对每个结点都得到平衡因子，因此需要在树的结构中加入一个变量height来记录以当前结点为根结点的子树的高度。子树的高度就是左子树与右子树高度较大的值加上1，</p>
+</blockquote>
+<h2 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h2><p>和二叉查找树的查找是一样的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">search</span><span class="params">(Node *root, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;fail&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (x == root -&gt; val)</span><br><span class="line">    cout &lt;&lt; root -&gt; val;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (root -&gt; val &gt;= x)</span><br><span class="line">    <span class="built_in">search</span>(root -&gt; left, x);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">search</span>(root -&gt; right, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h2><h3 id="左旋"><a href="#左旋" class="headerlink" title="左旋"></a>左旋</h3><p>步骤如下：</p>
+<ul>
+<li>让B的左子树成为A的右子树；</li>
+<li>让A成为B的左子树；</li>
+<li>将根结点设置为B。</li>
+</ul>
+<p><img src="/2023/08/13/pat-tree-note/1.png" alt="l_rotate"></p>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">l_rotation</span><span class="params">(TreeNode* &amp;root)</span> </span>&#123;</span><br><span class="line">  TreeNode* temp = root -&gt; right;</span><br><span class="line">  root -&gt; right = temp -&gt; left;</span><br><span class="line">  temp -&gt; left = root;</span><br><span class="line">  <span class="built_in">updateHeight</span>(root);</span><br><span class="line">  <span class="built_in">updateHeight</span>(temp);</span><br><span class="line">  root = temp;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="右旋"><a href="#右旋" class="headerlink" title="右旋"></a>右旋</h3><p>步骤如下：</p>
+<ul>
+<li>让A的右子树成为B的左子树；</li>
+<li>让B成为A的右子树；</li>
+<li>将根结点设置为A。</li>
+</ul>
+<p><img src="/2023/08/13/pat-tree-note/2.png" alt="r_rotate"></p>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">r_rotation</span><span class="params">(TreeNode* &amp;root)</span> </span>&#123;</span><br><span class="line">  TreeNode* temp = root -&gt; left;</span><br><span class="line">  root -&gt; left = temp -&gt; right;</span><br><span class="line">  temp -&gt; right = root;</span><br><span class="line">  <span class="built_in">updateHeight</span>(root);</span><br><span class="line">  <span class="built_in">updateHeight</span>(temp);</span><br><span class="line">  root = temp;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入调整"><a href="#插入调整" class="headerlink" title="插入调整"></a>插入调整</h3><p><img src="/2023/08/13/pat-tree-note/3.png" alt="table"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(TreeNode* &amp;root, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    root = <span class="built_in">newNode</span>(k);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (k &lt; root -&gt; val) &#123;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; left, k);</span><br><span class="line">    <span class="built_in">updateHeight</span>(root);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root) == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root -&gt; left) == <span class="number">1</span>)  <span class="comment">// LL</span></span><br><span class="line">        <span class="built_in">r_rotation</span>(root);</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root -&gt; left) == <span class="number">-1</span>) &#123;  <span class="comment">// LR</span></span><br><span class="line">        <span class="built_in">l_rotation</span>(root -&gt; left);</span><br><span class="line">        <span class="built_in">r_rotation</span>(root);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">insert</span>(root -&gt; right, k);</span><br><span class="line">    <span class="built_in">updateHeight</span>(root);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root) == <span class="number">-2</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root -&gt; right) == <span class="number">-1</span>)  <span class="comment">// RR</span></span><br><span class="line">        <span class="built_in">l_rotation</span>(root);</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">getBalanceFactor</span>(root -&gt; right) == <span class="number">1</span>) &#123;  <span class="comment">// RL</span></span><br><span class="line">        <span class="built_in">r_rotation</span>(root -&gt; right);</span><br><span class="line">        <span class="built_in">l_rotation</span>(root);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- license -->
     
@@ -641,7 +672,7 @@
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
             <p>原文链接：<a href="https://elubrazione.github.io/2023/08/13/pat-tree-note/">https://elubrazione.github.io/2023/08/13/pat-tree-note/</a>
             <p>发表日期：<a href="https://elubrazione.github.io/2023/08/13/pat-tree-note/">August 13th 2023, 1:11:05 am</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/13/pat-tree-note/">August 21st 2023, 3:38:14 am</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/13/pat-tree-note/">August 29th 2023, 1:09:26 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -650,8 +681,8 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/08/20/pat-graph-note/" title="PAT图笔记">
-                    <div class="nextTitle">PAT图笔记</div>
+                <a href="/2023/08/19/idsm-z-order/" title="Z-Order">
+                    <div class="nextTitle">Z-Order</div>
                 </a>
             
         </li>
@@ -814,7 +845,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1020-Tree-Traversals"><span class="toc-number">1.1.</span> <span class="toc-text">[1020] Tree Traversals</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1086-Tree-Traversals-Again"><span class="toc-number">1.2.</span> <span class="toc-text">[1086] Tree Traversals Again</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1102-Invert-a-Binary-Tree"><span class="toc-number">1.3.</span> <span class="toc-text">[1102] Invert a Binary Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.</span> <span class="toc-text">树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1053-Path-of-Equal-Weight"><span class="toc-number">2.1.</span> <span class="toc-text">[1053] Path of Equal Weight</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-3"><span class="toc-number">2.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">2.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1004-Counting-Leaves"><span class="toc-number">2.2.</span> <span class="toc-text">[1004] Counting Leaves</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-4"><span class="toc-number">2.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="toc-number">2.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1079-Total-Sales-of-Supply-Chain"><span class="toc-number">2.3.</span> <span class="toc-text">[1079] Total Sales of Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-number">2.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-5"><span class="toc-number">2.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="toc-number">2.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1090-Highest-Price-in-Supply-Chain"><span class="toc-number">2.4.</span> <span class="toc-text">[1090] Highest Price in Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-number">2.4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-6"><span class="toc-number">2.4.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-6"><span class="toc-number">2.4.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1106-Lowest-Price-in-Supply-Chain"><span class="toc-number">2.5.</span> <span class="toc-text">[1106] Lowest Price in Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-number">2.5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-7"><span class="toc-number">2.5.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-7"><span class="toc-number">2.5.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1094-The-Largest-Generation"><span class="toc-number">2.6.</span> <span class="toc-text">[1094] The Largest Generation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="toc-number">2.6.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-8"><span class="toc-number">2.6.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-8"><span class="toc-number">2.6.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1043-Is-It-a-Binary-Search-Tree"><span class="toc-number">3.1.</span> <span class="toc-text">[1043] Is It a Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-9"><span class="toc-number">3.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-9"><span class="toc-number">3.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-9"><span class="toc-number">3.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1064-Complete-Binary-Search-Tree"><span class="toc-number">3.2.</span> <span class="toc-text">[1064] Complete Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-10"><span class="toc-number">3.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-10"><span class="toc-number">3.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-10"><span class="toc-number">3.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1099-Build-A-Binary-Search-Tree"><span class="toc-number">3.3.</span> <span class="toc-text">[1099] Build A Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-11"><span class="toc-number">3.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-11"><span class="toc-number">3.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-11"><span class="toc-number">3.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1020-Tree-Traversals"><span class="toc-number">1.1.</span> <span class="toc-text">[1020] Tree Traversals</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1086-Tree-Traversals-Again"><span class="toc-number">1.2.</span> <span class="toc-text">[1086] Tree Traversals Again</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1102-Invert-a-Binary-Tree"><span class="toc-number">1.3.</span> <span class="toc-text">[1102] Invert a Binary Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.</span> <span class="toc-text">树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1053-Path-of-Equal-Weight"><span class="toc-number">2.1.</span> <span class="toc-text">[1053] Path of Equal Weight</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-3"><span class="toc-number">2.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">2.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1004-Counting-Leaves"><span class="toc-number">2.2.</span> <span class="toc-text">[1004] Counting Leaves</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-4"><span class="toc-number">2.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="toc-number">2.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1079-Total-Sales-of-Supply-Chain"><span class="toc-number">2.3.</span> <span class="toc-text">[1079] Total Sales of Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-number">2.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-5"><span class="toc-number">2.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="toc-number">2.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1090-Highest-Price-in-Supply-Chain"><span class="toc-number">2.4.</span> <span class="toc-text">[1090] Highest Price in Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-number">2.4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-6"><span class="toc-number">2.4.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-6"><span class="toc-number">2.4.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1106-Lowest-Price-in-Supply-Chain"><span class="toc-number">2.5.</span> <span class="toc-text">[1106] Lowest Price in Supply Chain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-number">2.5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-7"><span class="toc-number">2.5.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-7"><span class="toc-number">2.5.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1094-The-Largest-Generation"><span class="toc-number">2.6.</span> <span class="toc-text">[1094] The Largest Generation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="toc-number">2.6.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-8"><span class="toc-number">2.6.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-8"><span class="toc-number">2.6.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1043-Is-It-a-Binary-Search-Tree"><span class="toc-number">3.1.</span> <span class="toc-text">[1043] Is It a Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-9"><span class="toc-number">3.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-9"><span class="toc-number">3.1.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-9"><span class="toc-number">3.1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1064-Complete-Binary-Search-Tree"><span class="toc-number">3.2.</span> <span class="toc-text">[1064] Complete Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-10"><span class="toc-number">3.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-10"><span class="toc-number">3.2.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-10"><span class="toc-number">3.2.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1099-Build-A-Binary-Search-Tree"><span class="toc-number">3.3.</span> <span class="toc-text">[1099] Build A Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-11"><span class="toc-number">3.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9-11"><span class="toc-number">3.3.2.</span> <span class="toc-text">分析与注意点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-11"><span class="toc-number">3.3.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AVL%E6%A0%91"><span class="toc-number">4.</span> <span class="toc-text">AVL树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">查找操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">插入操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E6%97%8B"><span class="toc-number">4.2.1.</span> <span class="toc-text">左旋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E6%97%8B"><span class="toc-number">4.2.2.</span> <span class="toc-text">右旋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E8%B0%83%E6%95%B4"><span class="toc-number">4.2.3.</span> <span class="toc-text">插入调整</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -958,7 +989,82 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1147,7 +1253,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 31
         </div>
         <!-- search  -->
         
@@ -1163,8 +1269,32 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2023/08/28/idsm-r-star-tree/">The R*-tree：An Efficient and Robust AccessMethod for Points and Rectangles+</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-primary-note/">PAT初级算法笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-simulation-math-note/">PAT模拟和数学问题笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/26</span>
-            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">pat-2016-fall</a>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
         </li>
     
         
@@ -1189,6 +1319,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">08/20</span>
             <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
         </li>
     
         
@@ -1332,21 +1468,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
@@ -1360,6 +1481,21 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="Neo4j">
@@ -1417,6 +1553,21 @@
                 迁移学习
             </span>
         
+            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
+                <span class="iconfont-archer">&#xe606;</span>
+                what-if索引推荐
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
                 链表
@@ -1435,6 +1586,26 @@
             <span class="sidebar-tag-name" data-tags="剪枝">
                 <span class="iconfont-archer">&#xe606;</span>
                 剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -1457,16 +1628,6 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
-                <span class="iconfont-archer">&#xe606;</span>
-                what-if索引推荐
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="哈希表">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希表
@@ -1475,11 +1636,6 @@
             <span class="sidebar-tag-name" data-tags="排序">
                 <span class="iconfont-archer">&#xe606;</span>
                 排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="并查集">
-                <span class="iconfont-archer">&#xe606;</span>
-                并查集
             </span>
         
             <span class="sidebar-tag-name" data-tags="二叉搜索树">
@@ -1507,14 +1663,19 @@
                 SPFA
             </span>
         
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="进制转换">
+                <span class="iconfont-archer">&#xe606;</span>
+                进制转换
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -1535,11 +1696,6 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
             </span>
         
     </div>

@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/2.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/3.png">
 <meta property="article:published_time" content="2023-08-25T16:15:02.000Z">
-<meta property="article:modified_time" content="2023-08-26T03:28:11.019Z">
+<meta property="article:modified_time" content="2023-08-27T02:07:14.195Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="并查集">
 <meta name="twitter:card" content="summary">
@@ -565,7 +565,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n, m, k;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; G;</span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; vis;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; father;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">findFather</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> a = x;</span><br><span class="line">  <span class="keyword">while</span> (x != father[x])</span><br><span class="line">    x = father[x];</span><br><span class="line">  <span class="keyword">while</span> (a != father[a]) &#123;</span><br><span class="line">    <span class="type">int</span> z = a;</span><br><span class="line">    a = father[a];</span><br><span class="line">    father[z] = x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Union</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> faA = <span class="built_in">findFather</span>(a);</span><br><span class="line">  <span class="type">int</span> faB = <span class="built_in">findFather</span>(b);</span><br><span class="line">  <span class="keyword">if</span> (faA != faB)</span><br><span class="line">    father[faA] = father[faB];</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    father[i] = i;</span><br><span class="line">    vis[i] = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">  vis.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  father.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  G.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="type">int</span> a, b, cur;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    G[a].<span class="built_in">push_back</span>(b);</span><br><span class="line">    G[b].<span class="built_in">push_back</span>(a);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">    cin &gt;&gt; cur;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> v = <span class="number">1</span>; v &lt;= n; v++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">auto</span> u: G[v]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == cur || u == cur) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">Union</span>(v, u);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (j == cur) <span class="keyword">continue</span>;</span><br><span class="line">      <span class="type">int</span> fa_j = <span class="built_in">findFather</span>(j);</span><br><span class="line">      <span class="keyword">if</span> (vis[fa_j] == <span class="literal">false</span>) &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        vis[fa_j] = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans - <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="1021-Deepest-Root"><a href="#1021-Deepest-Root" class="headerlink" title="[1021] Deepest Root"></a>[1021] Deepest Root</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>A graph which is connected and acyclic can be considered a tree. The height of the tree depends on the selected root. Now you are supposed to find the root that results in a highest tree. Such a root is called the deepest root.</p>
-<h3 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains a positive integer $N (≤10_4)$ which is the number of nodes, and hence the nodes are numbered from 1 to $N$. Then $N−1$ lines follow, each describes an edge by given the two adjacent nodes’ numbers.</p>
+<h3 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains a positive integer $N (≤10^4)$ which is the number of nodes, and hence the nodes are numbered from 1 to $N$. Then $N−1$ lines follow, each describes an edge by given the two adjacent nodes’ numbers.</p>
 <h3 id="Output-Specification-2"><a href="#Output-Specification-2" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print each of the deepest roots in a line. If such a root is not unique, print them in increasing order of their numbers. In case that the given graph is not a tree, print <code>Error: K components</code> where <code>K</code> is the number of connected components in the graph.</p>
 <h2 id="注意点与解析-3"><a href="#注意点与解析-3" class="headerlink" title="注意点与解析"></a>注意点与解析</h2><ul>
 <li>⾸先深度优先搜索判断它有⼏个连通分量。如果有多个，那就输出 <code>Error: x components</code>，如果只有⼀个，就两次深度优先搜索，先从⼀个结点dfs后保留最⾼⾼度拥有的结点们，然后从这些结点中的其中任意⼀个开始dfs得到最⾼⾼度的结点们，这两个结点集合的并集就是所求；</li>
@@ -584,7 +584,7 @@
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
             <p>原文链接：<a href="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/">https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/</a>
             <p>发表日期：<a href="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/">August 26th 2023, 12:15:02 am</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/">August 26th 2023, 11:28:11 am</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/26/pat-union-find-set-note/">August 27th 2023, 10:07:14 am</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -593,8 +593,8 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/08/26/pat-2016-fall/" title="pat-2016-fall">
-                    <div class="nextTitle">pat-2016-fall</div>
+                <a href="/2023/08/26/pat-2016-fall/" title="PAT甲级2016秋真题">
+                    <div class="nextTitle">PAT甲级2016秋真题</div>
                 </a>
             
         </li>
@@ -901,7 +901,82 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1090,7 +1165,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 31
         </div>
         <!-- search  -->
         
@@ -1106,8 +1181,32 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2023/08/28/idsm-r-star-tree/">The R*-tree：An Efficient and Robust AccessMethod for Points and Rectangles+</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-primary-note/">PAT初级算法笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/27</span>
+            <a class="archive-post-title" href="/2023/08/27/pat-simulation-math-note/">PAT模拟和数学问题笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/26</span>
-            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">pat-2016-fall</a>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
         </li>
     
         
@@ -1132,6 +1231,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">08/20</span>
             <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
         </li>
     
         
@@ -1275,21 +1380,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
@@ -1303,6 +1393,21 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="Neo4j">
@@ -1360,6 +1465,21 @@
                 迁移学习
             </span>
         
+            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
+                <span class="iconfont-archer">&#xe606;</span>
+                what-if索引推荐
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
                 链表
@@ -1378,6 +1498,26 @@
             <span class="sidebar-tag-name" data-tags="剪枝">
                 <span class="iconfont-archer">&#xe606;</span>
                 剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -1400,16 +1540,6 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
-                <span class="iconfont-archer">&#xe606;</span>
-                what-if索引推荐
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="哈希表">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希表
@@ -1418,11 +1548,6 @@
             <span class="sidebar-tag-name" data-tags="排序">
                 <span class="iconfont-archer">&#xe606;</span>
                 排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="并查集">
-                <span class="iconfont-archer">&#xe606;</span>
-                并查集
             </span>
         
             <span class="sidebar-tag-name" data-tags="二叉搜索树">
@@ -1450,14 +1575,19 @@
                 SPFA
             </span>
         
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="进制转换">
+                <span class="iconfont-archer">&#xe606;</span>
+                进制转换
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -1478,11 +1608,6 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
             </span>
         
     </div>
