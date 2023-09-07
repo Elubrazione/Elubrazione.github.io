@@ -30,10 +30,15 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/2.jpg">
 <meta property="og:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/3.JPG">
 <meta property="og:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/4.JPG">
+<meta property="og:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/5.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/6.jpg">
 <meta property="article:published_time" content="2023-09-03T13:34:36.000Z">
-<meta property="article:modified_time" content="2023-09-04T09:50:46.942Z">
+<meta property="article:modified_time" content="2023-09-06T05:44:35.876Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="数学模拟">
+<meta property="article:tag" content="树的遍历">
+<meta property="article:tag" content="Set">
+<meta property="article:tag" content="DFS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2023/09/03/pat-2017-summer/1.jpg">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -334,12 +339,18 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="数学模拟">数学模拟</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="树的遍历">树的遍历</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Set">Set</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DFS">DFS</a>
+    
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">836</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -528,7 +539,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query: rec[1] rec[2] ... rec[K]</span><br></pre></td></tr></table></figure>
 <p>where <code>query</code> is the item that the user is accessing, and <code>rec[i]</code> (<code>i</code>&#x3D;1, … K) is the <code>i</code>-th item that the system recommends to the user. The first K items that have been accessed most frequently are supposed to be recommended in non-increasing order of their frequencies. If there is a tie, the items will be ordered by their indices in increasing order.</p>
 <p>Note: there is no output for the first item since it is impossible to give any recommendation at the time. It is guaranteed to have the output for at least one query.</p>
-<h1 id="1129-25"><a href="#1129-25" class="headerlink" title="[1129]  (25)"></a>[1129]  (25)</h1><blockquote>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  <span class="type">int</span> value, cnt;</span><br><span class="line">  <span class="keyword">friend</span> <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> Node &amp;a, <span class="type">const</span> Node &amp;b) &#123;</span><br><span class="line">    <span class="keyword">return</span> (a.cnt != b.cnt)? a.cnt &gt; b.cnt: a.value &lt; b.value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> hash1[<span class="number">50001</span>];</span><br><span class="line">set&lt;Node&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, k, num;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; num;</span><br><span class="line">    <span class="keyword">if</span> (i) &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%d:&quot;</span>, num);</span><br><span class="line">      <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">auto</span> it = s.<span class="built_in">begin</span>(); count &lt; k &amp;&amp; it != s.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>, it -&gt; value);</span><br><span class="line">        count++;</span><br><span class="line">      &#125;</span><br><span class="line">      cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">auto</span> it = s.<span class="built_in">find</span>(Node&#123;num, hash1[num]&#125;);</span><br><span class="line">    <span class="keyword">if</span> (it != s.<span class="built_in">end</span>())  s.<span class="built_in">erase</span>(it);</span><br><span class="line">    hash1[num]++;</span><br><span class="line">    s.<span class="built_in">insert</span>(Node&#123;num, hash1[num]&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="1130-Infix-Expression-25"><a href="#1130-Infix-Expression-25" class="headerlink" title="[1130] Infix Expression (25)"></a>[1130] Infix Expression (25)</h1><blockquote>
+<p>树的遍历</p>
 </blockquote>
 <h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>Given a syntax tree (binary), you are supposed to output the corresponding infix expression, with parentheses reflecting the precedences of the operators.</p>
 <h3 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤ 20) which is the total number of nodes in the syntax tree. Then N lines follow, each gives the information of a node (the $i$-th line corresponds to the $i$-th node) in the format:</p>
@@ -539,6 +553,27 @@
   <img src="/2023/09/03/pat-2017-summer/4.JPG" alt="Image 4">
 </div>
 
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  string data;</span><br><span class="line">  <span class="type">int</span> left, right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">vector&lt;Node&gt; nodes;</span><br><span class="line">vector&lt;<span class="type">bool</span>&gt; isRoot;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">inTraversal</span><span class="params">(<span class="type">int</span> k, <span class="type">int</span> root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (k == <span class="number">-1</span>)  <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> ((nodes[k].left != <span class="number">-1</span> || nodes[k].right != <span class="number">-1</span>) &amp;&amp; k != root)</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;(&quot;</span>;</span><br><span class="line">  <span class="built_in">inTraversal</span>(nodes[k].left, root);</span><br><span class="line">  cout &lt;&lt; nodes[k].data;</span><br><span class="line">  <span class="built_in">inTraversal</span>(nodes[k].right, root);</span><br><span class="line">  <span class="keyword">if</span> ((nodes[k].left != <span class="number">-1</span> || nodes[k].right != <span class="number">-1</span>) &amp;&amp; k != root)</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, a, b, i;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  nodes.<span class="built_in">resize</span>(n + <span class="number">1</span>);</span><br><span class="line">  isRoot.<span class="built_in">resize</span>(n + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; nodes[i].data &gt;&gt; nodes[i].left &gt;&gt; nodes[i].right;</span><br><span class="line">    <span class="keyword">if</span> (nodes[i].left != <span class="number">-1</span>)  isRoot[nodes[i].left] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (nodes[i].right != <span class="number">-1</span>) isRoot[nodes[i].right] = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (isRoot[i]) i++;</span><br><span class="line">  <span class="comment">// printf(&quot;root is %d\n&quot;, i);</span></span><br><span class="line">  <span class="built_in">inTraversal</span>(i, i);</span><br><span class="line">  cout &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="1131-Subway-Map-30"><a href="#1131-Subway-Map-30" class="headerlink" title="[1131] Subway Map (30)"></a>[1131] Subway Map (30)</h1><blockquote>
+<p>DFS</p>
+</blockquote>
+<h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>In the big cities, the subway systems always look so complex to the visitors. To give you some sense, the following figure shows the map of Beijing subway. Now you are supposed to help people with your computer skills! Given the starting position of your user, your task is to find the quickest way to his&#x2F;her destination.</p>
+<p><img src="/2023/09/03/pat-2017-summer/5.jpg" alt="subway"></p>
+<h3 id="Input-Specification-3"><a href="#Input-Specification-3" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line contains a positive integer $N (≤ 100)$, the number of subway lines. Then N lines follow, with the $i$-th $(i&#x3D;1,⋯,N)$ line describes the $i$-th subway line in the format:</p>
+<p>$M$ $S[1]$ $S[2]$ $…$ $S[M]$</p>
+<p>where $M (≤ 100)$ is the number of stops, and S[$i$]’s $(i&#x3D;1,⋯,M)$ are the indices of the stations (the indices are 4-digit numbers from 0000 to 9999) along the line. It is guaranteed that the stations are given in the correct order – that is, the train travels between $S[i]$ and $S[i+1]$ $(i&#x3D;1,⋯,M−1)$ without any stop.</p>
+<p>Note: It is possible to have loops, but not self-loop (no train starts from S and stops at S without passing through another station). Each station interval belongs to a unique subway line. Although the lines may cross each other at some stations (so called “transfer stations”), no station can be the conjunction of more than 5 lines.</p>
+<p>After the description of the subway, another positive integer $K (≤ 10)$ is given. Then $K$ lines follow, each gives a query from your user: the two indices as the starting station and the destination, respectively.</p>
+<p>The following figure shows the sample map.</p>
+<p><img src="/2023/09/03/pat-2017-summer/6.jpg" alt="subway"></p>
+<p>Note: It is guaranteed that all the stations are reachable, and all the queries consist of legal station numbers.</p>
+<h3 id="Output-Specification-2"><a href="#Output-Specification-2" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each query, first print in a line the minimum number of stops. Then you are supposed to show the optimal path in a friendly format as the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Take Line#X1 from S1 to S2.</span><br><span class="line">Take Line#X2 from S2 to S3.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>where <code>X</code>i’s are the line numbers and <code>S</code>i’s are the station indices. Note: Besides the starting and ending stations, only the transfer stations shall be printed.</p>
+<p>If the quickest path is not unique, output the one with the minimum number of transfers, which is guaranteed to be unique.</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">10000</span>;</span><br><span class="line"><span class="type">int</span> vis[maxn], n, m, minStops, minTrans, st, ed;;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">v</span>(maxn);</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; line;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; path, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">transferCnt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> cnt = <span class="number">-1</span>, preLine = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; path.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (line[path[i<span class="number">-1</span>] * maxn + path[i]] != preLine)</span><br><span class="line">      cnt++;</span><br><span class="line">    preLine = line[path[i<span class="number">-1</span>] * maxn + path[i]];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> now, <span class="type">int</span> stops)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (now == ed) &#123;</span><br><span class="line">    <span class="keyword">if</span> (stops &lt; minStops || (stops == minStops &amp;&amp; <span class="built_in">transferCnt</span>() &lt; minTrans)) &#123;</span><br><span class="line">      minStops = stops;</span><br><span class="line">      minTrans = <span class="built_in">transferCnt</span>();</span><br><span class="line">      ans = path;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> p: v[now]) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!vis[p]) &#123;</span><br><span class="line">      vis[p] = <span class="number">1</span>;</span><br><span class="line">      path.<span class="built_in">push_back</span>(p);</span><br><span class="line">      <span class="built_in">dfs</span>(p, stops + <span class="number">1</span>);</span><br><span class="line">      path.<span class="built_in">pop_back</span>();</span><br><span class="line">      vis[p] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printTool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; minStops &lt;&lt; endl;</span><br><span class="line">  <span class="type">int</span> preLine = <span class="number">0</span>, preTrans = st;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; ans.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (line[ans[i<span class="number">-1</span>] * maxn + ans[i]] != preLine) &#123;</span><br><span class="line">      <span class="keyword">if</span> (preLine != <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Take Line#%d from %04d to %04d.\n&quot;</span>, preLine, preTrans, ans[i<span class="number">-1</span>]);</span><br><span class="line">      preLine = line[ans[i<span class="number">-1</span>] * maxn + ans[i]];</span><br><span class="line">      preTrans = ans[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Take Line#%d from %04d to %04d.\n&quot;</span>, preLine, preTrans, ed);</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> k, pre, temp;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; m &gt;&gt; pre;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; m; j++) &#123;</span><br><span class="line">      cin &gt;&gt; temp;</span><br><span class="line">      v[pre].<span class="built_in">push_back</span>(temp);</span><br><span class="line">      v[temp].<span class="built_in">push_back</span>(pre);</span><br><span class="line">      line[pre*maxn+temp] = line[temp*maxn+pre] = i + <span class="number">1</span>;</span><br><span class="line">      pre = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cin &gt;&gt; k;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">    cin &gt;&gt; st &gt;&gt; ed;</span><br><span class="line">    minStops = maxn, minTrans = maxn;</span><br><span class="line">    path.<span class="built_in">clear</span>();</span><br><span class="line">    path.<span class="built_in">push_back</span>(st);</span><br><span class="line">    vis[st] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(st, <span class="number">0</span>);</span><br><span class="line">    vis[st] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printTool</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <style>
   .image-container {
@@ -557,7 +592,7 @@
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
             <p>原文链接：<a href="https://elubrazione.github.io/2023/09/03/pat-2017-summer/">https://elubrazione.github.io/2023/09/03/pat-2017-summer/</a>
             <p>发表日期：<a href="https://elubrazione.github.io/2023/09/03/pat-2017-summer/">September 3rd 2023, 9:34:36 pm</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/09/03/pat-2017-summer/">September 4th 2023, 5:50:46 pm</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/09/03/pat-2017-summer/">September 6th 2023, 1:44:35 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -566,8 +601,8 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/09/05/idsm-learned-index-for-spatial-queries/" title="Learned Index for Spatial Queries">
-                    <div class="nextTitle">Learned Index for Spatial Queries</div>
+                <a href="/2023/09/05/pat-linked-note/" title="PAT链表笔记">
+                    <div class="nextTitle">PAT链表笔记</div>
                 </a>
             
         </li>
@@ -730,7 +765,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1128-N-Queens-Puzzle-20"><span class="toc-number">1.</span> <span class="toc-text">[1128] N Queens Puzzle (20)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification"><span class="toc-number">1.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification"><span class="toc-number">1.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">注意点与解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1129-Recommendation-System-25"><span class="toc-number">2.</span> <span class="toc-text">[1129] Recommendation System (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1129-25"><span class="toc-number">3.</span> <span class="toc-text">[1129]  (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">Input Specification:</span></a></li></ol></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1128-N-Queens-Puzzle-20"><span class="toc-number">1.</span> <span class="toc-text">[1128] N Queens Puzzle (20)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification"><span class="toc-number">1.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification"><span class="toc-number">1.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">注意点与解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1129-Recommendation-System-25"><span class="toc-number">2.</span> <span class="toc-text">[1129] Recommendation System (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1130-Infix-Expression-25"><span class="toc-number">3.</span> <span class="toc-text">[1130] Infix Expression (25)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">Input Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1131-Subway-Map-30"><span class="toc-number">4.</span> <span class="toc-text">[1131] Subway Map (30)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification-2"><span class="toc-number">4.1.2.</span> <span class="toc-text">Output Specification:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1218,16 +1253,6 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     
     
     
@@ -1251,7 +1276,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">09/05</span>
-            <a class="archive-post-title" href="/2023/09/05/idsm-learned-index-for-spatial-queries/">Learned Index for Spatial Queries</a>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
         </li>
     
         
@@ -1352,14 +1377,14 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">04/30</span>
-            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">基于深度学习的三维重建</a>
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">04/28</span>
-            <a class="archive-post-title" href="/2023/04/28/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">基于深度学习的三维重建</a>
         </li>
     
         
@@ -1485,21 +1510,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
@@ -1530,6 +1540,21 @@
                 随笔
             </span>
         
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="故障诊断">
                 <span class="iconfont-archer">&#xe606;</span>
                 故障诊断
@@ -1550,24 +1575,9 @@
                 debug记录
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="异常检测">
-                <span class="iconfont-archer">&#xe606;</span>
-                异常检测
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="机器学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                机器学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="迁移学习">
@@ -1575,9 +1585,9 @@
                 迁移学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="what-if索引推荐">
+            <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
-                what-if索引推荐
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="列存分区">
@@ -1605,26 +1615,6 @@
                 剪枝
             </span>
         
-            <span class="sidebar-tag-name" data-tags="素数">
-                <span class="iconfont-archer">&#xe606;</span>
-                素数
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="逻辑题">
-                <span class="iconfont-archer">&#xe606;</span>
-                逻辑题
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="并查集">
-                <span class="iconfont-archer">&#xe606;</span>
-                并查集
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
@@ -1645,6 +1635,26 @@
                 最短路径
             </span>
         
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="哈希">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希
@@ -1660,9 +1670,9 @@
                 二叉搜索树
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Set">
+            <span class="sidebar-tag-name" data-tags="贪心">
                 <span class="iconfont-archer">&#xe606;</span>
-                Set
+                贪心
             </span>
         
             <span class="sidebar-tag-name" data-tags="图论">
@@ -1670,24 +1680,24 @@
                 图论
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
             </span>
         
-            <span class="sidebar-tag-name" data-tags="贪心">
+            <span class="sidebar-tag-name" data-tags="DFS">
                 <span class="iconfont-archer">&#xe606;</span>
-                贪心
+                DFS
             </span>
         
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="DFS">
-                <span class="iconfont-archer">&#xe606;</span>
-                DFS
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -1703,21 +1713,6 @@
             <span class="sidebar-tag-name" data-tags="图的遍历">
                 <span class="iconfont-archer">&#xe606;</span>
                 图的遍历
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Dijkstra">
-                <span class="iconfont-archer">&#xe606;</span>
-                Dijkstra
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="BellmanFord">
-                <span class="iconfont-archer">&#xe606;</span>
-                BellmanFord
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="SPFA">
-                <span class="iconfont-archer">&#xe606;</span>
-                SPFA
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
