@@ -33,11 +33,11 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/31/pat-2020-spring/7.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/31/pat-2020-spring/8.png">
 <meta property="article:published_time" content="2023-08-31T05:06:48.000Z">
-<meta property="article:modified_time" content="2023-09-03T13:58:15.367Z">
+<meta property="article:modified_time" content="2023-09-09T09:06:03.210Z">
 <meta property="article:author" content="Elubrazione">
-<meta property="article:tag" content="数学模拟">
 <meta property="article:tag" content="素数">
 <meta property="article:tag" content="哈希">
+<meta property="article:tag" content="图模拟">
 <meta property="article:tag" content="快乐模拟">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2023/08/31/pat-2020-spring/1.JPG">
@@ -337,11 +337,11 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数学模拟">数学模拟</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags="素数">素数</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="哈希">哈希</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="图模拟">图模拟</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="快乐模拟">快乐模拟</a>
     
@@ -549,7 +549,7 @@
 <h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">bool</span>&gt; winner;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; info;</span><br><span class="line">set&lt;<span class="type">int</span>&gt; w;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; pool;</span><br><span class="line"><span class="type">bool</span> mp[<span class="number">100001</span>], mp2[<span class="number">100001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, m, a, b, cur;</span><br><span class="line">  cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">  pool.<span class="built_in">push_back</span>(a);</span><br><span class="line">  pool.<span class="built_in">push_back</span>(b);</span><br><span class="line">  mp[<span class="built_in">abs</span>(a-b)] = <span class="literal">true</span>;</span><br><span class="line">  mp2[a] = mp2[b] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">  winner.<span class="built_in">resize</span>(n, <span class="literal">true</span>);</span><br><span class="line">  info.<span class="built_in">resize</span>(m, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;info[j][i]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!winner[j]) <span class="keyword">continue</span>;</span><br><span class="line">      <span class="keyword">if</span> (mp[info[i][j]] &amp;&amp; !mp2[info[i][j]]) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> p: pool)</span><br><span class="line">          mp[<span class="built_in">abs</span>(p-info[i][j])] = <span class="literal">true</span>;</span><br><span class="line">        pool.<span class="built_in">push_back</span>(info[i][j]);</span><br><span class="line">        mp2[info[i][j]] = <span class="literal">true</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Round #%d: %d is out.\n&quot;</span>, i + <span class="number">1</span>, j + <span class="number">1</span>);</span><br><span class="line">        winner[j] = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">if</span> (winner[i])  w.<span class="built_in">insert</span>(i + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">if</span> (!w.<span class="built_in">size</span>()) cout &lt;&lt; <span class="string">&quot;No winner.&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Winner(s):&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> p: w) <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>, p);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="1170-Safari-Park-25"><a href="#1170-Safari-Park-25" class="headerlink" title="[1170] Safari Park (25)"></a>[1170] Safari Park (25)</h1><blockquote>
-<p>数学模拟</p>
+<p>图模拟</p>
 </blockquote>
 <h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>A safari park（野生动物园）has $K$ species of animals, and is divided into $N$ regions. The managers hope to spread the animals to all the regions, but not the same animals in the two neighboring regions. Of course, they also realize that this is an NP complete problem, you are not expected to solve it. Instead, they have designed several distribution plans. Your job is to write a program to help them tell if a plan is feasible.</p>
 <h3 id="Input-Specification-2"><a href="#Input-Specification-2" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives 3 integers: $N (0&lt;N≤500)$, the number of regions; $R (≥0)$, the number of neighboring relations, and $K (0&lt;K≤N)$, the number of species of animals. The regions and the species are both indexed from 1 to $N$.</p>
@@ -591,7 +591,7 @@
             <p>原文作者：<a href="https://elubrazione.github.io">Elubrazione</a>
             <p>原文链接：<a href="https://elubrazione.github.io/2023/08/31/pat-2020-spring/">https://elubrazione.github.io/2023/08/31/pat-2020-spring/</a>
             <p>发表日期：<a href="https://elubrazione.github.io/2023/08/31/pat-2020-spring/">August 31st 2023, 1:06:48 pm</a>
-            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/31/pat-2020-spring/">September 3rd 2023, 9:58:15 pm</a>
+            <p>更新日期：<a href="https://elubrazione.github.io/2023/08/31/pat-2020-spring/">September 9th 2023, 5:06:03 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -963,7 +963,64 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1258,7 +1315,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 37
+        Total : 40
         </div>
         <!-- search  -->
         
@@ -1272,6 +1329,24 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2023/09/08/idsm-literature-review-learned-index/">学习型索引调研</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">09/05</span>
@@ -1509,6 +1584,21 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="教程">
                 <span class="iconfont-archer">&#xe606;</span>
                 教程
@@ -1539,21 +1629,6 @@
                 随笔
             </span>
         
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="故障诊断">
                 <span class="iconfont-archer">&#xe606;</span>
                 故障诊断
@@ -1579,14 +1654,19 @@
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="迁移学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                迁移学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
                 多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="学习型索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                学习型索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="列存分区">
@@ -1614,26 +1694,6 @@
                 剪枝
             </span>
         
-            <span class="sidebar-tag-name" data-tags="字符串">
-                <span class="iconfont-archer">&#xe606;</span>
-                字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数学模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="完全二叉树">
-                <span class="iconfont-archer">&#xe606;</span>
-                完全二叉树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="最短路径">
-                <span class="iconfont-archer">&#xe606;</span>
-                最短路径
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="素数">
                 <span class="iconfont-archer">&#xe606;</span>
                 素数
@@ -1654,6 +1714,26 @@
                 树的遍历
             </span>
         
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="哈希">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希
@@ -1669,9 +1749,9 @@
                 二叉搜索树
             </span>
         
-            <span class="sidebar-tag-name" data-tags="贪心">
+            <span class="sidebar-tag-name" data-tags="Set">
                 <span class="iconfont-archer">&#xe606;</span>
-                贪心
+                Set
             </span>
         
             <span class="sidebar-tag-name" data-tags="图论">
@@ -1679,19 +1759,24 @@
                 图论
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Set">
-                <span class="iconfont-archer">&#xe606;</span>
-                Set
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="DFS">
                 <span class="iconfont-archer">&#xe606;</span>
                 DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
             </span>
         
             <span class="sidebar-tag-name" data-tags="动态规划">
