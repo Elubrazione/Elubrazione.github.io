@@ -22,25 +22,31 @@
     <meta name="description" content="cs224w课程学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="heterogeneous graphs">
-<meta property="og:url" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/index.html">
+<meta property="og:url" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="cs224w课程学习笔记">
 <meta property="og:locale">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200853873.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200917713.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200957472.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201021773.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201048127.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201121446.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231118124030147.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231118130103604.png">
-<meta property="article:published_time" content="2023-11-17T10:41:02.000Z">
-<meta property="article:modified_time" content="2023-11-18T06:08:13.379Z">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200853873.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200917713.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200957472.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201021773.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201048127.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201121446.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231118124030147.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231118130103604.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128195513331.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128202132158.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201654905.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201713336.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201746886.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231128202152055.png">
+<meta property="article:published_time" content="2023-11-27T10:41:02.000Z">
+<meta property="article:modified_time" content="2023-11-28T13:37:34.293Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="GNN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://elubrazione.github.io/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200853873.png">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200853873.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
@@ -360,13 +366,13 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.5k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2023/11/17</span>
+                    <span class="post-intro-time">2023/11/27</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -526,12 +532,12 @@
 
 <p>$G&#x3D;(V,E,R,T)$</p>
 <p>node type $T(v_i)$, relation type $r \in R$</p>
-<p><img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200853873.png" alt="image-20231117200853873"></p>
+<p><img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200853873.png" alt="image-20231117200853873"></p>
 <h2 id="RGCN"><a href="#RGCN" class="headerlink" title="RGCN"></a>RGCN</h2><p><strong>extend GCN</strong> to handle heterogeneous graph with miltiple edge&#x2F; relation types</p>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200917713.png" alt="image-20231117200917713" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200917713.png" alt="image-20231117200917713" style="zoom:80%;">
 
 <p>we should use different neural network weights for different relation types</p>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117200957472.png" alt="image-20231117200957472" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117200957472.png" alt="image-20231117200957472" style="zoom:80%;">
 
 <p>$$h^{(l+1)} _v &#x3D; \sigma(\sum \limits _{r \in R} \sum \limits _{u \in N^r _v} \frac{1}{c _{v,r}} W^{(l)} _r h^{(l)} _u + W^{(l)} _0 h^{(l)} _v)$$</p>
 <h4 id="message"><a href="#message" class="headerlink" title="message"></a>message</h4><p>each neighbor of a given relation:</p>
@@ -547,22 +553,26 @@
 <li>use block diagonal matrices</li>
 <li>basis&#x2F;dictionary learning</li>
 </ul>
-<h4 id="block-diagonal-matrices"><a href="#block-diagonal-matrices" class="headerlink" title="block diagonal matrices"></a>block diagonal matrices</h4><p>key：使权重矩阵变稀疏，减少非0元素数量 &#x3D;&gt; 训练地更快，模型更robust，不容易过拟合</p>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201021773.png" alt="image-20231117201021773" style="zoom:80%;">
+<h4 id="block-diagonal-matrices"><a href="#block-diagonal-matrices" class="headerlink" title="block diagonal matrices"></a>block diagonal matrices</h4><p>key：减少非0元素数量 &#x3D;&gt; 训练地更快，模型更robust，不容易过拟合</p>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201021773.png" alt="image-20231117201021773" style="zoom:80%;">
 
 <p>用B个低维矩阵，参数从$d^{(l+1)} \times d^{(l)}$减少到$\frac{d^{(l+1)}}{B} \times \frac{d^{(l)}}{B}$</p>
 <p>只有相邻神经元&#x2F;嵌入维度可以通过权重矩阵交互，要解决这一限制，需要多加几层神经网络，或者用不同的block结构，才能让不在一个block内的维度互相交流。</p>
+<blockquote>
+<p><strong>解释一下这是为什么</strong></p>
+<p>这个做法就是让把大矩阵给切成小块，比如原来的100×100按稀疏程度刚好能切成四个25×25的，设想以下场景：原来有23号和41号相连，但因为分区的存在23号只能和0号至24号交换信息，这就是所谓“只有同一个块里相邻的神经元才能交互”的意思。</p>
+</blockquote>
 <h4 id="basis-learning"><a href="#basis-learning" class="headerlink" title="basis learning"></a>basis learning</h4><p>key：在不同的关系中共享权重</p>
 <p>将每个关系的权重矩阵表示为基变换的<strong>线性组合</strong></p>
 <p>$$W_r &#x3D; \sum^{B} _ {b&#x3D;1} a _ {rb} \cdot V_b$$</p>
 <p>这里$V_b$是共享的权重矩阵，$a_{rb}$是系数，这样我们就只需要训练和学习${ a_{rb} }^B _{b&#x3D;1}$ 就行</p>
 <h3 id="example-entity-x2F-node-classification"><a href="#example-entity-x2F-node-classification" class="headerlink" title="example: entity&#x2F; node classification"></a>example: entity&#x2F; node classification</h3><p>如何定义各种任务？</p>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201048127.png" alt="image-20231117201048127" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201048127.png" alt="image-20231117201048127" style="zoom:80%;">
 
 <h4 id="dataset-splitting"><a href="#dataset-splitting" class="headerlink" title="dataset splitting"></a>dataset splitting</h4><p>将每种关系对应的边都分成 training message edges, training supervision edges, validation edges, test edges 四类</p>
 <p>&#x3D;&gt; 解决样本不平衡的问题，如果不先做边的分类直接将所有类型的边混在一起分成四份，无法保证四个数据集里含有所有关系类型的边</p>
 <p>这么分完最后再合并到一起，合成大的四类</p>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231117201121446.png" alt="image-20231117201121446" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231117201121446.png" alt="image-20231117201121446" style="zoom:80%;">
 
 <p>假设$(E,r_3,A)$是training supervision edge，其它所有的边都是training message edges。我们取E和A最后一层的embedding：$h^{(L)} _ E$和$h^{(L)} _ A$，然后使用一个函数$f_r: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}$来计算二者有关联的概率。例如 $f_{r1}(h_E,h_A)&#x3D;h^T_E W _{r1} h_A, W _{r1} \in \mathbb{R}^{d \times d}$</p>
 <h4 id="training"><a href="#training" class="headerlink" title="training"></a>training</h4><blockquote>
@@ -585,7 +595,7 @@
 <p>$$\mathscr{l} &#x3D; -log \sigma(f _{r3}(h_E,h_A)) - log(1-\sigma(f _{r3}(h_E,h_B)))$$</p>
 </li>
 </ol>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231118124030147.png" alt="image-20231118124030147" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231118124030147.png" alt="image-20231118124030147" style="zoom:80%;">
 
 <h4 id="evaluation"><a href="#evaluation" class="headerlink" title="evaluation"></a>evaluation</h4><blockquote>
 <p>因为在training的时候我们已经minimize了negative edge $(E,r_3,B)$的分数了，所以直觉上我们要预测的边$(E,r_3,D)$即validation edge的分数应该要比上面minimize score的negative edge高</p>
@@ -600,13 +610,65 @@
 </ol>
 </li>
 </ol>
-<img src="/2023/11/17/cs224w-heterogeneous-graphs/image-20231118130103604.png" alt="image-20231118130103604" style="zoom:80%;">
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231118130103604.png" alt="image-20231118130103604" style="zoom:80%;">
 
-<h2 id="KG-Completion"><a href="#KG-Completion" class="headerlink" title="KG Completion"></a>KG Completion</h2><h3 id="embedding"><a href="#embedding" class="headerlink" title="embedding"></a>embedding</h3><blockquote>
+<h2 id="Knowledge-Graphs-Completion"><a href="#Knowledge-Graphs-Completion" class="headerlink" title="Knowledge Graphs Completion"></a>Knowledge Graphs Completion</h2><h3 id="embedding"><a href="#embedding" class="headerlink" title="embedding"></a>embedding</h3><blockquote>
 <p>shallow embedding</p>
 </blockquote>
-<p>知识图谱中的边用一个三元组来表示$(h,r,t)$，节点头$h$和节点尾$t$有关系$r$</p>
-<p>entities and relations in the embedding space $\mathbb{R}^d$</p>
+<p>知识图谱中的边用一个三元组来表示$(h,r,t)$，节点头$h$和节点尾$t$有关系$r$，模型实体和关系都属于嵌入空间 $\mathbb{R}^d$</p>
+<p>给定一个三元组，我们的嵌入目标是让$(h, r)$的嵌入向量接近$t$的嵌入向量。</p>
+<ul>
+<li>如何embed$(h, r)$</li>
+<li>如何定义接近度</li>
+</ul>
+<p>最简单最自然的想法是transE：</p>
+<ul>
+<li>给定一个$(h,r,t)$，如果两点之间关系存在，则$h+r\approx t$；反之$h+r ≠ t$</li>
+<li>得出$f _r (h, t) &#x3D; - \mid \mid h + r - t \mid \mid$</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128195513331.png" alt="image-20231128195513331" style="zoom:80%;">
+
+<h4 id="transE算法"><a href="#transE算法" class="headerlink" title="transE算法"></a>transE算法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>常见关系：</p>
+<ol>
+<li><p>对称关系 </p>
+<ul>
+<li>$r(h, t) &#x3D;&gt; r(t, h)$ </li>
+<li>你是我室友我也是你室友这叫对称</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128202132158.png" alt="image-20231128202132158" style="zoom:80%;">
+</li>
+<li><p>反对称关系</p>
+<ul>
+<li>$(r(h,t) &#x3D;&gt; \neg r(t,h))$</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201654905.png" alt="image-20231128201654905" style="zoom:80%;">
+</li>
+<li><p>逆关系</p>
+<ul>
+<li>$r_2(h,t) &#x3D;&gt; r_1(t,h)$</li>
+<li>雇佣和被雇佣</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201713336.png" alt="image-20231128201713336" style="zoom:80%;">
+</li>
+<li><p>复合传递关系</p>
+<ul>
+<li>$r_1(x, y) \land r_2(y,z) &#x3D;&gt; r_3(x,z)$ $\forall x,y,z$</li>
+<li>我妈的老公是我爹：我和我妈是母女关系，我妈和某个人是夫妻关系，那么我和这个人是父女关系</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128201746886.png" alt="image-20231128201746886" style="zoom:80%;">
+</li>
+<li><p>一对多关系</p>
+<ul>
+<li>$r(h,t_1),r(h,t_2),…,r(h,t_n)$都为真</li>
+<li>一个老师可以有多个学生，$t1,t_2,…,t_n$都是学生</li>
+</ul>
+<img src="/2023/11/27/cs224w-heterogeneous-graphs/image-20231128202152055.png" alt="image-20231128202152055" style="zoom:80%;"></li>
+</ol>
+<blockquote>
+<p>注意这里的反对称关系和传递性和离散数学里的定义有些不同，别搞混</p>
+</blockquote>
 
     </article>
     <!-- license -->
@@ -616,16 +678,16 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/11/18/idsm-env-problems/" title="Greenplum环境问题合集">
-                    <div class="nextTitle">Greenplum环境问题合集</div>
+                <a href="/2023/12/04/leetcode-2023-12/" title="Leetcode-2023-December">
+                    <div class="nextTitle">Leetcode-2023-December</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/11/16/algorithm-dynamic-programming/" title="Leetcode动态规划专题">
-                    <div class="prevTitle">Leetcode动态规划专题</div>
+                <a href="/2023/11/18/idsm-env-problems/" title="Greenplum环境问题合集">
+                    <div class="prevTitle">Greenplum环境问题合集</div>
                 </a>
             
         </li>
@@ -785,7 +847,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RGCN"><span class="toc-number">1.</span> <span class="toc-text">RGCN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#message"><span class="toc-number">1.0.1.</span> <span class="toc-text">message</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#aggregation"><span class="toc-number">1.0.2.</span> <span class="toc-text">aggregation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scalability"><span class="toc-number">1.1.</span> <span class="toc-text">scalability</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-to-reduce-or-regularize"><span class="toc-number">1.1.1.</span> <span class="toc-text">how to reduce or regularize?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block-diagonal-matrices"><span class="toc-number">1.1.2.</span> <span class="toc-text">block diagonal matrices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#basis-learning"><span class="toc-number">1.1.3.</span> <span class="toc-text">basis learning</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-entity-x2F-node-classification"><span class="toc-number">1.2.</span> <span class="toc-text">example: entity&#x2F; node classification</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dataset-splitting"><span class="toc-number">1.2.1.</span> <span class="toc-text">dataset splitting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#training"><span class="toc-number">1.2.2.</span> <span class="toc-text">training</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#evaluation"><span class="toc-number">1.2.3.</span> <span class="toc-text">evaluation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KG-Completion"><span class="toc-number">2.</span> <span class="toc-text">KG Completion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#embedding"><span class="toc-number">2.1.</span> <span class="toc-text">embedding</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RGCN"><span class="toc-number">1.</span> <span class="toc-text">RGCN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#message"><span class="toc-number">1.0.1.</span> <span class="toc-text">message</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#aggregation"><span class="toc-number">1.0.2.</span> <span class="toc-text">aggregation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scalability"><span class="toc-number">1.1.</span> <span class="toc-text">scalability</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#how-to-reduce-or-regularize"><span class="toc-number">1.1.1.</span> <span class="toc-text">how to reduce or regularize?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#block-diagonal-matrices"><span class="toc-number">1.1.2.</span> <span class="toc-text">block diagonal matrices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#basis-learning"><span class="toc-number">1.1.3.</span> <span class="toc-text">basis learning</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-entity-x2F-node-classification"><span class="toc-number">1.2.</span> <span class="toc-text">example: entity&#x2F; node classification</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dataset-splitting"><span class="toc-number">1.2.1.</span> <span class="toc-text">dataset splitting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#training"><span class="toc-number">1.2.2.</span> <span class="toc-text">training</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#evaluation"><span class="toc-number">1.2.3.</span> <span class="toc-text">evaluation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Knowledge-Graphs-Completion"><span class="toc-number">2.</span> <span class="toc-text">Knowledge Graphs Completion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#embedding"><span class="toc-number">2.1.</span> <span class="toc-text">embedding</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#transE%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.1.</span> <span class="toc-text">transE算法</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1054,7 +1116,22 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1505,7 +1582,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 51
+        Total : 52
         </div>
         <!-- search  -->
         
@@ -1521,14 +1598,20 @@
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/18</span>
-            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+            <span class="archive-post-date">12/04</span>
+            <a class="archive-post-title" href="/2023/12/04/leetcode-2023-12/">Leetcode-2023-December</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/17</span>
-            <a class="archive-post-title" href="/2023/11/17/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
         </li>
     
         
@@ -1831,7 +1914,7 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">01/05</span>
-            <a class="archive-post-title" href="/2022/01/05/subjects-words/">托福学科单词</a>
+            <a class="archive-post-title" href="/2022/01/05/english-toefl-subjects-words/">托福学科单词</a>
         </li>
     
     </div>
@@ -1895,9 +1978,9 @@
                 随笔
             </span>
         
-            <span class="sidebar-tag-name" data-tags="故障诊断">
+            <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
+                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
@@ -1913,6 +1996,11 @@
             <span class="sidebar-tag-name" data-tags="debug记录">
                 <span class="iconfont-archer">&#xe606;</span>
                 debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
             </span>
         
             <span class="sidebar-tag-name" data-tags="环境问题">
@@ -1940,9 +2028,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -1950,14 +2038,14 @@
                 LeetCode
             </span>
         
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="剪枝">
                 <span class="iconfont-archer">&#xe606;</span>
                 剪枝
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="链表">
-                <span class="iconfont-archer">&#xe606;</span>
-                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="素数">
@@ -1980,29 +2068,14 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="字符串">
-                <span class="iconfont-archer">&#xe606;</span>
-                字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数学模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="完全二叉树">
-                <span class="iconfont-archer">&#xe606;</span>
-                完全二叉树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="最短路径">
-                <span class="iconfont-archer">&#xe606;</span>
-                最短路径
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="哈希">
                 <span class="iconfont-archer">&#xe606;</span>
                 哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
             </span>
         
             <span class="sidebar-tag-name" data-tags="排序">
@@ -2030,19 +2103,34 @@
                 AVL树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="贪心">
                 <span class="iconfont-archer">&#xe606;</span>
                 贪心
             </span>
         
-            <span class="sidebar-tag-name" data-tags="DFS">
-                <span class="iconfont-archer">&#xe606;</span>
-                DFS
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="图模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
             </span>
         
             <span class="sidebar-tag-name" data-tags="动态规划">
@@ -2111,19 +2199,24 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="华科课程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            华科课程
-        </span>
-    
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
             算法
         </span>
     
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
         </span>
     
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
