@@ -19,21 +19,29 @@
         <meta name="keywords" content="elubrazione,lingching">
     
     <meta name="description" content="">
-    <meta name="description" content="系统能力培养虚拟机实验记录">
+    <meta name="description" content="系统能力培养虚拟机实验教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统能力培养之虚拟机">
 <meta property="og:url" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统能力培养虚拟机实验记录">
+<meta property="og:description" content="系统能力培养虚拟机实验教程">
 <meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219012358447.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219014226124.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219014504625.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005718404.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005910190.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219015621214.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219012232721.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231217184313896.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231217184648020.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231217184756760.png">
 <meta property="article:published_time" content="2023-12-17T10:40:58.000Z">
-<meta property="article:modified_time" content="2023-12-17T12:33:51.187Z">
+<meta property="article:modified_time" content="2023-12-18T17:57:29.137Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231217184313896.png">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
@@ -349,7 +357,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">23</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">708</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -510,9 +518,44 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>系统能力培养虚拟机实验记录</p>
+        <p>系统能力培养虚拟机实验教程</p>
 <span id="more"></span>
 
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本来想水一下这个课设，上网找到了一个没有代码只有思路的速通帖，文章开头第一句为“从今天开始, 不要偷懒了”，当时并不以为意。借鉴了到一半感觉当一个没有感情的应付作业机器实在过于痛苦，再加上在狗屎一样的虚拟机里操作终端和IDE实在没有体验感，遂回到数月前被我放弃的远程连接方案，并打算还是走个心稍微脚踏实地一点写一下这个课设，或许也能有些收获和体会，你科很多实验课似乎确实是这样的。</p>
+<p><mark>那么，从今天开始, 不要偷懒了。</mark></p>
+<h1 id="pa0"><a href="#pa0" class="headerlink" title="pa0"></a>pa0</h1><blockquote>
+<p>VirtualBox安装包和老师给的前置打包环境root.vdi文件请自行在课程官网获取，创建并导入后无需安装任务书中所写的pa0环境依赖。</p>
+<p><strong>本章内容：</strong>在你的电脑本机使用ssh免密丝滑连接你的虚拟机，此方法可推广至服务器连接。如果你愿意在虚拟机里写代码可以跳过此章。</p>
+</blockquote>
+<h2 id="虚拟机网络配置"><a href="#虚拟机网络配置" class="headerlink" title="虚拟机网络配置"></a>虚拟机网络配置</h2><p>给你的虚拟机新增一块网卡，启用网络连接、连接方式选择仅主机，如果你发现是灰色的无法选择请你先关闭你的虚拟机。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219013901608.png" alt="image-20231219013901608"></p>
+<p>添加后重新启动虚拟机并打开终端，依赖安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install net-tools</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>获取信息如下：<code>enp0s8</code>后第二行的inet<mark>192.168.56.101</mark>，记住它尤其是前缀。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219012358447.png" alt="image-20231219012358447"></p>
+<p>打开你的本机windows，<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>高级网络设置</code></p>
+<p>找到virtualBox，并选择 <code>查看其他属性</code>，观察你的IPv4地址的前四位和上面在虚拟机里看到的前24位是否相同，不同的话手动改一下本机的。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219014226124.png" alt="image-20231219014226124"></p>
+<p>相同后ping一下试试，一般没问题，有问题我也不知道为什么。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219014504625.png" alt="image-20231219014504625"></p>
+<p>回到你的虚拟机，继续配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line">sudo /etc/init.d/ssh start</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> ssh</span><br><span class="line">sudo <span class="built_in">cp</span> /etc/ssh/sshd_config /etc/ssh/sshd_config.backup <span class="comment"># 备份</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>追加以下内容，注意倒三行是写上你的用户名，不过按理来说大家应该都叫<code>hust</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">AddressFamily any</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line">UsePrivilegeSeparation no</span><br><span class="line">PasswordAuthentication <span class="built_in">yes</span></span><br><span class="line">PermitRootLogin <span class="built_in">yes</span></span><br><span class="line">AllowUsers hust</span><br><span class="line">RSAAuthentication <span class="built_in">yes</span></span><br><span class="line">PubKeyAuthentication <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>大概长这样</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219005718404.png" alt="image-20231219005718404"></p>
+<p>写完保存退出后重启一下ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh --full-restart</span><br></pre></td></tr></table></figure>
+
+<p>回到你的windows终端里测试一下连接 <code>ssh -p 22 hust@your ip</code>，如下：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219005910190.png" alt="image-20231219005910190"></p>
+<h2 id="免密登录配置"><a href="#免密登录配置" class="headerlink" title="免密登录配置"></a>免密登录配置</h2><p>重复的东西不想写了，请参考我的<a href="https://elubrazione.github.io/2023/08/30/virtual-env-install/#/VsCode%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA">另一篇配置Vmware的博客</a>的<code>VsCode免密连接虚拟机</code>一章</p>
+<p>总之在本机的vscode连接上之后长这样：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219015621214.png" alt="image-20231219015621214"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219012232721.png" alt="image-20231219012232721"></p>
 <h1 id="pa1"><a href="#pa1" class="headerlink" title="pa1"></a>pa1</h1><p>命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./nemu</span><br><span class="line">make</span><br><span class="line">make clean</span><br><span class="line">make run</span><br><span class="line">./build/riscv32-nemu</span><br></pre></td></tr></table></figure>
 
@@ -697,7 +740,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">1.</span> <span class="toc-text">pa1</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -987,6 +1030,8 @@
         
         
     
+        
+        
         
         
         
@@ -1918,14 +1963,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
                 随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -1953,14 +1998,14 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="迁移学习">
@@ -1973,9 +2018,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -1983,9 +2028,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2013,24 +2058,9 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2046,6 +2076,21 @@
             <span class="sidebar-tag-name" data-tags="最短路径">
                 <span class="iconfont-archer">&#xe606;</span>
                 最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="Set">
@@ -2083,14 +2128,14 @@
                 拓扑排序
             </span>
         
-            <span class="sidebar-tag-name" data-tags="快乐模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                快乐模拟
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
             </span>
         
             <span class="sidebar-tag-name" data-tags="图的遍历">
@@ -2101,6 +2146,11 @@
             <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
                 递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2121,11 +2171,6 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
             </span>
         
     </div>

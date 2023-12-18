@@ -28,7 +28,6 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/2.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/3.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/4.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/1.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/5.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/6.png">
@@ -36,7 +35,7 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/8.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/08/30/virtual-env-install/9.png">
 <meta property="article:published_time" content="2023-08-30T01:34:03.000Z">
-<meta property="article:modified_time" content="2023-11-22T09:51:44.674Z">
+<meta property="article:modified_time" content="2023-12-18T17:53:27.081Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary">
@@ -346,7 +345,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">822</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">595</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -514,13 +513,6 @@
 <p><img src="/2023/08/30/virtual-env-install/2.png" alt="iso-download"></p>
 <p>打开VMware选择<code>创建虚拟机</code>，导入刚才下载好的iso文件并直接下一步，设置你的信息并为虚拟机命名，选择Ubuntu的安装位置，配置一些虚拟机信息，磁盘大小可以调大点其它默认就行。</p>
 <p><img src="/2023/08/30/virtual-env-install/3.png" alt="ubuntu-init"></p>
-<p>之后会有一些系统初始化过程，记得给你的语言选择英语以免后续出现一些奇怪的问题。</p>
-<blockquote>
-<h2 id="注意tutorial里提到的这个问题。"><a href="#注意tutorial里提到的这个问题。" class="headerlink" title="注意tutorial里提到的这个问题。"></a>注意tutorial里提到的这个问题。</h2><p>在完成安装并初次登陆Ubuntu时, Software Updater会弹出提示框提醒用户更新软件(如下图所示), 请务必忽略该提示框, <strong>不要</strong>点击”安装”. 否则安装操作将会改变Ubuntu中包管理器的状态, 使其与讲义后续指示的操作产生冲突, 最终将导致系统崩溃而无法再次进入Ubuntu.<br><img src="/2023/08/30/virtual-env-install/4.png" alt="alert"></p>
-</blockquote>
-<h1 id="依赖包安装"><a href="#依赖包安装" class="headerlink" title="依赖包安装"></a>依赖包安装</h1><p>在虚拟机打开终端，执行以下命令安装依赖。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方教程</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install man</span><br><span class="line">sudo apt-get install gcc-doc</span><br><span class="line">sudo apt-get install gdb</span><br><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt-get install libreadline-dev</span><br><span class="line">sudo apt-get install libsdl2-dev</span><br><span class="line">sudo apt-get install llvm llvm-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># vi太难用了</span></span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
-
 <h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="获取虚拟机IP"><a href="#获取虚拟机IP" class="headerlink" title="获取虚拟机IP"></a>获取虚拟机IP</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 依赖安装</span></span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line">sudo apt-get install net-tools</span><br><span class="line"></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
 
 <p>输入 <code>ifconfig</code>，你会得到下列结果，记住这个IP</p>
@@ -716,7 +708,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8Ftutorial%E9%87%8C%E6%8F%90%E5%88%B0%E7%9A%84%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">注意tutorial里提到的这个问题。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%8C%85%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">依赖包安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">SSH配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%99%9A%E6%8B%9F%E6%9C%BAIP"><span class="toc-number">3.1.</span> <span class="toc-text">获取虚拟机IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VsCode%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">3.2.</span> <span class="toc-text">VsCode免密连接虚拟机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGIT"><span class="toc-number">4.</span> <span class="toc-text">配置GIT</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">SSH配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%99%9A%E6%8B%9F%E6%9C%BAIP"><span class="toc-number">2.1.</span> <span class="toc-text">获取虚拟机IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VsCode%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">2.2.</span> <span class="toc-text">VsCode免密连接虚拟机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGIT"><span class="toc-number">3.</span> <span class="toc-text">配置GIT</span></a></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1006,6 +998,8 @@
         
         
     
+        
+        
         
         
         
@@ -1937,14 +1931,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
                 随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -1972,14 +1966,14 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="迁移学习">
@@ -1992,9 +1986,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -2002,9 +1996,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2032,24 +2026,9 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2065,6 +2044,21 @@
             <span class="sidebar-tag-name" data-tags="最短路径">
                 <span class="iconfont-archer">&#xe606;</span>
                 最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="Set">
@@ -2102,14 +2096,14 @@
                 拓扑排序
             </span>
         
-            <span class="sidebar-tag-name" data-tags="快乐模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                快乐模拟
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
             </span>
         
             <span class="sidebar-tag-name" data-tags="图的遍历">
@@ -2120,6 +2114,11 @@
             <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
                 递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2140,11 +2139,6 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
             </span>
         
     </div>
