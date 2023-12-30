@@ -19,26 +19,20 @@
         <meta name="keywords" content="elubrazione,lingching">
     
     <meta name="description" content="">
-    <meta name="description" content="毕业设计环境问题集锦，为了防止服务器到期需要remake环境">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Greenplum环境问题合集">
-<meta property="og:url" content="https://elubrazione.github.io/2023/11/18/idsm-env-problems/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="ml-linear-model">
+<meta property="og:url" content="https://elubrazione.github.io/2023/12/26/ml-linear-model/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="毕业设计环境问题集锦，为了防止服务器到期需要remake环境">
 <meta property="og:locale">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/18/idsm-env-problems/image-20231118202402770.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/11/18/idsm-env-problems/image-20231118204641445.png">
-<meta property="article:published_time" content="2023-11-18T11:57:55.000Z">
-<meta property="article:modified_time" content="2023-12-20T21:52:31.097Z">
+<meta property="article:published_time" content="2023-12-26T11:56:10.000Z">
+<meta property="article:modified_time" content="2023-12-26T11:56:10.871Z">
 <meta property="article:author" content="Elubrazione">
-<meta property="article:tag" content="环境问题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://elubrazione.github.io/2023/11/18/idsm-env-problems/image-20231118202402770.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>Greenplum环境问题合集 · Lingching&#39;s Studio</title>
+    <title>ml-linear-model · Lingching&#39;s Studio</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -265,7 +259,7 @@
                 <a href="/">Lingching&#39;s Studio</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">Greenplum环境问题合集</a>
+                <a href="#" class="post-name">ml-linear-model</a>
             </div>
         </div>
     
@@ -311,7 +305,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                Greenplum环境问题合集
+                ml-linear-model
             <!-- 404 -->
             
         </h1>
@@ -330,20 +324,6 @@
                 
                     <div class= post-intro-tags >
     
-        
-        
-            
-        
-        
-        <span class="post-category" data-categories="腾讯AI训练营"">
-            <i class="fas fa-folder post-category-icon"></i>
-            <span class="post-category-text">
-                腾讯AI训练营
-            </span>
-        </span>
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="环境问题">环境问题</a>
     
 </div>
 
@@ -351,13 +331,13 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">267</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">0</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2023/11/18</span>
+                    <span class="post-intro-time">2023/12/26</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -512,39 +492,7 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>毕业设计环境问题集锦，为了防止服务器到期需要remake环境</p>
-<span id="more"></span>
-
-<h1 id="Remake步骤"><a href="#Remake步骤" class="headerlink" title="Remake步骤"></a>Remake步骤</h1><blockquote>
-<p>要安装在&#x2F;mydata下</p>
-</blockquote>
-<p>服务器环境安装分为四个部分</p>
-<ol>
-<li>Cloudlab服务器初始化</li>
-<li><a href="https://elubrazione.github.io/2023/06/29/idsm-env-installation/#/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8">Greenplum数据库安装</a></li>
-<li><a href="https://elubrazione.github.io/2021/03/30/virtual-env-install/#/%E9%85%8D%E7%BD%AEGIT">配置Github SSH</a></li>
-<li>安装Anaconda3（见下）</li>
-</ol>
-<h2 id="安装Anaconda3"><a href="#安装Anaconda3" class="headerlink" title="安装Anaconda3"></a>安装Anaconda3</h2><p>从网站 <a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> 选择最新的Linux版本，复制连接</p>
-<p><img src="/2023/11/18/idsm-env-problems/image-20231118202402770.png" alt="image-20231118202402770"></p>
-<p>打开服务器，执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh</span><br><span class="line"><span class="built_in">chmod</span> +x Anaconda3-2023.09-0-Linux-x86_64.sh</span><br><span class="line">sudo ./Anaconda3-2023.09-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>启动安装程序后一路回车，是否允许安装时输入yes，重定向安装目录，然后回车。</p>
-<p>安装完成后添加一下系统变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim ~/bashrc</span><br><span class="line"><span class="comment"># 添加以下内容，后面是安装目录</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/opt/anaconda3/bin</span><br><span class="line"><span class="comment"># 退出后</span></span><br><span class="line"><span class="built_in">source</span> ~/bashrc</span><br><span class="line"><span class="comment"># 检查</span></span><br><span class="line">conda info --<span class="built_in">env</span></span><br><span class="line">conda</span><br></pre></td></tr></table></figure>
-
-<p>创建环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create --name postgres python=3.7</span><br><span class="line"><span class="built_in">source</span> activate postgres</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/11/18/idsm-env-problems/image-20231118204641445.png" alt="image-20231118204641445"></p>
-<p>补充：每次重新启动服务器都要重新<code>source ~/bashrc</code></p>
-<h1 id="重构遇到的环境问题"><a href="#重构遇到的环境问题" class="headerlink" title="重构遇到的环境问题"></a>重构遇到的环境问题</h1><h2 id="脚本无权限"><a href="#脚本无权限" class="headerlink" title="脚本无权限"></a>脚本无权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x ./env.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="greenplum重置python"><a href="#greenplum重置python" class="headerlink" title="greenplum重置python"></a>greenplum重置python</h2><p>写了个脚本一键恢复</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./env.sh</span><br></pre></td></tr></table></figure>
-
-
+        
     </article>
     <!-- license -->
     
@@ -553,16 +501,16 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/11/27/cs224w-heterogeneous-graphs/" title="heterogeneous graphs">
-                    <div class="nextTitle">heterogeneous graphs</div>
+                <a href="/2023/12/31/essay-3/" title="2023年末总结">
+                    <div class="nextTitle">2023年末总结</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/11/16/algorithm-dynamic-programming/" title="Leetcode动态规划专题">
-                    <div class="prevTitle">Leetcode动态规划专题</div>
+                <a href="/2023/12/17/pa-virtual-machine/" title="系统能力培养之虚拟机">
+                    <div class="prevTitle">系统能力培养之虚拟机</div>
                 </a>
             
         </li>
@@ -707,7 +655,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Remake%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">Remake步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Anaconda3"><span class="toc-number">1.1.</span> <span class="toc-text">安装Anaconda3</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%9E%84%E9%81%87%E5%88%B0%E7%9A%84%E7%8E%AF%E5%A2%83%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">重构遇到的环境问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E6%97%A0%E6%9D%83%E9%99%90"><span class="toc-number">2.1.</span> <span class="toc-text">脚本无权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#greenplum%E9%87%8D%E7%BD%AEpython"><span class="toc-number">2.2.</span> <span class="toc-text">greenplum重置python</span></a></li></ol></li></ol>
+                
             </div>
         
         <!-- sidebar -->
