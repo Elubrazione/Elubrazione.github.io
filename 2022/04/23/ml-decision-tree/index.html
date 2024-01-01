@@ -19,16 +19,23 @@
         <meta name="keywords" content="elubrazione,lingching">
     
     <meta name="description" content="">
-    <meta name="description" content="学习笔记">
+    <meta name="description" content="周志华西瓜书学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习-决策树">
 <meta property="og:url" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="学习笔记">
+<meta property="og:description" content="周志华西瓜书学习笔记">
 <meta property="og:locale">
 <meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20231231181722147.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101101059727.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155459149.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155516992.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155532070.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155549705.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155704049.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155819647.png">
 <meta property="article:published_time" content="2022-04-23T09:31:41.000Z">
-<meta property="article:modified_time" content="2023-12-31T11:51:09.177Z">
+<meta property="article:modified_time" content="2024-01-01T09:15:44.190Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -350,7 +357,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">9</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -511,15 +518,60 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>学习笔记</p>
+        <p>周志华西瓜书学习笔记</p>
 <span id="more"></span>
 
-<p>示意图如下</p>
+<blockquote>
+<p>2023.12 二周目补充版</p>
+</blockquote>
+<h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p>一棵决策树包含一个根节点、若干个内部结点和若干个叶结点；叶结点对应于决策结果，其他每个结点则对应于一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分到子结点中；根结点包含样本全集。从根结点到每个叶结点的路径对应了一个判定测试序列。示意图如下</p>
 <img src="/2022/04/23/ml-decision-tree/image-20231231181722147.png" alt="image-20231231181722147" style="zoom:80%;">
 
+<p>生成是一个递归过程，四种情况会导致递归返回：</p>
+<ul>
+<li>当前结点包含的样本全属于同一类别，无需划分 &#x3D;&gt; <mark>比如现在的样本类别都是好瓜</mark></li>
+<li>当前属性集为空，无法划分 &#x3D;&gt; <mark>没有属性</mark> &#x3D;&gt; 标记为叶结点，并将其类别设定为该结点所含样本最多的类别（当前结点的后验分布 ）</li>
+<li>所有样本在所有属性上取值相同，无法划分 &#x3D;&gt; <mark>当前node所包含的样本集在所有属性 $a_i \in A $ 上的值都相同，比如色泽、根蒂、敲声 三个属性值都一样</mark> &#x3D;&gt; 标记为叶结点，并将其类别设定为该结点所含样本最多的类别（当前结点的后验分布 ）</li>
+<li>当前结点包含的样本集合为空，不能划分 &#x3D;&gt; 标记为叶结点，将其类别设定为其<mark>父结点</mark>所含样本最多的类别（把父节点的样本分布作为当前结点的先验分布）</li>
+</ul>
+<img src="/2022/04/23/ml-decision-tree/image-20240101101059727.png" alt="image-20240101101059727">
 
-
-
+<h1 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h1><blockquote>
+<p>随着划分过程不断进行，我们希望决策树的分支结点所包含的样本尽可能属于同一类别，即结 点的纯度越来越高。</p>
+<p>本章节记录了几种选择最优化分属性 $a^{*}$ （纯度）的方法</p>
+</blockquote>
+<h2 id="信息增益-x3D-gt-ID3决策树"><a href="#信息增益-x3D-gt-ID3决策树" class="headerlink" title="信息增益 &#x3D;&gt; ID3决策树"></a>信息增益 &#x3D;&gt; ID3决策树</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>用信息熵来衡量样本集合纯度。若当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k (k &#x3D; 1, 2, …, \mid \mathcal{Y} \mid)$，对于上面西瓜的例子 $|\mathcal{Y}| &#x3D; 2$<strong>（好瓜和坏瓜两种）</strong>，则：</p>
+<p>$$Ent(D) &#x3D; - \sum \limits _ {k&#x3D;1} ^ {|\mathcal{Y}|} p_k log_2 p_k$$</p>
+<p>$Ent(D)$ 的值越小，则 $D$ 的纯度越高，最小值为0，最大值为 $log_2|\mathcal{Y}|$</p>
+<p>当每个类别出现的概率相等时，即 $p_k &#x3D; \frac{1}{|\mathcal{Y}|}$时，$Ent(D) &#x3D; -\sum \frac{1}{|\mathcal{Y}|} log_2(\frac{1}{|\mathcal{Y}|}) &#x3D; - |\mathcal{Y}| \times (\frac{1}{|\mathcal{Y}|} log_2(\frac{1}{|\mathcal{Y}|})) &#x3D; -log_2(\frac{1}{|\mathcal{Y}|}) &#x3D; log_2|\mathcal{Y}|$ </p>
+<p>假设离散属性 $a$ 有 $V$ 个取值 ${a _1, a_2, …, a_V}$ ，使用其来对样本进行划分，则会产生 $V$ 个结点，其中第 $V$ 个分支结点包含了 $D$ 中所有在属性 $a$ 上取值为 $a_v$ 的样本，记 为 $D_v$，给每个子节点赋予权重 $\frac{|D_v|}{|D|}$ （即样本数越多的分支结点的影响越大）。因此属性 $a$ 对样本集 $D$ 进行划分所获得的“信息增益”为：</p>
+<p>$$Gain(D,a) &#x3D; Ent(D) - \sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} Ent(D_v)$$</p>
+<p>为当前的每个划分离散值对应的样本子集信息熵，<mark>划分得到的信息熵和越小，划分后的纯度越大，原来的值减去新的划分和得到的值越大</mark></p>
+<p>取 $a_* &#x3D; arg _{a \in A} max(Gain(D,a))$ 作为标准来挑选最优划分属性 &#x3D;&gt; ID3决策树学习算法</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>这是书上举的例子，很好理解：</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155459149.png" alt="image-20240101155459149"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155516992.png" alt="image-20240101155516992"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155532070.png" alt="image-20240101155532070"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155549705.png" alt="image-20240101155549705"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155704049.png" alt="image-20240101155704049"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155819647.png" alt="image-20240101155819647"></p>
+<h2 id="增益率-x3D-gt-C4-5决策树"><a href="#增益率-x3D-gt-C4-5决策树" class="headerlink" title="增益率 &#x3D;&gt; C4.5决策树"></a>增益率 &#x3D;&gt; C4.5决策树</h2><blockquote>
+<p>信息增益准则对<strong>可取值数目较多的属性</strong>有所偏好</p>
+<p>增益率准则对<strong>可取值数目较少的属性</strong>有所偏好</p>
+</blockquote>
+<p>增益率定义：</p>
+<p>$$Gain_ratio(D, a) &#x3D; \frac{Gain(D, a)}{IV(a)}$$</p>
+<p>$$IV(a) &#x3D; -\sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} log_2 \frac{|D_v|}{|D|}$$</p>
+<p>$IV(a)$ 为属性a的固有值，属性a的可能取值数目越多(即V越大)，则 IV(a)的值通常会越大。</p>
+<h2 id="基尼指数-x3D-gt-CART决策树"><a href="#基尼指数-x3D-gt-CART决策树" class="headerlink" title="基尼指数 &#x3D;&gt; CART决策树"></a>基尼指数 &#x3D;&gt; CART决策树</h2><p>纯度用<strong>基尼值</strong>来度量</p>
+<p>$$Gini(D) &#x3D; \sum \limits _{k&#x3D;1} ^{|\mathcal{Y}|} \sum \limits  _{k’≠k} p _k p _{k’} &#x3D; 1 - \sum \limits _{k&#x3D;1} ^{|\mathcal{Y}|} p _k ^2$$</p>
+<p>$Gini(D)$ 反映了从数据集 $D$ 中随机抽取两个样本，其类别标记不一致的概率。因此 $Gini(D)$ 越小，则数据集 $D$ 的纯度越高。</p>
+<p>基尼指数定义：</p>
+<p>$$Gini_index(D, a) &#x3D; \sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} Gini(D_v)$$</p>
+<p>在候选属性集合A中，选择那个使得划分后<strong>基尼指数最小</strong>的属性作为最优划分属性  </p>
+<p>$$a _* &#x3D; arg _{a \in A} min(Gini(D, a))$$</p>
+<h1 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h1><p>为了应付过拟合，提升泛化能力。基本策略有 “预剪枝” (prepruning)和 “后剪枝” (postpruning) </p>
+<h2 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h2><h2 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h2>
     </article>
     <!-- license -->
     
@@ -697,7 +749,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">基本流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%92%E5%88%86%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text">划分选择</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A-x3D-gt-ID3%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.1.</span> <span class="toc-text">信息增益 &#x3D;&gt; ID3决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E7%9B%8A%E7%8E%87-x3D-gt-C4-5%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text">增益率 &#x3D;&gt; C4.5决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0-x3D-gt-CART%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.3.</span> <span class="toc-text">基尼指数 &#x3D;&gt; CART决策树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">剪枝处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%89%AA%E6%9E%9D"><span class="toc-number">3.1.</span> <span class="toc-text">预剪枝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%89%AA%E6%9E%9D"><span class="toc-number">3.2.</span> <span class="toc-text">后剪枝</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1002,6 +1054,10 @@
         
         
     
+        
+        
+        
+        
         
         
         
@@ -1931,11 +1987,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -1951,14 +2002,14 @@
                 深度学习
             </span>
         
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="查找">
                 <span class="iconfont-archer">&#xe606;</span>
                 查找
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
             </span>
         
             <span class="sidebar-tag-name" data-tags="教程">
@@ -1986,6 +2037,11 @@
                 MySQL
             </span>
         
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
@@ -2004,11 +2060,6 @@
             <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
                 托福
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="故障诊断">
-                <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
             </span>
         
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
@@ -2031,19 +2082,14 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="迁移学习">
+            <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
-                迁移学习
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="列存分区">
@@ -2051,9 +2097,19 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -2061,9 +2117,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2212,14 +2268,14 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
-    
         <span class="sidebar-category-name" data-categories="华科课程">
             <span class="iconfont-archer">&#xe60a;</span>
             华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
     
         <span class="sidebar-category-name" data-categories="学习笔记">
@@ -2227,14 +2283,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
         </span>
     
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
