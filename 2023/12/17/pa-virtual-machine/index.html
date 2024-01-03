@@ -37,8 +37,30 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219210940160.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201012675.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201405072.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102152841211.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102153011340.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102153216666.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154028356.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154808201.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102172203578.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102173017738.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102173457143.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102180028847.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102174032127.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102175148979.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102192107533.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102193301193.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102193058260.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103094841583.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102211231467.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103101942561.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103111453042.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103112221893.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103150857113.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103152240263.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103154056515.png">
 <meta property="article:published_time" content="2023-12-17T10:40:58.000Z">
-<meta property="article:modified_time" content="2023-12-31T10:15:48.388Z">
+<meta property="article:modified_time" content="2024-01-03T07:49:04.513Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
@@ -357,7 +379,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">641</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.1k</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -522,6 +544,7 @@
 <span id="more"></span>
 
 <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>这是一个速通教程，高尚的人请你立刻叉出去。</p>
+<p>抄也要花一些时间，建议抄的同时弄懂，所以尽早开始。</p>
 <h1 id="pa0"><a href="#pa0" class="headerlink" title="pa0"></a>pa0</h1><blockquote>
 <p>VirtualBox安装包和老师给的前置打包环境root.vdi文件请自行在课程官网获取，创建并导入后无需安装任务书中所写的pa0环境依赖。</p>
 <p><strong>本章内容：</strong>在你的电脑本机使用ssh免密丝滑连接你的虚拟机，此方法可推广至服务器连接。如果你想直接在虚拟机里下载Vscode写代码可以跳过此章。</p>
@@ -549,7 +572,7 @@
 <p>写完保存退出后重启一下ssh服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh --full-restart</span><br></pre></td></tr></table></figure>
 
-<p>回到你的windows终端里测试一下连接 <code>ssh -p 22 hust@your ip</code>，如下：</p>
+<p>回到你的windows终端里测试一下连接 <code>ssh -p 22 hust@your ip</code>，如下表示成功：</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20231219005910190.png" alt="image-20231219005910190"></p>
 <h2 id="免密登录配置"><a href="#免密登录配置" class="headerlink" title="免密登录配置"></a>免密登录配置</h2><blockquote>
 <p><del>让我用vim写代码，不可能的事情</del></p>
@@ -561,18 +584,167 @@
 <h1 id="pa1"><a href="#pa1" class="headerlink" title="pa1"></a>pa1</h1><blockquote>
 <p>完成这个课设的关键是：认真阅读手册和代码</p>
 </blockquote>
-<p>cd到 <code>./nemu</code> 文件夹下，修改Makefile文件，<code>ISA ?= riscv32</code>，如下：</p>
+<p>cd到 <code>./nemu</code> 文件夹下，修改Makefile文件，ISA改成riscv32，如下：</p>
 <img src="/2023/12/17/pa-virtual-machine/image-20231219210940160.png" alt="image-20231219210940160">
 
-<p>贴一个会用到的命令合集</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./nemu</span><br><span class="line">make</span><br><span class="line">make clean</span><br><span class="line">make run</span><br><span class="line">./build/riscv32-nemu</span><br></pre></td></tr></table></figure>
-
-<p>速通秘诀：pa1所有要修改的文件如下，自己抄答案对着复制</p>
+<p>速通秘诀：pa1所有要修改的文件如下，自己抄答案对着复制（详细内容等我写完报告回来更新）</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20231225201012675.png" alt="image-20231225201012675"></p>
 <p>修改完后使用 <code>make submit</code> 提交，输入初始化的账号密码。如下，提交成功。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20231225201405072.png" alt="image-20231225201405072"></p>
-<h1 id="pa2"><a href="#pa2" class="headerlink" title="pa2"></a>pa2</h1><p>按照GitBook教程创建新的分支</p>
+<h1 id="pa2"><a href="#pa2" class="headerlink" title="pa2"></a>pa2</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><p>按照GitBook教程创建新的分支；</p>
+<p>下载好交叉编译器到本地（注意版本 <code>gnu-mcu-eclipse-riscv-none-gcc-8.1.0-2-20181019-0952-centos64.tgz</code>），传到虚拟机里，注意路径。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102152841211.png" alt="image-20240102152841211"></p>
+<p>传完了之后解压，解压完长这样</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102153011340.png" alt="image-20240102153011340"></p>
+<p>按照教程更改环境变量，改完source一下，出现如下情况说明成功。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102153216666.png" alt="image-20240102153216666"></p>
+<h2 id="pa-2-1"><a href="#pa-2-1" class="headerlink" title="pa-2.1"></a>pa-2.1</h2><p>这部分要求实现dummy.c程序的运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./nexus-am/tests/cputest/</span><br><span class="line">make ARCH=riscv32-nemu ALL=dummy run</span><br></pre></td></tr></table></figure>
 
+<p>上面的指令运行成功后是 <mark>ABORT</mark> 的状态</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102154028356.png" alt="image-20240102154028356"></p>
+<p>通过make生成的 <code>nexus-am/tests/cputest/build/dummy-riscv32-nemu.txt</code> 文件找到看起来需要实现的指令有： li、auipc、addi、jal、lui、mv、sw、ret。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102154808201.png" alt="image-20240102154808201"></p>
+<p>通过手册我们可以发现 <code>li</code> 指令是<code>lui</code> 和 <code>addi</code> 指令的组合，因此不需要单独实现；最后的 <code>ret</code> 指令是伪指令，其实需要实现的是 <code>jalr</code>；<code>mv</code> 指令也是伪指令，会被扩展成 <code>addi rd, rs1, 0</code>，不需要单独实现。通过阅读代码发现 <code>sw</code> 也已经实现（st和store，st执行辅助函数在 <code>ldst.c</code>文件）</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102172203578.png" alt="image-20240102172203578"></p>
+<blockquote>
+<p><strong>实现新指令的方法</strong></p>
+<ol>
+<li>在<code>opcode_table</code>中填写正确的译码辅助函数, 执行辅助函数以及操作数宽度；</li>
+<li>用RTL实现正确的执行辅助函数, 需要注意使用RTL伪指令时要遵守上文提到的小型调用约定</li>
+</ol>
+</blockquote>
+<h3 id="lui"><a href="#lui" class="headerlink" title="lui"></a>lui</h3><p>属于U型指令，opcode_table写入 <code>nemu/src/isa/riscv32/exec/exec.c</code>、译码辅助函数 <code>nemu/src/isa/riscv32/decode.c</code> 、执行辅助函数 <code>nemu/src/isa/riscv32/exec/compute.c</code> 都已经帮我们实现了。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102173017738.png" alt="image-20240102173017738"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102173457143.png" alt="image-20240102173457143"></p>
+<p>这里填13是因为 <code>lui</code> 指令的反汇编代码 <code>0x00000413</code>，它对应的二进制形式是 <code>0100 0001 0011</code>，低七位为 <code>0010011</code>，即opcode_table[13].</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102180028847.png" alt="image-20240102180028847"></p>
+<h3 id="auipc"><a href="#auipc" class="headerlink" title="auipc"></a>auipc</h3><p>属于U型指令，译码辅助函数上面lui已经实现，这里只需要实现执行辅助函数即可和填表即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(auipc) &#123;</span><br><span class="line">  rtl_add(&amp;id_dest-&gt;val, &amp;cpu.pc, &amp;id_src-&gt;val);</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">  print_asm_template2(auipc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102174032127.png" alt="image-20240102174032127"></p>
+<p>第五位填表</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102175148979.png" alt="image-20240102175148979"></p>
+<h3 id="addi"><a href="#addi" class="headerlink" title="addi"></a>addi</h3><p>属于I型指令，要实现一个I型译码辅助函数，如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_DHelper(I) &#123;</span><br><span class="line">  decode_op_r(id_src, decinfo.isa.instr.rs1, <span class="literal">true</span>);</span><br><span class="line">  decode_op_i(id_src2, decinfo.isa.instr.simm11_0, <span class="literal">true</span>);</span><br><span class="line">  decode_op_r(id_dest, decinfo.isa.instr.rd, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再实现一个执行辅助函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(addi) &#123;</span><br><span class="line">  rtl_add(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, &amp;id_src2-&gt;val);</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">  print_asm_template3(addi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第四位填表。</p>
+<p>后面的 <code>jalr</code>、<code>jal</code>流程也差不多。</p>
+<p>填完的表是这样的：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102192107533.png" alt="image-20240102192107533"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>这里遇到了一个bug：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102193301193.png" alt="image-20240102193301193"></p>
+<p>根据错误信息”riscv-none-embed-ld: Command not found”得到信息应该是构建过程中找不到 <code>riscv-none-embed-ld</code> 命令，所以是环境变量的问题，重新激活一下环境变量即可。</p>
+<p>重新make run，显示成功：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102193058260.png" alt="image-20240102193058260"></p>
+<h2 id="pa-2-2"><a href="#pa-2-2" class="headerlink" title="pa-2.2"></a>pa-2.2</h2><p>这部分要求完善AM项目下的代码，实现更多的指令和一些必要的库函数。</p>
+<p>使用 <code>runall.sh</code> 脚本测试一下，会在本地反汇编出所有没有通过的测试文件。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103094841583.png" alt="image-20240103094841583"></p>
+<p>同时会给出测试结果</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102211231467.png" alt="image-20240102211231467"></p>
+<h3 id="I型指令"><a href="#I型指令" class="headerlink" title="I型指令"></a>I型指令</h3><p>要实现好多I型指令，不妨尝试抽象成整个I型执行辅助函数，避免代码的重复，使用switch函数先对 <code>decinfo.isa.instr.funct3</code> 的值进行分支跳转。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (decinfo.isa.instr.funct3) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// addi相关</span></span><br><span class="line">      rtl_addi(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      <span class="keyword">if</span> (decinfo.isa.instr.rs1 == <span class="number">0</span>) &#123; <span class="comment">// li伪指令</span></span><br><span class="line">        print_asm_template2(li);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (decinfo.isa.instr.simm11_0 == <span class="number">0</span>) &#123; <span class="comment">// mv伪指令</span></span><br><span class="line">        print_asm_template2(mv);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// addi本身</span></span><br><span class="line">        print_asm_template3(addi);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      assert(<span class="number">0</span> &amp;&amp; <span class="string">&quot;Unfind the opcode&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再在此基础上进行完善，此过程就是不断的查表和调试。</p>
+<p>这是最终实现的执行辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(i) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (decinfo.isa.instr.funct3) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// slli</span></span><br><span class="line">      rtl_shli(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(slli); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// slti</span></span><br><span class="line">      id_dest-&gt;val = (<span class="type">signed</span>)id_src-&gt;val &lt; (<span class="type">signed</span>)decinfo.isa.instr.simm11_0;</span><br><span class="line">      print_asm_template3(slti); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="comment">// sltiu</span></span><br><span class="line">      id_dest-&gt;val = (<span class="type">unsigned</span>)id_src-&gt;val &lt; (<span class="type">unsigned</span>)decinfo.isa.instr.simm11_0;</span><br><span class="line">      print_asm_template3(sltiu); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: <span class="comment">// xori</span></span><br><span class="line">      rtl_xori(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(xori); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">      <span class="keyword">if</span> (decinfo.isa.instr.funct7) &#123; <span class="comment">// srai</span></span><br><span class="line">        rtl_sari(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.rs2);</span><br><span class="line">        print_asm_template3(sari);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// srli</span></span><br><span class="line">        rtl_shri(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.rs2);</span><br><span class="line">        print_asm_template3(shri);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>: <span class="comment">// ori</span></span><br><span class="line">      rtl_ori(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(ori);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>: <span class="comment">// andi</span></span><br><span class="line">      rtl_andi(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(andi); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      assert(<span class="number">0</span> &amp;&amp; <span class="string">&quot;Unfind the opcode&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后更改opcode_table对应的字段，其实就是把原来的addi改成i即可。</p>
+<h3 id="R型指令"><a href="#R型指令" class="headerlink" title="R型指令"></a>R型指令</h3><p>同理，实现译码辅助函数和执行辅助函数然后填表，不再赘述。</p>
+<p>注意mulhsu指令实现的时候要自己封装一个rtl函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./nemu/include/rtl/c_op.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> c_mul_hsu(a, b) (((int64_t)(a) * (uint64_t)(b)) &gt;&gt; 32) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ./nemu/include/rtl/rtl-wrapper.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rtl_mul_hsu   concat(RTL_PREFIX, _rtl_mul_hsu )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ./nemu/include/rtl/rtl.h</span></span><br><span class="line">make_rtl_arith_logic(mul_hsu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="B型指令"><a href="#B型指令" class="headerlink" title="B型指令"></a>B型指令</h3><p>在control.c添加执行辅助函数，老地方添加译码辅助函数，然后填表。</p>
+<p>到这一步测试一下，结果是这样的。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103101942561.png" alt="image-20240103101942561"></p>
+<h3 id="Load和Store指令"><a href="#Load和Store指令" class="headerlink" title="Load和Store指令"></a>Load和Store指令</h3><p>这部分需要在 <code>ldst.c</code> 文件里完成执行辅助函数，填充load_table,store_table。</p>
+<p>store指令的执行函数已经实现了没什么问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> OpcodeEntry load_table [<span class="number">8</span>] = &#123;</span><br><span class="line">  EXW(ld, <span class="number">1</span>), EXW(ld, <span class="number">2</span>), EXW(ld, <span class="number">4</span>), EMPTY, EXW(ld, <span class="number">1</span>), EXW(ld, <span class="number">2</span>), EMPTY, EMPTY</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> OpcodeEntry store_table [<span class="number">8</span>] = &#123;</span><br><span class="line">  EXW(st, <span class="number">1</span>), EXW(st, <span class="number">2</span>), EXW(st, <span class="number">4</span>), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这部分完成后测试发现load-store文件和string文件无法通过，查看教程发现string.c需要实现 <code>nexus-am/libs/klib/src/string</code>. 而根据load-store-log.txt出错的原因如下，即没有找到rtl_sext，所以我们需要补充一下。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103111453042.png" alt="image-20240103111453042"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">void</span> <span class="title function_">rtl_sext</span><span class="params">(<span class="type">rtlreg_t</span>* dest, <span class="type">const</span> <span class="type">rtlreg_t</span>* src1, <span class="type">int</span> width)</span> &#123;</span><br><span class="line">  <span class="type">int32_t</span> temp = *src1;</span><br><span class="line">  <span class="keyword">switch</span>(width) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: *dest = *src1; <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: temp = temp &lt;&lt;  <span class="number">8</span>; *dest = temp &gt;&gt;  <span class="number">8</span>; <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: temp = temp &lt;&lt; <span class="number">16</span>; *dest = temp &gt;&gt; <span class="number">16</span>; <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: temp = temp &lt;&lt; <span class="number">24</span>; *dest = temp &gt;&gt; <span class="number">24</span>; <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">default</span>: assert(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果：成功</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103112221893.png" alt="image-20240103112221893"></p>
+<h3 id="字符串处理函数"><a href="#字符串处理函数" class="headerlink" title="字符串处理函数"></a>字符串处理函数</h3><p>各个函数功能和实现思路下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+<th align="center">实现思路</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>strlen</code></td>
+<td align="center">计算字符串的长度</td>
+<td align="center">遍历字符串，直到遇到字符串结束符，记录遍历的次数作为字符串的长度。</td>
+</tr>
+<tr>
+<td align="center"><code>strcpy</code></td>
+<td align="center">将源字符串复制到目标字符串</td>
+<td align="center">遍历源字符串的每个字符，逐个将字符复制到目标字符串中，直到遇到源字符串的结束符。最后，在目标字符串的末尾添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strncpy</code></td>
+<td align="center">将源字符串的一部分复制到目标字符串</td>
+<td align="center">遍历源字符串的每个字符，在达到指定的复制长度 <code>n</code> 或者遇到源字符串的结束符之前，将字符复制到目标字符串中。如果已经复制了 <code>n</code> 个字符，但源字符串仍未结束，则在目标字符串的末尾添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strcat</code></td>
+<td align="center">将源字符串追加到目标字符串的末尾</td>
+<td align="center">首先找到目标字符串的结束符，然后遍历源字符串的每个字符，将字符追加到目标字符串的末尾，并在最后添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strcmp</code></td>
+<td align="center">比较两个字符串的大小</td>
+<td align="center">逐个比较两个字符串中的字符，直到遇到不相等的字符或者其中一个字符串结束。</td>
+</tr>
+<tr>
+<td align="center"><code>strncmp</code></td>
+<td align="center">比较两个字符串的大小，最多比较 <code>n</code> 个字符</td>
+<td align="center">与 <code>strcmp</code> 函数类似，但是限制了最大比较的字符数量为 <code>n</code></td>
+</tr>
+<tr>
+<td align="center"><code>memset</code></td>
+<td align="center">将一块内存区域填充为指定的值</td>
+<td align="center">将内存区域的每个字节都设置为指定的值 <code>c</code>，实现了内存的填充操作。</td>
+</tr>
+<tr>
+<td align="center"><code>memcpy</code></td>
+<td align="center">将一块内存区域复制到另一块内存区域</td>
+<td align="center">遍历源内存区域的每个字节，逐个将字节复制到目标内存区域中，实现了内存的复制操作。</td>
+</tr>
+<tr>
+<td align="center"><code>memcmp</code></td>
+<td align="center">比较两块内存区域的内容是否相等</td>
+<td align="center">逐个比较两个内存区域中的字节，直到遇到不相等的字节或者比较的次数达到指定的长度 <code>n</code>。</td>
+</tr>
+</tbody></table>
+<p>string.c通过了之后hello-str.c又不能通过了….看教程是要完成 <code>sprintf()</code> 函数，它的参数数目是可变的。</p>
+<p>为了实现这个函数我们要根据格式字符串 <code>fmt</code> 和可变参数列表中的参数，将格式化后的字符串存储在目标字符串 <code>out</code> 中。然后调用 <code>vsprintf</code> 函数将格式化的字符串存储在目标字符串中，返回格式化后的字符串长度 <code>len</code>。</p>
+<p>一共需要下列几个辅助函数：</p>
+<ol>
+<li><code>vsprintf</code> 函数：根据格式字符串 <code>fmt</code> 和可变参数列表中的参数，将格式化后的字符串存储在目标字符串 <code>out</code> 中。通过遍历格式字符串的每个字符，根据不同的格式符进行相应的处理。当遇到普通字符时，将其直接复制到目标字符串中；当遇到格式符 <code>%</code> 时，根据后续字符来解析相应的参数，并调用相应的函数进行处理。函数返回格式化后的字符串长度 <code>out_len</code>。</li>
+<li><code>add_string</code> 函数：将字符串添加到目标字符串中。</li>
+<li><code>add_char</code> 函数：将字符添加到目标字符串中。</li>
+<li><code>is_digit</code> 函数：判断一个字符是否为数字；</li>
+<li><code>add_number</code> 函数：将数字添加到目标字符串中。</li>
+</ol>
+<p>完成这部分之后就能通过全部的测试文件。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103150857113.png" alt="image-20240103150857113"></p>
+<h2 id="pa-2-3"><a href="#pa-2-3" class="headerlink" title="pa-2.3"></a>pa-2.3</h2><h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><h4 id="运行Hello-World"><a href="#运行Hello-World" class="headerlink" title="运行Hello World"></a>运行Hello World</h4><p>修改文件，打开HAS_IOE宏定义，关闭调试。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103152240263.png" alt="image-20240103152240263"></p>
+<p>运行结果</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103154056515.png" alt="image-20240103154056515"></p>
+<h4 id="实现printf"><a href="#实现printf" class="headerlink" title="实现printf"></a>实现printf</h4><p>根据之前实现 <code>sprintf()</code> 的思路，调用 <code>vsprintf()</code> 即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *fmt, ...)</span> &#123;</span><br><span class="line">  va_list args;</span><br><span class="line">  va_start(args, fmt);</span><br><span class="line">  <span class="type">char</span> outBuf[<span class="number">256</span>] = &#123;<span class="string">&#x27;\0&#x27;</span>&#125;;</span><br><span class="line">  <span class="type">int</span> length = <span class="built_in">vsprintf</span>(outBuf, fmt, args); </span><br><span class="line">  <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; outBuf[i]; i++) &#123;</span><br><span class="line">    _putc(outBuf[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  va_end(args);</span><br><span class="line">  <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h3>
     </article>
     <!-- license -->
     
@@ -750,7 +922,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa2"><span class="toc-number">4.</span> <span class="toc-text">pa2</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa2"><span class="toc-number">4.</span> <span class="toc-text">pa2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-1"><span class="toc-number">4.2.</span> <span class="toc-text">pa-2.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lui"><span class="toc-number">4.2.1.</span> <span class="toc-text">lui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auipc"><span class="toc-number">4.2.2.</span> <span class="toc-text">auipc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addi"><span class="toc-number">4.2.3.</span> <span class="toc-text">addi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-2"><span class="toc-number">4.3.</span> <span class="toc-text">pa-2.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.1.</span> <span class="toc-text">I型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.2.</span> <span class="toc-text">R型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.3.</span> <span class="toc-text">B型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load%E5%92%8CStore%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.4.</span> <span class="toc-text">Load和Store指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.5.</span> <span class="toc-text">字符串处理函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-3"><span class="toc-number">4.4.</span> <span class="toc-text">pa-2.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3"><span class="toc-number">4.4.1.</span> <span class="toc-text">串口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CHello-World"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">运行Hello World</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0printf"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">实现printf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F"><span class="toc-number">4.4.2.</span> <span class="toc-text">时钟</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1059,7 +1231,20 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1600,7 +1785,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 59
+        Total : 60
         </div>
         <!-- search  -->
         
@@ -1610,6 +1795,21 @@
     
         
             
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/2024/01/01/leetcode-2024-01/">Leetcode-2024-January</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
             
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
@@ -2001,6 +2201,11 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -2016,9 +2221,9 @@
                 深度学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="动态规划">
+            <span class="sidebar-tag-name" data-tags="排序">
                 <span class="iconfont-archer">&#xe606;</span>
-                动态规划
+                排序
             </span>
         
             <span class="sidebar-tag-name" data-tags="查找">
@@ -2041,11 +2246,6 @@
                 数据库
             </span>
         
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Neo4j">
                 <span class="iconfont-archer">&#xe606;</span>
                 Neo4j
@@ -2064,11 +2264,6 @@
             <span class="sidebar-tag-name" data-tags="GNN">
                 <span class="iconfont-archer">&#xe606;</span>
                 GNN
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="随笔">
@@ -2096,14 +2291,14 @@
                 debug记录
             </span>
         
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="环境问题">
                 <span class="iconfont-archer">&#xe606;</span>
                 环境问题
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="磁盘故障">
@@ -2114,6 +2309,11 @@
             <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="列存分区">
@@ -2141,6 +2341,26 @@
                 剪枝
             </span>
         
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="素数">
                 <span class="iconfont-archer">&#xe606;</span>
                 素数
@@ -2166,11 +2386,6 @@
                 哈希
             </span>
         
-            <span class="sidebar-tag-name" data-tags="字符串">
-                <span class="iconfont-archer">&#xe606;</span>
-                字符串
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="二叉搜索树">
                 <span class="iconfont-archer">&#xe606;</span>
                 二叉搜索树
@@ -2191,9 +2406,9 @@
                 AVL树
             </span>
         
-            <span class="sidebar-tag-name" data-tags="数学模拟">
+            <span class="sidebar-tag-name" data-tags="DFS">
                 <span class="iconfont-archer">&#xe606;</span>
-                数学模拟
+                DFS
             </span>
         
             <span class="sidebar-tag-name" data-tags="贪心">
@@ -2201,24 +2416,9 @@
                 贪心
             </span>
         
-            <span class="sidebar-tag-name" data-tags="DFS">
-                <span class="iconfont-archer">&#xe606;</span>
-                DFS
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="图模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 图模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="完全二叉树">
-                <span class="iconfont-archer">&#xe606;</span>
-                完全二叉树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="最短路径">
-                <span class="iconfont-archer">&#xe606;</span>
-                最短路径
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -2234,11 +2434,6 @@
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="递推">
@@ -2266,6 +2461,11 @@
                 Eslint
             </span>
         
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="top">
                 <span class="iconfont-archer">&#xe606;</span>
                 top
@@ -2282,24 +2482,19 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="华科课程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            华科课程
-        </span>
-    
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
             算法
         </span>
     
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
         <span class="sidebar-category-name" data-categories="学习笔记">
             <span class="iconfont-archer">&#xe60a;</span>
             学习笔记
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="英语">
-            <span class="iconfont-archer">&#xe60a;</span>
-            英语
         </span>
     
         <span class="sidebar-category-name" data-categories="年末总结">
@@ -2310,6 +2505,11 @@
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
             腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
         </span>
     
     </div>
