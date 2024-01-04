@@ -32,13 +32,9 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219014504625.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005718404.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005910190.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219015621214.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219012232721.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219210940160.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201012675.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201405072.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102152841211.png">
-<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102153011340.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102153216666.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154028356.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154808201.png">
@@ -71,8 +67,9 @@
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103210841567.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103211049445.png">
 <meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104132130382.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104143223004.png">
 <meta property="article:published_time" content="2023-12-17T10:40:58.000Z">
-<meta property="article:modified_time" content="2024-01-04T06:04:26.085Z">
+<meta property="article:modified_time" content="2024-01-04T07:19:16.995Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
@@ -391,7 +388,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">3.8k</span>阅读时长: <span class="post-count reading-time">15 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.6k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -590,30 +587,23 @@
 <p><del>让我用vim写代码，不可能的事情</del></p>
 </blockquote>
 <p>重复的东西不想写了，请参考我的<a href="https://elubrazione.github.io/2021/03/30/virtual-env-install/#/VsCode%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA">另一篇配置Vmware的博客</a>的<code>VsCode免密连接虚拟机</code>一章</p>
-<p>总之在本机的vscode连接上之后长这样：</p>
-<p><img src="/2023/12/17/pa-virtual-machine/image-20231219015621214.png" alt="image-20231219015621214"></p>
-<p><img src="/2023/12/17/pa-virtual-machine/image-20231219012232721.png" alt="image-20231219012232721"></p>
 <h1 id="pa1"><a href="#pa1" class="headerlink" title="pa1"></a>pa1</h1><blockquote>
 <p>完成这个课设的关键是：认真阅读手册和代码</p>
 </blockquote>
-<p>cd到 <code>./nemu</code> 文件夹下，修改Makefile文件，ISA改成riscv32，如下：</p>
-<img src="/2023/12/17/pa-virtual-machine/image-20231219210940160.png" alt="image-20231219210940160">
-
+<p>cd到 <code>./nemu</code> 文件夹下，修改Makefile文件，ISA改成riscv32。</p>
 <p>速通秘诀：pa1所有要修改的文件如下，自己抄答案对着复制（详细内容等我写完报告回来更新）</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20231225201012675.png" alt="image-20231225201012675"></p>
 <p>修改完后使用 <code>make submit</code> 提交，输入初始化的账号密码。如下，提交成功。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20231225201405072.png" alt="image-20231225201405072"></p>
-<h1 id="pa2"><a href="#pa2" class="headerlink" title="pa2"></a>pa2</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><p>按照GitBook教程创建新的分支；</p>
-<p>下载好交叉编译器到本地（注意版本 <code>gnu-mcu-eclipse-riscv-none-gcc-8.1.0-2-20181019-0952-centos64.tgz</code>），传到虚拟机里，注意路径。</p>
+<h1 id="pa2"><a href="#pa2" class="headerlink" title="pa2"></a>pa2</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><blockquote>
+<p>要改的文件见本章最后“提交结果”，以下是实验过程记录。</p>
+</blockquote>
+<p>按照GitBook教程创建新的分支；</p>
+<p>下载好交叉编译器到本地（注意版本），传到虚拟机里，注意路径。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240102152841211.png" alt="image-20240102152841211"></p>
-<p>传完了之后解压，解压完长这样</p>
-<p><img src="/2023/12/17/pa-virtual-machine/image-20240102153011340.png" alt="image-20240102153011340"></p>
-<p>按照教程更改环境变量，改完source一下，出现如下情况说明成功。</p>
+<p>传完了之后解压，然后按照教程更改环境变量，改完记得要<strong>先激活一下</strong>，出现如下情况说明成功。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240102153216666.png" alt="image-20240102153216666"></p>
-<h2 id="pa-2-1"><a href="#pa-2-1" class="headerlink" title="pa-2.1"></a>pa-2.1</h2><p>这部分要求实现dummy.c程序的运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./nexus-am/tests/cputest/</span><br><span class="line">make ARCH=riscv32-nemu ALL=dummy run</span><br></pre></td></tr></table></figure>
-
-<p>上面的指令运行成功后是 <mark>ABORT</mark> 的状态</p>
+<h2 id="pa-2-1"><a href="#pa-2-1" class="headerlink" title="pa-2.1"></a>pa-2.1</h2><p>这部分要求实现dummy.c程序的运行，运行起来后是 <mark>ABORT</mark> 的状态</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240102154028356.png" alt="image-20240102154028356"></p>
 <p>通过make生成的 <code>nexus-am/tests/cputest/build/dummy-riscv32-nemu.txt</code> 文件找到看起来需要实现的指令有： li、auipc、addi、jal、lui、mv、sw、ret。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240102154808201.png" alt="image-20240102154808201"></p>
@@ -661,9 +651,6 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (decinfo.isa.instr.funct3) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// addi相关</span></span><br><span class="line">      rtl_addi(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      <span class="keyword">if</span> (decinfo.isa.instr.rs1 == <span class="number">0</span>) &#123; <span class="comment">// li伪指令</span></span><br><span class="line">        print_asm_template2(li);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (decinfo.isa.instr.simm11_0 == <span class="number">0</span>) &#123; <span class="comment">// mv伪指令</span></span><br><span class="line">        print_asm_template2(mv);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// addi本身</span></span><br><span class="line">        print_asm_template3(addi);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      assert(<span class="number">0</span> &amp;&amp; <span class="string">&quot;Unfind the opcode&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>再在此基础上进行完善，此过程就是不断的查表和调试。</p>
-<p>这是最终实现的执行辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(i) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (decinfo.isa.instr.funct3) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// slli</span></span><br><span class="line">      rtl_shli(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(slli); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// slti</span></span><br><span class="line">      id_dest-&gt;val = (<span class="type">signed</span>)id_src-&gt;val &lt; (<span class="type">signed</span>)decinfo.isa.instr.simm11_0;</span><br><span class="line">      print_asm_template3(slti); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="comment">// sltiu</span></span><br><span class="line">      id_dest-&gt;val = (<span class="type">unsigned</span>)id_src-&gt;val &lt; (<span class="type">unsigned</span>)decinfo.isa.instr.simm11_0;</span><br><span class="line">      print_asm_template3(sltiu); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: <span class="comment">// xori</span></span><br><span class="line">      rtl_xori(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(xori); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">      <span class="keyword">if</span> (decinfo.isa.instr.funct7) &#123; <span class="comment">// srai</span></span><br><span class="line">        rtl_sari(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.rs2);</span><br><span class="line">        print_asm_template3(sari);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// srli</span></span><br><span class="line">        rtl_shri(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.rs2);</span><br><span class="line">        print_asm_template3(shri);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>: <span class="comment">// ori</span></span><br><span class="line">      rtl_ori(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(ori);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>: <span class="comment">// andi</span></span><br><span class="line">      rtl_andi(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      print_asm_template3(andi); <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      assert(<span class="number">0</span> &amp;&amp; <span class="string">&quot;Unfind the opcode&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>然后更改opcode_table对应的字段，其实就是把原来的addi改成i即可。</p>
 <h3 id="R型指令"><a href="#R型指令" class="headerlink" title="R型指令"></a>R型指令</h3><p>同理，实现译码辅助函数和执行辅助函数然后填表，不再赘述。</p>
 <p>注意mulhsu指令实现的时候要自己封装一个rtl函数</p>
@@ -788,8 +775,11 @@
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240103211049445.png" alt="image-20240103211049445"></p>
 <h1 id="pa3"><a href="#pa3" class="headerlink" title="pa3"></a>pa3</h1><h2 id="pa-3-1"><a href="#pa-3-1" class="headerlink" title="pa-3.1"></a>pa-3.1</h2><h3 id="实现自陷操作"><a href="#实现自陷操作" class="headerlink" title="实现自陷操作"></a>实现自陷操作</h3><p>在<code>nanos-lite/include/common.h</code>中定义 <code>HAS_CTE</code></p>
 <p>定义了宏<code>HAS_CTE</code>后, Nanos-lite会在<code>panic()</code>前调用<code>_yield()</code>来触发自陷操作. 为了支撑这次自陷操作, 需要在NEMU中实现<code>raise_intr()</code>函数来模拟异常响应机制。</p>
-<p>实现的 <code>raise_intr()</code> 函数如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">raise_intr</span><span class="params">(<span class="type">uint32_t</span> NO, <span class="type">vaddr_t</span> epc)</span> &#123;</span><br><span class="line">  <span class="comment">/* <span class="doctag">TODO:</span> Trigger an interrupt/exception with ``NO&#x27;&#x27;.</span></span><br><span class="line"><span class="comment">   * That is, use ``NO&#x27;&#x27; to index the IDT.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  cpu.sepc = epc;</span><br><span class="line">  cpu.scause = NO;</span><br><span class="line">  rtl_j(cpu.stvec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改 <code>ISADecodeInfo</code> 结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ISADecodeInfo</span> &#123;</span></span><br><span class="line">  Instr instr;</span><br><span class="line">  <span class="type">uint32_t</span> sepc;</span><br><span class="line">  <span class="type">uint32_t</span> sstatus;</span><br><span class="line">  <span class="type">uint32_t</span> scause;</span><br><span class="line">  <span class="type">uint32_t</span> stvec;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最终实现的 <code>raise_intr()</code> 函数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">raise_intr</span><span class="params">(<span class="type">uint32_t</span> NO, <span class="type">vaddr_t</span> epc)</span> &#123;</span><br><span class="line">  decinfo.isa.sepc = epc;</span><br><span class="line">  decinfo.isa.scause = NO;</span><br><span class="line">  decinfo.jmp_pc = decinfo.isa.stvec;</span><br><span class="line">  rtl_j(decinfo.jmp_pc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后我们需要实现ecall环境调用指令、sret 管理员模式例外返指令，及一系列的控制状态寄存器相关操作的指令。</p>
 <p>步骤同pa2一样逐步完成译码辅助函数、执行辅助函数的编写和对应的声明，最后在opcode_table填表。</p>
@@ -800,7 +790,9 @@
 
 <p>最后调用上述两个寄存器控制指令和前面完成的 <code>raise_intr()</code> 函数来完成触发异常后的响应，完成执行辅助函数。</p>
 <p><img src="/2023/12/17/pa-virtual-machine/image-20240104132130382.png" alt="image-20240104132130382"></p>
-<p>&#x2F;&#x2F; gpr, cause, status, epc, as</p>
+<p>成功跳转：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104143223004.png" alt="image-20240104143223004"></p>
+<h3 id="保存上下文"><a href="#保存上下文" class="headerlink" title="保存上下文"></a>保存上下文</h3><p>&#x2F;&#x2F; gpr, cause, status, epc, as</p>
 
     </article>
     <!-- license -->
@@ -979,7 +971,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa2"><span class="toc-number">4.</span> <span class="toc-text">pa2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-1"><span class="toc-number">4.2.</span> <span class="toc-text">pa-2.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lui"><span class="toc-number">4.2.1.</span> <span class="toc-text">lui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auipc"><span class="toc-number">4.2.2.</span> <span class="toc-text">auipc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addi"><span class="toc-number">4.2.3.</span> <span class="toc-text">addi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-2"><span class="toc-number">4.3.</span> <span class="toc-text">pa-2.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.1.</span> <span class="toc-text">I型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.2.</span> <span class="toc-text">R型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.3.</span> <span class="toc-text">B型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load%E5%92%8CStore%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.4.</span> <span class="toc-text">Load和Store指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.5.</span> <span class="toc-text">字符串处理函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-3"><span class="toc-number">4.4.</span> <span class="toc-text">pa-2.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3"><span class="toc-number">4.4.1.</span> <span class="toc-text">串口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CHello-World"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">运行Hello World</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0printf"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">实现printf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F"><span class="toc-number">4.4.2.</span> <span class="toc-text">时钟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.4.2.1.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%91%E5%88%86%E7%BB%93%E6%9E%9C"><span class="toc-number">4.4.2.2.</span> <span class="toc-text">跑分结果</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#coremark"><span class="toc-number">4.4.2.2.1.</span> <span class="toc-text">coremark</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dhrystone"><span class="toc-number">4.4.2.2.2.</span> <span class="toc-text">dhrystone</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#microbench"><span class="toc-number">4.4.2.2.3.</span> <span class="toc-text">microbench</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E7%9B%98"><span class="toc-number">4.4.3.</span> <span class="toc-text">键盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VGA"><span class="toc-number">4.4.4.</span> <span class="toc-text">VGA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">4.4.5.</span> <span class="toc-text">其它结果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#slider"><span class="toc-number">4.4.5.1.</span> <span class="toc-text">slider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typing"><span class="toc-number">4.4.5.2.</span> <span class="toc-text">typing</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E7%BB%93%E6%9E%9C"><span class="toc-number">4.5.</span> <span class="toc-text">提交结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa3"><span class="toc-number">5.</span> <span class="toc-text">pa3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-1"><span class="toc-number">5.1.</span> <span class="toc-text">pa-3.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E9%99%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">实现自陷操作</span></a></li></ol></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa2"><span class="toc-number">4.</span> <span class="toc-text">pa2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-1"><span class="toc-number">4.2.</span> <span class="toc-text">pa-2.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lui"><span class="toc-number">4.2.1.</span> <span class="toc-text">lui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auipc"><span class="toc-number">4.2.2.</span> <span class="toc-text">auipc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addi"><span class="toc-number">4.2.3.</span> <span class="toc-text">addi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-2"><span class="toc-number">4.3.</span> <span class="toc-text">pa-2.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.1.</span> <span class="toc-text">I型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.2.</span> <span class="toc-text">R型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.3.</span> <span class="toc-text">B型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load%E5%92%8CStore%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.4.</span> <span class="toc-text">Load和Store指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.5.</span> <span class="toc-text">字符串处理函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-3"><span class="toc-number">4.4.</span> <span class="toc-text">pa-2.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3"><span class="toc-number">4.4.1.</span> <span class="toc-text">串口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CHello-World"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">运行Hello World</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0printf"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">实现printf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F"><span class="toc-number">4.4.2.</span> <span class="toc-text">时钟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.4.2.1.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%91%E5%88%86%E7%BB%93%E6%9E%9C"><span class="toc-number">4.4.2.2.</span> <span class="toc-text">跑分结果</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#coremark"><span class="toc-number">4.4.2.2.1.</span> <span class="toc-text">coremark</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dhrystone"><span class="toc-number">4.4.2.2.2.</span> <span class="toc-text">dhrystone</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#microbench"><span class="toc-number">4.4.2.2.3.</span> <span class="toc-text">microbench</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E7%9B%98"><span class="toc-number">4.4.3.</span> <span class="toc-text">键盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VGA"><span class="toc-number">4.4.4.</span> <span class="toc-text">VGA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">4.4.5.</span> <span class="toc-text">其它结果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#slider"><span class="toc-number">4.4.5.1.</span> <span class="toc-text">slider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typing"><span class="toc-number">4.4.5.2.</span> <span class="toc-text">typing</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E7%BB%93%E6%9E%9C"><span class="toc-number">4.5.</span> <span class="toc-text">提交结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa3"><span class="toc-number">5.</span> <span class="toc-text">pa3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-1"><span class="toc-number">5.1.</span> <span class="toc-text">pa-3.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E9%99%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">实现自陷操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">5.1.2.</span> <span class="toc-text">保存上下文</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1294,12 +1286,6 @@
         
         
     
-        
-        
-        
-        
-        
-        
         
         
         
@@ -2269,6 +2255,11 @@
                 动态规划
             </span>
         
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -2282,11 +2273,6 @@
             <span class="sidebar-tag-name" data-tags="深度学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 深度学习
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
             </span>
         
             <span class="sidebar-tag-name" data-tags="查找">
@@ -2309,14 +2295,14 @@
                 数据库
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                Neo4j
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="MySQL">
                 <span class="iconfont-archer">&#xe606;</span>
                 MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
             </span>
         
             <span class="sidebar-tag-name" data-tags="机器学习">
@@ -2334,16 +2320,6 @@
                 随笔
             </span>
         
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="故障诊断">
-                <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 Greenplum操作
@@ -2359,14 +2335,14 @@
                 debug记录
             </span>
         
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="环境问题">
                 <span class="iconfont-archer">&#xe606;</span>
                 环境问题
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="磁盘故障">
@@ -2374,14 +2350,19 @@
                 磁盘故障
             </span>
         
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 迁移学习
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
             </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
@@ -2392,6 +2373,11 @@
             <span class="sidebar-tag-name" data-tags="LeetCode">
                 <span class="iconfont-archer">&#xe606;</span>
                 LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
             </span>
         
             <span class="sidebar-tag-name" data-tags="双指针">
@@ -2424,9 +2410,19 @@
                 树的遍历
             </span>
         
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2442,16 +2438,6 @@
             <span class="sidebar-tag-name" data-tags="最短路径">
                 <span class="iconfont-archer">&#xe606;</span>
                 最短路径
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="Set">
@@ -2484,19 +2470,9 @@
                 图模拟
             </span>
         
-            <span class="sidebar-tag-name" data-tags="拓扑排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                拓扑排序
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="快乐模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 快乐模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="栈">
-                <span class="iconfont-archer">&#xe606;</span>
-                栈
             </span>
         
             <span class="sidebar-tag-name" data-tags="图的遍历">
@@ -2507,6 +2483,11 @@
             <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
                 递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2527,6 +2508,11 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
             </span>
         
             <span class="sidebar-tag-name" data-tags="top">
@@ -2560,11 +2546,6 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="英语">
-            <span class="iconfont-archer">&#xe60a;</span>
-            英语
-        </span>
-    
         <span class="sidebar-category-name" data-categories="年末总结">
             <span class="iconfont-archer">&#xe60a;</span>
             年末总结
@@ -2573,6 +2554,11 @@
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
             腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
         </span>
     
     </div>
