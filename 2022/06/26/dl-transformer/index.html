@@ -21,51 +21,56 @@
     <meta name="description" content="">
     <meta name="description" content="笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复试深度学习复习笔记">
-<meta property="og:url" content="https://elubrazione.github.io/2024/02/16/dl-transformer/index.html">
+<meta property="og:title" content="预训练语言模型">
+<meta property="og:url" content="https://elubrazione.github.io/2022/06/26/dl-transformer/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="笔记">
 <meta property="og:locale">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311090826576.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311091423378.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311092637045.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311094638213.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311095632811.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311100846431.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311101151083.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311100118547.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311100516394.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311102029954.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311102238651.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311102410478.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311102604769.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311102710282.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240310142148201.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240310142323173.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311103752075.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311131231189.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311131458647.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/111.jpg">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/222.jpg">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311104228891.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/333.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/444.jpg">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/gif1.gif">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/gif2.gif">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311140930312.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311135134326.png">
-<meta property="og:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/555.jpg">
-<meta property="article:published_time" content="2024-02-16T06:12:20.000Z">
-<meta property="article:modified_time" content="2024-03-11T06:29:06.083Z">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311090826576.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311091423378.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311092637045.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311094638213.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311095632811.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100846431.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311101151083.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100118547.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100516394.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102029954.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102238651.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102410478.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102604769.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102710282.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240310142148201.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240310142323173.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311103752075.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311131231189.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311131458647.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/111.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/222.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311104228891.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/333.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/444.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/gif1.gif">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/gif2.gif">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311140930312.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311135134326.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/555.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311163151756.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183314242.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183426949.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183641818.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183719856.png">
+<meta property="article:published_time" content="2022-06-26T06:12:20.000Z">
+<meta property="article:modified_time" content="2024-03-11T10:39:22.240Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://elubrazione.github.io/2024/02/16/dl-transformer/image-20240311090826576.png">
+<meta name="twitter:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311090826576.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
     
-    <title>复试深度学习复习笔记 · TUNIVERSE</title>
+    <title>预训练语言模型 · TUNIVERSE</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -292,7 +297,7 @@
                 <a href="/">TUNIVERSE</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">复试深度学习复习笔记</a>
+                <a href="#" class="post-name">预训练语言模型</a>
             </div>
         </div>
     
@@ -338,7 +343,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                复试深度学习复习笔记
+                预训练语言模型
             <!-- 404 -->
             
         </h1>
@@ -366,13 +371,13 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">7.6k</span>阅读时长: <span class="post-count reading-time">28 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">10.5k</span>阅读时长: <span class="post-count reading-time">39 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2024/02/16</span>
+                    <span class="post-intro-time">2022/06/26</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -531,7 +536,7 @@
 <span id="more"></span>
 
 <h1 id="时序模型"><a href="#时序模型" class="headerlink" title="时序模型"></a>时序模型</h1><h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>RNN 的基本单元结构如下图所示：</p>
-<p><img src="/2024/02/16/dl-transformer/image-20240311090826576.png" alt="image-20240311090826576"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311090826576.png" alt="image-20240311090826576"></p>
 <p>上图左边部分称作 RNN 的一个 timestep，在这个 timestep 中可以看到，在 $t$ 时刻，输入变量 $x_t$，通过 RNN 的一个基础模块 A，输出变量 $h_t$，而 $t$ 时刻的信息，将会传递到下一个时刻 $t+1$。</p>
 <p>如果把模块按照时序展开，则会如上图右边部分所示，<strong>由此可以看到 RNN 为多个基础模块 A 的互连，每一个模块都会把当前信息传递给下一个模块</strong>。</p>
 <p>RNN 解决了时序依赖问题，但这里的时序一般指的是短距离的，首先我们先介绍下短距离依赖和长距离依赖的区别：</p>
@@ -549,13 +554,13 @@
 <li><strong>预测输出：</strong>$\hat{y} ^{(t)} &#x3D; \sigma(o ^{(t)})$，此处激活函数一般为$softmax$。</li>
 <li><strong>模型损失：</strong>$L &#x3D; \sum _{t &#x3D; 1} ^{T} L ^{(t)}$</li>
 </ul>
-<p><img src="/2024/02/16/dl-transformer/image-20240311091423378.png" alt="image-20240311091423378"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311091423378.png" alt="image-20240311091423378"></p>
 <p>RNN 所有的 timestep 共享一套参数 $U,V,W$，在 RNN 反向传播过程中，需要计算  $U,V,W$等参数的梯度，以 $W$ 的梯度表达式为例（假设 RNN 模型的损失函数为 $L$）：</p>
 <p>$$\frac{\partial L}{\partial W}<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) \frac{\partial h^{(t)}}{\partial W} \  \<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right) \frac{\partial h^{(t)}}{\partial W} $$</p>
 <p>公式中$\left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) &#x3D; \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right)$,$tanh$的导数总是小于 1 的，由于是 $T−(t+1)$ 个 timestep 参数的连乘，<strong>如果 $W$ 的主特征值小于 1，梯度便会消失；如果 $W$ 的特征值大于 1，梯度便会爆炸。</strong></p>
 <p>RNN中权重在各时间步内共享，最终的梯度是各个时间步的梯度和，梯度和会越来越大。因此，RNN中总的梯度是不会消失的，即使梯度越传越弱，也只是远距离的梯度消失。 <strong>RNN所谓梯度消失的真正含义是，梯度被近距离（t+1趋向于T）梯度主导，远距离（t+1远离T）梯度很小，导致模型难以学到远距离的信息。</strong></p>
 <h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>为了解决 RNN 缺乏的序列长距离依赖问题，LSTM 被提了出来</p>
-<p><img src="/2024/02/16/dl-transformer/image-20240311092637045.png" alt="image-20240311092637045"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311092637045.png" alt="image-20240311092637045"></p>
 <p>如上图所示，为 LSTM 的 RNN 门控结构（LSTM 的 timestep），LSTM 前向传播过程包括：</p>
 <ul>
 <li><strong>遗忘门：</strong>决定了丢弃哪些信息，遗忘门接收 $t−1$ 时刻的状态 $h _t−1$，以及当前的输入 $x _t$，经过 Sigmoid 函数后输出一个 0 到 1 之间的值 $f_t$<ul>
@@ -583,7 +588,7 @@
 <p><strong>Attention 机制可以更加好的解决序列长距离依赖问题，并且具有并行计算能力</strong>。</p>
 </blockquote>
 <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>通过 Query 这个信息从 Values 中筛选出重要信息，简单点说，<strong>就是计算 Query 和 Values 中每个信息的相关程度。</strong></p>
-<p><img src="/2024/02/16/dl-transformer/image-20240311094638213.png" alt="image-20240311094638213"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311094638213.png" alt="image-20240311094638213"></p>
 <p>如上图，将 Query(Q) 和 key-value pairs（<strong>把 Values 拆分成了键值对的形式</strong>） 映射到输出上，其中 query、每个 key、每个 value 都是向量，输出是 V 中所有 values 的加权，其中权重是由 Query 和每个 key 计算出来的，计算方法分为三步：</p>
 <ol>
 <li>计算比较 <strong>Q 和 K 的相似度</strong>，用 f 来表示：$f(Q,K_i)$，$i&#x3D;1,2,⋯,m$​，一般第一步计算方法包括四种<ul>
@@ -599,27 +604,27 @@
 </li>
 <li>针对计算出来的权重$\alpha _i$，对 $V$ 中的所有 values 进行加权求和计算，得到 Attention 向量：$Attention &#x3D; \sum _{i&#x3D;1}^m \alpha _i V_i$</li>
 </ol>
-<h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self Attention"></a>Self Attention</h2><h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><img src="/2024/02/16/dl-transformer/image-20240311095632811.png" alt="image-20240311095632811" style="zoom: 67%;">
+<h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self Attention"></a>Self Attention</h2><h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><img src="/2022/06/26/dl-transformer/image-20240311095632811.png" alt="image-20240311095632811" style="zoom: 67%;">
 
 <p>对于 Self Attention，Q、K、V 来自句子 X 的 词向量 x 的线性转化，即对于词向量 x，给定三个可学习的矩阵参数 $W_Q$,$W_k$,$W_v$​，x 分别右乘上述矩阵得到 Q、K、V。</p>
 <h3 id="向量计算过程"><a href="#向量计算过程" class="headerlink" title="向量计算过程"></a>向量计算过程</h3><ol>
 <li><p><strong>Q、K、V的获取：</strong>两个单词 Thinking 和 Machines。通过线性变换，即 $x_1$ 和 $x_2$ 两个向量分别与$W_q$, $W_k$, $W_v$ 三个矩阵点乘得到 $q_1$, $q_2$, $k_1 $, $k_2$, $v_1$, $v_2$ 共 6 个向量。矩阵 Q 则是向量 $q_1$, $q_2$​​ 的拼接，K、V 同理。</p>
-<img src="/2024/02/16/dl-transformer/image-20240311100846431.png" alt="image-20240311100846431" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/image-20240311100846431.png" alt="image-20240311100846431" style="zoom:80%;">
 </li>
 <li><p><strong>MatMual：</strong>向量 q1,k1做点乘得到得分 112， q1,k2做点乘得到得分96。注意：<strong>这里是通过 q1 这个信息找到 x1,x2 中的重要信息。</strong></p>
 </li>
 <li><p><strong>Scale + Sofatmax</strong></p>
 </li>
 <li><p><strong>MatMul：</strong>乘上V。用得分比例 [0.88，0.12] 乘以 [v1,v2] 值得到一个加权后的值，将这些值加起来得到 z1。</p>
-<img src="/2024/02/16/dl-transformer/image-20240311101151083.png" alt="image-20240311101151083" style="zoom:80%;"></li>
+<img src="/2022/06/26/dl-transformer/image-20240311101151083.png" alt="image-20240311101151083" style="zoom:80%;"></li>
 </ol>
 <p><strong>总结过程：</strong>用 $q_1$、$K&#x3D;[k1,k2]$ 去计算一个 Thinking 相对于 Thinking 和 Machine 的权重，再用权重乘以 Thinking 和 Machine 的 $V&#x3D;[v_1,v_2]$ 得到加权后的 Thinking 和 Machine 的 $V&#x3D;[v_1,v_2]$，最后求和得到针对各单词的输出 $z_1$。同理可以计算出 Machine 相对于 Thinking 和 Machine 的加权输出 $z_2$，拼接 $z_1$ 和 $z_2$ 即可得到 Attention 值 $Z&#x3D;[z_1,z_2]$​</p>
-<h3 id="矩阵计算过程"><a href="#矩阵计算过程" class="headerlink" title="矩阵计算过程"></a>矩阵计算过程</h3><img src="/2024/02/16/dl-transformer/image-20240311100118547.png" alt="image-20240311100118547" style="zoom: 67%;">
+<h3 id="矩阵计算过程"><a href="#矩阵计算过程" class="headerlink" title="矩阵计算过程"></a>矩阵计算过程</h3><img src="/2022/06/26/dl-transformer/image-20240311100118547.png" alt="image-20240311100118547" style="zoom: 67%;">
 
 
 
 <p><strong>$QK^T$​ 其实就会组成一个 word2word 的 attention map！</strong>（加了 softmax 之后就是一个合为 1 的权重了）。比如说你的输入是一句话 “i have a dream” 总共 4 个单词，这里就会形成一张 4x4 的注意力机制的图：</p>
-<img src="/2024/02/16/dl-transformer/image-20240311100516394.png" alt="image-20240311100516394" style="zoom:67%;">
+<img src="/2022/06/26/dl-transformer/image-20240311100516394.png" alt="image-20240311100516394" style="zoom:67%;">
 
 <p>这样一来，每一个单词对应每一个单词都会有一个权重，<strong>这也是 Self Attention 名字的来源，即 Attention 的计算来源于 Source（源句） 和 Source 本身，通俗点讲就是 Q、K、V 都来源于输入 X 本身。</strong></p>
 <h3 id="与RNN、LSTM的比较"><a href="#与RNN、LSTM的比较" class="headerlink" title="与RNN、LSTM的比较"></a>与RNN、LSTM的比较</h3><ul>
@@ -633,10 +638,10 @@
 <p><strong>无论句子序列多长，都可以充分捕获近距离上往下问中的任何依赖关系，进而可以很好的提取句法特征还可以提取语义特征</strong>；而且对于一个句子而言，<strong>每个单词的计算是可以并行处理的</strong>。</p>
 <p>理论上 Self-Attention （Transformer 50 个左右的单词效果最好）解决了 RNN 模型的长序列依赖问题，但是由于文本长度增加时，训练时间也将会呈指数增长，因此在处理长文本任务时可能不一定比 LSTM（200 个左右的单词效果最好） 等传统的 RNN 模型的效果好。</p>
 <h2 id="Masked-Self-Attention"><a href="#Masked-Self-Attention" class="headerlink" title="Masked Self Attention"></a>Masked Self Attention</h2><p>基本结构如下：</p>
-<img src="/2024/02/16/dl-transformer/image-20240311102029954.png" alt="image-20240311102029954" style="zoom:67%;">
+<img src="/2022/06/26/dl-transformer/image-20240311102029954.png" alt="image-20240311102029954" style="zoom:67%;">
 
 <p>通过 scale 之前的步骤得到一个 attention map，<strong>而 mask 就是沿着对角线把灰色的区域用0覆盖掉，不给模型看到未来的信息</strong>，如下图所示：</p>
-<img src="/2024/02/16/dl-transformer/image-20240311102238651.png" alt="image-20240311102238651" style="zoom:67%;">
+<img src="/2022/06/26/dl-transformer/image-20240311102238651.png" alt="image-20240311102238651" style="zoom:67%;">
 
 <p>详细来说：</p>
 <ol>
@@ -647,13 +652,13 @@
 </ol>
 <p>并且在做完 softmax 之后，横轴结果合为 1。</p>
 <h2 id="Multi-head-Self-Attention"><a href="#Multi-head-Self-Attention" class="headerlink" title="Multi-head Self Attention"></a>Multi-head Self Attention</h2><p>Multi-Head Attention 就是把 Self Attention 得到的注意力值 $Z$ 切分成 $n$ 个 $Z_1,Z_2,⋯,Z_n$，然后通过全连接层获得新的 $Z′$​.</p>
-<img src="/2024/02/16/dl-transformer/image-20240311102410478.png" alt="image-20240311102410478" style="zoom:67%;">
+<img src="/2022/06/26/dl-transformer/image-20240311102410478.png" alt="image-20240311102410478" style="zoom:67%;">
 
 <p>过程如下：</p>
-<img src="/2024/02/16/dl-transformer/image-20240311102604769.png" alt="image-20240311102604769" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/image-20240311102604769.png" alt="image-20240311102604769" style="zoom:80%;">
 
 <p>为了使得输出与输入结构相同，拼接矩阵 $Z_i$ 后乘以一个线性 $W_0$​ 得到最终的Z</p>
-<img src="/2024/02/16/dl-transformer/image-20240311102710282.png" alt="image-20240311102710282" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/image-20240311102710282.png" alt="image-20240311102710282" style="zoom:80%;">
 
 <p><strong>多头相当于把原始信息 Source 放入了多个子空间中，也就是捕捉了多个信息，对于使用 multi-head（多头） attention 的简单回答就是，多头保证了 attention 可以注意到不同子空间的信息，捕捉到更加丰富的特征信息</strong>。</p>
 <h2 id="Position-Embedding"><a href="#Position-Embedding" class="headerlink" title="Position Embedding"></a>Position Embedding</h2><blockquote>
@@ -662,11 +667,11 @@
 </blockquote>
 <p>为了解决 Attention 丢失的序列顺序信息，Transformer 作者提出了 Position Embedding，也就是对于输入 $X$ 进行 Attention 计算之前，在 $X$ 的词向量中加上位置信息，也就是说 $X$ 的词向量为$X_{final _embedding}&#x3D;Embedding+Positional Embedding$​</p>
 <p>计算方法：</p>
-<img src="/2024/02/16/dl-transformer/image-20240310142148201.png" alt="image-20240310142148201" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/image-20240310142148201.png" alt="image-20240310142148201" style="zoom:80%;">
 
 <p>其中 pos 表示位置、i 表示维度、$d_{model}$表示位置向量的向量维度 、$2i$、$2i+1$ 表示的是奇偶数（奇偶维度），上图所示就是偶数位置使用 $sin$ 函数，奇数位置使用 $cos$ 函数。</p>
-<p><img src="/2024/02/16/dl-transformer/image-20240310142323173.png" alt="image-20240310142323173"></p>
-<p><img src="/2024/02/16/dl-transformer/image-20240311103752075.png" alt="image-20240311103752075"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240310142323173.png" alt="image-20240310142323173"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311103752075.png" alt="image-20240311103752075"></p>
 <p>假设 $pos&#x3D;1&#x3D;$我、$k&#x3D;2&#x3D;$爱、$pos+k&#x3D;$3&#x3D;吃，也就是说 $pos+k&#x3D;3$ 位置的位置向量的某一维可以通过 $pos&#x3D;1$ 位置的位置向量的某一维线性组合加以线性表示，通过该线性表示可以得出 “吃” 的位置编码信息蕴含了相对于前两个字 “我” 的位置编码信息。</p>
 <p>总而言之就是，<strong>某个单词的位置信息是其他单词位置信息的线性组合，这种线性组合就意味着位置向量中蕴含了相对位置信息。</strong></p>
 <h1 id="ELMo"><a href="#ELMo" class="headerlink" title="ELMo"></a>ELMo</h1><p>很多机器学习任务都需要带标签的数据集作为输入完成。但是我们身边存在大量没有标注的数据，例如文本、图片、代码等等。标注这些数据需要花费大量的人力和时间，标注的速度远远不及数据产生的速度，所以带有标签的数据往往只占有总数据集很小的一部分。随着算力的不断提高，计算机能够处理的数据量逐渐增大。如果不能很好利用这些无标签的数据就显得很浪费。</p>
@@ -677,7 +682,7 @@
 <li>第一个阶段是利用语言模型进行预训练；</li>
 <li>第二个阶段是在做下游任务时，从<strong>预训练网络中提取对应单词的网络各层的 Word Embedding 作为新特征</strong>补充到下游任务中。</li>
 </ol>
-<p><img src="/2024/02/16/dl-transformer/image-20240311131231189.png" alt="image-20240311131231189"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311131231189.png" alt="image-20240311131231189"></p>
 <p>上图展示的是其第一阶段预训练过程，它的网络结构采用了双层双向 LSTM，目前语言模型训练的任务目标是根据单词 $w_i$ 的上下文去正确预测单词 $w_i$，$w_i$ 之前的单词序列 Context-before 称为上文，之后的单词序列 Context-after 称为下文。</p>
 <p>图中左端的前向双层 LSTM 代表正方向编码器，输入的是从左到右顺序的除了预测单词外 $W_i$ 的上文 Context-before；右端的逆向双层 LSTM 代表反方向编码器，输入的是从右到左的逆序的句子下文Context-after；每个编码器的深度都是两层 LSTM 叠加。</p>
 <p>这个网络结构其实在 NLP 中是很常用的。使用这个网络结构利用大量语料做语言模型任务就能预先训练好这个网络，如果训练好这个网络后，输入一个新句子 $s_{new}$ ，句子中每个单词都能得到对应的三个 Embedding：</p>
@@ -687,7 +692,7 @@
 <li>再往上走是第二层 LSTM 中对应单词位置的 Embedding，这层编码单词的<strong>语义信息</strong>更多一些。</li>
 </ul>
 <p>也就是说，ELMo 的预训练过程不仅仅学会单词的 Word Embedding，还学会了一个双层双向的 LSTM 网络结构，而这两者后面都有用。</p>
-<h2 id="Feature-based-Pre-Training"><a href="#Feature-based-Pre-Training" class="headerlink" title="Feature-based Pre-Training"></a>Feature-based Pre-Training</h2><p><img src="/2024/02/16/dl-transformer/image-20240311131458647.png" alt="image-20240311131458647"></p>
+<h2 id="Feature-based-Pre-Training"><a href="#Feature-based-Pre-Training" class="headerlink" title="Feature-based Pre-Training"></a>Feature-based Pre-Training</h2><p><img src="/2022/06/26/dl-transformer/image-20240311131458647.png" alt="image-20240311131458647"></p>
 <p>上图展示了下游任务的使用过程，比如我们的下游任务仍然是 QA 问题，此时对于问句 X：</p>
 <ol>
 <li>我们可以先将句子 X 作为预训练好的 ELMo 网络的输入，这样句子 X 中每个单词在 ELMO 网络中都能获得对应的三个 Embedding；</li>
@@ -698,12 +703,12 @@
 <p><strong>因为 ELMo 给下游提供的是每个单词的特征形式，所以这一类预训练的方法被称为 “Feature-based Pre-Training”。</strong></p>
 <p>至于为何这么做能够达到区分多义词的效果，原因在于在训练好 ELMo 后，<strong>在特征提取的时候，每个单词在两层 LSTM 上都会有对应的节点，这两个节点会编码单词的一些句法特征和语义特征，并且它们的 Embedding 编码是动态改变的</strong>，会受到上下文单词的影响，周围单词的上下文不同应该会强化某种语义，弱化其它语义，进而就解决了多义词的问题。</p>
 <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h2><p>有N个encoder和N个decoder，所有encoder的结构一样但是参数不一样，decoder同理，就是所有都在一起训练。</p>
-<img src="/2024/02/16/dl-transformer/111.jpg" alt="image-20240310141449006" style="zoom: 67%;">
+<img src="/2022/06/26/dl-transformer/111.jpg" alt="image-20240310141449006" style="zoom: 67%;">
 
 <p>decoder比encoder多出了一个masked multi-head attention的结构，被掩盖的多头注意力机制。</p>
-<img src="/2024/02/16/dl-transformer/222.jpg" alt="aa" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/222.jpg" alt="aa" style="zoom:80%;">
 
-<img src="/2024/02/16/dl-transformer/image-20240311104228891.png" alt="image-20240311104228891" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/image-20240311104228891.png" alt="image-20240311104228891" style="zoom:80%;">
 
 <h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><p>Encoder包含两个sub-layers：</p>
 <ul>
@@ -711,7 +716,7 @@
 <li>前馈神经网络feed- forward</li>
 </ul>
 <p>每个sub-layer都模拟了残差网络，其输出是 $LayerNorm(x + SubLayer(x))$。第一层就是 $o _1 &#x3D; LayerNorm(x + Attention(x))$，第二层就是 $o_2 &#x3D; LayerNorm(o_1 + FeedForward(o_1))$</p>
-<img src="/2024/02/16/dl-transformer/333.png" alt="333" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/333.png" alt="333" style="zoom:80%;">
 
 <ol>
 <li>深绿色的 x1 表示 Embedding 层的输出，加上代表 Positional Embedding 的向量之后，得到最后输入 Encoder 中的特征向量，也就是浅绿色向量 x1；</li>
@@ -750,17 +755,17 @@
 <h3 id="为什么Decoder使用来自于Encoder的K、V矩阵"><a href="#为什么Decoder使用来自于Encoder的K、V矩阵" class="headerlink" title="为什么Decoder使用来自于Encoder的K、V矩阵"></a>为什么Decoder使用来自于Encoder的K、V矩阵</h3><p>Query 的目的是借助它从一堆信息中找到重要的信息。</p>
 <p>现在 Encoder 提供了 $K_e$、$V_e$ 矩阵，Decoder 提供了 $Q_d$ 矩阵，通过 “我爱中国” 翻译为 “I love China” 这句话详细解释下。</p>
 <p>当我们翻译 “I” 的时候，由于 Decoder 提供了  $Q_d$  矩阵，通过与 $K_e$、$V_e$ 矩阵的计算，它可以在 “我爱中国” 这四个字中找到对 “I” 翻译最有用的单词是哪几个，并以此为依据翻译出 “I” 这个单词，这就很好的体现了注意力机制想要达到的目的，把焦点放在对自己而言更为重要的信息上。</p>
-<h2 id="最后输出"><a href="#最后输出" class="headerlink" title="最后输出"></a>最后输出</h2><p><img src="/2024/02/16/dl-transformer/444.jpg" alt="344"></p>
+<h2 id="最后输出"><a href="#最后输出" class="headerlink" title="最后输出"></a>最后输出</h2><p><img src="/2022/06/26/dl-transformer/444.jpg" alt="344"></p>
 <p>Transformer 最后的工作是让解码器的输出通过线性层 Linear 后接上一个 softmax</p>
 <ul>
 <li>其中线性层是一个简单的全连接神经网络，它将解码器产生的向量 A 投影到一个更高维度的向量 B 上，假设我们模型的词汇表是10000个词，那么向量 B 就有10000个维度，每个维度对应一个惟一的词的得分。</li>
 <li>之后的softmax层将这些分数转换为概率。选择概率最大的维度，并对应地生成与之关联的单词作为此时间步的输出就是最终的输出</li>
 </ul>
-<h2 id="动态过程"><a href="#动态过程" class="headerlink" title="动态过程"></a>动态过程</h2><p><img src="/2024/02/16/dl-transformer/gif1.gif" alt="cartoon"></p>
-<p><img src="/2024/02/16/dl-transformer/gif2.gif" alt="cartoon"></p>
+<h2 id="动态过程"><a href="#动态过程" class="headerlink" title="动态过程"></a>动态过程</h2><p><img src="/2022/06/26/dl-transformer/gif1.gif" alt="cartoon"></p>
+<p><img src="/2022/06/26/dl-transformer/gif2.gif" alt="cartoon"></p>
 <h1 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h1><p>Generative Pre-Training Transformer</p>
 <p>使用了单向的Transformer。在Transformer的文章中，提到了Encoder与Decoder使用的Transformer Block是不同的。在Decoder Block中，使用了Masked Self-Attention，即句子中的每个词，都只能对包括自己在内的前面所有词进行Attention，这就是单向Transformer。GPT使用的Transformer结构就是将Encoder中的Self-Attention替换成了Masked Self-Attention</p>
-<img src="/2024/02/16/dl-transformer/image-20240311140930312.png" alt="image-20240311140930312" style="zoom: 67%;">
+<img src="/2022/06/26/dl-transformer/image-20240311140930312.png" alt="image-20240311140930312" style="zoom: 67%;">
 
 <h2 id="预训练-1"><a href="#预训练-1" class="headerlink" title="预训练"></a>预训练</h2><p>除了以 ELMo 为代表的这种基于特征融合的预训练方法外，NLP 里还有一种典型做法，这种做法和图像领域的方式就是看上去一致的了，一般将这种方法称为 “基于Fine-tuning的模式”，而 GPT 就是这一模式的典型开创者。</p>
 <p>GPT也采用两阶段过程：</p>
@@ -784,6 +789,7 @@
 <li>再次，你可以用手头的任务去训练这个网络，对网络参数进行 Fine-tuning，使得这个网络更适合解决手头的问题。</li>
 </ol>
 <h1 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h1><blockquote>
+<p>**Bidirectional Encoder Representations from Transformers</p>
 <p>一个真正的集大成者：参考了 ELMO 模型的双向编码思想、借鉴了 GPT 用 Transformer 作为特征提取器的思路、采用了 word2vec 所使用的 CBOW $^{[1]}$方法</p>
 <p>$[1]$ Word2Vec 有两种训练方法：</p>
 <ul>
@@ -803,7 +809,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p><img src="/2024/02/16/dl-transformer/image-20240311135134326.png" alt="image-20240311135134326"></p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p><img src="/2022/06/26/dl-transformer/image-20240311135134326.png" alt="image-20240311135134326"></p>
 <ul>
 <li><p>ELMo 使用自左向右编码和自右向左编码的两个 LSTM 网络，分别以$ P(w_i|w_1,⋯,w_{i−1})$ 和 $P(w_i|w_{i+1},⋯,w_n)$为目标函数独立训练，<strong>将训练得到的特征向量以拼接的形式实现双向编码，本质上还是单向编码，只不过是两个方向上的单向编码的拼接而成的双向编码</strong>。</p>
 </li>
@@ -817,7 +823,7 @@
 </ul>
 </li>
 </ul>
-<img src="/2024/02/16/dl-transformer/555.jpg" alt="bert" style="zoom:80%;">
+<img src="/2022/06/26/dl-transformer/555.jpg" alt="bert" style="zoom:80%;">
 
 <h2 id="无监督训练"><a href="#无监督训练" class="headerlink" title="无监督训练"></a>无监督训练</h2><p>和 GPT 一样，BERT 也采用二段式训练方法：</p>
 <ol>
@@ -826,6 +832,208 @@
 </ol>
 <p>不同于 GPT 等标准语言模型使用 $ P(w_i|w_1,⋯,w_{i−1})$ 为目标函数进行训练，能看到全局信息的 BERT 使用  $P(w_i|w_1,⋯,w_{i−1},w_{i+1},⋯,w_n)$ 为目标函数进行训练。</p>
 <p>BERT 用语言掩码模型（MLM）方法训练词的语义理解能力；用下句预测（NSP）方法训练句子之间的理解能力，从而更好地支持下游任务。</p>
+<h3 id="MLM"><a href="#MLM" class="headerlink" title="MLM"></a>MLM</h3><p>MLM 方法也就是随机去掉句子中的部分 token（单词），然后模型来预测被去掉的 token 是什么。<strong>这样实际上已经不是传统的神经网络语言模型(类似于生成模型)了，而是单纯作为分类问题</strong>，根据这个时刻的 hidden state 来预测这个时刻的 token 应该是什么，而不是预测下一个时刻的词的概率分布了。</p>
+<p>随机去掉的 token 被称作掩码词，在训练中，掩码词将以 15% 的概率被替换成 [MASK]，也就是说随机 mask 语料中 15% 的 token，这个操作则称为掩码操作。注意：<strong>在CBOW 模型中，每个词都会被预测一遍。</strong></p>
+<p>但是这样设计 MLM 的训练方法会引入弊端：<strong>在模型微调训练阶段或模型推理（测试）阶段，输入的文本中将没有 [MASK]，进而导致产生由训练和预测数据偏差导致的性能损失。</strong></p>
+<p>考虑到上述的弊端，BERT 并没有总用 [MASK] 替换掩码词，而是按照一定比例选取替换词。在选择 15% 的词作为掩码词后这些掩码词有三类替换选项：</p>
+<ul>
+<li>80% 练样本中：将选中的词用 [MASK] 来代替</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是[MASK]八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10% 的训练样本中：选中的词不发生变化，<strong>该做法是为了缓解训练文本和预测文本的偏差带来的性能损失</strong></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是太阳系八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10% 的训练样本中：将选中的词用任意的词来进行代替，<strong>该做法是为了让 BERT 学会根据上下文信息自动纠错</strong></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是苹果八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<h3 id="NSP"><a href="#NSP" class="headerlink" title="NSP"></a>NSP</h3><p><strong>单词预测粒度的训练到不了句子关系这个层级</strong>，为了<strong>学会捕捉句子之间的语义联系</strong>，BERT 采用了下句预测（NSP ）作为无监督预训练的一部分。</p>
+<p>NSP 的具体做法是，BERT 输入的语句将由两个句子构成，其中，50% 的概率将语义连贯的两个连续句子作为训练文本（<strong>连续句对一般选自篇章级别的语料，以此确保前后语句的语义强相关</strong>），另外 50% 的概率将完全随机抽取两个句子作为训练文本。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">连续句对：[CLS]今天天气很糟糕[SEP]下午的体育课取消了[SEP]</span><br><span class="line">随机句对：[CLS]今天天气很糟糕[SEP]鱼快被烤焦啦[SEP]</span><br></pre></td></tr></table></figure>
+
+<p>其中 [SEP] 标签表示分隔符。 [CLS] 表示标签用于类别预测，结果为 1，表示输入为连续句对；结果为 0，表示输入为随机句对。</p>
+<p>通过训练 [CLS] 编码后的输出标签，<strong>BERT 可以学会捕捉两个输入句对的文本语义</strong>，在连续句对的预测任务中，BERT 的正确率可以达到 97%-98%。</p>
+<h2 id="BERT的输入"><a href="#BERT的输入" class="headerlink" title="BERT的输入"></a>BERT的输入</h2><p>BERT 在预训练阶段使用了前文所述的两种训练方法，<strong>在真实训练中一般是两种方法混合使用</strong>。</p>
+<p>由于 BERT 通过 Transformer 模型堆叠而成，所以 BERT 的输入需要两套 Embedding 操作：</p>
+<ul>
+<li>一套为 One-hot 词表映射编码（对应下图的 Token Embeddings）；</li>
+<li>另一套为位置编码（对应下图的 Position Embeddings），<strong>不同于 Transformer 的位置编码用三角函数表示，BERT 的位置编码将在预训练过程中训练得到（训练思想类似于Word Embedding 的 Q 矩阵）</strong></li>
+<li>由于在 MLM 的训练过程中，存在单句输入和双句输入的情况，因此 BERT 还需要一套区分输入语句的分割编码（对应下图的 Segment Embeddings），BERT 的分割编码也将在预训练过程中训练得到</li>
+</ul>
+<p><img src="/2022/06/26/dl-transformer/image-20240311163151756.png" alt="image-20240311163151756"></p>
+<p>对于分割编码，Segment Embeddings 层只有两种向量表示。前一个向量是把 0 赋给第一个句子中的各个 token，后一个向量是把 1 赋给第二个句子中的各个 token ；如果输入仅仅只有一个句子，那么它的 segment embedding 就是全 0，下面我们简单举个例子描述下：</p>
+<blockquote>
+<p>[CLS]I like dogs[SEP]I like cats[SEP] 对应编码 0 0 0 0 0 1 1 1 1</p>
+<p>[SEP]I Iike dogs and cats[SEP] 对应编码 0 0 0 0 0 0 0</p>
+</blockquote>
+<h2 id="下游任务改造"><a href="#下游任务改造" class="headerlink" title="下游任务改造"></a>下游任务改造</h2><h3 id="句对分类"><a href="#句对分类" class="headerlink" title="句对分类"></a>句对分类</h3><p>给定两个句子，判断它们的关系，称为句对分类，例如判断句对是否相似、判断后者是否为前者的答案。</p>
+<p>针对句对分类任务，BERT 在预训练过程中就使用了 NSP 训练方法获得了直接捕获句对语义关系的能力。</p>
+<p><strong>如下图所示，句对用 [SEP] 分隔符拼接成文本序列，在句首加入标签 [CLS]，将句首标签所对应的输出值作为分类标签，计算预测分类标签与真实分类标签的交叉熵，将其作为优化目标，在任务数据上进行微调训练。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183314242.png" alt="image-20240311183314242" style="zoom:80%;">
+
+<p>针对二分类任务，BERT 不需要对输入数据和输出数据的结构做任何改动，直接使用与 NSP 训练方法一样的输入和输出结构就行。</p>
+<p>针对多分类任务，需要在句首标签 [CLS] 的输出特征向量后接一个全连接层和 Softmax 层，保证输出维数与类别数目一致，最后通过 arg max 操作（取最大值时对应的索引序号）得到相对应的类别结果。</p>
+<p>下面给出句对分相似性任务的实例：</p>
+<blockquote>
+<p>任务：判断句子 “我很喜欢你” 和句子 “我很中意你” 是否相似</p>
+<p>输入改写：“[CLS]我很喜欢你[SEP]我很中意你”</p>
+<p>取 “[CLS]” 标签对应输出：[0.02, 0.98]</p>
+<p>通过 arg max 操作得到相似类别为 1（类别索引从 0 开始），即两个句子相似</p>
+</blockquote>
+<h3 id="单句分类"><a href="#单句分类" class="headerlink" title="单句分类"></a>单句分类</h3><p>给定一个句子，判断该句子的类别，统称为单句分类，例如判断情感类别、判断是否为语义连贯的句子。</p>
+<p>针对单句二分类任务，也无须对 BERT 的输入数据和输出数据的结构做任何改动。</p>
+<p><strong>如下图所示，单句分类在句首加入标签 [CLS]，将句首标签所对应的输出值作为分类标签，计算预测分类标签与真实分类标签的交叉熵，将其作为优化目标，在任务数据上进行微调训练。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183426949.png" alt="image-20240311183426949" style="zoom:80%;">
+
+<p>同样，针对多分类任务，需要在句首标签 [CLS] 的输出特征向量后接一个全连接层和 Softmax 层，保证输出维数与类别数目一致，最后通过 argmax 操作得到相对应的类别结果。</p>
+<p>下面给出语义连贯性判断任务的实例：</p>
+<blockquote>
+<p>任务：判断句子“海大球星饭茶吃” 是否为一句话</p>
+<p>输入改写：“[CLS]海大球星饭茶吃”</p>
+<p>取 “[CLS]” 标签对应输出：[0.99, 0.01]</p>
+<p>通过 arg max 操作得到相似类别为 0，即这个句子不是一个语义连贯的句子</p>
+</blockquote>
+<h3 id="文本回答"><a href="#文本回答" class="headerlink" title="文本回答"></a>文本回答</h3><p>给定一个问句和一个蕴含答案的句子，找出答案在后这种的位置，称为文本问答，例如给定一个问题（句子 A），在给定的段落（句子 B）中标注答案的其实位置和终止位置。</p>
+<p><strong>文本问答任何和前面讲的其他任务有较大的差别，无论是在优化目标上，还是在输入数据和输出数据的形式上，都需要做一些特殊的处理。</strong></p>
+<p>为了标注答案的起始位置和终止位置，BERT 引入两个辅助向量 s（start，判断答案的起始位置） 和 e（end，判断答案的终止位置）。</p>
+<p><strong>如下图所示，BERT 判断句子 B 中答案位置的做法是，将句子 B 中的每一个次得到的最终特征向量 $T′_i$​ 经过全连接层（利用全连接层将词的抽象语义特征转化为任务指向的特征）后，分别与向量 s 和 e 求内积，对所有内积分别进行 softmax 操作，即可得到词 Tok m（m∈[1,M]）作为答案其实位置和终止位置的概率。最后，去概率最大的片段作为最终的答案</strong>。</p>
+<img src="/2022/06/26/dl-transformer/image-20240311183641818.png" alt="image-20240311183641818" style="zoom:80%;">
+
+<p>文本回答任务的微调训练使用了两个技巧：</p>
+<ol>
+<li>用全连接层把 BERT 提取后的深层特征向量转化为用于判断答案位置的特征向量</li>
+<li>引入辅助向量 s 和 e 作为答案其实位置和终止位置的基准向量，明确优化目标的方向和度量方法</li>
+</ol>
+<p>下面给出文本问答任务的实例：</p>
+<blockquote>
+<p>任务：给定问句 “今天的最高温度是多少”，在文本 “天气预报显示今天最高温度 37 摄氏度” 中标注答案的起始位置和终止位置</p>
+<p>输入改写：“[CLS]今天的最高温度是多少[SEP]天气预报显示今天最高温度 37 摄氏度”</p>
+<p>BERT Softmax 结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">篇章文本</th>
+<th align="center">天气</th>
+<th align="center">预报</th>
+<th align="center">显示</th>
+<th align="center">今天</th>
+<th align="center">最高温</th>
+<th align="center">37</th>
+<th align="center">摄氏度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">起始位置概率</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.04</td>
+<td align="center">0.10</td>
+<td align="center">0.80</td>
+<td align="center">0.03</td>
+</tr>
+<tr>
+<td align="center">终止位置概率</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.03</td>
+<td align="center">0.04</td>
+<td align="center">0.10</td>
+<td align="center">0.80</td>
+</tr>
+</tbody></table>
+<p>对 Softmax 的结果取 arg max，得到答案的起始位置为 6，终止位置为 7，即答案为 “37 摄氏度”</p>
+</blockquote>
+<h3 id="单句标注"><a href="#单句标注" class="headerlink" title="单句标注"></a>单句标注</h3><p>给定一个句子，标注每个次的标签，称为单句标注。例如给定一个句子，标注句子中的人名、地名和机构名。</p>
+<p>单句标注任务和 BERT 预训练任务具有较大差异，但与文本问答任务较为相似。</p>
+<p><strong>如下图所示，在进行单句标注任务时，需要在每个词的最终语义特征向量之后添加全连接层，将语义特征转化为序列标注任务所需的特征，单句标注任务需要对每个词都做标注，因此不需要引入辅助向量，直接对经过全连接层后的结果做 Softmax 操作，即可得到各类标签的概率分布。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183719856.png" alt="image-20240311183719856" style="zoom:80%;">
+
+<p>由于 BERT 需要对输入文本进行分词操作，独立词将会被分成若干子词，因此 BERT 预测的结果将会是 5 类（细分为 13 小类）：</p>
+<ul>
+<li>O（非人名地名机构名，O 表示 Other）</li>
+<li>B-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名初始单词，B 表示 Begin）</li>
+<li>I-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名中间单词，I 表示 Intermediate）</li>
+<li>E-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名终止单词，E 表示 End）</li>
+<li>S-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名独立单词，S 表示 Single）</li>
+</ul>
+<p>将 5 大类的首字母结合，可得 IOBES，这是序列标注最常用的标注方法。</p>
+<p>下面给出命名实体识别（NER）任务的示例：</p>
+<blockquote>
+<p>任务：给定句子 “爱因斯坦在柏林发表演讲”，根据 IOBES 标注 NER 结果</p>
+<p>输入改写：“[CLS]爱 因 斯坦 在 柏林 发表 演讲”</p>
+<p>BERT Softmax 结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">BOBES</th>
+<th align="center">爱</th>
+<th align="center">因</th>
+<th align="center">斯坦</th>
+<th align="center">在</th>
+<th align="center">柏林</th>
+<th align="center">发表</th>
+<th align="center">演讲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">O</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.90</td>
+</tr>
+<tr>
+<td align="center">B-PER</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">I-PER</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">E-PER</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">S-LOC</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+</tbody></table>
+<p>对 Softmax 的结果取 arg max，得到最终地 NER 标注结果为：“爱因斯坦” 是人名；“柏林” 是地名</p>
+</blockquote>
 
     </article>
     <!-- license -->
@@ -835,16 +1043,16 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2024/03/09/algorithm-dp-stock/" title="动态规划股票买卖问题">
-                    <div class="nextTitle">动态规划股票买卖问题</div>
+                <a href="/2022/07/24/leetcode-15/" title="15.三数之和">
+                    <div class="nextTitle">15.三数之和</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2024/02/07/algorithm-dp-bag/" title="动态规划背包问题">
-                    <div class="prevTitle">动态规划背包问题</div>
+                <a href="/2022/06/10/essay-1/" title="如若还能下一场2018年的银杏雨">
+                    <div class="prevTitle">如若还能下一场2018年的银杏雨</div>
                 </a>
             
         </li>
@@ -1004,7 +1212,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">时序模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN"><span class="toc-number">1.1.</span> <span class="toc-text">RNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.</span> <span class="toc-text">梯度消失问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM"><span class="toc-number">1.2.</span> <span class="toc-text">LSTM</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Attention"><span class="toc-number">2.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">2.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Attention"><span class="toc-number">2.2.</span> <span class="toc-text">Self Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">向量计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.3.</span> <span class="toc-text">矩阵计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8ERNN%E3%80%81LSTM%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.2.4.</span> <span class="toc-text">与RNN、LSTM的比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Masked-Self-Attention"><span class="toc-number">2.3.</span> <span class="toc-text">Masked Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-head-Self-Attention"><span class="toc-number">2.4.</span> <span class="toc-text">Multi-head Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Position-Embedding"><span class="toc-number">2.5.</span> <span class="toc-text">Position Embedding</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELMo"><span class="toc-number">3.</span> <span class="toc-text">ELMo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="toc-number">3.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-based-Pre-Training"><span class="toc-number">3.2.</span> <span class="toc-text">Feature-based Pre-Training</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transformer"><span class="toc-number">4.</span> <span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80"><span class="toc-number">4.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder"><span class="toc-number">4.2.</span> <span class="toc-text">Encoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decoder"><span class="toc-number">4.3.</span> <span class="toc-text">Decoder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mask%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.3.1.</span> <span class="toc-text">Mask的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Decoder%E4%BD%BF%E7%94%A8%E6%9D%A5%E8%87%AA%E4%BA%8EEncoder%E7%9A%84K%E3%80%81V%E7%9F%A9%E9%98%B5"><span class="toc-number">4.3.2.</span> <span class="toc-text">为什么Decoder使用来自于Encoder的K、V矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E8%BE%93%E5%87%BA"><span class="toc-number">4.4.</span> <span class="toc-text">最后输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%BF%87%E7%A8%8B"><span class="toc-number">4.5.</span> <span class="toc-text">动态过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPT"><span class="toc-number">5.</span> <span class="toc-text">GPT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83-1"><span class="toc-number">5.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fine-tuning"><span class="toc-number">5.2.</span> <span class="toc-text">Fine-tuning</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BERT"><span class="toc-number">6.</span> <span class="toc-text">BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">6.1.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%AD%E7%BB%83"><span class="toc-number">6.2.</span> <span class="toc-text">无监督训练</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">时序模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN"><span class="toc-number">1.1.</span> <span class="toc-text">RNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.</span> <span class="toc-text">梯度消失问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM"><span class="toc-number">1.2.</span> <span class="toc-text">LSTM</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Attention"><span class="toc-number">2.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">2.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Attention"><span class="toc-number">2.2.</span> <span class="toc-text">Self Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">向量计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.3.</span> <span class="toc-text">矩阵计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8ERNN%E3%80%81LSTM%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.2.4.</span> <span class="toc-text">与RNN、LSTM的比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Masked-Self-Attention"><span class="toc-number">2.3.</span> <span class="toc-text">Masked Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-head-Self-Attention"><span class="toc-number">2.4.</span> <span class="toc-text">Multi-head Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Position-Embedding"><span class="toc-number">2.5.</span> <span class="toc-text">Position Embedding</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELMo"><span class="toc-number">3.</span> <span class="toc-text">ELMo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="toc-number">3.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-based-Pre-Training"><span class="toc-number">3.2.</span> <span class="toc-text">Feature-based Pre-Training</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transformer"><span class="toc-number">4.</span> <span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80"><span class="toc-number">4.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder"><span class="toc-number">4.2.</span> <span class="toc-text">Encoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decoder"><span class="toc-number">4.3.</span> <span class="toc-text">Decoder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mask%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.3.1.</span> <span class="toc-text">Mask的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Decoder%E4%BD%BF%E7%94%A8%E6%9D%A5%E8%87%AA%E4%BA%8EEncoder%E7%9A%84K%E3%80%81V%E7%9F%A9%E9%98%B5"><span class="toc-number">4.3.2.</span> <span class="toc-text">为什么Decoder使用来自于Encoder的K、V矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E8%BE%93%E5%87%BA"><span class="toc-number">4.4.</span> <span class="toc-text">最后输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%BF%87%E7%A8%8B"><span class="toc-number">4.5.</span> <span class="toc-text">动态过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPT"><span class="toc-number">5.</span> <span class="toc-text">GPT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83-1"><span class="toc-number">5.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fine-tuning"><span class="toc-number">5.2.</span> <span class="toc-text">Fine-tuning</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BERT"><span class="toc-number">6.</span> <span class="toc-text">BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">6.1.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%AD%E7%BB%83"><span class="toc-number">6.2.</span> <span class="toc-text">无监督训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MLM"><span class="toc-number">6.2.1.</span> <span class="toc-text">MLM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSP"><span class="toc-number">6.2.2.</span> <span class="toc-text">NSP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BERT%E7%9A%84%E8%BE%93%E5%85%A5"><span class="toc-number">6.3.</span> <span class="toc-text">BERT的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1%E6%94%B9%E9%80%A0"><span class="toc-number">6.4.</span> <span class="toc-text">下游任务改造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A5%E5%AF%B9%E5%88%86%E7%B1%BB"><span class="toc-number">6.4.1.</span> <span class="toc-text">句对分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8F%A5%E5%88%86%E7%B1%BB"><span class="toc-number">6.4.2.</span> <span class="toc-text">单句分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%9B%9E%E7%AD%94"><span class="toc-number">6.4.3.</span> <span class="toc-text">文本回答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8F%A5%E6%A0%87%E6%B3%A8"><span class="toc-number">6.4.4.</span> <span class="toc-text">单句标注</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1876,10 +2084,6 @@
         
         
         
-        
-        
-        
-        
     
     
     
@@ -1904,12 +2108,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">03/09</span>
             <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/16</span>
-            <a class="archive-post-title" href="/2024/02/16/dl-transformer/">复试深度学习复习笔记</a>
         </li>
     
         
@@ -2232,6 +2430,12 @@
     
         
         <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">06/10</span>
             <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
         </li>
@@ -2328,14 +2532,14 @@
                 深度学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="查找">
                 <span class="iconfont-archer">&#xe606;</span>
                 查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
             </span>
         
             <span class="sidebar-tag-name" data-tags="教程">
@@ -2428,9 +2632,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -2438,9 +2642,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2488,19 +2692,14 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Set">
                 <span class="iconfont-archer">&#xe606;</span>
                 Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
             </span>
         
             <span class="sidebar-tag-name" data-tags="图论">
@@ -2511,6 +2710,11 @@
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="贪心">
@@ -2604,14 +2808,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
         </span>
     
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
