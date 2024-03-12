@@ -372,11 +372,11 @@
     
     <category term="排序" scheme="https://elubrazione.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
     
-    <category term="树的遍历" scheme="https://elubrazione.github.io/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
-    
     <category term="字符串" scheme="https://elubrazione.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     <category term="哈希" scheme="https://elubrazione.github.io/tags/%E5%93%88%E5%B8%8C/"/>
+    
+    <category term="树的遍历" scheme="https://elubrazione.github.io/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
     
     <category term="图模拟" scheme="https://elubrazione.github.io/tags/%E5%9B%BE%E6%A8%A1%E6%8B%9F/"/>
     
@@ -449,11 +449,11 @@
     <category term="算法" scheme="https://elubrazione.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="树的遍历" scheme="https://elubrazione.github.io/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
-    
     <category term="数学模拟" scheme="https://elubrazione.github.io/tags/%E6%95%B0%E5%AD%A6%E6%A8%A1%E6%8B%9F/"/>
     
     <category term="Set" scheme="https://elubrazione.github.io/tags/Set/"/>
+    
+    <category term="树的遍历" scheme="https://elubrazione.github.io/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
     
     <category term="DFS" scheme="https://elubrazione.github.io/tags/DFS/"/>
     

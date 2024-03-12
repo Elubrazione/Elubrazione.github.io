@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183641818.png">
 <meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183719856.png">
 <meta property="article:published_time" content="2022-06-26T06:12:20.000Z">
-<meta property="article:modified_time" content="2024-03-11T10:39:22.240Z">
+<meta property="article:modified_time" content="2024-03-12T04:35:50.855Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -362,6 +362,18 @@
                 
                     <div class= post-intro-tags >
     
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="学习笔记"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                学习笔记
+            </span>
+        </span>
+    
     
         <a class="post-tag" href="javascript:void(0);" data-tags="深度学习">深度学习</a>
     
@@ -556,7 +568,8 @@
 </ul>
 <p><img src="/2022/06/26/dl-transformer/image-20240311091423378.png" alt="image-20240311091423378"></p>
 <p>RNN 所有的 timestep 共享一套参数 $U,V,W$，在 RNN 反向传播过程中，需要计算  $U,V,W$等参数的梯度，以 $W$ 的梯度表达式为例（假设 RNN 模型的损失函数为 $L$）：</p>
-<p>$$\frac{\partial L}{\partial W}<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) \frac{\partial h^{(t)}}{\partial W} \  \<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right) \frac{\partial h^{(t)}}{\partial W} $$</p>
+<p>$$\frac{\partial L}{\partial W}<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) \frac{\partial h^{(t)}}{\partial W} \ $$</p>
+<p>$$&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right) \frac{\partial h^{(t)}}{\partial W}$$</p>
 <p>公式中$\left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) &#x3D; \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right)$,$tanh$的导数总是小于 1 的，由于是 $T−(t+1)$ 个 timestep 参数的连乘，<strong>如果 $W$ 的主特征值小于 1，梯度便会消失；如果 $W$ 的特征值大于 1，梯度便会爆炸。</strong></p>
 <p>RNN中权重在各时间步内共享，最终的梯度是各个时间步的梯度和，梯度和会越来越大。因此，RNN中总的梯度是不会消失的，即使梯度越传越弱，也只是远距离的梯度消失。 <strong>RNN所谓梯度消失的真正含义是，梯度被近距离（t+1趋向于T）梯度主导，远距离（t+1远离T）梯度很小，导致模型难以学到远距离的信息。</strong></p>
 <h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>为了解决 RNN 缺乏的序列长距离依赖问题，LSTM 被提了出来</p>
@@ -789,7 +802,7 @@
 <li>再次，你可以用手头的任务去训练这个网络，对网络参数进行 Fine-tuning，使得这个网络更适合解决手头的问题。</li>
 </ol>
 <h1 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h1><blockquote>
-<p>**Bidirectional Encoder Representations from Transformers</p>
+<p>Bidirectional Encoder Representations from Transformers</p>
 <p>一个真正的集大成者：参考了 ELMO 模型的双向编码思想、借鉴了 GPT 用 Transformer 作为特征提取器的思路、采用了 word2vec 所使用的 CBOW $^{[1]}$方法</p>
 <p>$[1]$ Word2Vec 有两种训练方法：</p>
 <ul>
@@ -1531,7 +1544,28 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -2090,7 +2124,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 61
+        Total : 62
         </div>
         <!-- search  -->
         
@@ -2442,6 +2476,12 @@
     
         
         <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">04/27</span>
             <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
         </li>
@@ -2547,6 +2587,11 @@
                 教程
             </span>
         
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="MongoDB">
                 <span class="iconfont-archer">&#xe606;</span>
                 MongoDB
@@ -2562,11 +2607,6 @@
                 Neo4j
             </span>
         
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="机器学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 机器学习
@@ -2580,11 +2620,6 @@
             <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
                 随笔
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -2607,11 +2642,6 @@
                 debug记录
             </span>
         
-            <span class="sidebar-tag-name" data-tags="环境问题">
-                <span class="iconfont-archer">&#xe606;</span>
-                环境问题
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
                 多维索引
@@ -2632,14 +2662,14 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="链表">
+            <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
-                链表
+                托福
             </span>
         
-            <span class="sidebar-tag-name" data-tags="LeetCode">
+            <span class="sidebar-tag-name" data-tags="环境问题">
                 <span class="iconfont-archer">&#xe606;</span>
-                LeetCode
+                环境问题
             </span>
         
             <span class="sidebar-tag-name" data-tags="双指针">
@@ -2652,24 +2682,14 @@
                 剪枝
             </span>
         
-            <span class="sidebar-tag-name" data-tags="素数">
+            <span class="sidebar-tag-name" data-tags="LeetCode">
                 <span class="iconfont-archer">&#xe606;</span>
-                素数
+                LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="逻辑题">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                逻辑题
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="并查集">
-                <span class="iconfont-archer">&#xe606;</span>
-                并查集
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="树的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                树的遍历
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -2712,6 +2732,26 @@
                 AVL树
             </span>
         
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="二叉搜索树">
                 <span class="iconfont-archer">&#xe606;</span>
                 二叉搜索树
@@ -2722,14 +2762,14 @@
                 贪心
             </span>
         
-            <span class="sidebar-tag-name" data-tags="DFS">
-                <span class="iconfont-archer">&#xe606;</span>
-                DFS
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="图模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -2808,11 +2848,6 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="英语">
-            <span class="iconfont-archer">&#xe60a;</span>
-            英语
-        </span>
-    
         <span class="sidebar-category-name" data-categories="年末总结">
             <span class="iconfont-archer">&#xe60a;</span>
             年末总结
@@ -2821,6 +2856,11 @@
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
             腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
         </span>
     
     </div>
