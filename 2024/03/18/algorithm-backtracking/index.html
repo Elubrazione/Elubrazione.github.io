@@ -35,8 +35,13 @@
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://elubrazione.github.io/2024/03/18/algorithm-backtracking/20201124201406192.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/03/18/algorithm-backtracking/20201124201431571.png">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Hard-red.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Hard-red.svg">
 <meta property="article:published_time" content="2024-03-18T07:12:35.000Z">
-<meta property="article:modified_time" content="2024-03-18T14:26:52.294Z">
+<meta property="article:modified_time" content="2024-03-19T02:04:58.248Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
@@ -355,7 +360,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">3.1k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.1k</span>阅读时长: <span class="post-count reading-time">19 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -626,7 +631,11 @@
 <p>完整代码如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> idx)</span> </span>&#123;</span><br><span class="line">    ans.<span class="built_in">push_back</span>(res);</span><br><span class="line">    <span class="keyword">if</span> (idx &gt;= nums.<span class="built_in">size</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = idx; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt; idx &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])  <span class="keyword">continue</span>;</span><br><span class="line">      res.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">      <span class="built_in">backtracking</span>(nums, i + <span class="number">1</span>);</span><br><span class="line">      res.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">subsetsWithDup</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">    <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">backtracking</span>(nums, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h1><h2 id="46-全排列"><a href="#46-全排列" class="headerlink" title="[46] 全排列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/">[46] 全排列</a></h2><h3 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h3><p>给定一个不含重复数字的整数数组 <code>nums</code> ，返回其 <strong>所有可能的全排列</strong> 。可以 <strong>按任意顺序</strong> 返回答案。</p>
+<h1 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h1><h2 id="46-全排列"><a href="#46-全排列" class="headerlink" title="[46] 全排列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/">[46] 全排列</a></h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Medium-yellow.svg" alt="LeetCode Medium" style="text-align: left;">
+</div>
+
+<h3 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h3><p>给定一个不含重复数字的整数数组 <code>nums</code> ，返回其 <strong>所有可能的全排列</strong> 。可以 <strong>按任意顺序</strong> 返回答案。</p>
 <h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><p>因为是排列所以不需要idx了，每次从0开始遍历，但是需要used数组来判断一下当前数字使用过没有</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  vector&lt;<span class="type">int</span>&gt; res, used;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="built_in">size</span>() == n) &#123;</span><br><span class="line">      ans.<span class="built_in">push_back</span>(res);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (used[i])  <span class="keyword">continue</span>;</span><br><span class="line">      res.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">      used[i] = <span class="number">1</span>;</span><br><span class="line">      <span class="built_in">backtracking</span>(nums, n);</span><br><span class="line">      res.<span class="built_in">pop_back</span>();</span><br><span class="line">      used[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">    <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    used.<span class="built_in">resize</span>(n, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">backtracking</span>(nums, n);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -635,10 +644,52 @@
 </div>
 
 <h3 id="题目-9"><a href="#题目-9" class="headerlink" title="题目"></a>题目</h3><p>给定一个可包含重复数字的整数集合 <code>nums</code> ，<strong>按任意顺序</strong> 返回它所有不重复的全排列。</p>
-<h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><p>有重复的元素因此要去重，仍然是</p>
+<h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><p>有重复的元素因此要去重，仍然是排序加上判断相邻节点状态。</p>
+<blockquote>
+<p>以下内容来自代码随想录</p>
+</blockquote>
+<p>去重最为关键的代码为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; !used[i - <span class="number">1</span>])</span><br><span class="line">  <span class="keyword">continue</span>;</span><br></pre></td></tr></table></figure>
+
+<p>**如果改成 <code>used[i - 1] == true</code>， 也是正确的!**，去重代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; used[i - <span class="number">1</span>])</span><br><span class="line">	<span class="keyword">continue</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果要对树层中前一位去重，就用<code>used[i - 1] == false</code>，如果要对树枝前一位去重用<code>used[i - 1] == true</code>。</p>
+<p><strong>对于排列问题，树层上去重和树枝上去重，都是可以的，但是树层上去重效率更高！</strong></p>
+<p>用输入: [1,1,1] 来举一个例子。</p>
+<p>树层上去重(used[i - 1] &#x3D;&#x3D; false)，的树形结构如下：</p>
+<p><img src="/2024/03/18/algorithm-backtracking/20201124201406192.png" alt="47.全排列II2"></p>
+<p>树枝上去重（used[i - 1] &#x3D;&#x3D; true）的树型结构如下：</p>
+<p><img src="/2024/03/18/algorithm-backtracking/20201124201431571.png" alt="47.全排列II3"></p>
+<p>树层上对前一位去重非常彻底，效率很高，树枝上对前一位去重虽然最后可以得到答案，但是做了很多无用搜索。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  vector&lt;<span class="type">int</span>&gt; res, used;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="built_in">size</span>() == n) &#123;</span><br><span class="line">      ans.<span class="built_in">push_back</span>(res);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (used[i])  <span class="keyword">continue</span>;</span><br><span class="line">      <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; !used[i - <span class="number">1</span>] &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) </span><br><span class="line">      	<span class="keyword">continue</span>;</span><br><span class="line">      res.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">      used[i] = <span class="number">1</span>;</span><br><span class="line">      <span class="built_in">backtracking</span>(nums, n);</span><br><span class="line">      res.<span class="built_in">pop_back</span>();</span><br><span class="line">      used[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permuteUnique</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">    <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">    used.<span class="built_in">resize</span>(n, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">backtracking</span>(nums, n);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="棋盘"><a href="#棋盘" class="headerlink" title="棋盘"></a>棋盘</h1>
+<h1 id="棋盘"><a href="#棋盘" class="headerlink" title="棋盘"></a>棋盘</h1><h2 id="51-N皇后"><a href="#51-N皇后" class="headerlink" title="[51] N皇后"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/n-queens/description/">[51] N皇后</a></h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Hard-red.svg" alt="LeetCode Hard" style="text-align: left;">
+</div>
+
+<h3 id="题目-10"><a href="#题目-10" class="headerlink" title="题目"></a>题目</h3><p>按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。</p>
+<p><strong>n 皇后问题</strong> 研究的是如何将 <code>n</code> 个皇后放置在 <code>n×n</code> 的棋盘上，并且使皇后彼此之间不能相互攻击。</p>
+<p>给你一个整数 <code>n</code> ，返回所有不同的 <strong>n 皇后问题</strong> 的解决方案。</p>
+<p>每一种解法包含一个不同的 <strong>n 皇后问题</strong> 的棋子放置方案，该方案中 <code>&#39;Q&#39;</code> 和 <code>&#39;.&#39;</code> 分别代表了皇后和空位。</p>
+<h3 id="代码-10"><a href="#代码-10" class="headerlink" title="代码"></a>代码</h3><p>重点在于检查同一列和和检查斜对角线，见注释。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  vector&lt;string&gt; res;</span><br><span class="line">  vector&lt;vector&lt;string&gt;&gt; ans;</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 不用检查同一行，因为每次放置完都回溯，同一行不可能有多个皇后</span></span><br><span class="line">    <span class="comment">// 同一列上不能有皇后，检查列，查找上面的行</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = row - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">      <span class="keyword">if</span> (res[i][col] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 检查右上的斜对角线</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = row - <span class="number">1</span>, j = col + <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; i--, j++)</span><br><span class="line">      <span class="keyword">if</span> (res[i][j] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 检查左上角的斜对角线</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = row - <span class="number">1</span>, j = col - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--)</span><br><span class="line">      <span class="keyword">if</span> (res[i][j] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">backtracking</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (row == n) &#123;</span><br><span class="line">      ans.<span class="built_in">push_back</span>(res);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> col = <span class="number">0</span>; col &lt; n; col++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">isValid</span>(row, col, n)) &#123;</span><br><span class="line">        res[row][col] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">        <span class="built_in">backtracking</span>(row + <span class="number">1</span>, n);</span><br><span class="line">        res[row][col] = <span class="string">&#x27;.&#x27;</span>;  <span class="comment">// 回溯</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  vector&lt;vector&lt;string&gt;&gt; <span class="built_in">solveNQueens</span>(<span class="type">int</span> n) &#123;</span><br><span class="line">    res.<span class="built_in">resize</span>(n, <span class="built_in">string</span>(n, <span class="string">&#x27;.&#x27;</span>));</span><br><span class="line">    <span class="built_in">backtracking</span>(<span class="number">0</span>, n);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="37-解数独"><a href="#37-解数独" class="headerlink" title="[37] 解数独"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sudoku-solver/description/">[37] 解数独</a></h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Hard-red.svg" alt="LeetCode Hard" style="text-align: left;">
+</div>
+
+<h3 id="题目-11"><a href="#题目-11" class="headerlink" title="题目"></a>题目</h3><p>编写一个程序，通过填充空格来解决数独问题。</p>
+<p>数独的解法需 <strong>遵循如下规则</strong>：</p>
+<ol>
+<li>数字 <code>1-9</code> 在每一行只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一列只能出现一次。</li>
+<li>数字 <code>1-9</code> 在每一个以粗实线分隔的 <code>3x3</code> 宫内只能出现一次。（请参考示例图）</li>
+</ol>
+<p>数独部分空格内已填入了数字，空白格用 <code>&#39;.&#39;</code> 表示。</p>
+<h3 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col, vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board, <span class="type">char</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 检查同一行有没有相同的</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++)</span><br><span class="line">      <span class="keyword">if</span> (board[row][i] == k) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 检查同一列有没有相同的</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">8</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">      <span class="keyword">if</span> (board[i][col] == k) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 检查九宫格</span></span><br><span class="line">    <span class="type">int</span> r = (row / <span class="number">3</span>) * <span class="number">3</span>, c = (col / <span class="number">3</span>) * <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = r; i &lt; r + <span class="number">3</span>; i++)</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = c; j &lt; c + <span class="number">3</span>; j++)</span><br><span class="line">        <span class="keyword">if</span> (board[i][j] == k) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">backtracking</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; board.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; board[<span class="number">0</span>].<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (board[i][j] == <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> k = <span class="string">&#x27;1&#x27;</span>; k &lt;= <span class="string">&#x27;9&#x27;</span>; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isValid</span>(i, j, board, k)) &#123;</span><br><span class="line">              board[i][j] = k;</span><br><span class="line">              <span class="keyword">if</span> (<span class="built_in">backtracking</span>(board))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">// 如果找到成功的立刻返回</span></span><br><span class="line">              <span class="comment">// 没找到失败了，撤销一下刚才的填写</span></span><br><span class="line">              board[i][j] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">solveSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">backtracking</span>(board);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
     </article>
     <!-- license -->
     
@@ -803,7 +854,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">组合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#77-%E7%BB%84%E5%90%88"><span class="toc-number">1.1.</span> <span class="toc-text">[77] 组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C"><span class="toc-number">1.2.</span> <span class="toc-text">[39] 组合总和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A1"><span class="toc-number">1.3.</span> <span class="toc-text">[40] 组合总和Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#216-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A2"><span class="toc-number">1.4.</span> <span class="toc-text">[216] 组合总和Ⅲ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%89%B2"><span class="toc-number">2.</span> <span class="toc-text">分割</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2"><span class="toc-number">2.1.</span> <span class="toc-text">[131] 分割回文串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="toc-number">2.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#93-%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">[93] 复原IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="toc-number">2.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">子集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#78-%E5%AD%90%E9%9B%86"><span class="toc-number">3.1.</span> <span class="toc-text">[78] 子集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-number">3.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-6"><span class="toc-number">3.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#90-%E5%AD%90%E9%9B%86%E2%85%A1"><span class="toc-number">3.2.</span> <span class="toc-text">[90] 子集Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-number">3.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-7"><span class="toc-number">3.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">排列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">4.1.</span> <span class="toc-text">[46] 全排列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="toc-number">4.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-8"><span class="toc-number">4.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#47-%E5%85%A8%E6%8E%92%E5%88%97%E2%85%A1"><span class="toc-number">4.2.</span> <span class="toc-text">[47] 全排列Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-9"><span class="toc-number">4.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-9"><span class="toc-number">4.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%8B%E7%9B%98"><span class="toc-number">5.</span> <span class="toc-text">棋盘</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">组合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#77-%E7%BB%84%E5%90%88"><span class="toc-number">1.1.</span> <span class="toc-text">[77] 组合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C"><span class="toc-number">1.2.</span> <span class="toc-text">[39] 组合总和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A1"><span class="toc-number">1.3.</span> <span class="toc-text">[40] 组合总和Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#216-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A2"><span class="toc-number">1.4.</span> <span class="toc-text">[216] 组合总和Ⅲ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%89%B2"><span class="toc-number">2.</span> <span class="toc-text">分割</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2"><span class="toc-number">2.1.</span> <span class="toc-text">[131] 分割回文串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="toc-number">2.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#93-%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">[93] 复原IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="toc-number">2.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">子集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#78-%E5%AD%90%E9%9B%86"><span class="toc-number">3.1.</span> <span class="toc-text">[78] 子集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-number">3.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-6"><span class="toc-number">3.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#90-%E5%AD%90%E9%9B%86%E2%85%A1"><span class="toc-number">3.2.</span> <span class="toc-text">[90] 子集Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-number">3.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-7"><span class="toc-number">3.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">排列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">4.1.</span> <span class="toc-text">[46] 全排列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="toc-number">4.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-8"><span class="toc-number">4.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#47-%E5%85%A8%E6%8E%92%E5%88%97%E2%85%A1"><span class="toc-number">4.2.</span> <span class="toc-text">[47] 全排列Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-9"><span class="toc-number">4.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-9"><span class="toc-number">4.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%8B%E7%9B%98"><span class="toc-number">5.</span> <span class="toc-text">棋盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#51-N%E7%9A%87%E5%90%8E"><span class="toc-number">5.1.</span> <span class="toc-text">[51] N皇后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-10"><span class="toc-number">5.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-10"><span class="toc-number">5.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#37-%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="toc-number">5.2.</span> <span class="toc-text">[37] 解数独</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-11"><span class="toc-number">5.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-11"><span class="toc-number">5.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1143,6 +1194,18 @@
         
         
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -2185,11 +2248,6 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -2203,6 +2261,11 @@
             <span class="sidebar-tag-name" data-tags="深度学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
             </span>
         
             <span class="sidebar-tag-name" data-tags="查找">
@@ -2250,14 +2313,14 @@
                 随笔
             </span>
         
-            <span class="sidebar-tag-name" data-tags="故障诊断">
-                <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
                 托福
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
             </span>
         
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
@@ -2280,11 +2343,6 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
-                <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
@@ -2298,6 +2356,11 @@
             <span class="sidebar-tag-name" data-tags="列存分区">
                 <span class="iconfont-archer">&#xe606;</span>
                 列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
@@ -2340,9 +2403,24 @@
                 树的遍历
             </span>
         
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2358,21 +2436,6 @@
             <span class="sidebar-tag-name" data-tags="最短路径">
                 <span class="iconfont-archer">&#xe606;</span>
                 最短路径
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="Set">
@@ -2395,29 +2458,19 @@
                 贪心
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                图模拟
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="DFS">
                 <span class="iconfont-archer">&#xe606;</span>
                 DFS
             </span>
         
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="拓扑排序">
                 <span class="iconfont-archer">&#xe606;</span>
                 拓扑排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="快乐模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                快乐模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="栈">
-                <span class="iconfont-archer">&#xe606;</span>
-                栈
             </span>
         
             <span class="sidebar-tag-name" data-tags="图的遍历">
@@ -2430,6 +2483,16 @@
                 递推
             </span>
         
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="前端">
                 <span class="iconfont-archer">&#xe606;</span>
                 前端
@@ -2440,11 +2503,6 @@
                 React
             </span>
         
-            <span class="sidebar-tag-name" data-tags="top">
-                <span class="iconfont-archer">&#xe606;</span>
-                top
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Webpack">
                 <span class="iconfont-archer">&#xe606;</span>
                 Webpack
@@ -2453,6 +2511,11 @@
             <span class="sidebar-tag-name" data-tags="Eslint">
                 <span class="iconfont-archer">&#xe606;</span>
                 Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
             </span>
         
     </div>
@@ -2466,14 +2529,14 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
-    
         <span class="sidebar-category-name" data-categories="华科课程">
             <span class="iconfont-archer">&#xe60a;</span>
             华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
     
         <span class="sidebar-category-name" data-categories="学习笔记">
@@ -2486,14 +2549,14 @@
             年末总结
         </span>
     
-        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
-            <span class="iconfont-archer">&#xe60a;</span>
-            腾讯AI训练营
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
         </span>
     
     </div>
