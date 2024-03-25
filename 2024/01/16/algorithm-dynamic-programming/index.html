@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="article:published_time" content="2024-01-16T02:26:49.000Z">
-<meta property="article:modified_time" content="2024-03-18T06:39:53.527Z">
+<meta property="article:modified_time" content="2024-03-25T05:54:12.094Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -364,7 +364,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">5k</span>阅读时长: <span class="post-count reading-time">22 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">5.1k</span>阅读时长: <span class="post-count reading-time">22 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -583,7 +583,7 @@
 <li>确定状态转移方程</li>
 </ol>
 <p>公共 &#x3D;&gt; 判断两个数字是否相同。如果相同，就是上一个<code>dp[i - 1][j - 1]</code>的公共长度加上1</p>
-<p>​	&#x3D;&gt; 不相同，继承上一个状态的最大值，上一个状态是0到i-2和0到j-1（左边一格）的公共子序列长度 以及 0到i-1和0到j-2（右边一格）的公共子序列长度 中的较大值</p>
+<p>​	&#x3D;&gt; 不相同，<strong>继承上一个状态的最大值</strong>，上一个状态是0到i-2和0到j-1（左边一格）的公共子序列长度 以及 0到i-1和0到j-2（右边一格）的公共子序列长度 中的较大值</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (text1[i - <span class="number">1</span>] == text2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">  dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  dp[i][j] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
@@ -730,7 +730,7 @@
 <h3 id="解法-7"><a href="#解法-7" class="headerlink" title="解法"></a>解法</h3><ol>
 <li>dp数组的含义</li>
 </ol>
-<p>求什么就定义什么，因为求s中有多少个t，因此<code>dp[i][j]</code>就表示s[i - 1]中t[j - 1]的个数</p>
+<p><strong>求什么就定义什么，因为求s中有多少个t，因此<code>dp[i][j]</code>就表示s[i - 1]中t[j - 1]的个数</strong></p>
 <ol start="2">
 <li>状态转移方程</li>
 </ol>
@@ -762,9 +762,9 @@
 <h3 id="解法-8"><a href="#解法-8" class="headerlink" title="解法"></a>解法</h3><p>当word1[i - 1] 与 word2[j - 1]不相同的时候，有三种情况：</p>
 <p>情况一：删word1[i - 1]，最少操作次数为<code>dp[i - 1][j]</code> + 1 </p>
 <p>情况二：删word2[j - 1]，最少操作次数为<code>dp[i][j - 1]</code> + 1 </p>
-<p>情况三：同时删word1[i - 1]和word2[j - 1]，操作的最少次数为<code>dp[i - 1][j - 1]</code> + 2 </p>
+<p><del>情况三：同时删word1[i - 1]和word2[j - 1]，操作的最少次数为<code>dp[i - 1][j - 1]</code> + 2</del></p>
 <blockquote>
-<p>如果不相等的情况为什么不考虑同时删除两个不相等元素即<code>dp[i][j] = dp[i - 1][j - 1] + 2</code>的情况，因为<code>dp[i][j - 1]</code>的值是由<code>dp[i - 1][j - 1] + 1</code>和<code>dp[i][j - 2]</code>以及<code>dp[i - 1][j - 2]</code>得来的，而且是取得最优情况，所以<code>dp[i][j - 1] &lt;= dp[i - 1][j - 1]</code>，所以没必要再在<code>dp[i][j]</code>中画蛇添足加一个已经被包含了的情况进去了。</p>
+<p>如果不相等的情况为什么不考虑同时删除两个不相等元素即<code>dp[i][j] = dp[i - 1][j - 1] + 2</code>的情况，因为<code>dp[i][j - 1]</code>的值是由<code>dp[i - 1][j - 1] + 1</code>和<code>dp[i][j - 2] + 1</code>以及<code>dp[i - 1][j - 2] + 2</code>得来的，而且是取得最优情况，所以<code>dp[i][j - 1] &lt;= dp[i - 1][j - 1]</code>，所以没必要再在<code>dp[i][j]</code>中画蛇添足加一个已经被包含了的情况进去了。</p>
 </blockquote>
 <p>所以递推公式可简化为：<code>dp[i][j]</code> &#x3D; min(<code>dp[i - 1][j]</code> + 1, <code>dp[i][j - 1]</code> + 1);</p>
 <h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">minDistance</span><span class="params">(string word1, string word2)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = word1.<span class="built_in">size</span>(), m = word2.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(m + <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)  dp[i][<span class="number">0</span>] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)  dp[<span class="number">0</span>][j] = j;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (word1[i - <span class="number">1</span>] == word2[j - <span class="number">1</span>]) &#123;</span><br><span class="line">          dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][m];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -798,10 +798,6 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> dp[i][j]数组的含义：字符串s1[<span class="number">0</span>: i]和字符串s2[<span class="number">0</span>: j]相等需要删除的最小和</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 状态转移方程</span><br><span class="line">s1[i - <span class="number">1</span>] == s2[j - <span class="number">1</span>]:  dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line">s1[i - <span class="number">1</span>] != s2[j - <span class="number">1</span>]:  dp[i][j] = <span class="built_in">min</span>(dp[i][j - <span class="number">1</span>] + (<span class="type">int</span>)s2[j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j] + (<span class="type">int</span>)s1[i - <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 初始化:</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">  dp[i][<span class="number">0</span>] += dp[i - <span class="number">1</span>][<span class="number">0</span>] + (<span class="type">int</span>)s1[i - <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">  dp[<span class="number">0</span>][i] += dp[<span class="number">0</span>][i - <span class="number">1</span>] + (<span class="type">int</span>)s2[i - <span class="number">1</span>];</span><br></pre></td></tr></table></figure>
 
 <h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">minimumDeleteSum</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = s1.<span class="built_in">size</span>(), m = s2.<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(m + <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">      dp[i][<span class="number">0</span>] += dp[i - <span class="number">1</span>][<span class="number">0</span>] + (<span class="type">int</span>)s1[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">      dp[<span class="number">0</span>][i] += dp[<span class="number">0</span>][i - <span class="number">1</span>] + (<span class="type">int</span>)s2[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i - <span class="number">1</span>] == s2[j- <span class="number">1</span>]) &#123;</span><br><span class="line">          dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          dp[i][j] = <span class="built_in">min</span>(dp[i][j - <span class="number">1</span>] + (<span class="type">int</span>)s2[j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j] + (<span class="type">int</span>)s1[i - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][m];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <h1 id="回文"><a href="#回文" class="headerlink" title="回文"></a>回文</h1><blockquote>
 <p>总结一下：</p>
@@ -1957,14 +1953,6 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
     
     
     
@@ -2417,6 +2405,11 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -2432,11 +2425,6 @@
                 深度学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="查找">
                 <span class="iconfont-archer">&#xe606;</span>
                 查找
@@ -2447,6 +2435,11 @@
                 教程
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="MongoDB">
                 <span class="iconfont-archer">&#xe606;</span>
                 MongoDB
@@ -2455,11 +2448,6 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                Neo4j
             </span>
         
             <span class="sidebar-tag-name" data-tags="MySQL">
@@ -2477,19 +2465,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
-                <span class="iconfont-archer">&#xe606;</span>
-                随笔
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
                 托福
             </span>
         
-            <span class="sidebar-tag-name" data-tags="故障诊断">
+            <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
+                随笔
             </span>
         
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
@@ -2507,6 +2490,11 @@
                 debug记录
             </span>
         
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="环境问题">
                 <span class="iconfont-archer">&#xe606;</span>
                 环境问题
@@ -2515,6 +2503,11 @@
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="迁移学习">
@@ -2527,14 +2520,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="链表">
-                <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -2542,9 +2530,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2572,24 +2560,9 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2607,14 +2580,29 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Set">
-                <span class="iconfont-archer">&#xe606;</span>
-                Set
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="图论">
                 <span class="iconfont-archer">&#xe606;</span>
                 图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
             </span>
         
             <span class="sidebar-tag-name" data-tags="AVL树">
@@ -2642,16 +2630,6 @@
                 拓扑排序
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="递推">
-                <span class="iconfont-archer">&#xe606;</span>
-                递推
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="快乐模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 快乐模拟
@@ -2660,6 +2638,16 @@
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2698,14 +2686,14 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="华科课程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            华科课程
-        </span>
-    
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
             算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
         </span>
     
         <span class="sidebar-category-name" data-categories="学习笔记">
@@ -2713,14 +2701,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
         </span>
     
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">

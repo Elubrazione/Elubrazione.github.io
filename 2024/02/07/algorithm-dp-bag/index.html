@@ -31,8 +31,12 @@
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
+<meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="article:published_time" content="2024-02-07T09:52:07.000Z">
-<meta property="article:modified_time" content="2024-03-18T07:42:27.709Z">
+<meta property="article:modified_time" content="2024-03-25T05:02:39.669Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -354,7 +358,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.3k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -587,13 +591,46 @@
 
 <h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><blockquote>
 <p><strong>完全背包和01背包问题唯一不同的地方就是，每种物品有无限件</strong>。</p>
-<p>01背包内嵌的循环是从大到小遍历，为了保证每个物品仅被添加一次。而完全背包的物品是可以添加多次的，所以要从小到大去遍历，即：</p>
+<p>01背包内嵌的循环是<strong>从大到小</strong>遍历，为了保证每个物品仅被添加一次。而完全背包的物品是可以添加多次的，所以要<strong>从小到大</strong>去遍历，即：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先遍历物品，再遍历背包</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; weight.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> j = weight[i]; j &lt;= bagWeight ; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">    dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weight[i]] + value[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>组合数：先物品后容量；</strong></p>
 <p><strong>排列数：先容量后物品。</strong></p>
 </blockquote>
+<h2 id="518-零钱兑换Ⅱ"><a href="#518-零钱兑换Ⅱ" class="headerlink" title="[518] 零钱兑换Ⅱ"></a>[518] 零钱兑换Ⅱ</h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Medium-yellow.svg" alt="LeetCode Medium" style="text-align: left;">
+</div>
 
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">change</span><span class="params">(<span class="type">int</span> amount, vector&lt;<span class="type">int</span>&gt;&amp; coins)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(amount + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; coins.<span class="built_in">size</span>(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = coins[i]; j &lt;= amount; j++) &#123; <span class="comment">// 遍历背包</span></span><br><span class="line">        dp[j] += dp[j - coins[i]];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amount];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="377-组合总和Ⅳ"><a href="#377-组合总和Ⅳ" class="headerlink" title="[377] 组合总和Ⅳ"></a>[377] 组合总和Ⅳ</h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Medium-yellow.svg" alt="LeetCode Medium" style="text-align: left;">
+</div>
+
+<h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><p>正整数且不存在重复数字，找出和为目标整数的排列个数，可以用回溯暴力搜</p>
+<p>这里的数字又可以重复使用，而且只要排列的个数不需要将每个答案都列出来，因此可以用动态规划进行优化。是一个完全背包问题。</p>
+<p>物品是数组里的元素，背包的重量和价值是元素之和，背包容量是target。</p>
+<p>dp[j] 表示目前重量为j的背包里装的方法排列个数，因此 <code>dp[0]</code> 要初始化为1，虽然 <code>dp[0] = 1</code> 是没有任何意义的，只是为了进行递推。</p>
+<p>排列数外层是背包重量，且内层从小到大；内层是物品。</p>
+<p><strong>C++测试用例有两个数相加超过int的数据，所以需要在if里加上dp[j] &lt; INT_MAX - dp[j - nums[i]]。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(target + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= target; j++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (j - nums[i] &gt;= <span class="number">0</span> &amp;&amp; dp[j] &lt; INT_MAX - dp[j - nums[i]]) &#123;</span><br><span class="line">      dp[j] += dp[j - nums[i]];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="70-完全爬楼梯"><a href="#70-完全爬楼梯" class="headerlink" title="[70] 完全爬楼梯"></a>[70] 完全爬楼梯</h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Medium-yellow.svg" alt="LeetCode Medium" style="text-align: left;">
+</div>
+
+<h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬至多m (1 &lt;&#x3D; m &lt; n)个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>注意：给定 n 是一个正整数。 </p>
+<p>输入描述：输入共一行，包含两个正整数，分别表示n, m </p>
+<p>输出描述：输出一个整数，表示爬到楼顶的方法数。 </p>
+<h3 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h3><p>物品是 <code>1 ~ m</code> 共m个整数，背包容量是n，且是排列数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n, m;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">  <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i - j &gt;= <span class="number">0</span>)	dp[i] += dp[i - j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; dp[j] &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="322-零钱兑换"><a href="#322-零钱兑换" class="headerlink" title="[322] 零钱兑换"></a>[322] 零钱兑换</h2><div style="display: flex;">
+  <img src="https://img.shields.io/badge/LeetCode-Medium-yellow.svg" alt="LeetCode Medium" style="text-align: left;">
+</div>
+
+<h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3>
     </article>
     <!-- license -->
     
@@ -763,7 +800,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#416-%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">[416] 分割等和子集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F%E2%85%A1"><span class="toc-number">1.2.</span> <span class="toc-text">[1049] 最后一块石头的重量Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="toc-number">1.3.</span> <span class="toc-text">[494] 目标和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6"><span class="toc-number">1.4.</span> <span class="toc-text">[474] 一和零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">完全背包</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01%E8%83%8C%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#416-%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">[416] 分割等和子集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F%E2%85%A1"><span class="toc-number">1.2.</span> <span class="toc-text">[1049] 最后一块石头的重量Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="toc-number">1.3.</span> <span class="toc-text">[494] 目标和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6"><span class="toc-number">1.4.</span> <span class="toc-text">[474] 一和零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">完全背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2%E2%85%A1"><span class="toc-number">2.1.</span> <span class="toc-text">[518] 零钱兑换Ⅱ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="toc-number">2.1.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A3"><span class="toc-number">2.2.</span> <span class="toc-text">[377] 组合总和Ⅳ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-5"><span class="toc-number">2.2.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#70-%E5%AE%8C%E5%85%A8%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="toc-number">2.3.</span> <span class="toc-text">[70] 完全爬楼梯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-6"><span class="toc-number">2.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2"><span class="toc-number">2.4.</span> <span class="toc-text">[322] 零钱兑换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-7"><span class="toc-number">2.4.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1103,14 +1140,6 @@
         
         
     
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -2157,6 +2186,11 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="计算机视觉">
                 <span class="iconfont-archer">&#xe606;</span>
                 计算机视觉
@@ -2172,11 +2206,6 @@
                 深度学习
             </span>
         
-            <span class="sidebar-tag-name" data-tags="动态规划">
-                <span class="iconfont-archer">&#xe606;</span>
-                动态规划
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="查找">
                 <span class="iconfont-archer">&#xe606;</span>
                 查找
@@ -2187,6 +2216,11 @@
                 教程
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="MongoDB">
                 <span class="iconfont-archer">&#xe606;</span>
                 MongoDB
@@ -2195,11 +2229,6 @@
             <span class="sidebar-tag-name" data-tags="数据库">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Neo4j">
-                <span class="iconfont-archer">&#xe606;</span>
-                Neo4j
             </span>
         
             <span class="sidebar-tag-name" data-tags="MySQL">
@@ -2217,19 +2246,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
-                <span class="iconfont-archer">&#xe606;</span>
-                随笔
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="托福">
                 <span class="iconfont-archer">&#xe606;</span>
                 托福
             </span>
         
-            <span class="sidebar-tag-name" data-tags="故障诊断">
+            <span class="sidebar-tag-name" data-tags="随笔">
                 <span class="iconfont-archer">&#xe606;</span>
-                故障诊断
+                随笔
             </span>
         
             <span class="sidebar-tag-name" data-tags="Greenplum操作">
@@ -2247,6 +2271,11 @@
                 debug记录
             </span>
         
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="环境问题">
                 <span class="iconfont-archer">&#xe606;</span>
                 环境问题
@@ -2255,6 +2284,11 @@
             <span class="sidebar-tag-name" data-tags="磁盘故障">
                 <span class="iconfont-archer">&#xe606;</span>
                 磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
             </span>
         
             <span class="sidebar-tag-name" data-tags="迁移学习">
@@ -2267,14 +2301,9 @@
                 列存分区
             </span>
         
-            <span class="sidebar-tag-name" data-tags="多维索引">
+            <span class="sidebar-tag-name" data-tags="双指针">
                 <span class="iconfont-archer">&#xe606;</span>
-                多维索引
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="链表">
-                <span class="iconfont-archer">&#xe606;</span>
-                链表
+                双指针
             </span>
         
             <span class="sidebar-tag-name" data-tags="LeetCode">
@@ -2282,9 +2311,9 @@
                 LeetCode
             </span>
         
-            <span class="sidebar-tag-name" data-tags="双指针">
+            <span class="sidebar-tag-name" data-tags="链表">
                 <span class="iconfont-archer">&#xe606;</span>
-                双指针
+                链表
             </span>
         
             <span class="sidebar-tag-name" data-tags="剪枝">
@@ -2312,24 +2341,9 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2347,14 +2361,29 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Set">
-                <span class="iconfont-archer">&#xe606;</span>
-                Set
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="图论">
                 <span class="iconfont-archer">&#xe606;</span>
                 图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
             </span>
         
             <span class="sidebar-tag-name" data-tags="AVL树">
@@ -2382,16 +2411,6 @@
                 拓扑排序
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="递推">
-                <span class="iconfont-archer">&#xe606;</span>
-                递推
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="快乐模拟">
                 <span class="iconfont-archer">&#xe606;</span>
                 快乐模拟
@@ -2400,6 +2419,16 @@
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2438,14 +2467,14 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="华科课程">
-            <span class="iconfont-archer">&#xe60a;</span>
-            华科课程
-        </span>
-    
         <span class="sidebar-category-name" data-categories="算法">
             <span class="iconfont-archer">&#xe60a;</span>
             算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
         </span>
     
         <span class="sidebar-category-name" data-categories="学习笔记">
@@ -2453,14 +2482,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
         </span>
     
         <span class="sidebar-category-name" data-categories="腾讯AI训练营">
