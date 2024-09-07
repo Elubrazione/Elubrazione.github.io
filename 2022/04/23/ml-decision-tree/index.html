@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="周志华西瓜书学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习-决策树">
+<meta property="og:url" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="周志华西瓜书学习笔记">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20231231181722147.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101101059727.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155459149.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155516992.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155532070.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155549705.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155704049.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101155819647.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101172658447.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240101182106299.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102092946096.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102092957851.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102093010308.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102103739171.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102103752333.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102103837060.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102105028474.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20240102105303142.png">
+<meta property="article:published_time" content="2022-04-23T09:31:41.000Z">
+<meta property="article:modified_time" content="2024-03-10T05:45:40.000Z">
+<meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2022/04/23/ml-decision-tree/image-20231231181722147.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>机器学习-决策树 · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">机器学习-决策树</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                机器学习-决策树
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="学习笔记"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                学习笔记
+            </span>
+        </span>
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.5k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/04/23</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>周志华西瓜书学习笔记</p>
+<span id="more"></span>
+
+<blockquote>
+<p>2023.12 二周目补充版</p>
+<p>加粗和高亮是重点和我自己的理解</p>
+<p>二周目心得：不好好学习贪图一时享乐欠下的债以后都是要还的</p>
+</blockquote>
+<h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p>一棵决策树包含一个根节点、若干个内部结点和若干个叶结点；叶结点对应于决策结果，其他每个结点则对应于一个属性测试；每个结点包含的样本集合根据属性测试的结果被划分到子结点中；根结点包含样本全集。从根结点到每个叶结点的路径对应了一个判定测试序列。示意图如下</p>
+<img src="/2022/04/23/ml-decision-tree/image-20231231181722147.png" alt="image-20231231181722147" style="zoom:80%;">
+
+<p>生成是一个递归过程，四种情况会导致递归返回：</p>
+<ul>
+<li>当前结点包含的样本全属于同一类别，无需划分 &#x3D;&gt; <mark>比如现在的样本类别都是好瓜</mark></li>
+<li>当前属性集为空，无法划分 &#x3D;&gt; <mark>没有属性</mark> &#x3D;&gt; 标记为叶结点，并将其类别设定为该结点所含样本最多的类别（当前结点的后验分布 ）</li>
+<li>所有样本在所有属性上取值相同，无法划分 &#x3D;&gt; <mark>当前node所包含的样本集在所有属性 $a_i \in A $ 上的值都相同，比如色泽、根蒂、敲声 三个属性值都一样</mark> &#x3D;&gt; 标记为叶结点，并将其类别设定为该结点所含样本最多的类别（当前结点的后验分布 ）</li>
+<li>当前结点包含的样本集合为空，不能划分 &#x3D;&gt; 标记为叶结点，将其类别设定为其<mark>父结点</mark>所含样本最多的类别（把父节点的样本分布作为当前结点的先验分布）</li>
+</ul>
+<img src="/2022/04/23/ml-decision-tree/image-20240101101059727.png" alt="image-20240101101059727">
+
+<h1 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h1><blockquote>
+<p>随着划分过程不断进行，我们希望决策树的分支结点所包含的样本尽可能属于同一类别，即结点的纯度越来越高。</p>
+<p>本章节记录了几种选择最优化分属性 $a^{*}$ （纯度）的方法</p>
+</blockquote>
+<h2 id="信息增益-x3D-gt-ID3决策树"><a href="#信息增益-x3D-gt-ID3决策树" class="headerlink" title="信息增益 &#x3D;&gt; ID3决策树"></a>信息增益 &#x3D;&gt; ID3决策树</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>用信息熵来衡量样本集合纯度。若当前样本集合 $D$ 中第 $k$ 类样本所占的比例为 $p_k (k &#x3D; 1, 2, …, \mid \mathcal{Y} \mid)$，对于上面西瓜的例子 $|\mathcal{Y}| &#x3D; 2$<strong>（好瓜和坏瓜两种）</strong>，则：</p>
+<p>$$Ent(D) &#x3D; - \sum \limits _ {k&#x3D;1} ^ {|\mathcal{Y}|} p_k log_2 p_k$$</p>
+<p>$Ent(D)$ 的值越小，则 $D$ 的纯度越高，最小值为0，最大值为 $log_2|\mathcal{Y}|$</p>
+<p>当每个类别出现的概率相等时，即 $p_k &#x3D; \frac{1}{|\mathcal{Y}|}$时，$Ent(D) &#x3D; -\sum \frac{1}{|\mathcal{Y}|} log_2(\frac{1}{|\mathcal{Y}|}) &#x3D; - |\mathcal{Y}| \times (\frac{1}{|\mathcal{Y}|} log_2(\frac{1}{|\mathcal{Y}|})) &#x3D; -log_2(\frac{1}{|\mathcal{Y}|}) &#x3D; log_2|\mathcal{Y}|$ </p>
+<p>假设离散属性 $a$ 有 $V$ 个取值 ${a _1, a_2, …, a_V}$ ，使用其来对样本进行划分，则会产生 $V$ 个结点，其中第 $V$ 个分支结点包含了 $D$ 中所有在属性 $a$ 上取值为 $a_v$ 的样本，记 为 $D_v$，给每个子节点赋予权重 $\frac{|D_v|}{|D|}$ （即样本数越多的分支结点的影响越大）。因此属性 $a$ 对样本集 $D$ 进行划分所获得的“信息增益”为：</p>
+<p>$$Gain(D,a) &#x3D; Ent(D) - \sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} Ent(D_v)$$</p>
+<p>为当前的每个划分离散值对应的样本子集信息熵，<mark>划分得到的信息熵和越小，划分后的纯度越大，原来的值减去新的划分和得到的值越大</mark></p>
+<p>取 $a_* &#x3D; arg _{a \in A} max(Gain(D,a))$ 作为标准来挑选最优划分属性 &#x3D;&gt; ID3决策树学习算法</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>这是书上举的例子，很好理解且一定要理解：</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155459149.png" alt="image-20240101155459149"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155516992.png" alt="image-20240101155516992"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155532070.png" alt="image-20240101155532070"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155549705.png" alt="image-20240101155549705"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155704049.png" alt="image-20240101155704049"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101155819647.png" alt="image-20240101155819647"></p>
+<h2 id="增益率-x3D-gt-C4-5决策树"><a href="#增益率-x3D-gt-C4-5决策树" class="headerlink" title="增益率 &#x3D;&gt; C4.5决策树"></a>增益率 &#x3D;&gt; C4.5决策树</h2><blockquote>
+<p>信息增益准则对<strong>可取值数目较多的属性</strong>有所偏好</p>
+<p>增益率准则对<strong>可取值数目较少的属性</strong>有所偏好</p>
+</blockquote>
+<p>增益率定义：</p>
+<p>$$Gain_ratio(D, a) &#x3D; \frac{Gain(D, a)}{IV(a)}$$</p>
+<p>$$IV(a) &#x3D; -\sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} log_2 \frac{|D_v|}{|D|}$$</p>
+<p>$IV(a)$ 为属性a的固有值，属性a的可能取值数目越多(即V越大)，则 IV(a)的值通常会越大。</p>
+<h2 id="基尼指数-x3D-gt-CART决策树"><a href="#基尼指数-x3D-gt-CART决策树" class="headerlink" title="基尼指数 &#x3D;&gt; CART决策树"></a>基尼指数 &#x3D;&gt; CART决策树</h2><p>纯度用<strong>基尼值</strong>来度量</p>
+<p>$$Gini(D) &#x3D; \sum \limits _{k&#x3D;1} ^{|\mathcal{Y}|} \sum \limits  _{k’≠k} p _k p _{k’} &#x3D; 1 - \sum \limits _{k&#x3D;1} ^{|\mathcal{Y}|} p _k ^2$$</p>
+<p>$Gini(D)$ 反映了从数据集 $D$ 中随机抽取两个样本，其类别标记不一致的概率。因此 $Gini(D)$ 越小，则数据集 $D$ 的纯度越高。</p>
+<p>基尼指数定义：</p>
+<p>$$Gini _ index(D, a) &#x3D; \sum \limits _{v&#x3D;1} ^{V} \frac{|D_v|}{|D|} Gini(D_v)$$</p>
+<p>在候选属性集合A中，选择那个使得划分后<strong>基尼指数最小</strong>的属性作为最优划分属性  </p>
+<p>$$a _* &#x3D; arg _{a \in A} min(Gini(D, a))$$</p>
+<h1 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h1><p>为了应付过拟合，提升泛化能力。基本策略有 “预剪枝” (prepruning)和 “后剪枝” (postpruning) </p>
+<h2 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h2><p><strong>在每次划分前验证划分后精度是否会下降，若会下降则不进行此次划分。</strong></p>
+<p>有些分支的当前划分虽不能提升泛化性能、甚至可能导致泛化性能暂时下降，但在其基础上进行的后续划分却有可能导致性能显著提高；还可能会带来欠拟合的风险</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101172658447.png" alt="image-20240101172658447"></p>
+<h2 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h2><p>先生成一颗完整的树再进行剪枝，能够保留更多的分支，欠拟合的风险比较小，泛化性能往往优于预剪枝决策树。</p>
+<p>但存在的问题是要自顶向下生成一棵树，再自底向上进行剪枝，开销会特别大。</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240101182106299.png" alt="image-20240101182106299"></p>
+<h1 id="连续与缺失值"><a href="#连续与缺失值" class="headerlink" title="连续与缺失值"></a>连续与缺失值</h1><p>连续属性的可取值数目不再有限，不能直接根据连续属性的可取值来对结点进行划分 &#x3D;&gt; 连续属性离散化技术</p>
+<h2 id="二分法-x3D-gt-C4-5决策树"><a href="#二分法-x3D-gt-C4-5决策树" class="headerlink" title="二分法 &#x3D;&gt; C4.5决策树"></a>二分法 &#x3D;&gt; C4.5决策树</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>给定样本集 $D$ 和连续属性 $a$，假定 $a$ 在 $D$ 上出现了 $n$ 个不同的取值，将这些值从小到大进行排序，记为 ${ a^1, a^2,\dots,a^n }$。基于划分点 $t$ 可以将 $D$ 分为子集 $D _{t} ^{-}$ 和 $D _{t} ^{+}$，表示不大于和大于 $t$，左闭右开。因此在区间 $[a^{i}, a^{i+1})$ 中取任意值所产生的划分结果相同，对连续属性 $a$ ，我们可以考察包含 $n-1$ 个元素的候选划分点集合，<mark>把该区间的中点作为候选划分点，然后像离散属性值一样来考察划分点，选取最优的划分</mark></p>
+<p>$$T_a &#x3D; { \frac{a^{i} + a^{i+1}}{2} | i \leq i \leq n-1 }$$</p>
+<p><mark>找出（一个个算）</mark>使得 $Gain(D, a)$ 取得最大值的划分点 $t$：</p>
+<p>$$Gain(D,a) &#x3D; \max \limits _{t \in T_a} Gain(D, a, t) \ &#x3D; \max \limits _{t \in T_a} Ent(D) - \sum \limits _{\lambda \in { -, + }} \frac{|D _{\lambda} ^{t}|}{|D|} Ent(D _{\lambda} ^{t})$$</p>
+<h3 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h3><p>同样上个例子：</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102092946096.png" alt="image-20240102092946096"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102092957851.png" alt="image-20240102092957851"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102093010308.png" alt="image-20240102093010308"></p>
+<h2 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>符号说明（看得明白）：</p>
+<ul>
+<li>$\widetilde{D}$ 表示 $D$ 在属性 $a$ 上 <strong>没有缺失值的样本子集</strong>，<mark>意思就是对于某个属性 $a$ 我们把这一列没有缺失值的拿出来打包成一个集合</mark></li>
+<li>属性 $a$ 有 $V$ 个取值，${ a_1, a_2, \dots , a_V }$ ，$\widetilde{D} ^v$ 表示在属性a上取值为 $a ^v$的样本子集，<mark>属性a有6个取值，从小到大排序，第五个的值为3.78，把所有在a上取值为3.78的样本都取出来，这样的集合就叫做 $\widetilde{D} ^5$，它们在a上的取值都是 $a ^5 &#x3D; 3.78$</mark></li>
+<li>$\widetilde{D} _k$ 表示 $\widetilde{D}$ 中属于第 $k$ 类 $(k&#x3D;1,2, \dots, |\mathcal{Y}|)$ 的样本子集，<mark>第一类是好瓜，第二类是坏瓜诸如此类</mark> </li>
+<li>$\widetilde{D} &#x3D; \bigcup ^{|\mathcal{Y}|} _{k&#x3D;1} \widetilde{D} _k$，$\widetilde{D} &#x3D; \bigcup ^{V} _{v&#x3D;1} \widetilde{D} ^v$</li>
+</ul>
+<p>从上面内容可以进行新的定义（注意各自的分母），对于每个样本 $x$ 我们赋予一个权重$\omega _x$：</p>
+<p>$$\rho &#x3D; \frac{\sum _{x \in \widetilde{D}} \omega _x}{\sum _{x \in D} \omega _x}$$</p>
+<p>$$\widetilde{p} _k &#x3D; \frac{\sum _{x \in \widetilde{D} _k} \omega _x}{\sum _{x \in  \widetilde{D}} \omega _x} \space (1 \leq k \leq |\mathcal{Y}|)$$<br>$$\widetilde{r} _v &#x3D; \frac{\sum _{x \in \widetilde{D} ^v} \omega _x}{\sum _{x \in \widetilde{D}} \omega _x}  \space (1 \leq v \leq V)$$</p>
+<p>$\rho$ 表示无缺失值样本所占的比例，$\widetilde{p} _k$ 表示无缺失值样本中<br>第 $k$ 类所占的比例，$\widetilde{r} _v$ 则表示无缺失值样本中在属性a上取值为 $a ^v$ 的样本所占的比例。</p>
+<p>根据信息熵公式：</p>
+<p>$$Ent(\widetilde{D}) &#x3D; - \sum \limits _{k&#x3D;1} ^{|\mathcal{Y}|} \widetilde{p} _k log _2 \widetilde{p} _k$$</p>
+<p>可以得到信息增益：</p>
+<p>$$Gain(D, a) &#x3D; \rho \times Gain(\widetilde{D}, a) \ &#x3D; \rho \times (Ent(\widetilde{D}) - \sum \limits _{v&#x3D;1} ^{V} \widetilde{r} _v Ent(\widetilde{D} ^v))$$</p>
+<p><strong>算出每个属性的信息增益，然后选择信息增益最大的属性作为划分属性</strong></p>
+<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p>同样上个例子</p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102103739171.png" alt="image-20240102103739171"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102103752333.png" alt="image-20240102103752333"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102103837060.png" alt="image-20240102103837060"></p>
+<h1 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h1><blockquote>
+<p>把每个属性视为坐标空间中的一个坐标轴，则 d 个属性描述的样本就对应了 d 维空间中的一个数据点，对样本分类则意味着在这个坐标空间中寻找不同类样本之间的分类边界</p>
+</blockquote>
+<p>多变量决策树希望做的事情是把平行的轴变成倾斜的轴，非叶结点不再是仅对某个属性,而是对属性的线性组合进行测试，每个非叶结点是一个形如 $\sum _{i&#x3D;1} ^{d} w _i a _i &#x3D; t$ 的线性分类器，$w_i$ 是属性 $a _i$ 的权重，$w _i$ 和 $t$ 可以在该结点所含的样本集和属性集上学得。&#x3D;&gt; <strong>建立一个线性分类器而不是进行最优属性划分</strong></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102105028474.png" alt="image-20240102105028474"></p>
+<p><img src="/2022/04/23/ml-decision-tree/image-20240102105303142.png" alt="image-20240102105303142"></p>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/04/27/ml-support-vector-machine/" title="机器学习-支持向量机">
+                    <div class="nextTitle">机器学习-支持向量机</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/04/16/ml-linear-model/" title="机器学习-线性模型">
+                    <div class="prevTitle">机器学习-线性模型</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">基本流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%92%E5%88%86%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text">划分选择</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A-x3D-gt-ID3%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.1.</span> <span class="toc-text">信息增益 &#x3D;&gt; ID3决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E7%9B%8A%E7%8E%87-x3D-gt-C4-5%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text">增益率 &#x3D;&gt; C4.5决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E5%B0%BC%E6%8C%87%E6%95%B0-x3D-gt-CART%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">2.3.</span> <span class="toc-text">基尼指数 &#x3D;&gt; CART决策树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">剪枝处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%89%AA%E6%9E%9D"><span class="toc-number">3.1.</span> <span class="toc-text">预剪枝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%89%AA%E6%9E%9D"><span class="toc-number">3.2.</span> <span class="toc-text">后剪枝</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E4%B8%8E%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">连续与缺失值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95-x3D-gt-C4-5%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">4.1.</span> <span class="toc-text">二分法 &#x3D;&gt; C4.5决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-1"><span class="toc-number">4.1.2.</span> <span class="toc-text">举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">缺失值处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">4.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B-2"><span class="toc-number">4.2.2.</span> <span class="toc-text">举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">5.</span> <span class="toc-text">多变量决策树</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span>
+            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>

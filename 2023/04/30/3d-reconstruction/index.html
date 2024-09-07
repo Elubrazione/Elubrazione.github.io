@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="2023春计算机视觉结课作业，文献综述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HUST基于深度学习的三维重建">
+<meta property="og:url" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2023春计算机视觉结课作业，文献综述">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/1.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/3.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/4.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/5.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/6.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/7.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/8.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/9.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/10.png">
+<meta property="article:published_time" content="2023-04-30T08:51:01.000Z">
+<meta property="article:modified_time" content="2023-12-31T09:59:59.000Z">
+<meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="计算机视觉">
+<meta property="article:tag" content="三维重建">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/04/30/3d-reconstruction/1.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>HUST基于深度学习的三维重建 · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">HUST基于深度学习的三维重建</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                HUST基于深度学习的三维重建
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="华科课程"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                华科课程
+            </span>
+        </span>
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="计算机视觉">计算机视觉</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="三维重建">三维重建</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="深度学习">深度学习</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">10.9k</span>阅读时长: <span class="post-count reading-time">39 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2023/04/30</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>2023春计算机视觉结课作业，文献综述</p>
+<span id="more"></span>
+
+<h2 id="mathcal-1-space-介绍"><a href="#mathcal-1-space-介绍" class="headerlink" title="$\mathcal{1} \space 介绍$"></a><a id="section-1"></a>$\mathcal{1} \space 介绍$</h2><p>三维重建是一种计算机视觉技术，旨在从二维图像或视频中推导出三维场景或物体的形状和结构。</p>
+<p>2014年以前的传统方法的技术侧重点往往在于数学的立体几何，通常需要大量手动操作和专业知识，并且由于需要使用多个传感器来获取数据，这些方法往往会受到各种因素的干扰和限制，难以处理复杂场景。如$Laurentini$<a href="#ref-1">$[1]$</a>提出的基于轮廓的视觉壳体方法，对于透明物体其重建效果会比较差；此外，该方法也需要准确的轮廓提取，对于物体表面存在遮挡、纹理不清晰等情况时，其重建效果也会受到影响。$Hartley$和 $Zisserman$<a href="#ref-2">$[2]$</a>提出的传统多视图几何方法只能使用几何信息进行重建，除了对噪声、缺失数据和误匹配等问题比较敏感外，对于非刚性或非刚性变形的物体，其重建效果会受到很大的限制。</p>
+<p>而自2014年，$David$<a href="#ref-7">$[7]$</a>等人基于体素的形式，将单张RGB图像作为输入，直接使用神经网络进行深度图恢复，开启了将深度学习方法应用于三维重建领域的大门。此后，深度学习开始被广泛运用在三维重建问题上且在之后的数年里被广泛证实十分有效。目前深度学习技术在三维重建领域的应用已经取得了很大的进展，并且在许多应用领域中都有着广泛的应用前景，例如机器人、自主导航、图形和娱乐等方面。本文选取了几种应用于三维重建的深度学习方法，对每种方法的相关技术进行分类（章节<a href="#section-2.2">$2.2$</a>）介绍、梳理与回顾（章节<a href="#section-3">$3$</a>），将各个方法进行比较并给出各个方法的优缺点（章节<a href="#section-4">$4$</a>）。</p>
+<h2 id="mathcal-2-space-问题描述和分类"><a href="#mathcal-2-space-问题描述和分类" class="headerlink" title="$\mathcal{2} \space 问题描述和分类$"></a><a id="section-2"></a>$\mathcal{2} \space 问题描述和分类$</h2><h3 id="mathcal-2-1-space-问题描述"><a href="#mathcal-2-1-space-问题描述" class="headerlink" title="$\mathcal{2.1} \space 问题描述$"></a><a id="section-2.1"></a>$\mathcal{2.1} \space 问题描述$</h3><p>三维重建的问题可以描述为如下数学公式</p>
+<p>$$Input: I &#x3D; { I_{k}, k &#x3D; 1, …, n } ;$$</p>
+<p>$$Loss \space function: \mathcal{L}(I) &#x3D; d(f_{\theta}(I), X)$$</p>
+<p>其中，</p>
+<ul>
+<li>$I$ 代表一个或多个物体 $X$ 的一组数目 $n \geq 1$ 的RGB图像；</li>
+<li>$f_{\theta}$ 代表预测器，其中 $\theta$ 是 $f$ 的参数集合，$d(.\space,\space.)$ 是目标输出 $X$ 和重建输出 $\hat{X}$ 之间距离的度量方式；</li>
+<li>$f_{\theta}$ 的目标是通过输入 $I$ 构建出最接近目标 $X$ 的 $\hat{X}$，即我们训练的目的是使得 $d(f_{\theta}(I), X)$ 的值达到最小。</li>
+</ul>
+<h3 id="mathcal-2-2-space-分类"><a href="#mathcal-2-2-space-分类" class="headerlink" title="$\mathcal{2.2} \space 分类$"></a><a id="section-2.2"></a>$\mathcal{2.2} \space 分类$</h3><p>在$Han$<a href="#ref-3">$[3]$</a>等人的文章中提到了一种基于深度学习的三维重建的分类方法。该方法根据输入、输出表示、深度神经网络架构、训练过程和监督程度等方面进行分类。具体来说，输入可以是单个图像、多个图像或视频流；输出表示可以是点云、体素或网格；深度神经网络架构可以是卷积神经网络（CNN）、生成对抗网络（GAN）等；训练过程可以是有监督的、无监督的或半监督的；监督程度可以是单一物体或多个物体，以及统一背景或杂乱背景。</p>
+<p>本文所选取的各种方法将按照其解码器输出数据格式进行分类，具体即体素、点云和网格</p>
+<ul>
+<li><strong>体素</strong>，可以看作是一个立方体元素。通过将三维空间划分为许多小的立方体单元，可以将物体的几何形状表示为一个三维模型。</li>
+<li><strong>点云</strong>，由一组三维坐标点构成的集合，每个点代表物体表面上的一个采样点。通过将物体表面上的所有采样点表示为一个点云，可以将物体的几何形状表示为一个无序的三维坐标集合。</li>
+<li><strong>网格</strong>，由一组三角形或四边形面片构成的集合，每个面片代表物体表面上的一个小区域。通过将物体表面上的所有小区域表示为一个网格，可以将物体的几何形状表示为一个有序的三角形或四边形面片集合。</li>
+</ul>
+<h2 id="mathcal-3-space-方法梳理"><a href="#mathcal-3-space-方法梳理" class="headerlink" title="$\mathcal{3} \space 方法梳理$"></a><a id="section-3"></a>$\mathcal{3} \space 方法梳理$</h2><p>本章节选取了一些基于深度学习的三维重建方法，按照章节<a href="#section-2.2">$2.2$</a>提到的输出数据格式进来分类介绍和详细分析。</p>
+<h3 id="mathcal-3-1-space-体素"><a href="#mathcal-3-1-space-体素" class="headerlink" title="$\mathcal{3.1} \space 体素$"></a>$\mathcal{3.1} \space 体素$</h3><p>本部分选取了$Choy$<a href="#ref-4">$[4]$</a>提出的3D-R2N2网络架构、$Park$<a href="#ref-5">$[5]$</a>提出的DeepSDF技术以及$Varol$<a href="#ref-6">$[6]$</a>提出的一种叫做BodyNet的神经网络结构进行介绍。</p>
+<h4 id="mathcal-3-1-1-space-3D-R2N2"><a href="#mathcal-3-1-1-space-3D-R2N2" class="headerlink" title="$\mathcal{3.1.1} \space 3D-R2N2$"></a>$\mathcal{3.1.1} \space 3D-R2N2$</h4><p>本篇文章提出了一种基于LSTM和GRU网络的循环神经网络的新型架构，称为3D Recurrent Reconstruction Neural Network（3D-R2N2），网络的目标是实现单视角和多视角的三维重建。该网络由三个部分组成：一个由二维卷积神经网络构成的编码器、一种名为三维卷积LSTM的新型架构和一个由三维反卷积神经网络构成的解码器。给定来自任意视角的一个或多个物体的图像，编码器将每个输入图像 $x$ 编码为低维特征 $T(x)$；然后，3D卷积LSTM单元通过选择性地更新它们的细胞状态或通过关闭输入门来保留状态；最后，解码器解码LSTM单元的隐藏状态并生成三维概率体素重建结果。总体结构如图1所示。</p>
+<p><img src="/2023/04/30/3d-reconstruction/1.png" alt="3D-R2N2" title="图1. 3D-R2N2网络结构图"></p>
+<p><strong>编码器</strong>有标准前馈CNN网络和深度残差变体两种：</p>
+<ul>
+<li>标准前馈CNN由标准卷积层、池化层和Leaky ReLU激活函数组成，最后接一个全连接层，可以将输入图像转换为高维特征向量；</li>
+<li>深度残差变体是在标准前馈CNN的基础上进行改进的。它添加了残差连接来解决深度神经网络中梯度消失和梯度爆炸等问题。具体来说，每个残差块包含两个卷积层和一个跳跃连接，可以将输入直接传递到输出中。</li>
+</ul>
+<p><strong>3D-Convolutional-LSTM</strong>根据有无输出门有以下两种。在每个时间步骤中，每个LSTM单元接收来自编码器的相同特征向量以及其邻居的隐藏状态作为输入。这些输入通过一个3×3×3卷积核进行卷积操作，并传递给LSTM单元进行处理。然后，LSTM单元将其输出传递给下一个时间步骤，并将其隐藏状态传递给其邻居。在没有输出门的版本中，LSTM单元直接将其隐藏状态作为输出。而在带有输出门的GRU版本中，LSTM单元还会根据当前输入和先前隐藏状态计算一个输出门，并使用该门来控制其输出。</p>
+<p><strong>解码器</strong>使用一个全连接层将中间表示转换为一个低分辨率3D体素模型；然后使用多个反卷积层来逐步增加输出分辨率，并生成更高分辨率的3D体素模型；最后，使用一个Sigmoid激活函数将输出限制在0到1之间。同时在训练过程中，为了提高网络性能并减少过拟合现象，模型使用了Progressive Growing的技术来逐步增加输入图像分辨率和输出网格分辨率。</p>
+<h4 id="mathcal-3-1-2-space-DeepSDF"><a href="#mathcal-3-1-2-space-DeepSDF" class="headerlink" title="$\mathcal{3.1.2} \space DeepSDF$"></a>$\mathcal{3.1.2} \space DeepSDF$</h4><p>与上一种方法的输入为2D图像不同的是，DeepSDF的输入也是三维的，因为它是一种用于处理三维几何图形的方法。本篇文章中定义了一种叫做有符号距离函数（Signed Distance Functions，后简称SDF）的连续函数，对于给定的空间点，输出该点到最近表面的距离，并用符号表示该点在表面内部或外部。基于此，将问题转换为使用深度神经网络直接回归点样本的连续SDF，形成一个决策边界作为三维几何图形的表面，对点做在表面外或内的二元分类，从而生成新的几何模型。如图2所示。</p>
+<p><img src="/2023/04/30/3d-reconstruction/3.png" alt="DeepSDF" title="图2. DeepSDF在兔子3D模型重建上的应用"></p>
+<p><strong>SDF</strong>定义公式如下：<br>$$SDF(\mathbf{x}) &#x3D; s : \mathbf{x} \in \mathbb{R}^3 , \space s \in \mathbb{R}. $$</p>
+<p>对于给定的三维空间点 $x$，$SDF(x)$ 表示该点到最近表面的距离，并且根据该点在表面内部或外部的位置标定正负号。其中，$s$ 表示 $x$ 到最近表面的距离，如果 $x$ 在表面内部，则 $s$ 为负数；如果 $x$ 在表面外部，则 $s$ 为正数。</p>
+<p>用来生成连续SDF所使用的模型，其结构是一种前馈神经网络。训练该网络的目标是，对于给定的空间坐标和其SDF值：<br>$$ X :&#x3D; {(\mathbf{x}, s) : SDF(\mathbf{x}) &#x3D; s }.$$</p>
+<p>可以训练出一个神经网络模型 $f_{\theta}$，使得在任意一个目标域中：<br>$$ f_{\theta}(\mathbf{x}) \approx SDF(\mathbf{x}), \space \forall \mathbf{x} \in \Omega. $$</p>
+<p>而按照功能分，模型则可以分为编码器和解码器两部分，都是由多个卷积层和池化层交替堆叠，再加上全连接层构成。</p>
+<p>为了适应不同的应用场景，文章中提出了两种形状表示方式 1）单形状DeepSDF 2）编码形状DeepSDF。</p>
+<ul>
+<li>单形状DeepSDF适用于对单个形状进行建模和重建的场景。在这种情况下，只需要训练一个神经网络来表示该形状的连续有符号距离函数，并使用该网络来生成新的几何形状。</li>
+<li>编码形状DeepSDF适用于对多个相关形状进行建模和重建的场景。在这种情况下，就需要找到一些共同属性，并将它们嵌入到低维潜在空间中。通过学习潜在空间和对应的连续有符号距离函数，以生成新的几何形状，并且可以通过修改代码向量来控制生成的几何形状。</li>
+</ul>
+<p>因此，在单形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$，其输出潜在向量 $z$ 作为解码器的输入，最终输出SDF；在编码形状DeepSDF中，编码器的输入是一个三维点坐标 $(x,y,z)$ 和一个控制生成几何形状的代码向量 $c$ 的拼接，其输出潜在向量 $z$ 和前面提到的三维点坐标一起作为解码器的输入，最终输出SDF。</p>
+<h4 id="mathcal-3-1-3-space-BodyNet"><a href="#mathcal-3-1-3-space-BodyNet" class="headerlink" title="$\mathcal{3.1.3} \space BodyNet$"></a>$\mathcal{3.1.3} \space BodyNet$</h4><p>本文介绍了一种名为BodyNet的神经网络，它可以从单个图像中直接推断出三维人体形状。与上面两种方法不同的是，该网络的设计旨在解决视频编辑、动画和时尚等领域中的人体模型估计问题。BodyNet包括四个自网络，分别是二维姿态估计子网络、二维深体部位分割子网络、三维姿态估计子网络以及三维形状估计子网络。每个子网络都是由一个沙漏结构构成，其是一种常用的卷积神经网络结构，由编码器和解码器组成，可以有效地提取特征并保留空间信息。其中编码器将输入图像转换为特征向量，解码器将特征向量转换回三维体积表示。</p>
+<p><img src="/2023/04/30/3d-reconstruction/4.png" alt="BodyNet" title="图3. BodyNet网络结构"></p>
+<p>BodyNet中通过四个子网结构来处理不同任务，并共享特征以提高整个系统的性能，各个子网络之间通过特征融合和级联的方式进行联合。输入RGB图像后，首先经过二维姿态估计子网络和二维身体部位分割子网络，得到对应的二维姿态估计结果和身体部位分割掩模。然后将这些结果与RGB图像特征一起输入到三维姿态估计子网络中，得到对应的三维姿态估计结果。最后，将三维姿态估计结果与身体部位分割掩模一起输入到体积重建子网络中，得到对应的三维人体形状。在这个过程中，每个子网络都有自己的损失函数，并且各自通过反向传播算法来更新自己的权重和共享层的权重，最后各个损失函数通过加权平均的方式进行特征融合和级联。</p>
+<h3 id="mathcal-3-2-space-点云"><a href="#mathcal-3-2-space-点云" class="headerlink" title="$\mathcal{3.2} \space 点云$"></a>$\mathcal{3.2} \space 点云$</h3><p>本部分选取了$Li$<a href="#ref-8">$[8]$</a>所使用的变形向量场方法、$Insafutdinov$<a href="#ref-9">$[9]$</a>使用的一种基于无监督学习的方法和 $Li$<a href="#ref-10">$[10]$</a>基于基于深度形状先验和轮廓的方法进行介绍。</p>
+<h4 id="mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields"><a href="#mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields" class="headerlink" title="$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$"></a>$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$</h4><p>这篇文章提出了一种新型的单视角3D物体重建方法，主要分为深度图预测和点云重建两个步骤。</p>
+<p><strong>深度图预测</strong>阶段，使用了U-Net作为编码器-解码器的结构基础。模型输入一张RGB图像在U-Net中进行特征提取和编码，然后再解码器部分使用反卷积层和上采样层将特征图还原为深度图。同时，还在解码器中引入了残差块的使用，以保留更多的细节，最后输出物体的深度图（一种灰度图，其中每个像素表示该点到相机的距离）。</p>
+<p><strong>点云重建</strong>阶段，作者定义了一个规则的二维网络，并将深度图上的每个像素点映射到该网格上；然后，使用变形向量场对该网格进行变形，并将变形后的网格中的每个像素点映射回深度图上；最后，通过将深度图上的像素点和它们在变形后的网格中对应的位置一一配对，得到一个点云表示。在这个过程中，变形向量场起到了关键作用。变形向量场是一种二维向量场，它描述了物体表面上每个像素点的变形情况。在本文中，对于每个像素点都计算出一个变形向量，该向量表示从深度图中的一个像素点到点云中对应点的偏移量。</p>
+<p>在训练阶段，作者使用了一种组合的损失函数，它包括了单视角损失和多视角一致性损失，公式如下。其中，$L_{single}$表示单视角损失，$L_{multi}$表示多视角一致性损失，$λ1$和$λ2$是两个超参数，用于控制两个损失函数的权重。</p>
+<p>$$L &#x3D; λ1 * L_{single} + λ2 * L_{multi}$$</p>
+<p>具体如下：</p>
+<ul>
+<li><strong>单视角损失</strong>：先将真实点云投影到深度图上，并计算每个像素点到最近点的距离。然后，将预测点云投影到同样的深度图上，并计算每个像素点到最近点的距离。最后，我们可以通过计算这些距离之间的平均值来得到单视角损失。</li>
+<li><strong>多视角一致性损失</strong>：先将预测点云投影到多个视角上，并计算每个视角下的距离场。然后，对于每个像素点，在所有视角下计算其距离场的平均值。最后，通过计算预测点云和真实点云之间的距离误差，并将其乘以距离场的平均值来得到多视角一致性损失。</li>
+</ul>
+<h4 id="mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning"><a href="#mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning" class="headerlink" title="$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$"></a>$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$</h4><p>本文提出了一种使用可微分点云的无监督学习方法，用于从未标记类别的特定图像集合中学习准确的3D形状以及相机的位置和方法（原文中叫做camera pose，后翻译为相机姿态）。模型由三个部分组成：一个用于预测物体的3D形状，一个用于预测相机姿态，和一个将点云渲染为图像的点云渲染器。模型总体框架如下图中的（b）所示；图（a）则展示了物体从不同的角度观察时，投影非常相似而导致相机的位置和方向存在多种可能性的问题。</p>
+<p><img src="/2023/04/30/3d-reconstruction/5.png" alt="unsupervised" title="无监督学习模型"></p>
+<p><strong>物体3D形状预测</strong>部分，模型包括一个卷积神经网络和一个多层感知器。模型接收两张相同物体的RGB图像作为输入，在CNN中使用具有不同步长的卷积核进行特征提取，提取后的特征被送入MLP进行进一步处理和预测。最终，该模型输出一个点云表示物体3D形状。</p>
+<p><strong>相机姿态预测</strong>部分，模型也是由一个卷积神经网络和一个多层感知器组成，该模型接收两张RGB图像作为输入，并输出一个四元数表示相机在该图像中的姿态，这个四元数可以用来计算相机在三维空间中的位置和方向。这个模型和上面做物体形状预测的模型共享大部分CNN的参数，这使得模型可以同时预测物体的3D形状和相机姿态，并且可以更好地利用训练数据进行训练。</p>
+<p>此外，本模型还使用了一个可微分的<strong>点云渲染器</strong>来将预测的3D形状和相机姿态转换为图像，渲染器简称为$π$。$π$使用了一种称为“投影”的技术来将点云转换为图像，它将每个点在三维空间中投影到二维平面上，并根据其距离和颜色值在该平面上生成一个像素。这其中使用了前面模型的点云图和生成的相机姿态矩阵，投影转换的过程中涉及到了相机的焦距、主点和像素大小等信息，并使用双线性插值来计算每个像素的颜色值。</p>
+<p>最终生成的这个图像可以与真实图像进行比较，以计算模型预测的准确性。由于$π$是可微分的，因此它可以与CNN一起训练，用MSE计算损失并且可以通过反向传播算法来计算梯度，这使得模型可以同时学习如何预测物体3D形状、相机姿态和如何将它们转换为图像。也正是其可以将点云最终转换为图像，才实现了仅通过最小化预测图像与真实图像之间的差异来训练模型的无监督学习。</p>
+<h4 id="mathcal-3-2-3-space-Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette"><a href="#mathcal-3-2-3-space-Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette" class="headerlink" title="$\mathcal{3.2.3} \space Using \space Deep \space Shape \space Prior \space and \space Silhouette$"></a>$\mathcal{3.2.3} \space Using \space Deep \space Shape \space Prior \space and \space Silhouette$</h4><p>本文提出了一种基于深度学习的单张图像3D物体重建方法，并引入了形状先验和姿态参数等技术细节来提高重建结果的准确性和稳定性。</p>
+<p><strong>深度自编码器</strong>使用卷积神经网络来学习3D物体形状的潜在编码。该自编码器由一个编码器和一个解码器组成，其中编码器由多个卷积层和全连接层组成，将输入图像映射到潜在空间中的低维表示。解码器则由多个反卷积层和全连接层组成，将这些表示映射回3D物体形状。<br>$$z &#x3D; f_{\theta_e}(x)$$</p>
+<p>$$\hat{x} &#x3D; f_{\theta_d}(z)$$</p>
+<p>其中，$x$为输入图像，$z$为潜在空间中的低维表示，$\hat{x}$为重建后的图像，$f_{\theta_e}$和$f_{\theta_d}$分别为编码器和解码器。</p>
+<p><strong>概率形状先验</strong>，为了更好地约束三维重建过程以提高重建质量，模型引入了一种叫概率形状先验的概率分布。该概率分布是一个高斯分布，均值为0向量，协方差矩阵为对角线矩阵，公式如下。通过将这个概率分布与深度自编码器输出的潜在编码相结合，并加上一定的权重系数来控制其影响力大小。<br>$$p(z) &#x3D; \mathcal{N}(z|0,\Sigma)$$</p>
+<p>在模型训练和优化的过程中作者也考虑到了使用概率分布，将重建误差和前面提到的概率形状先验项两部分损失函数相加，再进行反向传播更新模型。</p>
+<p>$$\min_{z} \frac{1}{2}||x-\hat{x}(z)||^2 + \lambda p(z)$$</p>
+<p>其中，$x$为输入图像，$\hat{x}(z)$为深度自编码器输出的潜在编码向量对应的重建图像，$p(z)$为形状先验项，$\lambda$为权重系数。</p>
+<p><strong>姿态参数</strong>，除了输出一个3D物体形状的点云表示外，本模型还可以输出一个姿态参数，用于描述3D物体在空间中的位置和方向。具体该姿态参数公式表示如下：</p>
+<p>$$\theta &#x3D; [\theta_x, \theta_y, \theta_z, t_x, t_y, t_z]$$</p>
+<p>其中，$\theta_x$、$\theta_y$、$\theta_z$分别表示绕$x$、$y$、$z$轴旋转的角度，$(t_x,t_y,t_z)$表示3D物体在空间中的平移向量。</p>
+<h3 id="mathcal-3-3-space-网格"><a href="#mathcal-3-3-space-网格" class="headerlink" title="$\mathcal{3.3} \space 网格$"></a>$\mathcal{3.3} \space 网格$</h3><p>本部分选取了$Wang$<a href="#ref-11">$[11]$</a>的Pixel2Mesh模型、$Hu$<a href="#ref-12">$[12]$</a>的SMR模型进行介绍。</p>
+<h4 id="mathcal-3-3-1-space-Pixel2Mesh"><a href="#mathcal-3-3-1-space-Pixel2Mesh" class="headerlink" title="$\mathcal{3.3.1} \space Pixel2Mesh$"></a>$\mathcal{3.3.1} \space Pixel2Mesh$</h4><p>本文提出了一种全新的端到端深度学习架构，可以从单个RGB图像中生成三角形网格的3D形状。该方法使用了基于图的卷积神经网络来表示3D网格，并通过逐步变形椭球来产生正确的几何形状。此外，作者还设计了一个投影层，将感知图像特征融入到GCN所表示的3D几何中，并采用粗到细的方式预测3D几何。整体框架如下图所示。</p>
+<p><img src="/2023/04/30/3d-reconstruction/6.png" alt="Pixel2Mesh" title="Pixel2Mesh"></p>
+<p>对于一张给定的输入图像，Pixel2Mesh初始化一个固定大小的椭球体作为其初始的形状，整个网络分为上下两个部分，上部分使用CNN做图像的特征提取，下部分是一个级联网格变形。</p>
+<p>上下两部分之间连接的部分是Perceptual Feature Pooling，它被用于将图像中提取出来特征与3D网格特征结合起来。在上部分CNN网络的conv3_3、conv4_3和conv5_3层之后，Perceptual Feature Pooling将每个顶点的3D坐标投影到输入图像平面上，并使用双线性插值从四个相邻像素中汇聚特征，从而形成感知特征。然后将每一个形成的感知特征拼接起来形成一个总维度为1280的总感知特征。这个1280维的感知特征又会与输入网格的128维3D特征连接起来，形成一个总维度为1408的特征向量。最后这个向量会被输入到一个全连接层中，以生成每个顶点的3D坐标传输给下部分网络。</p>
+<p>在下部分级联网格变形网络中，Pixel2Mesh使用了三个变形块来逐步将椭球体网格变形为所需的3D模型。每个变形块包含一个GCN模块和一个Graph Unpooling。GCN模块用于学习每个顶点之间的关系，并更新每个顶点的位置。Graph Unpooling用于将当前椭球体网格分解为更精细的子网格、增加GCN的顶点数，并将子网格之间的关系表示为图结构。下图(a)展示了Graph Unpooling添加黑色顶点和虚线边。而Graph Unpooling层有两种实现方式：Face-based和Edge-based。</p>
+<ul>
+<li>Face-based方法是一种直接将新顶点添加到三角形面中心的方法，然后连接它与三角形面上的三个顶点。这种方法简单易行，但会导致不平衡的顶点度数，即每个顶点连接的边数不同。</li>
+<li>为了解决上述问题，Pixel2Mesh采用了Edge-based方法。Edge-based方法是一种类似于网格细分算法中使用的策略，它在每条边上添加一个新顶点，并将其连接到该边两端的现有顶点。新添加的顶点特征被设置为其两个邻居特征值的平均值。如下图(b)所示，Face-based会导致不平衡的顶点度数，而edge-basd的则保持规则。</li>
+</ul>
+<p><img src="/2023/04/30/3d-reconstruction/7.png" alt="Graph Unpooling" title="Graph Unpooling"></p>
+<h4 id="mathcal-3-3-2-space-SMR"><a href="#mathcal-3-3-2-space-SMR" class="headerlink" title="$\mathcal{3.3.2} \space SMR$"></a>$\mathcal{3.3.2} \space SMR$</h4><p>本文提出了一种名为“自监督三维网格重建”（Self-supervised Mesh Reconstruction）的方法，实现从单个图像中重建特定类别的三维网格对象，仅使用轮廓掩码注释。即在训练的过程中不需要3D ground truth，只使用2D标注，就能实现三维重建并且可以推广到不同类别的自然对象。下图展示了SMR的整体框架。</p>
+<p><img src="/2023/04/30/3d-reconstruction/8.png" alt="self-supervised" title="Self-supervised"></p>
+<p>SMR通过属性编码器预测相机、形状、纹理和光等3D属性，并在2D图像和3D网格级别上进行监督。属性编码器采用了一种基于卷积神经网络的结构，包括多个卷积层和池化层。该网络由一个共享的特征提取器和四个分支组成，每个分支对应一个3D属性且每个分支都包括两个全连接层和一个softmax层或一个线性层。其损失函数由两部分组成：分类损失和回归损失。分类损失用于预测相机、形状和纹理等离散变量，而回归损失用于预测光等连续变量。分类损失使用交叉熵损失函数，而回归损失使用均方误差损失函数。在训练过程中，使用自监督回归来优化属性编码器，并使用插补一致性和关键点一致性来提高重建精度。</p>
+<p>对于自监督学习：在2D层面，SMR使用单个2D图像作为输入，并使用渲染引擎将其转换为3D模型。然后将这个3D模型渲染回多个视角下的2D图像，并将这些图像作为标注用于自监督训练。在训练过程中，使用前面提到的多任务损失函数计算预测值与真实值之间的误差，并使用反向传播算法更新模型参数。在3D层面，SMR使用插补一致性（Interpolated Consistency）和关键点一致性（Landmark Consistency）两种方法来优化3D属性。具体细节过程如下图所示。</p>
+<p><img src="/2023/04/30/3d-reconstruction/9.png" alt="details" title="details"></p>
+<ul>
+<li>插补一致性是指在模型将2D图像转为3D模型后的步骤里，随机选择两个不同的3D模型，计算它们之间的距离，然后在这两个3D模型之间进行线性插值，从而生成一个新的3D模型，并将其作为标注用于自监督训练。</li>
+<li>关键点一致性是指使用重建后的3D网格模型中的点作为关键点，并对每个关键点的特征进行分类。在分类操作中，SMR将每个关键点周围的3D坐标和法向量作为输入，并使用一个分类器对其进行分类。然后将预测值与真实值之间的误差作为损失函数，并使用反向传播算法更新模型参数。</li>
+</ul>
+<h2 id="mathcal-4-space-比较与优缺点"><a href="#mathcal-4-space-比较与优缺点" class="headerlink" title="$\mathcal{4} \space 比较与优缺点$"></a><a id="section-4"></a>$\mathcal{4} \space 比较与优缺点$</h2><h3 id="mathcal-4-1-space-输出格式比较"><a href="#mathcal-4-1-space-输出格式比较" class="headerlink" title="$\mathcal{4.1} \space 输出格式比较$"></a>$\mathcal{4.1} \space 输出格式比较$</h3><p>在章节<a href="#section-2.2">$2.2$</a>我们介绍了本文的分类方法，分别有体素、点云、网格三种输出格式。本小节将对这三种输出格式进行比较，分析它们各自的优缺点。</p>
+<p><strong>体素</strong>表示法的每个立方体单元可以存储各种属性，如密度、颜色和纹理等。其优点是能够捕捉物体的内部结构，同时在进行几何操作时，也能够更快地进行计算；同时它的表示形式也具有较好的可扩展性和可压缩性，可以轻松地进行模型的变形和编辑。但由于体素的大小是固定的，对于复杂的模型，需要使用更小的体素才能保证模型的精度，这会增加计算量和内存消耗且需要离散化三维空间，占用大量的内存空间；同时它不能很好地表达曲面的细节，尤其是对于光滑的曲面。</p>
+<p><strong>点云</strong>表示法不需要像体素一样将空间进行离散化，而是直接表示三维模型的表面，因此它可以表达模型的细节和曲面形状。同时在数据结构内部，可以使用较为稀疏的方式来表示大规模的点云，节约了内存空间，存储效率高。但也正是因为这种存储的不连续性，计算体积等问题就会变得很复杂。与体素相比，点云无法捕捉表面的纹理和光照信息，且对于不规则形状的物体，点云表示形式的精度可能会受到影响。同时由于点云数据之间的匹配和对应关系需要通过复杂的算法求解，因此点云处理的计算复杂度较高。</p>
+<p><strong>网格</strong>表示法最大的优点是其具有很好的通用性，很多三维软件都可以读取和处理网格数据。由于网格是由一系列连接的三角形组成的，因此可以很好地捕捉到物体表面的细节信息，从而准确地表示物体表面的形状和曲率信息；同时图形卡可以很高效地渲染三角形，因此网格可以被很容易地可视化。但由于需要存储大量的三角形，网格表示法会占用大量的存储空间，在处理大规模数据时，往往需要进行压缩和优化，以减小数据量和提高渲染效率。</p>
+<h3 id="mathcal-4-2-space-各模型优缺点分析"><a href="#mathcal-4-2-space-各模型优缺点分析" class="headerlink" title="$\mathcal{4.2} \space 各模型优缺点分析$"></a>$\mathcal{4.2} \space 各模型优缺点分析$</h3><h4 id="mathcal-4-2-1-space-体素"><a href="#mathcal-4-2-1-space-体素" class="headerlink" title="$\mathcal{4.2.1} \space 体素$"></a>$\mathcal{4.2.1} \space 体素$</h4><h5 id="3D-R2N2"><a href="#3D-R2N2" class="headerlink" title="$3D-R2N2$"></a>$3D-R2N2$</h5><p><strong>优点</strong>（1）该模型使用了LSTM循环神经网络来处理输入图像序列，能够捕捉输入图像之间的时序关系，从而提高了重建性能；（2）使用了渐进式增强的技术来逐步增加输入图像分辨率和输出网格分辨率，有助于提高网络性能并减少过拟合现象；（3）可以处理多个物体实例，并且能够在不同物体实例之间共享参数，从而减少模型复杂度。</p>
+<p><strong>缺点</strong>（1）由于使用的输出格式是体素，模型需要大量的计算资源和时间来训练和测试，因此需要强大的计算机硬件支持；（2）对于大规模数据集的训练需要较长时间，并且需要大量的存储空间；（3）更重要的是，该模型对于不同类别的物体需要单独进行训练，因此需要针对每个类别收集足够数量和质量的数据；（4）同时，模型对于输入图像数量和视角数量有一定限制，如果输入图像数量或视角数量过少，可能会影响重建结果；（5）如果物体形状过于复杂，可能也会影响重建结果。</p>
+<h5 id="DeepSDF"><a href="#DeepSDF" class="headerlink" title="$DeepSDF$"></a>$DeepSDF$</h5><p><strong>优点</strong>（1）与传统的基于网格的方法相比，本模型可以更好地处理不规则形状和空洞等问题；（2）生成的几何形状具有较高的精度和细节，可以用于各种应用场景；（3）可以通过学习潜在空间来实现形状插值和形状变换等操作，具有较强的可扩展性。</p>
+<p><strong>缺点</strong>（1）模型对数据集中存在的噪声和偏差比较敏感，可能会导致生成结果出现一些不合理或异常情况；（2）拥有体素输出表达方式的通病，需要大量的计算资源和时间来训练和测试，因此需要强大的计算机硬件支持；（3）对于大规模数据集的训练需要较长时间，并且需要大量的存储空间。</p>
+<h5 id="BodyNet"><a href="#BodyNet" class="headerlink" title="$BodyNet$"></a>$BodyNet$</h5><p><strong>优点</strong>（1）可以从单张RGB图像中预测出人体的三维形状，具有很好的性能和鲁棒性；（2）采用了特征融合和级联的方式将各个子网络联合起来，并且通过多任务学习来共享特征和传递信息，提高了模型的性能和泛化能力，并且减少训练时间和计算资源消耗。</p>
+<p><strong>缺点</strong>（1）在处理非常复杂或极端情况下（如遮挡、姿态变化、光照变化等）可能存在一定程度上的误差或不稳定性；（2）只能处理单视角输入的图，可能会存在camera ambiguity的问题，导致重建结果不正确。</p>
+<h4 id="mathcal-4-2-2-space-点云"><a href="#mathcal-4-2-2-space-点云" class="headerlink" title="$\mathcal{4.2.2} \space 点云$"></a>$\mathcal{4.2.2} \space 点云$</h4><h5 id="Using-space-Deformation-space-Vector-space-Fields"><a href="#Using-space-Deformation-space-Vector-space-Fields" class="headerlink" title="$Using \space Deformation \space Vector \space Fields$"></a>$Using \space Deformation \space Vector \space Fields$</h5><p><strong>优点</strong>（1）采用了深度图作为中间表示，可以有效地减少点云重建过程中的计算量；（2）可以处理多视角输入，提高了点云重建的精度和鲁棒性；（3）采用了组合损失函数，包括了单视角损失、多视角一致性损失和正则化项，可以更好地平衡不同损失之间的权重，从而提高了模型的性能。</p>
+<p><strong>缺点</strong>（1）对输入数据要求较高，由于模型采用了深度图作为中间表示，因此需要输入数据中包含深度信息。如果输入数据中没有深度信息，则需要使用其他方法来获取深度信息，这可能会增加额外的计算量和复杂性。（2）由于采用了点云重建方法，因此对噪声和遮挡比较敏感。如果输入数据中存在大量噪声或者遮挡比较严重，可能会导致点云重建的精度下降。因此，可能需要考虑对输入数据进行预处理，以减少噪声和遮挡的影响。（3）模型主要针对单个物体的点云重建，对于复杂场景或多个物体的点云重建可能存在一定的局限性。</p>
+<h5 id="Based-space-on-space-Unsupervised-space-Learning"><a href="#Based-space-on-space-Unsupervised-space-Learning" class="headerlink" title="$Based \space on \space Unsupervised \space Learning$"></a>$Based \space on \space Unsupervised \space Learning$</h5><p><strong>优点</strong>（1）不需要使用任何标注数据进行训练，因此可以在没有大量标注数据的情况下进行训练，适用于更广泛的场景和应用；（2）可以从两张RGB图像中预测物体的3D形状和相机姿态，并将它们转换为图像进行比较和训练，解决了camera ambiguity的问题。</p>
+<p><strong>缺点</strong>（1）模型使用了复杂的CNN模型和集成学习方法，因此训练时间比较长。在实验中，作者使用了多个GPU进行训练，但训练时间仍需要数周，这使得该模型在实际应用中可能不太适用于需要快速响应的场景。（2）由于该模型是从单张RGB图像中预测物体的3D形状和相机姿态，因此它对光照和背景比较敏感。如果输入图像的光照或背景发生变化，可能会导致预测结果不准确。</p>
+<h5 id="Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette"><a href="#Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette" class="headerlink" title="$Using \space Deep \space Shape \space Prior \space and \space Silhouette$"></a>$Using \space Deep \space Shape \space Prior \space and \space Silhouette$</h5><p><strong>优点</strong>（1）引入形状先验，提出了一种基于高斯分布的形状先验，用于约束3D物体形状的重建过程。通过在线学习形状先验的方法，可以更好地适应不同的物体形状，并得到更准确、稳定的3D物体重建结果。（2）在优化过程中考虑了概率分布，将重建误差和形状先验项两部分损失函数相加，并使用随机梯度下降算法来最小化这个总的损失函数，这样可以使得优化过程更加稳定和准确，并且能够更好地适应不同的物体形状。（3）除了输出一个3D物体形状的点云表示外，模型还可以输出一个姿态参数，用于描述3D物体在空间中的位置和方向，这样可以更好地理解和使用重建结果。（4）实验结果表明，模型能够在保持高质量重建结果的同时，具有更快的运行速度和更好的鲁棒性，表现优异。</p>
+<p><strong>缺点</strong>（1）依赖于深度自编码器，由于使用了基于卷积神经网络的深度自编码器来学习3D物体形状的潜在表示，因此需要大量的标注数据来训练深度自编码器，否则可能会导致模型性能下降；（2）模型需要输入一张包含物体轮廓信息的图像，因此对输入图像的质量和准确性要求较高，如果输入图像中物体轮廓信息不清晰或者存在噪声，可能会导致重建结果不准确；（3）只能处理单个物体的重建，无法处理多个物体或者复杂场景中的3D重建问题。</p>
+<h4 id="mathcal-4-2-3-space-网格"><a href="#mathcal-4-2-3-space-网格" class="headerlink" title="$\mathcal{4.2.3} \space 网格$"></a>$\mathcal{4.2.3} \space 网格$</h4><h5 id="Pixel2Mersh"><a href="#Pixel2Mersh" class="headerlink" title="$Pixel2Mersh$"></a>$Pixel2Mersh$</h5><p><strong>优点</strong>（1）可以从单张图像中生成真实且精确的三维模型，无需使用多个视角或深度信息；（2）可以处理各种形状和姿态的物体，并且对输入图像中物体表面的纹理和形状信息进行了更好的捕捉；（3）使用了一种新颖的感知特征汇聚技术，将图像特征和3D网格特征结合起来，以便更好地生成真实且精确的三维模型。</p>
+<p><strong>缺点</strong>（1）本模型是基于单张图像生成三维模型，因此对于复杂场景或物体，其性能可能会受到限制；（2）若输入的图像质量低、有物体遮挡或含有噪声，可能会产生不准确或不完整的三维模型。</p>
+<h5 id="SMR"><a href="#SMR" class="headerlink" title="$SMR$"></a>$SMR$</h5><p><strong>优点</strong>（1）可以使用单个2D图像作为输入，并使用渲染引擎将其转换为3D模型，因此可以在不需要3D ground truth注释的情况下进行训练，并且可以推广到不同类别的自然对象；（2）使用多任务损失函数计算预测值与真实值之间的误差，并使用反向传播算法更新模型参数，通过这种方式，可以同时优化2D和3D层面的监督，并提高重建精度；（3）使用插补一致性和关键点一致性两种自监督方法来优化3D属性，可以保证每个小部分都有更好的建模效果，并提高重建精度。</p>
+<p><strong>缺点</strong>（1）难以处理非刚性物体等具有更复杂的形状和姿态变化。</p>
+<h3 id="mathcal-4-3-space-比较与总结"><a href="#mathcal-4-3-space-比较与总结" class="headerlink" title="$\mathcal{4.3} \space 比较与总结$"></a>$\mathcal{4.3} \space 比较与总结$</h3><p>下表对本文介绍的八个模型进行了对比。其中：“多输入”代表模型输入的图像&#x2F;三维图形的数目；“对输入数据要求”代表输入的图像质量、是否有物体遮挡或含有噪声是否会对模型造成较大影响，越高代表影响越大；“重建物体复杂度”里“一般”代表只能重建单一物体或简单场景物体，“高”代表可以重建多个物体或复杂场景；“姿势歧义”里程度越高代表姿势歧义问题越严重。</p>
+<table>
+<thead>
+<tr>
+<th align="center">模型</th>
+<th align="center">多输入</th>
+<th align="center">监督类型</th>
+<th align="center">内存消耗</th>
+<th align="center">对输入数据要求</th>
+<th align="center">重建物体复杂度</th>
+<th align="center">姿势歧义问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3D-R2N2</td>
+<td align="center">是</td>
+<td align="center">监督学习</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center">DeepSDF</td>
+<td align="center">否</td>
+<td align="center">监督学习</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+</tr>
+<tr>
+<td align="center">BodyNet</td>
+<td align="center">否</td>
+<td align="center">监督学习</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">严重</td>
+</tr>
+<tr>
+<td align="center">Using Deformation Vector Fields</td>
+<td align="center">否</td>
+<td align="center">监督学习</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+</tr>
+<tr>
+<td align="center">Based on Unsupervised Learning</td>
+<td align="center">是</td>
+<td align="center">无监督学习</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">高</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center">Using Deep Shape Prior and Silhouette</td>
+<td align="center">否</td>
+<td align="center">监督学习</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">低</td>
+</tr>
+<tr>
+<td align="center">Pixel2Mersh</td>
+<td align="center">否</td>
+<td align="center">监督学习</td>
+<td align="center">一般</td>
+<td align="center">高</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+</tr>
+<tr>
+<td align="center">SMR</td>
+<td align="center">否</td>
+<td align="center">无监督学习</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+<td align="center">一般</td>
+</tr>
+</tbody></table>
+<p>由上表可知，大部分模型只能解决单一或简单的图像重建问题，而哪怕可以对复杂场景或多个物体进行三维重建，也会对输入的图像要求较高，容易受到强光、噪声或遮挡物的干扰。同时，许多模型还是使用监督学习的方法，这种方法就需要对训练数据三维方面进行标注，需要很大的成本。姿势歧义的问题也有待进一步解决。</p>
+<h2 id="mathcal-5-space-未来与展望"><a href="#mathcal-5-space-未来与展望" class="headerlink" title="$\mathcal{5} \space 未来与展望$"></a><a id="section-5"></a>$\mathcal{5} \space 未来与展望$</h2><p>未来，深度学习技术在三维重建领域将继续发挥重要作用。随着硬件的发展和算法的优化，三维重建技术的效率和精度将不断提高。以下是可能的趋势：<br>（1）更加精确的3D重建：未来的研究将致力于提高图像3D重建的精度和准确性，这可能涉及到更复杂的模型和算法，以及更多的训练数据；<br>（2）更广泛的应用场景：三维重建技术将被应用于更广泛的领域，例如虚拟现实、增强现实、医学影像等，这将需要更多的研究来适应不同领域的需求；<br>（3）更高效的重建算法：未来的研究将致力于开发更高效、更快速、更可扩展的算法，以便在处理大规模数据集时能够提供更好的性能。</p>
+<h2 id="mathcal-6-space-参考文献"><a href="#mathcal-6-space-参考文献" class="headerlink" title="$\mathcal{6} \space 参考文献$"></a><a id="section-6"></a>$\mathcal{6} \space 参考文献$</h2><ol>
+<li><a id="ref-1"></a> Laurentini, Aldo. “The visual hull concept for silhouette-based image understanding.” IEEE Transactions on pattern analysis and machine intelligence 16.2 (1994): 150-162.</li>
+<li><a id="ref-2"></a> Hartley, Richard, and Andrew Zisserman. Multiple view geometry in computer vision. Cambridge university press, 2003.</li>
+<li><a id="ref-3"></a> Han, Xian-Feng, Hamid Laga, and Mohammed Bennamoun. “Image-based 3D object reconstruction: State-of-the-art and trends in the deep learning era.” IEEE transactions on pattern analysis and machine intelligence 43.5 (2019): 1578-1604.</li>
+<li><a id="ref-4"></a> Choy, Christopher B., et al. “3d-r2n2: A unified approach for single and multi-view 3d object reconstruction.” Computer Vision–ECCV 2016: 14th European Conference, Amsterdam, The Netherlands, October 11-14, 2016, Proceedings, Part VIII 14. Springer International Publishing, 2016.</li>
+<li><a id="ref-5"></a> Park, Jeong Joon, et al. “DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation.” Proceedings of the IEEE&#x2F;CVF conference on computer vision and pattern recognition. 2019.</li>
+<li><a id="ref-6"></a> Varol, Gul, et al. “Bodynet: Volumetric inference of 3d human body shapes.” Proceedings of the European conference on computer vision (ECCV). 2018.</li>
+<li><a id="ref-7"></a> David Eigen, Christian Puhrsch, and Rob Fergus, “Depth Map Prediction From a Single Image Using a Multi-scale Deep Network,” Advances in neural information processing systems 27 (2014).</li>
+<li><a id="ref-8"></a> Li, Kejie, et al. “Efficient dense point cloud object reconstruction using deformation vector fields.” Proceedings of the European Conference on Computer Vision (ECCV). 2018.</li>
+<li><a id="ref-9"></a> Insafutdinov, Eldar, and Alexey Dosovitskiy. “Unsupervised learning of shape and pose with differentiable point clouds.” Advances in neural information processing systems 31 (2018).</li>
+<li><a id="ref-10"></a> Li, Kejie, et al. “Single-view object shape reconstruction using deep shape prior and silhouette.” arXiv preprint arXiv:1811.11921 (2018).</li>
+<li><a id="ref-11"></a> Wang, Nanyang, et al. “Pixel2mesh: Generating 3d mesh models from single rgb images.” Proceedings of the European conference on computer vision (ECCV). 2018.</li>
+<li><a id="ref-12"></a> Hu, Tao, et al. “Self-supervised 3D mesh reconstruction from single images.” Proceedings of the IEEE&#x2F;CVF conference on computer vision and pattern recognition. 2021.</li>
+</ol>
+<h2 id="mathcal-7-space-查重结果"><a href="#mathcal-7-space-查重结果" class="headerlink" title="$\mathcal{7} \space 查重结果$"></a><a id="section-7"></a>$\mathcal{7} \space 查重结果$</h2><p><img src="/2023/04/30/3d-reconstruction/10.png" alt="report"></p>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/06/29/idsm-env-installation/" title="Greenplum & PostgreSQL安装记录">
+                    <div class="nextTitle">Greenplum & PostgreSQL安装记录</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2023/04/26/bigdata-management-4/" title="HUST大数据管理lab4教程">
+                    <div class="prevTitle">HUST大数据管理lab4教程</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-1-space-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">$\mathcal{1} \space 介绍$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-2-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">$\mathcal{2} \space 问题描述和分类$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-1-space-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">$\mathcal{2.1} \space 问题描述$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-2-2-space-%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">$\mathcal{2.2} \space 分类$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-3-space-%E6%96%B9%E6%B3%95%E6%A2%B3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">$\mathcal{3} \space 方法梳理$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-1-space-%E4%BD%93%E7%B4%A0"><span class="toc-number">3.1.</span> <span class="toc-text">$\mathcal{3.1} \space 体素$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-1-space-3D-R2N2"><span class="toc-number">3.1.1.</span> <span class="toc-text">$\mathcal{3.1.1} \space 3D-R2N2$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-2-space-DeepSDF"><span class="toc-number">3.1.2.</span> <span class="toc-text">$\mathcal{3.1.2} \space DeepSDF$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-1-3-space-BodyNet"><span class="toc-number">3.1.3.</span> <span class="toc-text">$\mathcal{3.1.3} \space BodyNet$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-2-space-%E7%82%B9%E4%BA%91"><span class="toc-number">3.2.</span> <span class="toc-text">$\mathcal{3.2} \space 点云$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-2-1-space-Using-space-Deformation-space-Vector-space-Fields"><span class="toc-number">3.2.1.</span> <span class="toc-text">$\mathcal{3.2.1} \space Using \space Deformation \space Vector \space Fields$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-2-2-space-Based-space-on-space-Unsupervised-space-Learning"><span class="toc-number">3.2.2.</span> <span class="toc-text">$\mathcal{3.2.2} \space Based \space on \space Unsupervised \space Learning$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-2-3-space-Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette"><span class="toc-number">3.2.3.</span> <span class="toc-text">$\mathcal{3.2.3} \space Using \space Deep \space Shape \space Prior \space and \space Silhouette$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-3-3-space-%E7%BD%91%E6%A0%BC"><span class="toc-number">3.3.</span> <span class="toc-text">$\mathcal{3.3} \space 网格$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-3-1-space-Pixel2Mesh"><span class="toc-number">3.3.1.</span> <span class="toc-text">$\mathcal{3.3.1} \space Pixel2Mesh$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-3-3-2-space-SMR"><span class="toc-number">3.3.2.</span> <span class="toc-text">$\mathcal{3.3.2} \space SMR$</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-4-space-%E6%AF%94%E8%BE%83%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">$\mathcal{4} \space 比较与优缺点$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-4-1-space-%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83"><span class="toc-number">4.1.</span> <span class="toc-text">$\mathcal{4.1} \space 输出格式比较$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-4-2-space-%E5%90%84%E6%A8%A1%E5%9E%8B%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-number">4.2.</span> <span class="toc-text">$\mathcal{4.2} \space 各模型优缺点分析$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-4-2-1-space-%E4%BD%93%E7%B4%A0"><span class="toc-number">4.2.1.</span> <span class="toc-text">$\mathcal{4.2.1} \space 体素$</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3D-R2N2"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">$3D-R2N2$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DeepSDF"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">$DeepSDF$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BodyNet"><span class="toc-number">4.2.1.3.</span> <span class="toc-text">$BodyNet$</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-4-2-2-space-%E7%82%B9%E4%BA%91"><span class="toc-number">4.2.2.</span> <span class="toc-text">$\mathcal{4.2.2} \space 点云$</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-space-Deformation-space-Vector-space-Fields"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">$Using \space Deformation \space Vector \space Fields$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Based-space-on-space-Unsupervised-space-Learning"><span class="toc-number">4.2.2.2.</span> <span class="toc-text">$Based \space on \space Unsupervised \space Learning$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-space-Deep-space-Shape-space-Prior-space-and-space-Silhouette"><span class="toc-number">4.2.2.3.</span> <span class="toc-text">$Using \space Deep \space Shape \space Prior \space and \space Silhouette$</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mathcal-4-2-3-space-%E7%BD%91%E6%A0%BC"><span class="toc-number">4.2.3.</span> <span class="toc-text">$\mathcal{4.2.3} \space 网格$</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Pixel2Mersh"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">$Pixel2Mersh$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SMR"><span class="toc-number">4.2.3.2.</span> <span class="toc-text">$SMR$</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mathcal-4-3-space-%E6%AF%94%E8%BE%83%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="toc-number">4.3.</span> <span class="toc-text">$\mathcal{4.3} \space 比较与总结$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-5-space-%E6%9C%AA%E6%9D%A5%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="toc-number">5.</span> <span class="toc-text">$\mathcal{5} \space 未来与展望$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-6-space-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">$\mathcal{6} \space 参考文献$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mathcal-7-space-%E6%9F%A5%E9%87%8D%E7%BB%93%E6%9E%9C"><span class="toc-number">7.</span> <span class="toc-text">$\mathcal{7} \space 查重结果$</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span>
+            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>

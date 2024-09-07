@@ -1,0 +1,2911 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="系统能力培养虚拟机实验教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HUST系统能力培养之虚拟机">
+<meta property="og:url" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="系统能力培养虚拟机实验教程">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219012358447.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219014226124.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219014504625.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005718404.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219005910190.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240110024944765.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240110025835972.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240110025906493.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201012675.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231225201405072.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102152841211.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102153216666.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154028356.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102154808201.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102172203578.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102173017738.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102173457143.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102180028847.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102174032127.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102175148979.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102192107533.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102193301193.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102193058260.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103094841583.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240102211231467.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103101942561.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103111453042.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103112221893.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103150857113.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103152240263.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103154056515.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103170944921.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103193835049.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103193917212.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103194108336.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103201730935.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103203649913.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103210243102.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103210415000.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103210605118.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103210841567.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240103211049445.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104132130382.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104143223004.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240105153308810.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104185658130.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104192458814.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240104192553664.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240105152409549.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240105163109990.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106221357794.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106155932827.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106171754119.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106221107709.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106220454526.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240106234616123.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107004500077.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107170311082.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107165254108.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107165549573.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107165709639.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107180955729.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107181434820.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107181702557.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240107181749020.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240108161306497.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240108191057493.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240108191526459.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240109161357337.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20240116161004692.png">
+<meta property="article:published_time" content="2023-12-17T10:40:58.000Z">
+<meta property="article:modified_time" content="2024-01-16T08:21:45.000Z">
+<meta property="article:author" content="Elubrazione">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/12/17/pa-virtual-machine/image-20231219013901608.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>HUST系统能力培养之虚拟机 · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">HUST系统能力培养之虚拟机</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                HUST系统能力培养之虚拟机
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="华科课程"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                华科课程
+            </span>
+        </span>
+    
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5k</span>阅读时长: <span class="post-count reading-time">19 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2023/12/17</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>系统能力培养虚拟机实验教程</p>
+<span id="more"></span>
+
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>这是一个速通教程，高尚的人请你立刻叉出去。</p>
+<p>抄也要花一些时间，建议抄的同时弄懂，所以尽早开始。</p>
+<h1 id="pa0"><a href="#pa0" class="headerlink" title="pa0"></a>pa0</h1><blockquote>
+<p>VirtualBox安装包和老师给的前置打包环境root.vdi文件请自行在课程官网获取，创建并导入后无需安装任务书中所写的pa0环境依赖。</p>
+<p><strong>本章内容：</strong>在你的电脑本机使用ssh免密丝滑连接你的虚拟机，此方法可推广至服务器连接。如果你想直接在虚拟机里下载Vscode写代码可以跳过此章。</p>
+</blockquote>
+<h2 id="虚拟机网络配置"><a href="#虚拟机网络配置" class="headerlink" title="虚拟机网络配置"></a>虚拟机网络配置</h2><p>给你的虚拟机新增一块网卡，启用网络连接、连接方式选择仅主机。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219013901608.png" alt="image-20231219013901608"></p>
+<p>添加后重新启动虚拟机并打开终端，依赖安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install net-tools</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>获取信息如下：<code>enp0s8</code>后第二行的inet <mark>192.168.56.101</mark>，记住它尤其是前缀。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219012358447.png" alt="image-20231219012358447"></p>
+<p>打开你的本机windows，<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>高级网络设置</code></p>
+<p>找到virtualBox，并选择 <code>查看其他属性</code>，观察你的IPv4地址的前四位和上面在虚拟机里看到的前24位是否相同，不同的话手动改一下本机的。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219014226124.png" alt="image-20231219014226124"></p>
+<p>相同后ping一下试试，一般没问题，有问题我也不知道为什么。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219014504625.png" alt="image-20231219014504625"></p>
+<p>回到你的虚拟机，继续配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install openssh-server</span><br><span class="line"><span class="built_in">sudo</span> /etc/init.d/ssh start</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/ssh/sshd_config /etc/ssh/sshd_config.backup <span class="comment"># 备份</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>追加以下内容，注意倒三行是写上你的用户名，不过按理来说大家应该都叫<code>hust</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">AddressFamily any</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">ListenAddress ::</span><br><span class="line">UsePrivilegeSeparation no</span><br><span class="line">PasswordAuthentication <span class="built_in">yes</span></span><br><span class="line">PermitRootLogin <span class="built_in">yes</span></span><br><span class="line">AllowUsers hust</span><br><span class="line">RSAAuthentication <span class="built_in">yes</span></span><br><span class="line">PubKeyAuthentication <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>大概长这样</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219005718404.png" alt="image-20231219005718404"></p>
+<p>写完保存退出后重启一下ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service ssh --full-restart</span><br></pre></td></tr></table></figure>
+
+<p>回到你的windows终端里测试一下连接 <code>ssh -p 22 hust@your ip</code>，如下表示成功：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231219005910190.png" alt="image-20231219005910190"></p>
+<h2 id="免密登录配置"><a href="#免密登录配置" class="headerlink" title="免密登录配置"></a>免密登录配置</h2><blockquote>
+<p><del>让我用vim写代码，不可能的事情</del></p>
+</blockquote>
+<p>重复的东西不想写了，请参考我的<a href="https://elubrazione.github.io/2021/03/30/virtual-env-install/#/VsCode%E5%85%8D%E5%AF%86%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA">另一篇配置Vmware的博客</a>的<code>VsCode免密连接虚拟机</code>一章</p>
+<h1 id="pa1"><a href="#pa1" class="headerlink" title="pa1"></a>pa1</h1><blockquote>
+<p>完成这个课设的关键是：认真阅读手册和代码</p>
+<p>cd到 <code>./nemu</code> 文件夹下，修改Makefile文件，ISA改成riscv32。</p>
+<p>因为pa1比较简单，新手保护期课程手册给的很详细、代码也不复杂很容易就能看懂。</p>
+<p>速通秘诀：所有要修改的文件如下，自己抄答案对着复制（详细内容等我写完报告回来更新）</p>
+</blockquote>
+<h2 id="pa-1-1"><a href="#pa-1-1" class="headerlink" title="pa-1.1"></a>pa-1.1</h2><p><img src="/2023/12/17/pa-virtual-machine/image-20240110024944765.png" alt="image-20240110024944765"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240110025835972.png" alt="image-20240110025835972"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240110025906493.png" alt="image-20240110025906493"></p>
+<h2 id="结果提交"><a href="#结果提交" class="headerlink" title="结果提交"></a>结果提交</h2><p><img src="/2023/12/17/pa-virtual-machine/image-20231225201012675.png" alt="image-20231225201012675"></p>
+<p>修改完后使用 <code>make submit</code> 提交，输入初始化的账号密码。如下，提交成功。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20231225201405072.png" alt="image-20231225201405072"></p>
+<h1 id="pa2"><a href="#pa2" class="headerlink" title="pa2"></a>pa2</h1><h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><blockquote>
+<p>要改的文件见本章最后“提交结果”，以下是实验过程记录。</p>
+</blockquote>
+<p>按照GitBook教程创建新的分支；</p>
+<p>下载好交叉编译器到本地（注意版本），传到虚拟机里，注意路径。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102152841211.png" alt="image-20240102152841211"></p>
+<p>传完了之后解压，然后按照教程更改环境变量，改完记得要<strong>先激活一下</strong>，出现如下情况说明成功。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102153216666.png" alt="image-20240102153216666"></p>
+<h2 id="pa-2-1"><a href="#pa-2-1" class="headerlink" title="pa-2.1"></a>pa-2.1</h2><p>这部分要求实现dummy.c程序的运行，运行起来后是 <mark>ABORT</mark> 的状态</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102154028356.png" alt="image-20240102154028356"></p>
+<p>通过make生成的 <code>nexus-am/tests/cputest/build/dummy-riscv32-nemu.txt</code> 文件找到看起来需要实现的指令有： li、auipc、addi、jal、lui、mv、sw、ret。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102154808201.png" alt="image-20240102154808201"></p>
+<p>通过手册我们可以发现 <code>li</code> 指令是<code>lui</code> 和 <code>addi</code> 指令的组合，因此不需要单独实现；最后的 <code>ret</code> 指令是伪指令，其实需要实现的是 <code>jalr</code>；<code>mv</code> 指令也是伪指令，会被扩展成 <code>addi rd, rs1, 0</code>，不需要单独实现。通过阅读代码发现 <code>sw</code> 也已经实现（st和store，st执行辅助函数在 <code>ldst.c</code>文件）</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102172203578.png" alt="image-20240102172203578"></p>
+<blockquote>
+<p><strong>实现新指令的方法</strong></p>
+<ol>
+<li>在<code>opcode_table</code>中填写正确的译码辅助函数, 执行辅助函数以及操作数宽度；</li>
+<li>用RTL实现正确的执行辅助函数, 需要注意使用RTL伪指令时要遵守上文提到的小型调用约定</li>
+</ol>
+</blockquote>
+<h3 id="lui"><a href="#lui" class="headerlink" title="lui"></a>lui</h3><p>属于U型指令，opcode_table写入 <code>nemu/src/isa/riscv32/exec/exec.c</code>、译码辅助函数 <code>nemu/src/isa/riscv32/decode.c</code> 、执行辅助函数 <code>nemu/src/isa/riscv32/exec/compute.c</code> 都已经帮我们实现了。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102173017738.png" alt="image-20240102173017738"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102173457143.png" alt="image-20240102173457143"></p>
+<p>这里填13是因为 <code>lui</code> 指令的操作码是0110111，第6到2位是01101，即十进制的13，所以对应opcode_table[13]。注释里的00&#x2F;01&#x2F;10&#x2F;11是指它的操作码的第七位和第六位，先根据这个索引再往后看三位，所以一行有八个空。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102180028847.png" alt="image-20240102180028847"></p>
+<h3 id="auipc"><a href="#auipc" class="headerlink" title="auipc"></a>auipc</h3><p>属于U型指令，译码辅助函数上面lui已经实现，这里只需要实现执行辅助函数即可和填表即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(auipc) &#123;</span><br><span class="line">  rtl_add(&amp;id_dest-&gt;val, &amp;cpu.pc, &amp;id_src-&gt;val);</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">  print_asm_template2(auipc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102174032127.png" alt="image-20240102174032127"></p>
+<p>第五位填表</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102175148979.png" alt="image-20240102175148979"></p>
+<h3 id="addi"><a href="#addi" class="headerlink" title="addi"></a>addi</h3><p>属于I型指令，要实现一个I型译码辅助函数，如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_DHelper(I) &#123;</span><br><span class="line">  decode_op_r(id_src, decinfo.isa.instr.rs1, <span class="literal">true</span>);</span><br><span class="line">  decode_op_i(id_src2, decinfo.isa.instr.simm11_0, <span class="literal">true</span>);</span><br><span class="line">  decode_op_r(id_dest, decinfo.isa.instr.rd, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再实现一个执行辅助函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make_EHelper(addi) &#123;</span><br><span class="line">  rtl_add(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, &amp;id_src2-&gt;val);</span><br><span class="line">  rtl_sr(id_dest-&gt;reg, &amp;id_dest-&gt;val, <span class="number">4</span>);</span><br><span class="line">  print_asm_template3(addi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第四位填表。</p>
+<p>后面的 <code>jalr</code>、<code>jal</code>流程也差不多。</p>
+<p>填完的表是这样的：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102192107533.png" alt="image-20240102192107533"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>这里遇到了一个bug：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102193301193.png" alt="image-20240102193301193"></p>
+<p>根据错误信息“riscv-none-embed-ld: Command not found”得到信息应该是构建过程中找不到 <code>riscv-none-embed-ld</code> 命令，所以是环境变量的问题，重新激活一下环境变量即可。</p>
+<p>重新make run，显示成功：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102193058260.png" alt="image-20240102193058260"></p>
+<h2 id="pa-2-2"><a href="#pa-2-2" class="headerlink" title="pa-2.2"></a>pa-2.2</h2><blockquote>
+<p>上面pa2-1对应的那几个文件现在除了 <code>system</code> 系统调用指令其它都可以复制了。</p>
+</blockquote>
+<p>这部分要求完善AM项目下的代码，实现更多的指令和一些必要的库函数。</p>
+<p>使用 <code>runall.sh</code> 脚本测试一下，会在本地反汇编出所有没有通过的测试文件。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103094841583.png" alt="image-20240103094841583"></p>
+<p>同时会给出测试结果</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240102211231467.png" alt="image-20240102211231467"></p>
+<h3 id="I型指令"><a href="#I型指令" class="headerlink" title="I型指令"></a>I型指令</h3><p>要实现好多I型指令，不妨尝试抽象成整个I型执行辅助函数，避免代码的重复，使用switch函数先对 <code>decinfo.isa.instr.funct3</code> 的值进行分支跳转。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (decinfo.isa.instr.funct3) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// addi相关</span></span><br><span class="line">      rtl_addi(&amp;id_dest-&gt;val, &amp;id_src-&gt;val, decinfo.isa.instr.simm11_0);</span><br><span class="line">      <span class="keyword">if</span> (decinfo.isa.instr.rs1 == <span class="number">0</span>) &#123; <span class="comment">// li伪指令</span></span><br><span class="line">        print_asm_template2(li);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (decinfo.isa.instr.simm11_0 == <span class="number">0</span>) &#123; <span class="comment">// mv伪指令</span></span><br><span class="line">        print_asm_template2(mv);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;  <span class="comment">// addi本身</span></span><br><span class="line">        print_asm_template3(addi);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      assert(<span class="number">0</span> &amp;&amp; <span class="string">&quot;Unfind the opcode&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再在此基础上进行完善，此过程就是不断的查表和调试。</p>
+<p>然后更改opcode_table对应的字段，其实就是把原来的addi改成i即可。</p>
+<h3 id="R型指令"><a href="#R型指令" class="headerlink" title="R型指令"></a>R型指令</h3><p>同理，实现译码辅助函数和执行辅助函数然后填表，不再赘述。</p>
+<p>注意mulhsu指令实现的时候要自己封装一个rtl函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./nemu/include/rtl/c_op.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> c_mul_hsu(a, b) (((int64_t)(a) * (uint64_t)(b)) &gt;&gt; 32) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ./nemu/include/rtl/rtl-wrapper.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rtl_mul_hsu   concat(RTL_PREFIX, _rtl_mul_hsu )</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ./nemu/include/rtl/rtl.h</span></span><br><span class="line">make_rtl_arith_logic(mul_hsu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="B型指令"><a href="#B型指令" class="headerlink" title="B型指令"></a>B型指令</h3><p>在control.c添加执行辅助函数，老地方添加译码辅助函数，然后填表。</p>
+<p>到这一步测试一下，结果是这样的。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103101942561.png" alt="image-20240103101942561"></p>
+<h3 id="Load和Store指令"><a href="#Load和Store指令" class="headerlink" title="Load和Store指令"></a>Load和Store指令</h3><p>这部分需要在 <code>ldst.c</code> 文件里完成执行辅助函数，填充load_table,store_table。</p>
+<p>store指令的执行函数已经实现了没什么问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> OpcodeEntry load_table [<span class="number">8</span>] = &#123;</span><br><span class="line">  EXW(ld, <span class="number">1</span>), EXW(ld, <span class="number">2</span>), EXW(ld, <span class="number">4</span>), EMPTY, EXW(ld, <span class="number">1</span>), EXW(ld, <span class="number">2</span>), EMPTY, EMPTY</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> OpcodeEntry store_table [<span class="number">8</span>] = &#123;</span><br><span class="line">  EXW(st, <span class="number">1</span>), EXW(st, <span class="number">2</span>), EXW(st, <span class="number">4</span>), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这部分完成后测试发现load-store文件和string文件无法通过，查看教程发现string.c需要实现 <code>nexus-am/libs/klib/src/string</code>. 而根据load-store-log.txt出错的原因如下，即没有找到rtl_sext，所以我们需要补充一下。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103111453042.png" alt="image-20240103111453042"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="keyword">inline</span> <span class="type">void</span> <span class="title function_">rtl_sext</span><span class="params">(<span class="type">rtlreg_t</span>* dest, <span class="type">const</span> <span class="type">rtlreg_t</span>* src1, <span class="type">int</span> width)</span> &#123;</span><br><span class="line">  <span class="type">int32_t</span> temp = *src1;</span><br><span class="line">  <span class="keyword">switch</span>(width) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>: *dest = *src1; <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: temp = temp &lt;&lt;  <span class="number">8</span>; *dest = temp &gt;&gt;  <span class="number">8</span>; <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: temp = temp &lt;&lt; <span class="number">16</span>; *dest = temp &gt;&gt; <span class="number">16</span>; <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: temp = temp &lt;&lt; <span class="number">24</span>; *dest = temp &gt;&gt; <span class="number">24</span>; <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">default</span>: assert(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果：成功</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103112221893.png" alt="image-20240103112221893"></p>
+<h3 id="字符串处理函数"><a href="#字符串处理函数" class="headerlink" title="字符串处理函数"></a>字符串处理函数</h3><p>各个函数功能和实现思路下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+<th align="center">实现思路</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>strlen</code></td>
+<td align="center">计算字符串的长度</td>
+<td align="center">遍历字符串，直到遇到字符串结束符，记录遍历的次数作为字符串的长度。</td>
+</tr>
+<tr>
+<td align="center"><code>strcpy</code></td>
+<td align="center">将源字符串复制到目标字符串</td>
+<td align="center">遍历源字符串的每个字符，逐个将字符复制到目标字符串中，直到遇到源字符串的结束符。最后，在目标字符串的末尾添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strncpy</code></td>
+<td align="center">将源字符串的一部分复制到目标字符串</td>
+<td align="center">遍历源字符串的每个字符，在达到指定的复制长度 <code>n</code> 或者遇到源字符串的结束符之前，将字符复制到目标字符串中。如果已经复制了 <code>n</code> 个字符，但源字符串仍未结束，则在目标字符串的末尾添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strcat</code></td>
+<td align="center">将源字符串追加到目标字符串的末尾</td>
+<td align="center">首先找到目标字符串的结束符，然后遍历源字符串的每个字符，将字符追加到目标字符串的末尾，并在最后添加结束符。</td>
+</tr>
+<tr>
+<td align="center"><code>strcmp</code></td>
+<td align="center">比较两个字符串的大小</td>
+<td align="center">逐个比较两个字符串中的字符，直到遇到不相等的字符或者其中一个字符串结束。</td>
+</tr>
+<tr>
+<td align="center"><code>strncmp</code></td>
+<td align="center">比较两个字符串的大小，最多比较 <code>n</code> 个字符</td>
+<td align="center">与 <code>strcmp</code> 函数类似，但是限制了最大比较的字符数量为 <code>n</code></td>
+</tr>
+<tr>
+<td align="center"><code>memset</code></td>
+<td align="center">将一块内存区域填充为指定的值</td>
+<td align="center">将内存区域的每个字节都设置为指定的值 <code>c</code>，实现了内存的填充操作。</td>
+</tr>
+<tr>
+<td align="center"><code>memcpy</code></td>
+<td align="center">将一块内存区域复制到另一块内存区域</td>
+<td align="center">遍历源内存区域的每个字节，逐个将字节复制到目标内存区域中，实现了内存的复制操作。</td>
+</tr>
+<tr>
+<td align="center"><code>memcmp</code></td>
+<td align="center">比较两块内存区域的内容是否相等</td>
+<td align="center">逐个比较两个内存区域中的字节，直到遇到不相等的字节或者比较的次数达到指定的长度 <code>n</code>。</td>
+</tr>
+</tbody></table>
+<p>string.c通过了之后hello-str.c又不能通过了….看教程是要完成 <code>sprintf()</code> 函数，它的参数数目是可变的。</p>
+<p>为了实现这个函数我们要根据格式字符串 <code>fmt</code> 和可变参数列表中的参数，将格式化后的字符串存储在目标字符串 <code>out</code> 中。然后调用 <code>vsprintf</code> 函数将格式化的字符串存储在目标字符串中，返回格式化后的字符串长度 <code>len</code>。</p>
+<p>一共需要下列几个辅助函数：</p>
+<ol>
+<li><code>vsprintf</code> 函数：根据格式字符串 <code>fmt</code> 和可变参数列表中的参数，将格式化后的字符串存储在目标字符串 <code>out</code> 中。通过遍历格式字符串的每个字符，根据不同的格式符进行相应的处理。当遇到普通字符时，将其直接复制到目标字符串中；当遇到格式符 <code>%</code> 时，根据后续字符来解析相应的参数，并调用相应的函数进行处理。函数返回格式化后的字符串长度 <code>out_len</code>。</li>
+<li><code>add_string</code> 函数：将字符串添加到目标字符串中。</li>
+<li><code>add_char</code> 函数：将字符添加到目标字符串中。</li>
+<li><code>is_digit</code> 函数：判断一个字符是否为数字；</li>
+<li><code>add_number</code> 函数：将数字添加到目标字符串中。</li>
+</ol>
+<p>完成这部分之后就能通过全部的测试文件。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103150857113.png" alt="image-20240103150857113"></p>
+<h2 id="pa-2-3"><a href="#pa-2-3" class="headerlink" title="pa-2.3"></a>pa-2.3</h2><h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><h4 id="运行Hello-World"><a href="#运行Hello-World" class="headerlink" title="运行Hello World"></a>运行Hello World</h4><p>修改文件，打开HAS_IOE宏定义，关闭调试。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103152240263.png" alt="image-20240103152240263"></p>
+<p>运行结果</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103154056515.png" alt="image-20240103154056515"></p>
+<h4 id="实现printf"><a href="#实现printf" class="headerlink" title="实现printf"></a>实现printf</h4><p>根据之前实现 <code>sprintf()</code> 的思路，调用 <code>vsprintf()</code> 即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *fmt, ...)</span> &#123;</span><br><span class="line">  va_list args;</span><br><span class="line">  va_start(args, fmt);</span><br><span class="line">  <span class="type">char</span> outBuf[<span class="number">256</span>] = &#123;<span class="string">&#x27;\0&#x27;</span>&#125;;</span><br><span class="line">  <span class="type">int</span> length = <span class="built_in">vsprintf</span>(outBuf, fmt, args); </span><br><span class="line">  <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; outBuf[i]; i++) &#123;</span><br><span class="line">    _putc(outBuf[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  va_end(args);</span><br><span class="line">  <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h3><h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>先在初始化函数 <code>__am_timer_init</code> 中对 <code>boot_time</code> 进行初始化， 然后在 <code>_DEVREG_TIMER_UPTIME</code> 条件分支下将 <code>uptime-&gt;lo</code> 更新为当前时间和初始时间的差。</p>
+<p>测试一下，显示成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make mainargs=t run</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103170944921.png" alt="image-20240103170944921"></p>
+<h4 id="跑分结果"><a href="#跑分结果" class="headerlink" title="跑分结果"></a>跑分结果</h4><h5 id="coremark"><a href="#coremark" class="headerlink" title="coremark"></a>coremark</h5><p><img src="/2023/12/17/pa-virtual-machine/image-20240103193835049.png" alt="image-20240103193835049"></p>
+<h5 id="dhrystone"><a href="#dhrystone" class="headerlink" title="dhrystone"></a>dhrystone</h5><p><img src="/2023/12/17/pa-virtual-machine/image-20240103193917212.png" alt="image-20240103193917212"></p>
+<h5 id="microbench"><a href="#microbench" class="headerlink" title="microbench"></a>microbench</h5><p><img src="/2023/12/17/pa-virtual-machine/image-20240103194108336.png" alt="image-20240103194108336"></p>
+<h3 id="键盘"><a href="#键盘" class="headerlink" title="键盘"></a>键盘</h3><p>先通过 <code>inl(KBD_ADDR)</code> 从 MMIO 中获取键盘码，通过键盘码和<code>KEYDOWN_MASK</code> 相与得到当前键盘的状态， 通过键盘码和 <code>～KEYDOWN_MASK</code> 相与得到没有按键时的状态。代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint32_t</span> keyboard_code = inl(KBD_ADDR);</span><br><span class="line">kbd-&gt;keydown = keyboard_code &amp; KEYDOWN_MASK ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">kbd-&gt;keycode = keyboard_code &amp; ~KEYDOWN_MASK;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">sizeof</span>(_DEV_INPUT_KBD_t);</span><br></pre></td></tr></table></figure>
+
+<p>这里要回虚拟机进行测试，因为在Vscode里没法进行弹窗</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/ics2019/nexus-am/tests/amtest/</span><br><span class="line">make ARCH=riscv32-nemu mainargs=k run</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103201730935.png" alt="image-20240103201730935"></p>
+<h3 id="VGA"><a href="#VGA" class="headerlink" title="VGA"></a>VGA</h3><p>这里有两个工作：</p>
+<ol>
+<li>完善 <code>nemu/src/device/vga.c</code> 中的 <code>vga_io_handler()</code> 函数；</li>
+<li>实现 <code>_DEVREG_VIDEO_INFO</code> 和 <code>_DEVREG_VIDEO_FBCTL</code> 的功能。</li>
+</ol>
+<p>测试结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=riscv32-nemu mainargs=v run</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103203649913.png" alt="image-20240103203649913"></p>
+<h3 id="其它结果展示"><a href="#其它结果展示" class="headerlink" title="其它结果展示"></a>其它结果展示</h3><h4 id="slider"><a href="#slider" class="headerlink" title="slider"></a>slider</h4><p><img src="/2023/12/17/pa-virtual-machine/image-20240103210243102.png" alt="image-20240103210243102"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103210415000.png" alt="image-20240103210415000"></p>
+<h4 id="typing"><a href="#typing" class="headerlink" title="typing"></a>typing</h4><p><img src="/2023/12/17/pa-virtual-machine/image-20240103210605118.png" alt="image-20240103210605118"></p>
+<h2 id="提交结果"><a href="#提交结果" class="headerlink" title="提交结果"></a>提交结果</h2><p><img src="/2023/12/17/pa-virtual-machine/image-20240103210841567.png" alt="image-20240103210841567"></p>
+<p>merge到master</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240103211049445.png" alt="image-20240103211049445"></p>
+<h1 id="pa3"><a href="#pa3" class="headerlink" title="pa3"></a>pa3</h1><h2 id="pa-3-1"><a href="#pa-3-1" class="headerlink" title="pa-3.1"></a>pa-3.1</h2><h3 id="实现自陷操作"><a href="#实现自陷操作" class="headerlink" title="实现自陷操作"></a>实现自陷操作</h3><p>在<code>nanos-lite/include/common.h</code>中定义 <code>HAS_CTE</code>。</p>
+<p>定义了宏<code>HAS_CTE</code>后, Nanos-lite会在<code>panic()</code>前调用<code>_yield()</code>来触发自陷操作. 为了支撑这次自陷操作, 需要在NEMU中实现<code>raise_intr()</code>函数来模拟异常响应机制。</p>
+<p>修改 <code>ISADecodeInfo</code> 结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ISADecodeInfo</span> &#123;</span></span><br><span class="line">  Instr instr;</span><br><span class="line">  <span class="type">uint32_t</span> sepc;</span><br><span class="line">  <span class="type">uint32_t</span> sstatus;</span><br><span class="line">  <span class="type">uint32_t</span> scause;</span><br><span class="line">  <span class="type">uint32_t</span> stvec;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最终实现的 <code>raise_intr()</code> 函数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">raise_intr</span><span class="params">(<span class="type">uint32_t</span> NO, <span class="type">vaddr_t</span> epc)</span> &#123;</span><br><span class="line">  decinfo.isa.sepc = epc;</span><br><span class="line">  decinfo.isa.scause = NO;</span><br><span class="line">  decinfo.jmp_pc = decinfo.isa.stvec;</span><br><span class="line">  rtl_j(decinfo.jmp_pc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要实现ecall环境调用指令、sret 管理员模式例外返指令，及一系列的控制状态寄存器相关操作的指令。</p>
+<p>步骤同pa2一样逐步完成译码辅助函数、执行辅助函数的编写和对应的声明，最后在opcode_table填表。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 译码辅助函数</span></span><br><span class="line">make_DHelper(SYSTEM) &#123;</span><br><span class="line">  decode_op_r(id_src, decinfo.isa.instr.rs1, <span class="literal">true</span>);</span><br><span class="line">  decode_op_i(id_src2, decinfo.isa.instr.csr, <span class="literal">true</span>);</span><br><span class="line">  decode_op_r(id_dest, decinfo.isa.instr.rd, <span class="literal">false</span>);</span><br><span class="line">  print_Dop(id_src-&gt;str, OP_STR_SIZE, <span class="string">&quot;0x%x&quot;</span>, decinfo.isa.instr.csr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行辅助函数的部分我们需要两个控制状态寄存器相关指令，一个负责读取一个负责写入。写入时接受一个CSR编号和一个要写入的值作为参数，根据CSR编号将给定的值写入相应的CSR；读取则只需要一个CSR编号作为参数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">write_csr</span><span class="params">(<span class="type">int</span> csr, <span class="type">int32_t</span> val)</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span>(csr) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x100</span>:	decinfo.isa.sstatus = val; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x105</span>:	decinfo.isa.stvec = val; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x141</span>: decinfo.isa.sepc = val; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x142</span>: decinfo.isa.scause = val; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>: assert(!<span class="string">&quot;Unfind the csr&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int32_t</span> <span class="title function_">read_csr</span><span class="params">(<span class="type">int</span> csr)</span> &#123;</span><br><span class="line">	<span class="keyword">switch</span>(csr) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x100</span>: <span class="keyword">return</span> decinfo.isa.sstatus;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x105</span>: <span class="keyword">return</span> decinfo.isa.stvec;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x141</span>: <span class="keyword">return</span> decinfo.isa.sepc;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x142</span>: <span class="keyword">return</span> decinfo.isa.scause;</span><br><span class="line">    <span class="keyword">default</span>: assert(!<span class="string">&quot;Unfind the csr&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后调用上述两个寄存器控制指令和前面完成的 <code>raise_intr()</code> 函数来完成触发异常后的响应，完成执行辅助函数。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104132130382.png" alt="image-20240104132130382"></p>
+<p>成功跳转：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104143223004.png" alt="image-20240104143223004"></p>
+<h3 id="保存上下文"><a href="#保存上下文" class="headerlink" title="保存上下文"></a>保存上下文</h3><p>顺序是gpr, cause, status, epc, as</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240105153308810.png" alt="image-20240105153308810"></p>
+<h3 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h3><p>这一部分需要我们先在 <code>__am_irq_handle()</code> 函数中通过异常号识别出自陷异常, 然后将event 设置为编号为 <code>_EVENT_YIELD</code> 的自陷事件；然后通过<code>do_event()</code>函数根据事件类型再次进行分发。<mark>注意这里不要全复制了，只复制 <code>case _EVENT_YIELD</code> 和 <code>case -1</code> 部分，其它是pa3-2的。</mark></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104185658130.png" alt="image-20240104185658130"></p>
+<p>实现成功，可以看到在下图中成功打印了我们的提示语句“Self trap!”。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104192458814.png" alt="image-20240104192458814"></p>
+<h3 id="恢复上下文"><a href="#恢复上下文" class="headerlink" title="恢复上下文"></a>恢复上下文</h3><p>这部分需要实现sret指令即可，前面已经实现了。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240104192553664.png" alt="image-20240104192553664"></p>
+<h2 id="pa-3-2"><a href="#pa-3-2" class="headerlink" title="pa-3.2"></a>pa-3.2</h2><h3 id="加载用户程序"><a href="#加载用户程序" class="headerlink" title="加载用户程序"></a>加载用户程序</h3><p>在这里先补充 <code>./nanos-lite/src/loader.c</code> 中的loader函数，实现用户程序加载。</p>
+<p><code>resource.S</code>文件里用汇编将<code>ramdisk.img</code>放在了静态存储区data section（实际上程序应该放在硬盘中，但就如文档所说当前用ram来模拟，因此放在了内存中的静态存储区），我们需要负责判断elf合法性，如果合法的话，我们需要做的是把程序加载到它应该处于的内存段中，以及将.bss段（全局变量区）清零，其中phdr（program header）中的<code>p_vaddr</code>即程序段应该加载到的内存段的首地址。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">uintptr_t</span> <span class="title function_">loader</span><span class="params">(PCB *pcb, <span class="type">const</span> <span class="type">char</span> *filename)</span> &#123;</span><br><span class="line">  Elf_Ehdr ehdr;</span><br><span class="line">  ramdisk_read(&amp;ehdr, <span class="number">0</span>, <span class="keyword">sizeof</span>(Elf_Ehdr));</span><br><span class="line">  assert((*(<span class="type">uint32_t</span> *)ehdr.e_ident == <span class="number">0x464c457f</span>));</span><br><span class="line"></span><br><span class="line">  Elf_Phdr phdr[ehdr.e_phnum];</span><br><span class="line">  ramdisk_read(phdr, ehdr.e_phoff, <span class="keyword">sizeof</span>(Elf_Phdr)*ehdr.e_phnum);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ehdr.e_phnum; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (phdr[i].p_type == PT_LOAD) &#123;</span><br><span class="line">      ramdisk_read((<span class="type">void</span>*)phdr[i].p_vaddr, phdr[i].p_offset, phdr[i].p_memsz);</span><br><span class="line">      <span class="built_in">memset</span>((<span class="type">void</span>*)(phdr[i].p_vaddr+phdr[i].p_filesz), <span class="number">0</span>, phdr[i].p_memsz - phdr[i].p_filesz);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ehdr.e_entry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 <code>proc.c</code> 中添加教程要求的 <code>naive_uload(NULL, NULL)</code>，调用刚刚实现的loader来加载第一个用户程序，可以看到执行<code>dummy</code>程序时在Nanos-lite中触发了一个未处理的1号事件。同时我们可以看到绿色框上面显示调用了 <code>naive_uload</code> 的信息。</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240105152409549.png" alt="image-20240105152409549"></p>
+<h3 id="识别系统调用"><a href="#识别系统调用" class="headerlink" title="识别系统调用"></a>识别系统调用</h3><p>观察<code>_syscall_</code>的代码，发现是从<code>a0</code>寄存器取得系统调用的返回结果，因此修改<code>GPRx</code>的宏定义，将其改成寄存器<code>a0</code>的下标，就可以在操作系统中通过<code>c-&gt;GPRx</code>根据实际情况设置返回值了</p>
+<p>然后要在 <code>syscall.c</code> 文件中实现 <code>do_event()</code> 调用的 <code>do_syscall()</code> 函数。调用 <code>_yield</code> 实现<code>SYS_yield</code> 。根据手册我们需要对它进行封装，<code>SYS_yield</code>系统调用直接调用CTE的<code>_yield()</code>即可，然后返回<code>0</code>，系统调用的返回值我们通过<code>GPRx</code>来进行设置。</p>
+<p>同时我们还需要实现一个退出的系统调用，它接收一个退出状态的参数, 用这个参数调用<code>_halt()</code>。</p>
+<p>上述过程的代码如下：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240105163109990.png" alt="image-20240105163109990"></p>
+<p>运行后我们成功得到一个 <code>GOOD TRAP!</code></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106221357794.png" alt="image-20240106221357794"></p>
+<h3 id="标准输出"><a href="#标准输出" class="headerlink" title="标准输出"></a>标准输出</h3><p>因为前面埋下的雷所以被迫回头修bug^^ 这里一开始出错的原因是前面识别系统调用部分的 <code>GPRx</code> 的寄存器设置出错了，能通过上一小关但是在这里会导致一个bug无法正确输出。</p>
+<p>解决问题之后这部分只要按手册实现 <code>SYS_write</code> 即可，然后在 <code>nanos.c</code> 文件中添加调用。</p>
+<p>输出结果如下：</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106155932827.png" alt="image-20240106155932827"></p>
+<h3 id="堆区管理"><a href="#堆区管理" class="headerlink" title="堆区管理"></a>堆区管理</h3><p>我们程序加载进内存之后，其中存在一个名为用户程序的数据段的段，并且链接的时候<code>ld</code>会默认添加一个名为<code>_end</code>的符号, 来指示程序的数据段结束的位置(program break)，在这个结束位置之后的位置用户不能再随便往里面存东西， 必须通过<code>sbrk</code>来向系统申请，本质就是更新这个program break，通过<code>man 3 end</code>查阅了<code>_end</code>用法后，在用户层维护并更新这个program break即可：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="type">uint32_t</span> _end;</span><br><span class="line"><span class="type">void</span> *_sbrk(<span class="type">intptr_t</span> increment) &#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">int</span> program_break = &amp;_end;</span><br><span class="line">  <span class="type">int</span> ret = program_break;</span><br><span class="line">  <span class="keyword">if</span>(!_syscall_(SYS_brk, program_break + increment, <span class="number">0</span>, <span class="number">0</span>))&#123;</span><br><span class="line">    program_break += increment;</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">void</span> *)ret;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (<span class="type">void</span> *)<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106171754119.png" alt="image-20240106171754119"></p>
+<h2 id="pa-3-3"><a href="#pa-3-3" class="headerlink" title="pa-3.3"></a>pa-3.3</h2><h3 id="简易文件系统"><a href="#简易文件系统" class="headerlink" title="简易文件系统"></a>简易文件系统</h3><p>修改Makefile文件，执行 <code>make clean</code> 清除<code>build/ramdisk.img</code>，然后update更新一下。</p>
+<p>这部分就是完善 <code>fs.c</code> 中的各个函数，和上面类似完善 <code>syscall.c</code> 和 <code>nanos.c</code> 文件，还要修改原来的loader函数，不再使用 <code>ramdisk_disk()</code>.</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106221107709.png" alt="image-20240106221107709"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106220454526.png" alt="image-20240106220454526"></p>
+<h3 id="操作系统之上的IOE"><a href="#操作系统之上的IOE" class="headerlink" title="操作系统之上的IOE"></a>操作系统之上的IOE</h3><h4 id="把串口抽象成文件"><a href="#把串口抽象成文件" class="headerlink" title="把串口抽象成文件"></a>把串口抽象成文件</h4><p>补充 <code>serial_write</code>，修改 <code>file_table</code>.</p>
+<h4 id="把设备输入抽象成文件"><a href="#把设备输入抽象成文件" class="headerlink" title="把设备输入抽象成文件"></a>把设备输入抽象成文件</h4><p>补充<code>events_read</code>，然后在VFS中添加对<code>/dev/events</code>的支持，加载 <code>/bin/events</code></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240106234616123.png" alt="image-20240106234616123"></p>
+<h4 id="把VGA显存抽象成文件"><a href="#把VGA显存抽象成文件" class="headerlink" title="把VGA显存抽象成文件"></a>把VGA显存抽象成文件</h4><p>按手册说的做，这里清晰且简单</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107004500077.png" alt="image-20240107004500077"></p>
+<h2 id="pa-3-4"><a href="#pa-3-4" class="headerlink" title="pa-3.4"></a>pa-3.4</h2><h3 id="运行仙剑奇侠传"><a href="#运行仙剑奇侠传" class="headerlink" title="运行仙剑奇侠传"></a>运行仙剑奇侠传</h3><p>下载游戏数据然后传到虚拟机里并解压到要求的路径</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107170311082.png" alt="image-20240107170311082"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107165254108.png" alt="image-20240107165254108"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107165549573.png" alt="image-20240107165549573"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107165709639.png" alt="image-20240107165709639"></p>
+<h3 id="批处理系统"><a href="#批处理系统" class="headerlink" title="批处理系统"></a>批处理系统</h3><p>实现 <code>sys_execve</code> 系统调用</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107180955729.png" alt="image-20240107180955729"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107181434820.png" alt="image-20240107181434820"></p>
+<h2 id="结果提交-1"><a href="#结果提交-1" class="headerlink" title="结果提交"></a>结果提交</h2><p><img src="/2023/12/17/pa-virtual-machine/image-20240107181702557.png" alt="image-20240107181702557"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240107181749020.png" alt="image-20240107181749020"></p>
+<h1 id="pa4"><a href="#pa4" class="headerlink" title="pa4"></a>pa4</h1><h2 id="pa-4-1-实现基本的多道程序系统"><a href="#pa-4-1-实现基本的多道程序系统" class="headerlink" title="pa-4.1 实现基本的多道程序系统"></a>pa-4.1 实现基本的多道程序系统</h2><h3 id="实现上下文切换"><a href="#实现上下文切换" class="headerlink" title="实现上下文切换"></a>实现上下文切换</h3><p><img src="/2023/12/17/pa-virtual-machine/image-20240108161306497.png" alt="image-20240108161306497"></p>
+<h3 id="实现多道程序系统"><a href="#实现多道程序系统" class="headerlink" title="实现多道程序系统"></a>实现多道程序系统</h3><p><img src="/2023/12/17/pa-virtual-machine/image-20240108191057493.png" alt="image-20240108191057493"></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240108191526459.png" alt="image-20240108191526459"></p>
+<blockquote>
+<p><strong>一山不容二虎</strong></p>
+<p>结果如下</p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240109161357337.png" alt="image-20240109161357337"></p>
+</blockquote>
+<h1 id="Report"><a href="#Report" class="headerlink" title="Report"></a>Report</h1><p>2024.01.16：提交了！结束本科最后一门课程！</p>
+<p>报告已上传GITHUB &#x3D;&gt; <a target="_blank" rel="noopener" href="https://github.com/Elubrazione/report_hust/blob/main/%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%9F%B9%E5%85%BB%E8%99%9A%E6%8B%9F%E6%9C%BA.pdf">here</a></p>
+<p><img src="/2023/12/17/pa-virtual-machine/image-20240116161004692.png" alt="image-20240116161004692"></p>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/12/31/essay-3/" title="2023年末总结">
+                    <div class="nextTitle">2023年末总结</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2023/11/27/cs224w-heterogeneous-graphs/" title="heterogeneous graphs">
+                    <div class="prevTitle">heterogeneous graphs</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa0"><span class="toc-number">2.</span> <span class="toc-text">pa0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">免密登录配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa1"><span class="toc-number">3.</span> <span class="toc-text">pa1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-1-1"><span class="toc-number">3.1.</span> <span class="toc-text">pa-1.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E6%8F%90%E4%BA%A4"><span class="toc-number">3.2.</span> <span class="toc-text">结果提交</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa2"><span class="toc-number">4.</span> <span class="toc-text">pa2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-1"><span class="toc-number">4.2.</span> <span class="toc-text">pa-2.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lui"><span class="toc-number">4.2.1.</span> <span class="toc-text">lui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auipc"><span class="toc-number">4.2.2.</span> <span class="toc-text">auipc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addi"><span class="toc-number">4.2.3.</span> <span class="toc-text">addi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">4.2.4.</span> <span class="toc-text">结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-2"><span class="toc-number">4.3.</span> <span class="toc-text">pa-2.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.1.</span> <span class="toc-text">I型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.2.</span> <span class="toc-text">R型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E5%9E%8B%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.3.</span> <span class="toc-text">B型指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load%E5%92%8CStore%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.4.</span> <span class="toc-text">Load和Store指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.5.</span> <span class="toc-text">字符串处理函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-2-3"><span class="toc-number">4.4.</span> <span class="toc-text">pa-2.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3"><span class="toc-number">4.4.1.</span> <span class="toc-text">串口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CHello-World"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">运行Hello World</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0printf"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">实现printf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F"><span class="toc-number">4.4.2.</span> <span class="toc-text">时钟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.4.2.1.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%91%E5%88%86%E7%BB%93%E6%9E%9C"><span class="toc-number">4.4.2.2.</span> <span class="toc-text">跑分结果</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#coremark"><span class="toc-number">4.4.2.2.1.</span> <span class="toc-text">coremark</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dhrystone"><span class="toc-number">4.4.2.2.2.</span> <span class="toc-text">dhrystone</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#microbench"><span class="toc-number">4.4.2.2.3.</span> <span class="toc-text">microbench</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E7%9B%98"><span class="toc-number">4.4.3.</span> <span class="toc-text">键盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VGA"><span class="toc-number">4.4.4.</span> <span class="toc-text">VGA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">4.4.5.</span> <span class="toc-text">其它结果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#slider"><span class="toc-number">4.4.5.1.</span> <span class="toc-text">slider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typing"><span class="toc-number">4.4.5.2.</span> <span class="toc-text">typing</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E7%BB%93%E6%9E%9C"><span class="toc-number">4.5.</span> <span class="toc-text">提交结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa3"><span class="toc-number">5.</span> <span class="toc-text">pa3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-1"><span class="toc-number">5.1.</span> <span class="toc-text">pa-3.1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E9%99%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">实现自陷操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">5.1.2.</span> <span class="toc-text">保存上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91"><span class="toc-number">5.1.3.</span> <span class="toc-text">事件分发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">5.1.4.</span> <span class="toc-text">恢复上下文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-2"><span class="toc-number">5.2.</span> <span class="toc-text">pa-3.2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E7%94%A8%E6%88%B7%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.2.1.</span> <span class="toc-text">加载用户程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="toc-number">5.2.2.</span> <span class="toc-text">识别系统调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA"><span class="toc-number">5.2.3.</span> <span class="toc-text">标准输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8C%BA%E7%AE%A1%E7%90%86"><span class="toc-number">5.2.4.</span> <span class="toc-text">堆区管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-3"><span class="toc-number">5.3.</span> <span class="toc-text">pa-3.3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E6%98%93%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.3.1.</span> <span class="toc-text">简易文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B9%8B%E4%B8%8A%E7%9A%84IOE"><span class="toc-number">5.3.2.</span> <span class="toc-text">操作系统之上的IOE</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A%E4%B8%B2%E5%8F%A3%E6%8A%BD%E8%B1%A1%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">把串口抽象成文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A%E8%AE%BE%E5%A4%87%E8%BE%93%E5%85%A5%E6%8A%BD%E8%B1%A1%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">把设备输入抽象成文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8AVGA%E6%98%BE%E5%AD%98%E6%8A%BD%E8%B1%A1%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-number">5.3.2.3.</span> <span class="toc-text">把VGA显存抽象成文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-3-4"><span class="toc-number">5.4.</span> <span class="toc-text">pa-3.4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0"><span class="toc-number">5.4.1.</span> <span class="toc-text">运行仙剑奇侠传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.4.2.</span> <span class="toc-text">批处理系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E6%8F%90%E4%BA%A4-1"><span class="toc-number">5.5.</span> <span class="toc-text">结果提交</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pa4"><span class="toc-number">6.</span> <span class="toc-text">pa4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pa-4-1-%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.</span> <span class="toc-text">pa-4.1 实现基本的多道程序系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="toc-number">6.1.1.</span> <span class="toc-text">实现上下文切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.1.2.</span> <span class="toc-text">实现多道程序系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Report"><span class="toc-number">7.</span> <span class="toc-text">Report</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span>
+            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>

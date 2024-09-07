@@ -1,0 +1,2738 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="图机器学习学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="graph neural network">
+<meta property="og:url" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="图机器学习学习笔记">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109152304390.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109153623998.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109153747448.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109234914593.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109235335160.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109235748828.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231110000857553.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231110001903062.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231110001955737.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112134724732.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231115194115480.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112135412818.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112151451055.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112151719163.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112151742529.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112152403489.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112153004953.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112153026622.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112153245764.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112153519135.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112153937969.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112154148636.png">
+<meta property="og:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231112154232539.png">
+<meta property="article:published_time" content="2023-11-11T03:55:44.000Z">
+<meta property="article:modified_time" content="2023-11-17T10:59:25.000Z">
+<meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="GNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2023/11/11/cs224w-graph-neural-network/image-20231109152304390.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>graph neural network · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">graph neural network</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                graph neural network
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="学习笔记"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                学习笔记
+            </span>
+        </span>
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="机器学习">机器学习</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="GNN">GNN</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2023/11/11</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>图机器学习学习笔记</p>
+<span id="more"></span>
+
+<h2 id="deep-learning-for-graphs"><a href="#deep-learning-for-graphs" class="headerlink" title="deep learning for graphs"></a>deep learning for graphs</h2><p>图网络要复杂得多:</p>
+<ul>
+<li>尺寸任意，拓扑结构复杂</li>
+<li>没有固定的节点顺序或参考点</li>
+<li>通常是动态的，具有多模态特征</li>
+</ul>
+<img src="/2023/11/11/cs224w-graph-neural-network/image-20231109152304390.png" alt="image-20231109152304390" style="zoom:80%;">
+
+<p>将ajacency matrix和node feature结合送入网络存在以下问题</p>
+<ul>
+<li>$O(\mid V \mid)$参数太大</li>
+<li>不适用于不同大小的图</li>
+<li>对节点排序敏感</li>
+</ul>
+<p>如果套用CNN的话，没有固定的notion of locality或者sliding window在一个卷积核内，以及graph的同构性从不同角度看会不一样但图是permutation invariant的</p>
+<img src="/2023/11/11/cs224w-graph-neural-network/image-20231109153623998.png" alt="image-20231109153623998" style="zoom:67%;">
+
+<h3 id="permutation-invariance-x2F-equivariance"><a href="#permutation-invariance-x2F-equivariance" class="headerlink" title="permutation invariance &#x2F; equivariance"></a>permutation invariance &#x2F; equivariance</h3><ul>
+<li>置换不变性<ul>
+<li>对于图嵌入</li>
+<li>节点的排序不会改变图的表示</li>
+</ul>
+</li>
+<li>排列不变性<ul>
+<li>对于节点嵌入</li>
+<li>节点的排序将导致节点表示的相同排序</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231109153747448.png" alt="image-20231109153747448"></p>
+<p>对于上面的两个图，embedding函数$f(Ai, Xi)$产生的结果应该是一样的，这样的函数就说其是permutation invariance</p>
+<p>Graph neural networks consist of multiple permutation equivariant &#x2F; invariant functions.</p>
+<img src="/2023/11/11/cs224w-graph-neural-network/image-20231109234914593.png" alt="image-20231109234914593" style="zoom:80%;">
+
+<h2 id="a-general-perspective-on-graph-neural-network"><a href="#a-general-perspective-on-graph-neural-network" class="headerlink" title="a general perspective on graph neural network"></a>a general perspective on graph neural network</h2><p>如果借用CNN的思维的话即从邻居那得到咨询然后做卷积，这种即GCN。我们需要定义邻居以及让模型学会如何得到邻居的信息（aggregate infomation）</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231109235335160.png" alt="image-20231109235335160"></p>
+<p>receptive field在cnn里指的是卷积核的视野，在graph里是指拉neighbors的次数，一阶邻居、二阶邻居，receptive field越大能看到的范围越大。当邻居的info拿到后要做平均，然后使用一个nn做更新。</p>
+<h3 id="math-of-graph-convolution"><a href="#math-of-graph-convolution" class="headerlink" title="math of graph convolution"></a>math of graph convolution</h3><p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231109235748828.png" alt="image-20231109235748828"></p>
+<p>$h^{(k)}_u$ 是node-v邻居的embedding，加起来除以邻居的数量，即蓝色部分是在平均邻居的咨询。而这样缺少了自身的咨询，因为要加上红色部分node-v本身的咨询 $h^{(k)}_v$。注意加上前需要分别乘上weight进行transform，得到和后使用非线性函数激活。这样就是一次的convolution即1-layer（注意这里因为permutation invariance &#x2F; equivalence所以拉邻居的顺序不会影响最后的结果）</p>
+<blockquote>
+<p> 但当graph的node很多的时候复杂度会很高，因此我们需要借助matrix operation</p>
+</blockquote>
+<h3 id="matrix-formulation"><a href="#matrix-formulation" class="headerlink" title="matrix formulation"></a>matrix formulation</h3><p>拉邻居加起来的过程就可以看作是邻接矩阵乘上embedding matrix，在用度矩阵degree做一个平均。</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231110000857553.png" alt="image-20231110000857553"></p>
+<h3 id="gnn-framework"><a href="#gnn-framework" class="headerlink" title="gnn framework"></a>gnn framework</h3><p>gnn layer &#x3D; message + aggregation，现在不同的gnn的区别是他们产生message的方法或者aggregate的方法不同；</p>
+<p>借由叠加多层的layer，看到的视野更大，而不同的层数之间也可以像cnn一样使用dropout来更powerful；</p>
+<p>有时候一个graph可能本身没有feature只有一个结构，又或者是graph的结构太复杂&#x2F;稀疏，我们可以做feature augmentation &#x2F; structure augmentation，即raw input graph ≠ computational graph.</p>
+<p>learning objective: Supervised &#x2F; Unsupervised objectives, Node&#x2F;Edge&#x2F;Graph level objectives;</p>
+<h3 id="inductive-capability"><a href="#inductive-capability" class="headerlink" title="inductive capability"></a>inductive capability</h3><p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231110001903062.png" alt="image-20231110001903062"></p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231110001955737.png" alt="image-20231110001955737"></p>
+<h2 id="a-single-layer-of-a-gnn"><a href="#a-single-layer-of-a-gnn" class="headerlink" title="a single layer of a gnn"></a>a single layer of a gnn</h2><h3 id="theory"><a href="#theory" class="headerlink" title="theory"></a>theory</h3><h4 id="message-function"><a href="#message-function" class="headerlink" title="message function"></a>message function</h4><p>message function是在对邻居的node embedding做一些转换，让它更好再传给当前node</p>
+<p>$m^{(l)}_u &#x3D; MSG^{(l)}(h^{(l-1)} _ {u})$</p>
+<p>这里的$MSG$可以是任何形式的layer，可以是linear也可以是non-linear，甚至可以是multi-layers的</p>
+<h4 id="aggregation-function"><a href="#aggregation-function" class="headerlink" title="aggregation function"></a>aggregation function</h4><p>收集所有邻居的info，可以用sum、mean等。</p>
+<p>$$h^{(l)}_v &#x3D; AGG^{(l)}({m^{(l)}_u, u \in N(v)})$$</p>
+<p>$$AGG: Sum(·)，Mean(·)，Max(·) $$ 优势从左到右以此递减</p>
+<h4 id="message-agregatio-issue"><a href="#message-agregatio-issue" class="headerlink" title="message agregatio issue"></a>message agregatio issue</h4><blockquote>
+<p>上述的单一message+aggregation方法缺失了node-v自己的值</p>
+</blockquote>
+<p>$$h^{(l)} _v &#x3D; CONCAT(AGG({ { m^{(l)} _u, u \in N(v} }), m^{(l)} _v)$$</p>
+<p>写成带学习权重的形式就是：</p>
+<p>$$m^{(l)} _u &#x3D; W^{(l)}(h^{(l-1)} _ {u})$$</p>
+<p>$$m^{(l)}_v &#x3D; B^{(l)}(h^{(l-1)} _ {v})$$</p>
+<p>整个过程就是：</p>
+<p>$$h^{(l)} _v &#x3D; CONCAT(AGG({ { W^{(l)}(h^{(l-1)} _ {u}), u \in N(v} }), B^{(l)}(h^{(l-1)} _ {v}))$$</p>
+<h3 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h3><h4 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h4><p>$$h^{(l)}_v &#x3D; \sigma (W^{(l)} \sum\limits _ {u \in N(v)} \frac{h^{(l-1)}_u}{\mid N(v) \mid})$$</p>
+<p>$$h^{(l)}_v &#x3D; \sigma (\sum\limits _ {u \in N(v)} W^{(l)} \frac{h^{(l-1)}_u}{\mid N(v) \mid})$$</p>
+<p>变换后就是</p>
+<p>$$h^{(l)} _v &#x3D; \sigma(Sum({ { m^{(l-1)} _ {u}, u \in N(v) } } ))$$</p>
+<p>注意转换后的公式，把w移动进去后，把邻居的message即$h^{(l-1)}_u$乘上一个learning weight，再除以node的degree做一个平均normalize，这是message部分。然后在用一个$Sum(·)$做一个aggregation。最后包一层non-linear的layer。</p>
+<p>GCN解决丢失自己node embedding的issue时，在图里添加了一个self-edges即loop，使得邻接矩阵添加了一个单位矩阵$I$。</p>
+<p>如果写成矩阵计算的形式就是：</p>
+<p>$$A’ &#x3D; A + I$$</p>
+<p>$$\hat{A} &#x3D; D^{-\frac{1}{2}}A’D^{-\frac{1}{2}}$$</p>
+<p>$$H^{(l)} _v &#x3D; \sigma(\hat{A} H^{(l-1)} _v W^{(l)})$$</p>
+<h4 id="GAT"><a href="#GAT" class="headerlink" title="GAT"></a>GAT</h4><p>$$h^{(l)} _ v &#x3D; \sigma (\sum\limits _ {u \in N(v)} \alpha_{vu} W^{(l)} h^{(l-1)}_u)$$</p>
+<p>这里的$\alpha_{vu}$是attention weights，也是通过学习得到的。</p>
+<ul>
+<li>在GCN里，$\alpha_{vu} &#x3D; \frac{1}{\mid N(v) \mid}$即对于某个node所有的邻居都是一个固定的权重，所有的邻居都是同等重要。</li>
+</ul>
+<h5 id="procedure"><a href="#procedure" class="headerlink" title="procedure"></a>procedure</h5><p>假设$e_{vu}$代表了node-u和node-v之间的重要性，$a(·)$是一个计算机制，喂入的是两个node的embedding吐出来的是一个importance，计算公式为：</p>
+<p>$$e_{vu} &#x3D; a(W^{(l)}h^{(l-1)}_u, W^{(l)}h^{(l-1)}_v)$$</p>
+<p>然后再用softmax函数做normalize，使得所有邻居的$e_{vu}$相加的和为1：</p>
+<p>$$e_{vu} &#x3D; \frac{exp(e_{vu})}{\sum\limits_{k\in N(v)}exp(e_{vk})}$$</p>
+<p>这里的$e_{vu}$就是最后的$\alpha_{vu}$</p>
+<h5 id="about-a-·"><a href="#about-a-·" class="headerlink" title="about $a(·)$"></a>about $a(·)$</h5><p>是一个独立的机制，怎么做都可以，可以把两个embedding拿去concatenate起来过一个linear或者其它。不管怎么样，它都和前面的message的$W$是独立的，即train jointly。</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112134724732.png" alt="image-20231112134724732"></p>
+<h5 id="multi-head-attention"><a href="#multi-head-attention" class="headerlink" title="multi-head attention"></a>multi-head attention</h5><p>像transformer一样，对于单个node可能会学多组$\alpha$，再对这些做一个aggregate</p>
+<p>$$h^{(l)} _v[1] &#x3D; \sigma(\sum _{u \in N(v)} \alpha^1 _{vu}W^{(l)} h^{(l-1)} _u)$$</p>
+<p>$$h^{(l)} _v[2] &#x3D; \sigma(\sum _{u \in N(v)} \alpha^2 _ {vu}W^{(l)} h^{(l-1)} _u)$$</p>
+<p>$$h^{(l)} _v[3] &#x3D; \sigma(\sum _{u \in N(v)} \alpha^3 _{vu}W^{(l)} h^{(l-1)} _u)$$</p>
+<p>$$h^{(l)} _v &#x3D; AGG(h^{(l)} _v[1], h^{(l)} _v[2], h^{(l)} _v[3])$$</p>
+<p>最经典的图就是这张：</p>
+<img src="/2023/11/11/cs224w-graph-neural-network/image-20231115194115480.png" alt="image-20231115194115480" style="zoom:80%;">
+
+<h5 id="benefits-of-attention-mechanism"><a href="#benefits-of-attention-mechanism" class="headerlink" title="benefits of attention mechanism"></a>benefits of attention mechanism</h5><ul>
+<li><p>使不同邻居具有不同重要性</p>
+</li>
+<li><p>计算可以并行化，效率高</p>
+</li>
+<li><p>参数的数量与图的大小无关</p>
+</li>
+<li><p>可以推广到不同的图</p>
+</li>
+</ul>
+<h3 id="a-gnn-layer-in-practice"><a href="#a-gnn-layer-in-practice" class="headerlink" title="a gnn layer in practice"></a>a gnn layer in practice</h3><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112135412818.png" alt="image-20231112135412818">
+
+<h2 id="graph-augmentation-for-GNNs"><a href="#graph-augmentation-for-GNNs" class="headerlink" title="graph augmentation for GNNs"></a>graph augmentation for GNNs</h2><h3 id="why"><a href="#why" class="headerlink" title="why"></a>why</h3><ul>
+<li>图特征增强图形<ul>
+<li>输入缺少特征</li>
+</ul>
+</li>
+<li>图结构扩充<ul>
+<li>图过于稀疏→消息传递效率低下</li>
+<li>图太密集→消息传递成本太高</li>
+<li>图太大→内存容不下</li>
+</ul>
+</li>
+</ul>
+<h3 id="feature-augmentation"><a href="#feature-augmentation" class="headerlink" title="feature augmentation"></a>feature augmentation</h3><p>只有邻接矩阵没有node feature</p>
+<ul>
+<li>加上人工的feature，加上constant values to nodes</li>
+<li>给node编号并转换成one-hot vector</li>
+</ul>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112151451055.png" alt="image-20231112151451055"></p>
+<h3 id="structure-augmentation"><a href="#structure-augmentation" class="headerlink" title="structure augmentation"></a>structure augmentation</h3><h4 id="virtual-nodes-x2F-edges"><a href="#virtual-nodes-x2F-edges" class="headerlink" title="virtual nodes &#x2F; edges"></a>virtual nodes &#x2F; edges</h4><p>graph很稀疏时</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112151719163.png" alt="image-20231112151719163"></p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112151742529.png" alt="image-20231112151742529"></p>
+<h4 id="neighborshood-sampling"><a href="#neighborshood-sampling" class="headerlink" title="neighborshood sampling"></a>neighborshood sampling</h4><p>graph很密集的时候</p>
+<p>大幅度降低计算cost和memory cost</p>
+<h2 id="data-splitting-for-graphs"><a href="#data-splitting-for-graphs" class="headerlink" title="data splitting for graphs"></a>data splitting for graphs</h2><p>graph的切法比较tricky，因为在graph里数据（邻居关系）是互相依赖的。</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112152403489.png" alt="image-20231112152403489"></p>
+<h3 id="solutions"><a href="#solutions" class="headerlink" title="solutions"></a>solutions</h3><h4 id="transductive-seeting"><a href="#transductive-seeting" class="headerlink" title="transductive seeting"></a>transductive seeting</h4><p>不改变graph架构，但是train的时候只用部分node的标签，剩下的node的label用来validation&#x2F;test</p>
+<h4 id="inductive-setting"><a href="#inductive-setting" class="headerlink" title="inductive setting"></a>inductive setting</h4><p>会把graph切成不同的部分，改变graph的结构</p>
+<h4 id="compare"><a href="#compare" class="headerlink" title="compare"></a>compare</h4><ul>
+<li><p>transductive</p>
+<ul>
+<li>在同一图上</li>
+<li>通常在单图数据集上执行</li>
+<li>只有标签被分割适用于节点&#x2F;边缘预测任务</li>
+</ul>
+<img src="/2023/11/11/cs224w-graph-neural-network/image-20231112153004953.png" alt="image-20231112153004953" style="zoom: 80%;">
+</li>
+<li><p>inductive</p>
+<ul>
+<li>通常在多图数据集上执行</li>
+<li>节点&#x2F;边&#x2F;标签被分割</li>
+<li>适用于节点&#x2F;边&#x2F;图任务</li>
+</ul>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112153026622.png" alt="image-20231112153026622"></p>
+</li>
+</ul>
+<h3 id="examples-1"><a href="#examples-1" class="headerlink" title="examples"></a>examples</h3><h4 id="graph-classification"><a href="#graph-classification" class="headerlink" title="graph classification"></a>graph classification</h4><p>比较适合使用inductive setting</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112153245764.png" alt="image-20231112153245764"></p>
+<h4 id="link-prediction"><a href="#link-prediction" class="headerlink" title="link prediction"></a>link prediction</h4><p>是unsupervised或者self-supervised</p>
+<h5 id="inductive"><a href="#inductive" class="headerlink" title="inductive"></a>inductive</h5><p>通常把某些edge隐藏起来，因此edge被分为两种：1）<strong>message edges</strong> 用于message passing 用于喂给GNN；2）<strong>supervision edges</strong> 用于最后预测，计算loss</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112153519135.png" alt="image-20231112153519135"></p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112153937969.png" alt="image-20231112153937969"></p>
+<h5 id="transductive"><a href="#transductive" class="headerlink" title="transductive"></a>transductive</h5><p>通常把edge分为四种</p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112154148636.png" alt="image-20231112154148636"></p>
+<p><img src="/2023/11/11/cs224w-graph-neural-network/image-20231112154232539.png" alt="image-20231112154232539"></p>
+<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><ul>
+<li>node-level task<ul>
+<li>inductive&#x2F;transductive settings</li>
+</ul>
+</li>
+<li>graph-level task<ul>
+<li>inductive settings</li>
+</ul>
+</li>
+<li>edge-level task<ul>
+<li>inductive&#x2F;transductive settings</li>
+</ul>
+</li>
+</ul>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/11/12/devign/" title="HUST图神经网络Devign模型">
+                    <div class="nextTitle">HUST图神经网络Devign模型</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2023/11/10/cs224w-message-passing-and-node-classification/" title="message passing and node classification">
+                    <div class="prevTitle">message passing and node classification</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#deep-learning-for-graphs"><span class="toc-number">1.</span> <span class="toc-text">deep learning for graphs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#permutation-invariance-x2F-equivariance"><span class="toc-number">1.1.</span> <span class="toc-text">permutation invariance &#x2F; equivariance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a-general-perspective-on-graph-neural-network"><span class="toc-number">2.</span> <span class="toc-text">a general perspective on graph neural network</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#math-of-graph-convolution"><span class="toc-number">2.1.</span> <span class="toc-text">math of graph convolution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matrix-formulation"><span class="toc-number">2.2.</span> <span class="toc-text">matrix formulation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gnn-framework"><span class="toc-number">2.3.</span> <span class="toc-text">gnn framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inductive-capability"><span class="toc-number">2.4.</span> <span class="toc-text">inductive capability</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a-single-layer-of-a-gnn"><span class="toc-number">3.</span> <span class="toc-text">a single layer of a gnn</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#theory"><span class="toc-number">3.1.</span> <span class="toc-text">theory</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#message-function"><span class="toc-number">3.1.1.</span> <span class="toc-text">message function</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#aggregation-function"><span class="toc-number">3.1.2.</span> <span class="toc-text">aggregation function</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#message-agregatio-issue"><span class="toc-number">3.1.3.</span> <span class="toc-text">message agregatio issue</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#examples"><span class="toc-number">3.2.</span> <span class="toc-text">examples</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GCN"><span class="toc-number">3.2.1.</span> <span class="toc-text">GCN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GAT"><span class="toc-number">3.2.2.</span> <span class="toc-text">GAT</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#procedure"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">procedure</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#about-a-%C2%B7"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">about $a(·)$</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#multi-head-attention"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">multi-head attention</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#benefits-of-attention-mechanism"><span class="toc-number">3.2.2.4.</span> <span class="toc-text">benefits of attention mechanism</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-gnn-layer-in-practice"><span class="toc-number">3.3.</span> <span class="toc-text">a gnn layer in practice</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#graph-augmentation-for-GNNs"><span class="toc-number">4.</span> <span class="toc-text">graph augmentation for GNNs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why"><span class="toc-number">4.1.</span> <span class="toc-text">why</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature-augmentation"><span class="toc-number">4.2.</span> <span class="toc-text">feature augmentation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#structure-augmentation"><span class="toc-number">4.3.</span> <span class="toc-text">structure augmentation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#virtual-nodes-x2F-edges"><span class="toc-number">4.3.1.</span> <span class="toc-text">virtual nodes &#x2F; edges</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#neighborshood-sampling"><span class="toc-number">4.3.2.</span> <span class="toc-text">neighborshood sampling</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-splitting-for-graphs"><span class="toc-number">5.</span> <span class="toc-text">data splitting for graphs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#solutions"><span class="toc-number">5.1.</span> <span class="toc-text">solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#transductive-seeting"><span class="toc-number">5.1.1.</span> <span class="toc-text">transductive seeting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inductive-setting"><span class="toc-number">5.1.2.</span> <span class="toc-text">inductive setting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compare"><span class="toc-number">5.1.3.</span> <span class="toc-text">compare</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#examples-1"><span class="toc-number">5.2.</span> <span class="toc-text">examples</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#graph-classification"><span class="toc-number">5.2.1.</span> <span class="toc-text">graph classification</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#link-prediction"><span class="toc-number">5.2.2.</span> <span class="toc-text">link prediction</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#inductive"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">inductive</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#transductive"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">transductive</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#summary"><span class="toc-number">5.3.</span> <span class="toc-text">summary</span></a></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span>
+            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>

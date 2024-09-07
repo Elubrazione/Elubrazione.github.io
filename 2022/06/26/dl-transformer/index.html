@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="二周目复习版本 : ) PS: 一年多之后再看这篇突然觉得学计算机真好啊！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="预训练语言模型">
+<meta property="og:url" content="https://elubrazione.github.io/2022/06/26/dl-transformer/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="二周目复习版本 : ) PS: 一年多之后再看这篇突然觉得学计算机真好啊！！">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311090826576.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311091423378.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311092637045.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311094638213.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311095632811.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100846431.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311101151083.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100118547.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311100516394.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102029954.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102238651.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102410478.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102604769.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311102710282.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240310142148201.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240310142323173.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311103752075.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311131231189.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311131458647.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/111.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/222.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311104228891.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/333.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/444.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/gif1.gif">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/gif2.gif">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311140930312.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311135134326.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/555.jpg">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311163151756.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183314242.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183426949.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183641818.png">
+<meta property="og:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311183719856.png">
+<meta property="article:published_time" content="2022-06-26T06:12:20.000Z">
+<meta property="article:modified_time" content="2024-04-03T07:38:46.000Z">
+<meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2022/06/26/dl-transformer/image-20240311090826576.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>预训练语言模型 · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">预训练语言模型</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                预训练语言模型
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        
+        
+            
+        
+        
+        <span class="post-category" data-categories="学习笔记"">
+            <i class="fas fa-folder post-category-icon"></i>
+            <span class="post-category-text">
+                学习笔记
+            </span>
+        </span>
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="深度学习">深度学习</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">10.5k</span>阅读时长: <span class="post-count reading-time">39 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/06/26</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <blockquote>
+<p>二周目复习版本 : )</p>
+<p>PS: 一年多之后再看这篇突然觉得学计算机真好啊！！</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="时序模型"><a href="#时序模型" class="headerlink" title="时序模型"></a>时序模型</h1><h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>RNN 的基本单元结构如下图所示：</p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311090826576.png" alt="image-20240311090826576"></p>
+<p>上图左边部分称作 RNN 的一个 timestep，在这个 timestep 中可以看到，在 $t$ 时刻，输入变量 $x_t$，通过 RNN 的一个基础模块 A，输出变量 $h_t$，而 $t$ 时刻的信息，将会传递到下一个时刻 $t+1$。</p>
+<p>如果把模块按照时序展开，则会如上图右边部分所示，<strong>由此可以看到 RNN 为多个基础模块 A 的互连，每一个模块都会把当前信息传递给下一个模块</strong>。</p>
+<p>RNN 解决了时序依赖问题，但这里的时序一般指的是短距离的，首先我们先介绍下短距离依赖和长距离依赖的区别：</p>
+<ul>
+<li>短距离依赖：对于这个填空题 “我想看一场篮球____”，我们很容易就判断出 “篮球” 后面跟的是 “比赛”，这种短距离依赖问题非常适合 RNN。</li>
+<li>长距离依赖：对于这个填空题 “我出生在中国的瓷都景德镇，小学和中学离家都很近，……，我的母语是____”，对于短距离依赖，“我的母语是” 后面可以紧跟着 “汉语”、“英语”、“法语”，但是如果我们想精确答案，则必须回到上文中很长距离之前的表述 “我出生在中国的瓷都景德镇”，进而判断答案为 “汉语”，而 RNN 是很难学习到这些信息的。</li>
+</ul>
+<h3 id="梯度消失问题"><a href="#梯度消失问题" class="headerlink" title="梯度消失问题"></a>梯度消失问题</h3><blockquote>
+<p>为什么RNN不适合长距离依赖问题</p>
+</blockquote>
+<p>RNN前向传播过程：</p>
+<ul>
+<li><strong>隐藏状态：</strong>$h ^{(t)} &#x3D; \sigma (z ^{(t)}) &#x3D; \sigma(Ux ^{(t)} + Wh ^{(t-1)} + b)$ ，此处激活函数一般为 $tanh$ 。</li>
+<li><strong>模型输出：</strong>$o ^{(t)} &#x3D; Vh ^{(t)} + c$</li>
+<li><strong>预测输出：</strong>$\hat{y} ^{(t)} &#x3D; \sigma(o ^{(t)})$，此处激活函数一般为$softmax$。</li>
+<li><strong>模型损失：</strong>$L &#x3D; \sum _{t &#x3D; 1} ^{T} L ^{(t)}$</li>
+</ul>
+<p><img src="/2022/06/26/dl-transformer/image-20240311091423378.png" alt="image-20240311091423378"></p>
+<p>RNN 所有的 timestep 共享一套参数 $U,V,W$，在 RNN 反向传播过程中，需要计算  $U,V,W$等参数的梯度，以 $W$ 的梯度表达式为例（假设 RNN 模型的损失函数为 $L$）：</p>
+<p>$$\frac{\partial L}{\partial W}<br>&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) \frac{\partial h^{(t)}}{\partial W} \ $$</p>
+<p>$$&#x3D; \sum_{t &#x3D; 1}^{T} \frac{\partial L}{\partial y^{(T)}} \frac{\partial y^{(T)}}{\partial o^{(T)}} \frac{\partial o^{(T)}}{\partial h^{(T)}} \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right) \frac{\partial h^{(t)}}{\partial W}$$</p>
+<p>公式中$\left( \prod_{k&#x3D;t + 1}^{T} \frac{\partial h^{(k)}}{\partial h^{(k - 1)}} \right) &#x3D; \left( \prod_{k&#x3D;t+1}^{T} tanh^{‘}(z^{(k)}) W \right)$,$tanh$的导数总是小于 1 的，由于是 $T−(t+1)$ 个 timestep 参数的连乘，<strong>如果 $W$ 的主特征值小于 1，梯度便会消失；如果 $W$ 的特征值大于 1，梯度便会爆炸。</strong></p>
+<p>RNN中权重在各时间步内共享，最终的梯度是各个时间步的梯度和，梯度和会越来越大。因此，RNN中总的梯度是不会消失的，即使梯度越传越弱，也只是远距离的梯度消失。 <strong>RNN所谓梯度消失的真正含义是，梯度被近距离（t+1趋向于T）梯度主导，远距离（t+1远离T）梯度很小，导致模型难以学到远距离的信息。</strong></p>
+<h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>为了解决 RNN 缺乏的序列长距离依赖问题，LSTM 被提了出来</p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311092637045.png" alt="image-20240311092637045"></p>
+<p>如上图所示，为 LSTM 的 RNN 门控结构（LSTM 的 timestep），LSTM 前向传播过程包括：</p>
+<ul>
+<li><strong>遗忘门：</strong>决定了丢弃哪些信息，遗忘门接收 $t−1$ 时刻的状态 $h _t−1$，以及当前的输入 $x _t$，经过 Sigmoid 函数后输出一个 0 到 1 之间的值 $f_t$<ul>
+<li>输出：$f_{t} &#x3D; \sigma(W_fh_{t-1} + U_f x_{t} + b_f)$</li>
+</ul>
+</li>
+<li><strong>输入门：</strong>决定了哪些新信息被保留，并更新细胞状态，输入们的取值由 $h_t−1$ 和 $x_t$ 决定，通过 Sigmoid 函数得到一个 0 到 1 之间的值 $i_t$，而 $tanh$ 函数则创造了一个当前细胞状态的候选 $a_t$<ul>
+<li>输出：$i_{t} &#x3D; \sigma(W_ih_{t-1} + U_ix_{t} + b_i)$，$\tilde{C_{t} }&#x3D; tanh(W_ah_{t-1} + U_ax_{t} + b_a)$​</li>
+</ul>
+</li>
+<li><strong>细胞状态：</strong>旧细胞状态 $C_t−1$ 被更新到新的细胞状态 $C_t$ 上，<ul>
+<li>输出：$C_{t} &#x3D; C_{t-1}\odot f_{t} + i_{t}\odot \tilde{C_{t} }$</li>
+</ul>
+</li>
+<li><strong>输出门：</strong>决定了最后输出的信息，输出门取值由 $h_t−1$ 和 $x_t$ 决定，通过 Sigmoid 函数得到一个 0 到 1 之间的值 $o_t$，最后通过 $tanh$​ 函数决定最后输出的信息<ul>
+<li>输出：$o_{t} &#x3D; \sigma(W_oh_{t-1} + U_ox_{t} + b_o)$，$h_{t} &#x3D; o_{t}\odot tanh(C_{t})$</li>
+</ul>
+</li>
+<li><strong>预测输出：</strong>$\hat{y} _{t} &#x3D; \sigma(Vh _{t}+c)$​</li>
+</ul>
+<p>LSTM 遗忘门值 $f_t$ 可以选择在 [0,1] 之间，让 LSTM 来改善梯度消失的情况。也可以选择接近 1，让遗忘门饱和，此时远距离信息梯度不消失；也可以选择接近 0，此时模型是故意阻断梯度流，遗忘之前信息。</p>
+<p>另外需要强调的是LSTM搞的这么复杂，<strong>除了在结构上天然地克服了梯度消失的问题，更重要的是具有更多的参数来控制模型</strong>；通过四倍于RNN的参数量，可以更加精细地预测时间序列变量。</p>
+<h1 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h1><blockquote>
+<p>本质思想：从大量信息中有选择地筛选出少量重要信息并聚焦到这些重要信息上，忽略不重要的信息。</p>
+<p><strong>Attention 机制可以更加好的解决序列长距离依赖问题，并且具有并行计算能力</strong>。</p>
+</blockquote>
+<h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>通过 Query 这个信息从 Values 中筛选出重要信息，简单点说，<strong>就是计算 Query 和 Values 中每个信息的相关程度。</strong></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311094638213.png" alt="image-20240311094638213"></p>
+<p>如上图，将 Query(Q) 和 key-value pairs（<strong>把 Values 拆分成了键值对的形式</strong>） 映射到输出上，其中 query、每个 key、每个 value 都是向量，输出是 V 中所有 values 的加权，其中权重是由 Query 和每个 key 计算出来的，计算方法分为三步：</p>
+<ol>
+<li>计算比较 <strong>Q 和 K 的相似度</strong>，用 f 来表示：$f(Q,K_i)$，$i&#x3D;1,2,⋯,m$​，一般第一步计算方法包括四种<ul>
+<li>点乘（<strong>Transformer 使用</strong>）：$f(Q,K_i) &#x3D; Q^T K_i$</li>
+<li>权重：$f(Q,K_i) &#x3D; Q^TWK_i$</li>
+<li>拼接权重：$f(Q,K_i) &#x3D; W[Q^T;K_i]$</li>
+<li>感知器：$f(Q,K_i)&#x3D;V^T \tanh(WQ+UK_i)$</li>
+</ul>
+</li>
+<li>将得到的相似度进行 softmax 操作，进行归一化，$\alpha_i &#x3D; softmax(\frac{f(Q,K_i)}{\sqrt{d_k}})$<ul>
+<li>除以$\sqrt{d_k}$的作用：假设 $Q$, $K$ 里的元素的均值为0，方差为 1，那么 $A^T&#x3D;Q^TK$ 中元素的均值为 0，方差为 d。当 d 变得很大时， $A$ 中的元素的方差也会变得很大，如果 $A$ 中的元素方差很大(分布的方差大，分布集中在绝对值大的区域)，<strong>在数量级较大时， softmax 将几乎全部的概率分布都分配给了最大值对应的标签</strong>，由于某一维度的数量级较大，进而会导致 softmax 未来求梯度时会消失。总结一下就是 $softmax(A)$ 的分布会和d有关。因此 $A$ 中每一个元素乘上 $\frac{1}{\sqrt{d_k}}$ 后，方差又变为 1，并且 $A$​ 的数量级也将会变小。</li>
+</ul>
+</li>
+<li>针对计算出来的权重$\alpha _i$，对 $V$ 中的所有 values 进行加权求和计算，得到 Attention 向量：$Attention &#x3D; \sum _{i&#x3D;1}^m \alpha _i V_i$</li>
+</ol>
+<h2 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self Attention"></a>Self Attention</h2><h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><img src="/2022/06/26/dl-transformer/image-20240311095632811.png" alt="image-20240311095632811" style="zoom: 67%;">
+
+<p>对于 Self Attention，Q、K、V 来自句子 X 的 词向量 x 的线性转化，即对于词向量 x，给定三个可学习的矩阵参数 $W_Q$,$W_k$,$W_v$​，x 分别右乘上述矩阵得到 Q、K、V。</p>
+<h3 id="向量计算过程"><a href="#向量计算过程" class="headerlink" title="向量计算过程"></a>向量计算过程</h3><ol>
+<li><p><strong>Q、K、V的获取：</strong>两个单词 Thinking 和 Machines。通过线性变换，即 $x_1$ 和 $x_2$ 两个向量分别与$W_q$, $W_k$, $W_v$ 三个矩阵点乘得到 $q_1$, $q_2$, $k_1 $, $k_2$, $v_1$, $v_2$ 共 6 个向量。矩阵 Q 则是向量 $q_1$, $q_2$​​ 的拼接，K、V 同理。</p>
+<img src="/2022/06/26/dl-transformer/image-20240311100846431.png" alt="image-20240311100846431" style="zoom:80%;">
+</li>
+<li><p><strong>MatMual：</strong>向量 q1,k1做点乘得到得分 112， q1,k2做点乘得到得分96。注意：<strong>这里是通过 q1 这个信息找到 x1,x2 中的重要信息。</strong></p>
+</li>
+<li><p><strong>Scale + Sofatmax</strong></p>
+</li>
+<li><p><strong>MatMul：</strong>乘上V。用得分比例 [0.88，0.12] 乘以 [v1,v2] 值得到一个加权后的值，将这些值加起来得到 z1。</p>
+<img src="/2022/06/26/dl-transformer/image-20240311101151083.png" alt="image-20240311101151083" style="zoom:80%;"></li>
+</ol>
+<p><strong>总结过程：</strong>用 $q_1$、$K&#x3D;[k1,k2]$ 去计算一个 Thinking 相对于 Thinking 和 Machine 的权重，再用权重乘以 Thinking 和 Machine 的 $V&#x3D;[v_1,v_2]$ 得到加权后的 Thinking 和 Machine 的 $V&#x3D;[v_1,v_2]$，最后求和得到针对各单词的输出 $z_1$。同理可以计算出 Machine 相对于 Thinking 和 Machine 的加权输出 $z_2$，拼接 $z_1$ 和 $z_2$ 即可得到 Attention 值 $Z&#x3D;[z_1,z_2]$​</p>
+<h3 id="矩阵计算过程"><a href="#矩阵计算过程" class="headerlink" title="矩阵计算过程"></a>矩阵计算过程</h3><img src="/2022/06/26/dl-transformer/image-20240311100118547.png" alt="image-20240311100118547" style="zoom: 67%;">
+
+
+
+<p><strong>$QK^T$​ 其实就会组成一个 word2word 的 attention map！</strong>（加了 softmax 之后就是一个合为 1 的权重了）。比如说你的输入是一句话 “i have a dream” 总共 4 个单词，这里就会形成一张 4x4 的注意力机制的图：</p>
+<img src="/2022/06/26/dl-transformer/image-20240311100516394.png" alt="image-20240311100516394" style="zoom:67%;">
+
+<p>这样一来，每一个单词对应每一个单词都会有一个权重，<strong>这也是 Self Attention 名字的来源，即 Attention 的计算来源于 Source（源句） 和 Source 本身，通俗点讲就是 Q、K、V 都来源于输入 X 本身。</strong></p>
+<h3 id="与RNN、LSTM的比较"><a href="#与RNN、LSTM的比较" class="headerlink" title="与RNN、LSTM的比较"></a>与RNN、LSTM的比较</h3><ul>
+<li>RNN、LSTM：如果是 RNN 或者 LSTM，需要依次序列计算，对于远距离的相互依赖的特征，<strong>要经过若干时间步步骤的信息累积才能将两者联系起来，而距离越远，有效捕获的可能性越小</strong>。</li>
+<li>Self Attention：<ul>
+<li>引入 Self Attention 后会更容易捕获句子中长距离的相互依赖的特征，<strong>因为 Self Attention 在计算过程中会直接将句子中任意两个单词的联系通过一个计算步骤直接联系起来，所以远距离依赖特征之间的距离被极大缩短，有利于有效地利用这些特征</strong>；</li>
+<li>除此之外，Self Attention 对于<strong>一句话中的每个单词都可以单独的进行 Attention 值的计算</strong>，也就是说 Self Attention 对计算的并行性也有直接帮助作用，而对于必须得依次序列计算的 RNN 而言，是无法做到并行计算的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>无论句子序列多长，都可以充分捕获近距离上往下问中的任何依赖关系，进而可以很好的提取句法特征还可以提取语义特征</strong>；而且对于一个句子而言，<strong>每个单词的计算是可以并行处理的</strong>。</p>
+<p>理论上 Self-Attention （Transformer 50 个左右的单词效果最好）解决了 RNN 模型的长序列依赖问题，但是由于文本长度增加时，训练时间也将会呈指数增长，因此在处理长文本任务时可能不一定比 LSTM（200 个左右的单词效果最好） 等传统的 RNN 模型的效果好。</p>
+<h2 id="Masked-Self-Attention"><a href="#Masked-Self-Attention" class="headerlink" title="Masked Self Attention"></a>Masked Self Attention</h2><p>基本结构如下：</p>
+<img src="/2022/06/26/dl-transformer/image-20240311102029954.png" alt="image-20240311102029954" style="zoom:67%;">
+
+<p>通过 scale 之前的步骤得到一个 attention map，<strong>而 mask 就是沿着对角线把灰色的区域用0覆盖掉，不给模型看到未来的信息</strong>，如下图所示：</p>
+<img src="/2022/06/26/dl-transformer/image-20240311102238651.png" alt="image-20240311102238651" style="zoom:67%;">
+
+<p>详细来说：</p>
+<ol>
+<li>“i” 作为第一个单词，只能有和 “i” 自己的 attention；</li>
+<li>“have” 作为第二个单词，有和 “i、have” 前面两个单词的 attention；</li>
+<li>“a” 作为第三个单词，有和 “i、have、a” 前面三个单词的 attention；</li>
+<li>“dream” 作为最后一个单词，才有对整个句子 4 个单词的 attention。</li>
+</ol>
+<p>并且在做完 softmax 之后，横轴结果合为 1。</p>
+<h2 id="Multi-head-Self-Attention"><a href="#Multi-head-Self-Attention" class="headerlink" title="Multi-head Self Attention"></a>Multi-head Self Attention</h2><p>Multi-Head Attention 就是把 Self Attention 得到的注意力值 $Z$ 切分成 $n$ 个 $Z_1,Z_2,⋯,Z_n$，然后通过全连接层获得新的 $Z′$​.</p>
+<img src="/2022/06/26/dl-transformer/image-20240311102410478.png" alt="image-20240311102410478" style="zoom:67%;">
+
+<p>过程如下：</p>
+<img src="/2022/06/26/dl-transformer/image-20240311102604769.png" alt="image-20240311102604769" style="zoom:80%;">
+
+<p>为了使得输出与输入结构相同，拼接矩阵 $Z_i$ 后乘以一个线性 $W_0$​ 得到最终的Z</p>
+<img src="/2022/06/26/dl-transformer/image-20240311102710282.png" alt="image-20240311102710282" style="zoom:80%;">
+
+<p><strong>多头相当于把原始信息 Source 放入了多个子空间中，也就是捕捉了多个信息，对于使用 multi-head（多头） attention 的简单回答就是，多头保证了 attention 可以注意到不同子空间的信息，捕捉到更加丰富的特征信息</strong>。</p>
+<h2 id="Position-Embedding"><a href="#Position-Embedding" class="headerlink" title="Position Embedding"></a>Position Embedding</h2><blockquote>
+<p>why need position embedding?</p>
+<p>Self Attention 的 Q、K、V 三个矩阵是由同一个输入 $X1&#x3D;(x_1,x_2,⋯,x_n)$线性转换而来，也就是说对于这样的一个被打乱序列顺序的 $X2&#x3D;(x_2,x_1,⋯,x_n)$ 而言，<strong>由于 Attention 值的计算最终会被加权求和，也就是说两者最终计算的 Attention 值都是一样的，进而也就表明了 Attention 丢掉了 $X1$​ 的序列顺序信息。</strong></p>
+</blockquote>
+<p>为了解决 Attention 丢失的序列顺序信息，Transformer 作者提出了 Position Embedding，也就是对于输入 $X$ 进行 Attention 计算之前，在 $X$ 的词向量中加上位置信息，也就是说 $X$ 的词向量为$X_{final _embedding}&#x3D;Embedding+Positional Embedding$​</p>
+<p>计算方法：</p>
+<img src="/2022/06/26/dl-transformer/image-20240310142148201.png" alt="image-20240310142148201" style="zoom:80%;">
+
+<p>其中 pos 表示位置、i 表示维度、$d_{model}$表示位置向量的向量维度 、$2i$、$2i+1$ 表示的是奇偶数（奇偶维度），上图所示就是偶数位置使用 $sin$ 函数，奇数位置使用 $cos$ 函数。</p>
+<p><img src="/2022/06/26/dl-transformer/image-20240310142323173.png" alt="image-20240310142323173"></p>
+<p><img src="/2022/06/26/dl-transformer/image-20240311103752075.png" alt="image-20240311103752075"></p>
+<p>假设 $pos&#x3D;1&#x3D;$我、$k&#x3D;2&#x3D;$爱、$pos+k&#x3D;$3&#x3D;吃，也就是说 $pos+k&#x3D;3$ 位置的位置向量的某一维可以通过 $pos&#x3D;1$ 位置的位置向量的某一维线性组合加以线性表示，通过该线性表示可以得出 “吃” 的位置编码信息蕴含了相对于前两个字 “我” 的位置编码信息。</p>
+<p>总而言之就是，<strong>某个单词的位置信息是其他单词位置信息的线性组合，这种线性组合就意味着位置向量中蕴含了相对位置信息。</strong></p>
+<h1 id="ELMo"><a href="#ELMo" class="headerlink" title="ELMo"></a>ELMo</h1><p>很多机器学习任务都需要带标签的数据集作为输入完成。但是我们身边存在大量没有标注的数据，例如文本、图片、代码等等。标注这些数据需要花费大量的人力和时间，标注的速度远远不及数据产生的速度，所以带有标签的数据往往只占有总数据集很小的一部分。随着算力的不断提高，计算机能够处理的数据量逐渐增大。如果不能很好利用这些无标签的数据就显得很浪费。</p>
+<p>所以半监督学习和预训练+微调的二阶段模式整变得越来越受欢迎。最常见的二阶段方法就是Word2Vec，使用大量无标记的文本训练出带有一定语义信息的词向量，然后将这些词向量作为下游机器学习任务的输入，就能够大大提高下游模型的泛化能力。</p>
+<h2 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h2><p>但是Word2Vec有一个问题，就是单个单词只能有一个Embedding。这样一来，一词多义就不能很好地进行表示。在实际使用 Word Embedding 的时候，单词已经具备了特定的上下文了，这个时候我可以根据上下文单词的语义再去调整单词的 Word Embedding 表示，这样经过调整后的 Word Embedding 更能表达在这个上下文中的具体含义，自然也就解决了多义词的问题了。所以 ELMo 本身是个根据当前上下文对 Word Embedding 动态调整的思路。</p>
+<p>ELMo 采用了典型的两阶段过程：</p>
+<ol>
+<li>第一个阶段是利用语言模型进行预训练；</li>
+<li>第二个阶段是在做下游任务时，从<strong>预训练网络中提取对应单词的网络各层的 Word Embedding 作为新特征</strong>补充到下游任务中。</li>
+</ol>
+<p><img src="/2022/06/26/dl-transformer/image-20240311131231189.png" alt="image-20240311131231189"></p>
+<p>上图展示的是其第一阶段预训练过程，它的网络结构采用了双层双向 LSTM，目前语言模型训练的任务目标是根据单词 $w_i$ 的上下文去正确预测单词 $w_i$，$w_i$ 之前的单词序列 Context-before 称为上文，之后的单词序列 Context-after 称为下文。</p>
+<p>图中左端的前向双层 LSTM 代表正方向编码器，输入的是从左到右顺序的除了预测单词外 $W_i$ 的上文 Context-before；右端的逆向双层 LSTM 代表反方向编码器，输入的是从右到左的逆序的句子下文Context-after；每个编码器的深度都是两层 LSTM 叠加。</p>
+<p>这个网络结构其实在 NLP 中是很常用的。使用这个网络结构利用大量语料做语言模型任务就能预先训练好这个网络，如果训练好这个网络后，输入一个新句子 $s_{new}$ ，句子中每个单词都能得到对应的三个 Embedding：</p>
+<ul>
+<li>最底层是单词的 Word Embedding；</li>
+<li>往上走是第一层双向 LSTM 中对应单词位置的 Embedding，这层编码单词的<strong>句法信息</strong>更多一些；</li>
+<li>再往上走是第二层 LSTM 中对应单词位置的 Embedding，这层编码单词的<strong>语义信息</strong>更多一些。</li>
+</ul>
+<p>也就是说，ELMo 的预训练过程不仅仅学会单词的 Word Embedding，还学会了一个双层双向的 LSTM 网络结构，而这两者后面都有用。</p>
+<h2 id="Feature-based-Pre-Training"><a href="#Feature-based-Pre-Training" class="headerlink" title="Feature-based Pre-Training"></a>Feature-based Pre-Training</h2><p><img src="/2022/06/26/dl-transformer/image-20240311131458647.png" alt="image-20240311131458647"></p>
+<p>上图展示了下游任务的使用过程，比如我们的下游任务仍然是 QA 问题，此时对于问句 X：</p>
+<ol>
+<li>我们可以先将句子 X 作为预训练好的 ELMo 网络的输入，这样句子 X 中每个单词在 ELMO 网络中都能获得对应的三个 Embedding；</li>
+<li>之后给予这三个 Embedding 中的每一个 Embedding 一个权重 a，这个权重可以学习得来，根据各自权重累加求和，将三个 Embedding 整合成一个；</li>
+<li>然后将整合后的这个 Embedding 作为 X 句在自己任务的那个网络结构中对应单词的输入，以此作为补充的新特征给下游任务使用。</li>
+<li>对于上图所示下游任务 QA 中的回答句子 Y 来说也是如此处理。</li>
+</ol>
+<p><strong>因为 ELMo 给下游提供的是每个单词的特征形式，所以这一类预训练的方法被称为 “Feature-based Pre-Training”。</strong></p>
+<p>至于为何这么做能够达到区分多义词的效果，原因在于在训练好 ELMo 后，<strong>在特征提取的时候，每个单词在两层 LSTM 上都会有对应的节点，这两个节点会编码单词的一些句法特征和语义特征，并且它们的 Embedding 编码是动态改变的</strong>，会受到上下文单词的影响，周围单词的上下文不同应该会强化某种语义，弱化其它语义，进而就解决了多义词的问题。</p>
+<h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h2><p>有N个encoder和N个decoder，所有encoder的结构一样但是参数不一样，decoder同理，就是所有都在一起训练。</p>
+<img src="/2022/06/26/dl-transformer/111.jpg" alt="image-20240310141449006" style="zoom: 67%;">
+
+<p>decoder比encoder多出了一个masked multi-head attention的结构，被掩盖的多头注意力机制。</p>
+<img src="/2022/06/26/dl-transformer/222.jpg" alt="aa" style="zoom:80%;">
+
+<img src="/2022/06/26/dl-transformer/image-20240311104228891.png" alt="image-20240311104228891" style="zoom:80%;">
+
+<h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><p>Encoder包含两个sub-layers：</p>
+<ul>
+<li>multi-head self-attention，计算输入的self-attention</li>
+<li>前馈神经网络feed- forward</li>
+</ul>
+<p>每个sub-layer都模拟了残差网络，其输出是 $LayerNorm(x + SubLayer(x))$。第一层就是 $o _1 &#x3D; LayerNorm(x + Attention(x))$，第二层就是 $o_2 &#x3D; LayerNorm(o_1 + FeedForward(o_1))$</p>
+<img src="/2022/06/26/dl-transformer/333.png" alt="333" style="zoom:80%;">
+
+<ol>
+<li>深绿色的 x1 表示 Embedding 层的输出，加上代表 Positional Embedding 的向量之后，得到最后输入 Encoder 中的特征向量，也就是浅绿色向量 x1；</li>
+<li>浅绿色向量 x1 表示单词 “Thinking” 的特征向量，其中 x1 经过 Self-Attention 层，变成浅粉色向量 z1；</li>
+<li>x1 作为残差结构的直连向量，直接和 z1 相加，之后进行 Layer Norm 操作，得到粉色向量 z1；<ul>
+<li>残差结构的作用：避免出现梯度消失的情况</li>
+<li>LayerNorm 的作用：为了保证数据特征分布的稳定性，并且可以加速模型的收敛</li>
+<li>为什么不用BN：BN适用于CNN和RNN等传统的神经网络结构，而LN更适用于Transformer模型这种基于自注意力机制的结构，在Transformer中，每个位置的特征都是相互独立的，因此逐位置的归一化更加合理。</li>
+</ul>
+</li>
+<li>z1 经过前馈神经网络层，经过残差结构与自身相加，之后经过 LN 层，得到一个输出向量 r1；<ul>
+<li>该前馈神经网络包括两个线性变换和一个ReLU激活函数$FFN(x)&#x3D;max(0,xW_1+b_1)W_2+b_2$</li>
+</ul>
+</li>
+<li>由于 Transformer 的 Encoders 具有 6 个 Encoder，<strong>r1也将会作为下一层 Encoder 的输入，代替 x1 的角色</strong>，如此循环，直至最后一层 Encoder。</li>
+</ol>
+<h2 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h2><p>Decoder包含三个sub-layers：</p>
+<ul>
+<li>Masked multi-head self-attention，也是计算输入的 self-attention</li>
+<li>Encoder-Decoder Attention 计算，对 Encoder 的输入和 Decoder 的Masked multi-head self-attention 的输出进行 attention 计算；</li>
+<li>前馈神经网络层，与 Encoder 相同。</li>
+</ul>
+<h3 id="Mask的作用"><a href="#Mask的作用" class="headerlink" title="Mask的作用"></a>Mask的作用</h3><ul>
+<li>训练阶段：我们知道 “je suis etudiant” 的翻译结果为 “I am a student”，我们把 “I am a student” 的 Embedding 输入到 Decoders 里面，翻译第一个词 “I” 时<ul>
+<li>如果对 “I am a student” attention 计算不做 mask，“am，a，student” 对 “I” 的翻译将会有一定的贡献</li>
+<li>如果对 “I am a student” attention 计算做 mask，“am，a，student” 对 “I” 的翻译将没有贡献</li>
+</ul>
+</li>
+<li>测试阶段：我们不知道 “我爱中国” 的翻译结果为 “I love China”，我们只能随机初始化一个 Embedding 输入到 Decoders 里面，翻译第一个词 “I” 时：<ul>
+<li>无论是否做 mask，“love，China” 对 “I” 的翻译都不会产生贡献</li>
+<li>但是翻译了第一个词 “I” 后，随机初始化的 Embedding 有了 “I” 的 Embedding，也就是说在翻译第二词 “love” 的时候，“I” 的 Embedding 将有一定的贡献，但是 “China” 对 “love” 的翻译毫无贡献，随之翻译的进行，<strong>已经翻译的结果将会对下一个要翻译的词都会有一定的贡献，这就和做了 mask 的训练阶段做到了一种匹配</strong></li>
+</ul>
+</li>
+</ul>
+<p>总结下就是：Decoder 做 Mask，是为了让训练阶段和测试阶段行为一致，不会出现间隙，避免过拟合。</p>
+<h3 id="为什么Decoder使用来自于Encoder的K、V矩阵"><a href="#为什么Decoder使用来自于Encoder的K、V矩阵" class="headerlink" title="为什么Decoder使用来自于Encoder的K、V矩阵"></a>为什么Decoder使用来自于Encoder的K、V矩阵</h3><p>Query 的目的是借助它从一堆信息中找到重要的信息。</p>
+<p>现在 Encoder 提供了 $K_e$、$V_e$ 矩阵，Decoder 提供了 $Q_d$ 矩阵，通过 “我爱中国” 翻译为 “I love China” 这句话详细解释下。</p>
+<p>当我们翻译 “I” 的时候，由于 Decoder 提供了  $Q_d$  矩阵，通过与 $K_e$、$V_e$ 矩阵的计算，它可以在 “我爱中国” 这四个字中找到对 “I” 翻译最有用的单词是哪几个，并以此为依据翻译出 “I” 这个单词，这就很好的体现了注意力机制想要达到的目的，把焦点放在对自己而言更为重要的信息上。</p>
+<h2 id="最后输出"><a href="#最后输出" class="headerlink" title="最后输出"></a>最后输出</h2><p><img src="/2022/06/26/dl-transformer/444.jpg" alt="344"></p>
+<p>Transformer 最后的工作是让解码器的输出通过线性层 Linear 后接上一个 softmax</p>
+<ul>
+<li>其中线性层是一个简单的全连接神经网络，它将解码器产生的向量 A 投影到一个更高维度的向量 B 上，假设我们模型的词汇表是10000个词，那么向量 B 就有10000个维度，每个维度对应一个惟一的词的得分。</li>
+<li>之后的softmax层将这些分数转换为概率。选择概率最大的维度，并对应地生成与之关联的单词作为此时间步的输出就是最终的输出</li>
+</ul>
+<h2 id="动态过程"><a href="#动态过程" class="headerlink" title="动态过程"></a>动态过程</h2><p><img src="/2022/06/26/dl-transformer/gif1.gif" alt="cartoon"></p>
+<p><img src="/2022/06/26/dl-transformer/gif2.gif" alt="cartoon"></p>
+<h1 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h1><p>Generative Pre-Training Transformer</p>
+<p>使用了单向的Transformer。在Transformer的文章中，提到了Encoder与Decoder使用的Transformer Block是不同的。在Decoder Block中，使用了Masked Self-Attention，即句子中的每个词，都只能对包括自己在内的前面所有词进行Attention，这就是单向Transformer。GPT使用的Transformer结构就是将Encoder中的Self-Attention替换成了Masked Self-Attention</p>
+<img src="/2022/06/26/dl-transformer/image-20240311140930312.png" alt="image-20240311140930312" style="zoom: 67%;">
+
+<h2 id="预训练-1"><a href="#预训练-1" class="headerlink" title="预训练"></a>预训练</h2><p>除了以 ELMo 为代表的这种基于特征融合的预训练方法外，NLP 里还有一种典型做法，这种做法和图像领域的方式就是看上去一致的了，一般将这种方法称为 “基于Fine-tuning的模式”，而 GPT 就是这一模式的典型开创者。</p>
+<p>GPT也采用两阶段过程：</p>
+<ol>
+<li>第一个阶段：利用语言模型进行预训练；</li>
+<li>第二个阶段：通过 Fine-tuning 的模式解决下游任务。</li>
+</ol>
+<p>上图展示了 GPT 的预训练过程，其实和 ELMo 是类似的，主要不同在于两点：</p>
+<ul>
+<li>首先，特征抽取器用的不是 RNN，而是用的 Transformer，它的特征抽取能力要强于RNN，这个选择很明显是很明智的；</li>
+<li>其次，<ul>
+<li>GPT 的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，所谓 “单向” 的含义是指：语言模型训练的任务目标是根据 $w_i$单词的上下文去正确预测单词 $w_i$ 。</li>
+<li>ELMo 在做语言模型预训练的时候，预测单词 $w_i$ 同时使用了上文和下文，而 GPT 则只采用 Context-before 这个单词的上文来进行预测，而抛开了下文。</li>
+<li>GPT 这个选择现在看不是个太好的选择，原因很简单，它没有把单词的下文融合进来，这限制了其在更多应用场景的效果，比如阅读理解这种任务，在做任务的时候是可以允许同时看到上文和下文一起做决策的。如果预训练时候不把单词的下文嵌入到 Word Embedding 中，是很吃亏的，白白丢掉了很多信息。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Fine-tuning"><a href="#Fine-tuning" class="headerlink" title="Fine-tuning"></a>Fine-tuning</h2><ol>
+<li>首先，对于不同的下游任务来说，本来可以任意设计自己的网络结构，现在不行了，你要向 GPT 的网络结构看齐，把任务的网络结构改造成和 GPT 一样的网络结构。</li>
+<li>然后，在做下游任务的时候，利用第一步预训练好的参数初始化 GPT 的网络结构，这样通过预训练学到的语言学知识就被引入到你手头的任务里来了。</li>
+<li>再次，你可以用手头的任务去训练这个网络，对网络参数进行 Fine-tuning，使得这个网络更适合解决手头的问题。</li>
+</ol>
+<h1 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h1><blockquote>
+<p>Bidirectional Encoder Representations from Transformers</p>
+<p>一个真正的集大成者：参考了 ELMO 模型的双向编码思想、借鉴了 GPT 用 Transformer 作为特征提取器的思路、采用了 word2vec 所使用的 CBOW $^{[1]}$方法</p>
+<p>$[1]$ Word2Vec 有两种训练方法：</p>
+<ul>
+<li>第一种叫 CBOW，<strong>核心思想是从一个句子里面把一个词抠掉</strong>，用这个词的上文和下文去预测被抠掉的这个词；</li>
+<li>第二种叫做 Skip-gram，和 CBOW 正好反过来，输入某个单词，要求网络预测它的上下文单词。</li>
+</ul>
+</blockquote>
+<ul>
+<li>BERT 和 GPT 之间的区别：<ul>
+<li>GPT：<strong>GPT 使用 Transformer Decoder 作为特征提取器、具有良好的文本生成能力</strong>，然而当前词的语义只能由其前序词决定，并且在语义理解上不足</li>
+<li>BERT：使用了 Transformer Encoder 作为特征提取器，并使用了与其配套的掩码训练方法。<strong>虽然使用双向编码让 BERT 不再具有文本生成能力，但是 BERT 的语义信息提取能力更强</strong></li>
+</ul>
+</li>
+<li>单向编码和双向编码的差异，以该句话举例 “今天天气很{}，我们不得不取消户外运动”，分别从单向编码和双向编码的角度去考虑 {} 中应该填什么词：<ul>
+<li>单向编码：单向编码只会考虑 “今天天气很”，以人类的经验，大概率会从 “好”、“不错”、“差”、“糟糕” 这几个词中选择，这些词可以被划为截然不同的两类</li>
+<li>双向编码：<strong>双向编码会同时考虑上下文的信息</strong>，即除了会考虑 “今天天气很” 这五个字，还会考虑 “我们不得不取消户外运动” 来帮助模型判断，则大概率会从 “差”、“糟糕” 这一类词中选择</li>
+</ul>
+</li>
+</ul>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p><img src="/2022/06/26/dl-transformer/image-20240311135134326.png" alt="image-20240311135134326"></p>
+<ul>
+<li><p>ELMo 使用自左向右编码和自右向左编码的两个 LSTM 网络，分别以$ P(w_i|w_1,⋯,w_{i−1})$ 和 $P(w_i|w_{i+1},⋯,w_n)$为目标函数独立训练，<strong>将训练得到的特征向量以拼接的形式实现双向编码，本质上还是单向编码，只不过是两个方向上的单向编码的拼接而成的双向编码</strong>。</p>
+</li>
+<li><p>GPT 使用 Transformer Decoder 作为 Transformer Block，以 $ P(w_i|w_1,⋯,w_{i−1})$ 为目标函数进行训练，<strong>用 Transformer Block 取代 LSTM 作为特征提取器，实现了单向编码，是一个标准的预训练语言模型，即使用 Fine-Tuning 模式解决下游任务。</strong></p>
+</li>
+<li><p>BERT 也是一个标准的预训练语言模型，</p>
+<p>它以 $P(w_i|w_1,⋯,w_{i−1},w_{i+1},⋯,w_n)$为目标函数进行训练，BERT 使用的编码器属于双向编码器。</p>
+<ul>
+<li>BERT 和 ELMo 的区别在于使用 Transformer Block 作为特征提取器，加强了语义特征提取的能力；</li>
+<li>BERT 和 GPT 的区别在于使用 Transformer Encoder 作为Transformer Block，并且将 GPT 的单向编码改成双向编码，也就是说 BERT 舍弃了文本生成能力，换来了更强的语义理解能力。</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/06/26/dl-transformer/555.jpg" alt="bert" style="zoom:80%;">
+
+<h2 id="无监督训练"><a href="#无监督训练" class="headerlink" title="无监督训练"></a>无监督训练</h2><p>和 GPT 一样，BERT 也采用二段式训练方法：</p>
+<ol>
+<li>第一阶段：使用易获取的大规模无标签余料，来训练基础语言模型；</li>
+<li>第二阶段：根据指定任务的少量带标签训练数据进行微调训练。</li>
+</ol>
+<p>不同于 GPT 等标准语言模型使用 $ P(w_i|w_1,⋯,w_{i−1})$ 为目标函数进行训练，能看到全局信息的 BERT 使用  $P(w_i|w_1,⋯,w_{i−1},w_{i+1},⋯,w_n)$ 为目标函数进行训练。</p>
+<p>BERT 用语言掩码模型（MLM）方法训练词的语义理解能力；用下句预测（NSP）方法训练句子之间的理解能力，从而更好地支持下游任务。</p>
+<h3 id="MLM"><a href="#MLM" class="headerlink" title="MLM"></a>MLM</h3><p>MLM 方法也就是随机去掉句子中的部分 token（单词），然后模型来预测被去掉的 token 是什么。<strong>这样实际上已经不是传统的神经网络语言模型(类似于生成模型)了，而是单纯作为分类问题</strong>，根据这个时刻的 hidden state 来预测这个时刻的 token 应该是什么，而不是预测下一个时刻的词的概率分布了。</p>
+<p>随机去掉的 token 被称作掩码词，在训练中，掩码词将以 15% 的概率被替换成 [MASK]，也就是说随机 mask 语料中 15% 的 token，这个操作则称为掩码操作。注意：<strong>在CBOW 模型中，每个词都会被预测一遍。</strong></p>
+<p>但是这样设计 MLM 的训练方法会引入弊端：<strong>在模型微调训练阶段或模型推理（测试）阶段，输入的文本中将没有 [MASK]，进而导致产生由训练和预测数据偏差导致的性能损失。</strong></p>
+<p>考虑到上述的弊端，BERT 并没有总用 [MASK] 替换掩码词，而是按照一定比例选取替换词。在选择 15% 的词作为掩码词后这些掩码词有三类替换选项：</p>
+<ul>
+<li>80% 练样本中：将选中的词用 [MASK] 来代替</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是[MASK]八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10% 的训练样本中：选中的词不发生变化，<strong>该做法是为了缓解训练文本和预测文本的偏差带来的性能损失</strong></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是太阳系八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10% 的训练样本中：将选中的词用任意的词来进行代替，<strong>该做法是为了让 BERT 学会根据上下文信息自动纠错</strong></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“地球是苹果八大行星之一”</span><br></pre></td></tr></table></figure>
+
+<h3 id="NSP"><a href="#NSP" class="headerlink" title="NSP"></a>NSP</h3><p><strong>单词预测粒度的训练到不了句子关系这个层级</strong>，为了<strong>学会捕捉句子之间的语义联系</strong>，BERT 采用了下句预测（NSP ）作为无监督预训练的一部分。</p>
+<p>NSP 的具体做法是，BERT 输入的语句将由两个句子构成，其中，50% 的概率将语义连贯的两个连续句子作为训练文本（<strong>连续句对一般选自篇章级别的语料，以此确保前后语句的语义强相关</strong>），另外 50% 的概率将完全随机抽取两个句子作为训练文本。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">连续句对：[CLS]今天天气很糟糕[SEP]下午的体育课取消了[SEP]</span><br><span class="line">随机句对：[CLS]今天天气很糟糕[SEP]鱼快被烤焦啦[SEP]</span><br></pre></td></tr></table></figure>
+
+<p>其中 [SEP] 标签表示分隔符。 [CLS] 表示标签用于类别预测，结果为 1，表示输入为连续句对；结果为 0，表示输入为随机句对。</p>
+<p>通过训练 [CLS] 编码后的输出标签，<strong>BERT 可以学会捕捉两个输入句对的文本语义</strong>，在连续句对的预测任务中，BERT 的正确率可以达到 97%-98%。</p>
+<h2 id="BERT的输入"><a href="#BERT的输入" class="headerlink" title="BERT的输入"></a>BERT的输入</h2><p>BERT 在预训练阶段使用了前文所述的两种训练方法，<strong>在真实训练中一般是两种方法混合使用</strong>。</p>
+<p>由于 BERT 通过 Transformer 模型堆叠而成，所以 BERT 的输入需要两套 Embedding 操作：</p>
+<ul>
+<li>一套为 One-hot 词表映射编码（对应下图的 Token Embeddings）；</li>
+<li>另一套为位置编码（对应下图的 Position Embeddings），<strong>不同于 Transformer 的位置编码用三角函数表示，BERT 的位置编码将在预训练过程中训练得到（训练思想类似于Word Embedding 的 Q 矩阵）</strong></li>
+<li>由于在 MLM 的训练过程中，存在单句输入和双句输入的情况，因此 BERT 还需要一套区分输入语句的分割编码（对应下图的 Segment Embeddings），BERT 的分割编码也将在预训练过程中训练得到</li>
+</ul>
+<p><img src="/2022/06/26/dl-transformer/image-20240311163151756.png" alt="image-20240311163151756"></p>
+<p>对于分割编码，Segment Embeddings 层只有两种向量表示。前一个向量是把 0 赋给第一个句子中的各个 token，后一个向量是把 1 赋给第二个句子中的各个 token ；如果输入仅仅只有一个句子，那么它的 segment embedding 就是全 0，下面我们简单举个例子描述下：</p>
+<blockquote>
+<p>[CLS]I like dogs[SEP]I like cats[SEP] 对应编码 0 0 0 0 0 1 1 1 1</p>
+<p>[SEP]I Iike dogs and cats[SEP] 对应编码 0 0 0 0 0 0 0</p>
+</blockquote>
+<h2 id="下游任务改造"><a href="#下游任务改造" class="headerlink" title="下游任务改造"></a>下游任务改造</h2><h3 id="句对分类"><a href="#句对分类" class="headerlink" title="句对分类"></a>句对分类</h3><p>给定两个句子，判断它们的关系，称为句对分类，例如判断句对是否相似、判断后者是否为前者的答案。</p>
+<p>针对句对分类任务，BERT 在预训练过程中就使用了 NSP 训练方法获得了直接捕获句对语义关系的能力。</p>
+<p><strong>如下图所示，句对用 [SEP] 分隔符拼接成文本序列，在句首加入标签 [CLS]，将句首标签所对应的输出值作为分类标签，计算预测分类标签与真实分类标签的交叉熵，将其作为优化目标，在任务数据上进行微调训练。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183314242.png" alt="image-20240311183314242" style="zoom:80%;">
+
+<p>针对二分类任务，BERT 不需要对输入数据和输出数据的结构做任何改动，直接使用与 NSP 训练方法一样的输入和输出结构就行。</p>
+<p>针对多分类任务，需要在句首标签 [CLS] 的输出特征向量后接一个全连接层和 Softmax 层，保证输出维数与类别数目一致，最后通过 arg max 操作（取最大值时对应的索引序号）得到相对应的类别结果。</p>
+<p>下面给出句对分相似性任务的实例：</p>
+<blockquote>
+<p>任务：判断句子 “我很喜欢你” 和句子 “我很中意你” 是否相似</p>
+<p>输入改写：“[CLS]我很喜欢你[SEP]我很中意你”</p>
+<p>取 “[CLS]” 标签对应输出：[0.02, 0.98]</p>
+<p>通过 arg max 操作得到相似类别为 1（类别索引从 0 开始），即两个句子相似</p>
+</blockquote>
+<h3 id="单句分类"><a href="#单句分类" class="headerlink" title="单句分类"></a>单句分类</h3><p>给定一个句子，判断该句子的类别，统称为单句分类，例如判断情感类别、判断是否为语义连贯的句子。</p>
+<p>针对单句二分类任务，也无须对 BERT 的输入数据和输出数据的结构做任何改动。</p>
+<p><strong>如下图所示，单句分类在句首加入标签 [CLS]，将句首标签所对应的输出值作为分类标签，计算预测分类标签与真实分类标签的交叉熵，将其作为优化目标，在任务数据上进行微调训练。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183426949.png" alt="image-20240311183426949" style="zoom:80%;">
+
+<p>同样，针对多分类任务，需要在句首标签 [CLS] 的输出特征向量后接一个全连接层和 Softmax 层，保证输出维数与类别数目一致，最后通过 argmax 操作得到相对应的类别结果。</p>
+<p>下面给出语义连贯性判断任务的实例：</p>
+<blockquote>
+<p>任务：判断句子“海大球星饭茶吃” 是否为一句话</p>
+<p>输入改写：“[CLS]海大球星饭茶吃”</p>
+<p>取 “[CLS]” 标签对应输出：[0.99, 0.01]</p>
+<p>通过 arg max 操作得到相似类别为 0，即这个句子不是一个语义连贯的句子</p>
+</blockquote>
+<h3 id="文本回答"><a href="#文本回答" class="headerlink" title="文本回答"></a>文本回答</h3><p>给定一个问句和一个蕴含答案的句子，找出答案在后这种的位置，称为文本问答，例如给定一个问题（句子 A），在给定的段落（句子 B）中标注答案的其实位置和终止位置。</p>
+<p><strong>文本问答任何和前面讲的其他任务有较大的差别，无论是在优化目标上，还是在输入数据和输出数据的形式上，都需要做一些特殊的处理。</strong></p>
+<p>为了标注答案的起始位置和终止位置，BERT 引入两个辅助向量 s（start，判断答案的起始位置） 和 e（end，判断答案的终止位置）。</p>
+<p><strong>如下图所示，BERT 判断句子 B 中答案位置的做法是，将句子 B 中的每一个次得到的最终特征向量 $T′_i$​ 经过全连接层（利用全连接层将词的抽象语义特征转化为任务指向的特征）后，分别与向量 s 和 e 求内积，对所有内积分别进行 softmax 操作，即可得到词 Tok m（m∈[1,M]）作为答案其实位置和终止位置的概率。最后，去概率最大的片段作为最终的答案</strong>。</p>
+<img src="/2022/06/26/dl-transformer/image-20240311183641818.png" alt="image-20240311183641818" style="zoom:80%;">
+
+<p>文本回答任务的微调训练使用了两个技巧：</p>
+<ol>
+<li>用全连接层把 BERT 提取后的深层特征向量转化为用于判断答案位置的特征向量</li>
+<li>引入辅助向量 s 和 e 作为答案其实位置和终止位置的基准向量，明确优化目标的方向和度量方法</li>
+</ol>
+<p>下面给出文本问答任务的实例：</p>
+<blockquote>
+<p>任务：给定问句 “今天的最高温度是多少”，在文本 “天气预报显示今天最高温度 37 摄氏度” 中标注答案的起始位置和终止位置</p>
+<p>输入改写：“[CLS]今天的最高温度是多少[SEP]天气预报显示今天最高温度 37 摄氏度”</p>
+<p>BERT Softmax 结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">篇章文本</th>
+<th align="center">天气</th>
+<th align="center">预报</th>
+<th align="center">显示</th>
+<th align="center">今天</th>
+<th align="center">最高温</th>
+<th align="center">37</th>
+<th align="center">摄氏度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">起始位置概率</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.04</td>
+<td align="center">0.10</td>
+<td align="center">0.80</td>
+<td align="center">0.03</td>
+</tr>
+<tr>
+<td align="center">终止位置概率</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.03</td>
+<td align="center">0.04</td>
+<td align="center">0.10</td>
+<td align="center">0.80</td>
+</tr>
+</tbody></table>
+<p>对 Softmax 的结果取 arg max，得到答案的起始位置为 6，终止位置为 7，即答案为 “37 摄氏度”</p>
+</blockquote>
+<h3 id="单句标注"><a href="#单句标注" class="headerlink" title="单句标注"></a>单句标注</h3><p>给定一个句子，标注每个次的标签，称为单句标注。例如给定一个句子，标注句子中的人名、地名和机构名。</p>
+<p>单句标注任务和 BERT 预训练任务具有较大差异，但与文本问答任务较为相似。</p>
+<p><strong>如下图所示，在进行单句标注任务时，需要在每个词的最终语义特征向量之后添加全连接层，将语义特征转化为序列标注任务所需的特征，单句标注任务需要对每个词都做标注，因此不需要引入辅助向量，直接对经过全连接层后的结果做 Softmax 操作，即可得到各类标签的概率分布。</strong></p>
+<img src="/2022/06/26/dl-transformer/image-20240311183719856.png" alt="image-20240311183719856" style="zoom:80%;">
+
+<p>由于 BERT 需要对输入文本进行分词操作，独立词将会被分成若干子词，因此 BERT 预测的结果将会是 5 类（细分为 13 小类）：</p>
+<ul>
+<li>O（非人名地名机构名，O 表示 Other）</li>
+<li>B-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名初始单词，B 表示 Begin）</li>
+<li>I-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名中间单词，I 表示 Intermediate）</li>
+<li>E-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名终止单词，E 表示 End）</li>
+<li>S-PER&#x2F;LOC&#x2F;ORG（人名&#x2F;地名&#x2F;机构名独立单词，S 表示 Single）</li>
+</ul>
+<p>将 5 大类的首字母结合，可得 IOBES，这是序列标注最常用的标注方法。</p>
+<p>下面给出命名实体识别（NER）任务的示例：</p>
+<blockquote>
+<p>任务：给定句子 “爱因斯坦在柏林发表演讲”，根据 IOBES 标注 NER 结果</p>
+<p>输入改写：“[CLS]爱 因 斯坦 在 柏林 发表 演讲”</p>
+<p>BERT Softmax 结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">BOBES</th>
+<th align="center">爱</th>
+<th align="center">因</th>
+<th align="center">斯坦</th>
+<th align="center">在</th>
+<th align="center">柏林</th>
+<th align="center">发表</th>
+<th align="center">演讲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">O</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.90</td>
+</tr>
+<tr>
+<td align="center">B-PER</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">I-PER</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">E-PER</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.90</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+<tr>
+<td align="center">S-LOC</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+<td align="center">0.01</td>
+</tr>
+</tbody></table>
+<p>对 Softmax 的结果取 arg max，得到最终地 NER 标注结果为：“爱因斯坦” 是人名；“柏林” 是地名</p>
+</blockquote>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/07/24/leetcode-15/" title="15.三数之和">
+                    <div class="nextTitle">15.三数之和</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/06/10/essay-1/" title="如若还能下一场2018年的银杏雨">
+                    <div class="prevTitle">如若还能下一场2018年的银杏雨</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">时序模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RNN"><span class="toc-number">1.1.</span> <span class="toc-text">RNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.2.</span> <span class="toc-text">梯度消失问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM"><span class="toc-number">1.2.</span> <span class="toc-text">LSTM</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Attention"><span class="toc-number">2.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">2.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Attention"><span class="toc-number">2.2.</span> <span class="toc-text">Self Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">向量计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.3.</span> <span class="toc-text">矩阵计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8ERNN%E3%80%81LSTM%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.2.4.</span> <span class="toc-text">与RNN、LSTM的比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Masked-Self-Attention"><span class="toc-number">2.3.</span> <span class="toc-text">Masked Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-head-Self-Attention"><span class="toc-number">2.4.</span> <span class="toc-text">Multi-head Self Attention</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Position-Embedding"><span class="toc-number">2.5.</span> <span class="toc-text">Position Embedding</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELMo"><span class="toc-number">3.</span> <span class="toc-text">ELMo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="toc-number">3.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-based-Pre-Training"><span class="toc-number">3.2.</span> <span class="toc-text">Feature-based Pre-Training</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transformer"><span class="toc-number">4.</span> <span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80"><span class="toc-number">4.1.</span> <span class="toc-text">全局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encoder"><span class="toc-number">4.2.</span> <span class="toc-text">Encoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decoder"><span class="toc-number">4.3.</span> <span class="toc-text">Decoder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mask%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.3.1.</span> <span class="toc-text">Mask的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88Decoder%E4%BD%BF%E7%94%A8%E6%9D%A5%E8%87%AA%E4%BA%8EEncoder%E7%9A%84K%E3%80%81V%E7%9F%A9%E9%98%B5"><span class="toc-number">4.3.2.</span> <span class="toc-text">为什么Decoder使用来自于Encoder的K、V矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E8%BE%93%E5%87%BA"><span class="toc-number">4.4.</span> <span class="toc-text">最后输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%BF%87%E7%A8%8B"><span class="toc-number">4.5.</span> <span class="toc-text">动态过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPT"><span class="toc-number">5.</span> <span class="toc-text">GPT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83-1"><span class="toc-number">5.1.</span> <span class="toc-text">预训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fine-tuning"><span class="toc-number">5.2.</span> <span class="toc-text">Fine-tuning</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BERT"><span class="toc-number">6.</span> <span class="toc-text">BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">6.1.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E8%AE%AD%E7%BB%83"><span class="toc-number">6.2.</span> <span class="toc-text">无监督训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MLM"><span class="toc-number">6.2.1.</span> <span class="toc-text">MLM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSP"><span class="toc-number">6.2.2.</span> <span class="toc-text">NSP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BERT%E7%9A%84%E8%BE%93%E5%85%A5"><span class="toc-number">6.3.</span> <span class="toc-text">BERT的输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1%E6%94%B9%E9%80%A0"><span class="toc-number">6.4.</span> <span class="toc-text">下游任务改造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A5%E5%AF%B9%E5%88%86%E7%B1%BB"><span class="toc-number">6.4.1.</span> <span class="toc-text">句对分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8F%A5%E5%88%86%E7%B1%BB"><span class="toc-number">6.4.2.</span> <span class="toc-text">单句分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%9B%9E%E7%AD%94"><span class="toc-number">6.4.3.</span> <span class="toc-text">文本回答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8F%A5%E6%A0%87%E6%B3%A8"><span class="toc-number">6.4.4.</span> <span class="toc-text">单句标注</span></a></li></ol></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span>
+            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span>
+            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/10</span>
+            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="随笔">
+                <span class="iconfont-archer">&#xe606;</span>
+                随笔
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="年末总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            年末总结
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>
