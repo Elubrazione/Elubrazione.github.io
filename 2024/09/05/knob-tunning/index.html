@@ -26,10 +26,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="reading notes of a survey about knob tuning">
 <meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/05/knob-tunning/1.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/05/knob-tunning/2.png">
 <meta property="article:published_time" content="2024-09-05T04:18:37.000Z">
-<meta property="article:modified_time" content="2024-09-06T09:11:53.719Z">
+<meta property="article:modified_time" content="2024-09-21T06:14:51.933Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2024/09/05/knob-tunning/1.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon1.ico">
@@ -301,7 +304,7 @@
     <!-- 404页  -->
     
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/lsrf.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index_dark-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
@@ -345,7 +348,7 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">680</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -517,7 +520,7 @@
 </ul>
 </li>
 <li>a tuning methoad is evaluated from<ul>
-<li>performance &#x3D;? how well it can achieves the objectives in a given scenario</li>
+<li>performance &#x3D;&gt; how well it can achieves the objectives in a given scenario</li>
 <li>Overhead &#x3D;&gt; how much time or system resource it requires</li>
 <li>Adaptivity (<strong>more crucial for online tuning</strong>) &#x3D;&gt; how well it achieves the objectives in new scenarios</li>
 <li>safety (<strong>more crucial for online tuning</strong>) &#x3D;&gt; whether it can avoid selecting knob settings that cause performance degradation</li>
@@ -545,7 +548,7 @@
 </ul>
 </li>
 </ul>
-<p>![Screenshot 2024-09-05 at 12.35.34](.&#x2F;knob-tunning&#x2F;Screenshot 2024-09-05 at 12.35.34.png)</p>
+<p><img src="/2024/09/05/knob-tunning/1.png" alt="Screenshot 2024-09-05 at 12.35.34"></p>
 <h1 id="framework"><a href="#framework" class="headerlink" title="framework"></a>framework</h1><p>knob tuning <strong>includes</strong></p>
 <h2 id="knob-selection"><a href="#knob-selection" class="headerlink" title="knob selection"></a>knob selection</h2><h3 id="Main-categories-of-knobs"><a href="#Main-categories-of-knobs" class="headerlink" title="Main categories of knobs"></a>Main categories of knobs</h3><ul>
 <li>access control<ul>
@@ -576,9 +579,36 @@
 </ul>
 <h3 id="Existing-selection-algorithm"><a href="#Existing-selection-algorithm" class="headerlink" title="Existing selection algorithm"></a>Existing selection algorithm</h3><p>&#x3D;&gt; <strong>filter</strong> unimportant knobs and <strong>reduce</strong> the configuration space</p>
 <ul>
-<li>Empirical-based</li>
-<li>Ranking-based</li>
-<li><u>pros of above two</u><ul>
+<li><p>Empirical-based</p>
+</li>
+<li><p>Ranking-based</p>
+<ul>
+<li><p><strong>sample collection</strong> &#x3D;&gt; aim to provide high-quality samples (knob settings) for knob ranking</p>
+<ul>
+<li><strong>randomly</strong> select knob settings as samples &#x3D;&gt; <u>lead to bias and miss many conbinations of effective knob values</u></li>
+<li><strong>latin hypercube sampling (LHS)</strong> &#x3D;&gt; <u>cannot utilize prior knowledge to filter inferior knob settings, which lead to many ineffective samples</u></li>
+<li><strong>hybrid</strong> method used in HUNTER &#x3D;&gt; generate samples based on both the empirical rules and search algorithm, <u>hard to generalize to different scenarios</u></li>
+</ul>
+</li>
+<li><p><strong>knob ranking</strong> &#x3D;&gt; aims to rank the knobs based on collected configuration samples</p>
+<ul>
+<li><p>Plackett &amp; Burman (P&amp;B)</p>
+</li>
+<li><p>a linear regression method called <strong>Lasso</strong> used in <strong>OtterTune</strong> </p>
+<p>&#x3D;&gt; takes samples as independent variables (X) and takes the selected performance metrics as dependent variables (y).</p>
+<p>&#x3D;&gt; It employs a regularized version of least squares to rank the knobs and it’s a regression model function that shrinks the weights of the knobs towards those with high-performance impact. By automatically adjusting the value of parameter lambda, Lasso can control the number of knobs it selects.</p>
+<p>&#x3D;&gt; however it ignores the non-linear relationship between knobs so that the selected knob affects the ordering of the other knobs</p>
+</li>
+<li><p>ensemble of regression trees</p>
+<p>&#x3D;&gt; builds a random forest for the samples and the corresponding performance and selects important knobs based on the random forests.</p>
+<p>&#x3D;&gt; it can capture the non-linear relationship between knobs</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><u>pros of above two</u></p>
+<ul>
 <li>rely on simple assumptions</li>
 <li>can’t capture the correlations of knobs</li>
 <li>miss valuable knobs</li>
@@ -586,18 +616,62 @@
 </ul>
 </li>
 </ul>
-<h2 id="Feature-selection"><a href="#Feature-selection" class="headerlink" title="Feature selection"></a>Feature selection</h2><h3 id="commonly-used-features"><a href="#commonly-used-features" class="headerlink" title="commonly-used features"></a>commonly-used features</h3><ul>
-<li>workload features<ul>
+<h2 id="Feature-selection"><a href="#Feature-selection" class="headerlink" title="Feature selection"></a>Feature selection</h2><h3 id="commonly-used-features"><a href="#commonly-used-features" class="headerlink" title="commonly-used features"></a>commonly-used features</h3><p>tuning features includes:</p>
+<h4 id="workload-features"><a href="#workload-features" class="headerlink" title="workload features"></a>workload features</h4><ul>
+<li>capture the workload characteristic</li>
 <li>operators, execution costs</li>
+<li><u>three main characteristic</u> that determine the tuning requirements of different workloads<ul>
+<li>query featrues</li>
+<li>concurrency features</li>
+<li>accessed data features</li>
 </ul>
 </li>
-<li>database metric features<ul>
+</ul>
+<h4 id="database-metric-features"><a href="#database-metric-features" class="headerlink" title="database metric features"></a>database metric features</h4><ul>
+<li>capture the underlying database characteristic</li>
 <li>extracted from executions</li>
 <li>can infer the database state under the workload</li>
+<li><u>three categories to reflect</u> the execution state:<ul>
+<li>tuning objective metrics &#x3D;&gt; <strong>1) identify important knobs, 2) evaluate tuning methods and 3) reflect the database performance or resource usage</strong><ul>
+<li>latency</li>
+<li>throughput</li>
+</ul>
+</li>
+<li>database runtime metrics &#x3D;&gt; <strong>utilize database state metrics to reflect the workloads at database level and query state metrics for query-level tuning</strong><ul>
+<li>database state metrics</li>
+<li>query state metrics</li>
+</ul>
+</li>
+<li>table statistics &#x3D;&gt; <strong>1) reflect the data distribution and 2) profile the scale of access data</strong></li>
 </ul>
 </li>
 </ul>
-<h3 id="existing-techniques"><a href="#existing-techniques" class="headerlink" title="existing techniques"></a>existing techniques</h3><h2 id="Tuning-methods"><a href="#Tuning-methods" class="headerlink" title="Tuning methods"></a>Tuning methods</h2><h3 id="4-tuning-methods"><a href="#4-tuning-methods" class="headerlink" title="4 tuning methods"></a>4 tuning methods</h3><ul>
+<h3 id="existing-techniques"><a href="#existing-techniques" class="headerlink" title="existing techniques"></a>existing techniques</h3><p><u>two main approaches</u></p>
+<ul>
+<li><p><strong>workload encoding</strong></p>
+<ul>
+<li><p><u>the read&#x2F;write ratios of the workload</u></p>
+<p>&#x3D;&gt; the read-only, write-only, and read-write workloads.</p>
+</li>
+<li><p><u>extracting detailed query information</u> to represent the workload execution features</p>
+<p>&#x3D;&gt; build a vector based on the query plan and the cost estimation</p>
+<p>&#x3D;&gt; the vector contains three parts, i.t., the query types, the tables used by the query, and the query cost</p>
+</li>
+<li><p><u>occurency frequency</u></p>
+<p>&#x3D;&gt; only usilize the sql query features</p>
+<ol>
+<li>selectively extract some keywords for queries that <strong>frequently appear</strong> and utilize a probabilistic model called Term Frequency - Inverse Document Frequency (TF-IDF), which helps to <strong>identify the importance of extracted keywords</strong></li>
+<li>infer the cost levels by utilizing random forest to classify queries based on their TF-IDF feature vectors.</li>
+<li>utilize the TF-IDF feature vectors and average cost levels to represent the corresponding workload</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>database metric selection</strong></p>
+</li>
+</ul>
+<p><img src="/2024/09/05/knob-tunning/2.png" alt="Screenshot 2024-09-21 at 13.42.58"></p>
+<h2 id="Tuning-methods"><a href="#Tuning-methods" class="headerlink" title="Tuning methods"></a>Tuning methods</h2><h3 id="4-tuning-methods"><a href="#4-tuning-methods" class="headerlink" title="4 tuning methods"></a>4 tuning methods</h3><ul>
 <li>heuristic<ul>
 <li>cons &#x3D;&gt; easy to implement</li>
 <li>pros<ul>
@@ -667,6 +741,11 @@
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2024/09/19/dair-everything-envs/" title="服务器相关">
+                    <div class="nextTitle">服务器相关</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -825,7 +904,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Everything"><span class="toc-number">1.</span> <span class="toc-text">Everything</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tuning-problems"><span class="toc-number">1.1.</span> <span class="toc-text">tuning problems</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#framework"><span class="toc-number">2.</span> <span class="toc-text">framework</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-selection"><span class="toc-number">2.1.</span> <span class="toc-text">knob selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-categories-of-knobs"><span class="toc-number">2.1.1.</span> <span class="toc-text">Main categories of knobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Existing-selection-algorithm"><span class="toc-number">2.1.2.</span> <span class="toc-text">Existing selection algorithm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-selection"><span class="toc-number">2.2.</span> <span class="toc-text">Feature selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commonly-used-features"><span class="toc-number">2.2.1.</span> <span class="toc-text">commonly-used features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#existing-techniques"><span class="toc-number">2.2.2.</span> <span class="toc-text">existing techniques</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuning-methods"><span class="toc-number">2.3.</span> <span class="toc-text">Tuning methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-tuning-methods"><span class="toc-number">2.3.1.</span> <span class="toc-text">4 tuning methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#challenges-summary"><span class="toc-number">2.3.2.</span> <span class="toc-text">challenges summary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transfer-techniques"><span class="toc-number">2.4.</span> <span class="toc-text">transfer techniques</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#common-feature-extraction"><span class="toc-number">2.4.1.</span> <span class="toc-text">common feature extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adaptive-weight-transferring"><span class="toc-number">2.4.2.</span> <span class="toc-text">adaptive weight transferring</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-tuning-system"><span class="toc-number">2.5.</span> <span class="toc-text">knob tuning system</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Everything"><span class="toc-number">1.</span> <span class="toc-text">Everything</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tuning-problems"><span class="toc-number">1.1.</span> <span class="toc-text">tuning problems</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#framework"><span class="toc-number">2.</span> <span class="toc-text">framework</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-selection"><span class="toc-number">2.1.</span> <span class="toc-text">knob selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-categories-of-knobs"><span class="toc-number">2.1.1.</span> <span class="toc-text">Main categories of knobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Existing-selection-algorithm"><span class="toc-number">2.1.2.</span> <span class="toc-text">Existing selection algorithm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feature-selection"><span class="toc-number">2.2.</span> <span class="toc-text">Feature selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commonly-used-features"><span class="toc-number">2.2.1.</span> <span class="toc-text">commonly-used features</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#workload-features"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">workload features</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#database-metric-features"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">database metric features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#existing-techniques"><span class="toc-number">2.2.2.</span> <span class="toc-text">existing techniques</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuning-methods"><span class="toc-number">2.3.</span> <span class="toc-text">Tuning methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-tuning-methods"><span class="toc-number">2.3.1.</span> <span class="toc-text">4 tuning methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#challenges-summary"><span class="toc-number">2.3.2.</span> <span class="toc-text">challenges summary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transfer-techniques"><span class="toc-number">2.4.</span> <span class="toc-text">transfer techniques</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#common-feature-extraction"><span class="toc-number">2.4.1.</span> <span class="toc-text">common feature extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adaptive-weight-transferring"><span class="toc-number">2.4.2.</span> <span class="toc-text">adaptive weight transferring</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-tuning-system"><span class="toc-number">2.5.</span> <span class="toc-text">knob tuning system</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -1174,7 +1253,14 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
         
         
         
@@ -1827,7 +1913,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 67
+        Total : 68
         </div>
         <!-- search  -->
         
@@ -1841,6 +1927,12 @@
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2024/09/19/dair-everything-envs/">服务器相关</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">09/05</span>
@@ -2285,6 +2377,21 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
         
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="动态规划">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态规划
@@ -2360,6 +2467,11 @@
                 环境问题
             </span>
         
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
                 多维索引
@@ -2370,14 +2482,14 @@
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="迁移学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                迁移学习
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="列存分区">
                 <span class="iconfont-archer">&#xe606;</span>
                 列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
             </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
@@ -2420,14 +2532,29 @@
                 树的遍历
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
             </span>
         
             <span class="sidebar-tag-name" data-tags="排序">
@@ -2440,9 +2567,9 @@
                 二叉搜索树
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Set">
+            <span class="sidebar-tag-name" data-tags="贪心">
                 <span class="iconfont-archer">&#xe606;</span>
-                Set
+                贪心
             </span>
         
             <span class="sidebar-tag-name" data-tags="图论">
@@ -2450,19 +2577,19 @@
                 图论
             </span>
         
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="AVL树">
                 <span class="iconfont-archer">&#xe606;</span>
                 AVL树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数学模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                数学模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="贪心">
-                <span class="iconfont-archer">&#xe606;</span>
-                贪心
             </span>
         
             <span class="sidebar-tag-name" data-tags="DFS">
@@ -2470,9 +2597,9 @@
                 DFS
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图模拟">
+            <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
-                图模拟
+                栈
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -2480,9 +2607,9 @@
                 拓扑排序
             </span>
         
-            <span class="sidebar-tag-name" data-tags="最短路径">
+            <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
-                最短路径
+                递推
             </span>
         
             <span class="sidebar-tag-name" data-tags="快乐模拟">
@@ -2490,14 +2617,9 @@
                 快乐模拟
             </span>
         
-            <span class="sidebar-tag-name" data-tags="栈">
+            <span class="sidebar-tag-name" data-tags="图的遍历">
                 <span class="iconfont-archer">&#xe606;</span>
-                栈
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="递推">
-                <span class="iconfont-archer">&#xe606;</span>
-                递推
+                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2525,36 +2647,6 @@
                 top
             </span>
         
-            <span class="sidebar-tag-name" data-tags="完全二叉树">
-                <span class="iconfont-archer">&#xe606;</span>
-                完全二叉树
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="计算机视觉">
-                <span class="iconfont-archer">&#xe606;</span>
-                计算机视觉
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="三维重建">
-                <span class="iconfont-archer">&#xe606;</span>
-                三维重建
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="深度学习">
-                <span class="iconfont-archer">&#xe606;</span>
-                深度学习
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -2566,14 +2658,14 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="算法">
-            <span class="iconfont-archer">&#xe60a;</span>
-            算法
-        </span>
-    
         <span class="sidebar-category-name" data-categories="华科课程">
             <span class="iconfont-archer">&#xe60a;</span>
             华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
         </span>
     
         <span class="sidebar-category-name" data-categories="学习笔记">
