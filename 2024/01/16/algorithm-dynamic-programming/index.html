@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="og:image" content="https://img.shields.io/badge/LeetCode-Medium-yellow.svg">
 <meta property="article:published_time" content="2024-01-16T02:26:49.000Z">
-<meta property="article:modified_time" content="2024-03-25T05:54:12.000Z">
+<meta property="article:modified_time" content="2024-12-08T18:26:58.396Z">
 <meta property="article:author" content="Elubrazione">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -709,12 +709,12 @@
 <ol start="2">
 <li>状态转移方程</li>
 </ol>
-<p>判断当前s[i - 1]是否和t[j - 1]相等，如果相等且<code>dp[i - 1][j - 1] == true</code>，则<code>dp[i][j]</code>也为true，所以就是如果相等的话<code>dp[i][j]</code>的值取决于<code>dp[i - 1][j - 1]</code></p>
+<p>判断当前 s[i - 1] 是否和 t[j - 1] 相等，如果相等且<code>dp[i - 1][j - 1] == true</code>，则 <code>dp[i][j]</code> 也为true，所以就是如果相等的话<code>dp[i][j]</code>的值取决于 <code>dp[i - 1][j - 1]</code></p>
 <p>如果不相等那么当前字符这个t[j - 1]可能就是我们需要删去的字符，是否为子序列就需要看s[i - 1]和t[j - 2]的匹配结果，即<code>dp[i][j - 1]</code></p>
 <ol start="3">
 <li>如何初始化dp数组</li>
 </ol>
-<p>下标0表示为空串，因此<code>dp[0][j]</code>是true，<code>dp[i][0]</code>除了<code>dp[0][0]</code>其它都为false</p>
+<p>下标0表示为空串，因此 <code>dp[0][j]</code> 是true，<code>dp[i][0]</code>除了<code>dp[0][0]</code>其它都为false</p>
 <ol start="4">
 <li>如何遍历 &#x3D;&gt; 从小到大</li>
 <li>推导例子</li>
@@ -726,7 +726,7 @@
   <img src="https://img.shields.io/badge/LeetCode-Hard-red.svg" alt="LeetCode Hard" style="text-align: left;">
 </div>
 
-<h3 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h3><p>给你两个字符串 <code>s</code> 和 <code>t</code> ，统计并返回在 <code>s</code> 的 <strong>子序列</strong> 中 <code>t</code> 出现的个数，结果需要对 109 + 7 取模。</p>
+<h3 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h3><p>给你两个字符串 <code>s</code> 和 <code>t</code> ，统计并返回在 <code>s</code> 的 <strong>子序列</strong> 中 <code>t</code> 出现的个数，结果需要对 $10^9 + 7$ 取模。</p>
 <h3 id="解法-7"><a href="#解法-7" class="headerlink" title="解法"></a>解法</h3><ol>
 <li>dp数组的含义</li>
 </ol>
@@ -866,8 +866,8 @@
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/12/31/essay-3/" title="2023年末总结">
-                    <div class="prevTitle">2023年末总结</div>
+                <a href="/2023/12/17/pa-virtual-machine/" title="HUST系统能力培养之虚拟机">
+                    <div class="prevTitle">HUST系统能力培养之虚拟机</div>
                 </a>
             
         </li>
@@ -1368,44 +1368,7 @@
         
         
         
-        
-        
-        
-        
-        
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -2028,7 +1991,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 68
+        Total : 67
         </div>
         <!-- search  -->
         
@@ -2039,13 +2002,34 @@
         
             
             
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/note-quant-math/">量化笔记</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2024/09/19/dair-everything-envs/">服务器相关</a>
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2024/10/29/automl-mfes-hb/">automl-mfes-hb</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span>
+            <a class="archive-post-title" href="/2024/09/21/dair-db-tuning-exps/">knobs调优实验</a>
         </li>
     
         
@@ -2111,12 +2095,6 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span>
-            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
-        </li>
-    
         
         <li class="archive-post-item">
             <span class="archive-post-date">12/17</span>
@@ -2386,12 +2364,6 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/04</span>
-            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
         </li>
@@ -2412,12 +2384,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">06/26</span>
             <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span>
-            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
         </li>
     
         
@@ -2552,9 +2518,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
+            <span class="sidebar-tag-name" data-tags="database">
                 <span class="iconfont-archer">&#xe606;</span>
-                随笔
+                database
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -2582,11 +2553,6 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
                 多维索引
@@ -2597,14 +2563,14 @@
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
             </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
@@ -2647,9 +2613,24 @@
                 树的遍历
             </span>
         
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2667,21 +2648,6 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="贪心">
                 <span class="iconfont-archer">&#xe606;</span>
                 贪心
@@ -2692,19 +2658,9 @@
                 图论
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                图模拟
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Set">
                 <span class="iconfont-archer">&#xe606;</span>
                 Set
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="AVL树">
-                <span class="iconfont-archer">&#xe606;</span>
-                AVL树
             </span>
         
             <span class="sidebar-tag-name" data-tags="DFS">
@@ -2712,9 +2668,29 @@
                 DFS
             </span>
         
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -2725,16 +2701,6 @@
             <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
                 递推
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="快乐模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                快乐模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -2773,6 +2739,11 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
         <span class="sidebar-category-name" data-categories="华科课程">
             <span class="iconfont-archer">&#xe60a;</span>
             华科课程
@@ -2788,24 +2759,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
-            <span class="iconfont-archer">&#xe60a;</span>
-            腾讯AI训练营
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
         </span>
     
-        <span class="sidebar-category-name" data-categories="database">
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
-            database
+            腾讯AI训练营
         </span>
     
     </div>

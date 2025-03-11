@@ -1,0 +1,3019 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="evaluation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="knobs调优实验">
+<meta property="og:url" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="evaluation">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240921195125338.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240921184531789.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240921191053764.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240921212620567.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922143451295.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922143503728.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922145013846.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922151247839.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922163232551.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922163211833.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922163253028.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240922163305887.png">
+<meta property="article:published_time" content="2024-09-21T10:44:52.000Z">
+<meta property="article:modified_time" content="2024-09-24T07:43:46.484Z">
+<meta property="article:author" content="Elubrazione">
+<meta property="article:tag" content="database">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2024/09/21/dair-db-tuning-exps/image-20240921195125338.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>knobs调优实验 · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">knobs调优实验</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index_dark-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                knobs调优实验
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="database">database</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.8k</span>阅读时长: <span class="post-count reading-time">22 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/09/21</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>evaluation</p>
+<span id="more"></span>
+
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240921195125338.png" alt="image-20240921195125338"></p>
+<h1 id="methodology"><a href="#methodology" class="headerlink" title="methodology"></a>methodology</h1><h2 id="knob-selection"><a href="#knob-selection" class="headerlink" title="knob selection"></a>knob selection</h2><p>第一种variance-based的方法<strong>选择</strong>对数据库性能影响最大的旋钮（<strong>衡量knob的重要性</strong>）；</p>
+<p>第二种tunability-based的方法通过量化旋钮的可调谐性，衡量从其默认值<strong>到另一个值</strong>变化所能获得的<strong>性能增益</strong>。</p>
+<h3 id="variance-based"><a href="#variance-based" class="headerlink" title="variance-based"></a>variance-based</h3><ul>
+<li><u>Lasso</u>：使用线性回归系数来评估旋钮的重要性。它对系数的L1范数进行惩罚，并使冗余knob的系数为零，可以有效过滤无用的knob。但它粗暴地做了线性关系的假设，无法捕捉knob与performance之间的非线性关系。</li>
+<li><u>Gini系数</u>：定义每个knob的Gini系数为给定的knob在所有决策树的分裂中作为candidate属性的次数（因为作者认为重要的knob区分了更多的样本，并且在树的分割中会使用的更频繁）</li>
+<li><u>faNOVA</u>：Functional analysis of variance。通过分析每个knob在整个配置空间中对目标函数方差的贡献程度来衡量knob的重要性。基于回归模型，faNOVA将目标函数分解成仅依赖于其输入子集的加性成分，每个knob的重要性通过其方差分数来量化。</li>
+</ul>
+<h3 id="tunability-based"><a href="#tunability-based" class="headerlink" title="tunability-based"></a>tunability-based</h3><ul>
+<li><u>ablation analysis</u>：选择变化贡献最大的knob来提高配置的性能。</li>
+<li><u>SHAP</u>：计算每个knob的贡献（即SHAP值）。在一个最大化问题中，给定一组observation，其通过平均每个knob的SHAP正值来计算每个knob的tunability。</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240921184531789.png" alt="image-20240921184531789"></p>
+<h2 id="configuration-optimization"><a href="#configuration-optimization" class="headerlink" title="configuration optimization"></a>configuration optimization</h2><ul>
+<li><u>Vanilla bo</u>：以gp为代理模型的贝叶斯优化模型，使用核函数来对目标函数的总体平滑程度进行建模，而vanilla bo的核函数则是基于两个配置configuration之间的欧式距离</li>
+<li><u>one-hot bo</u>：gp代理模型局限于连续型变量的搜索优化，而这种方法选择了对离散的变量采用one-hot编码从而将具有k个可能值的变量转化为二进制向量</li>
+<li><u>mixed-kernel bo</u>：对连续型变量使用matern kernel，对离散型变量使用hamming kernel</li>
+<li><u>smac</u></li>
+<li><u>tpe</u></li>
+<li><u>Tu RBO</u>：trust-region bo. 它提出了一种使用independent surrogate model的方法，这些surrogate model能够对目标函数进行建模并且不回造成over-exploration</li>
+<li><u>DDPG</u>：Deep Deterministic Policy Gradient (DDPG) algorithm. 由两个神经网络组成</li>
+<li><u>GA</u></li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240921191053764.png" alt="image-20240921191053764"></p>
+<h2 id="knowledge-transfer"><a href="#knowledge-transfer" class="headerlink" title="knowledge transfer"></a>knowledge transfer</h2><p>pass</p>
+<h1 id="intra-algorithms"><a href="#intra-algorithms" class="headerlink" title="intra-algorithms"></a>intra-algorithms</h1><h2 id="ablation-analysis"><a href="#ablation-analysis" class="headerlink" title="ablation analysis"></a>ablation analysis</h2><p><strong>消融分析（Ablation Analysis）</strong>是一种用于确定不同特征（参数）对系统性能影响的重要性的方法。以下是对给定段落的解释和一个具体例子：</p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>初始配置和目标配置</strong>：</p>
+<ul>
+<li>**默认配置 $\theta_{\text{default}}$**：系统的默认设置。</li>
+<li>**目标配置 $\theta_{\text{target}}$**：通常是性能更好的配置。</li>
+</ul>
+</li>
+<li><p>**计算特征差异 $\Delta(\theta_{\text{default}}, \theta_{\text{target}})$**：</p>
+<ul>
+<li>计算默认配置和目标配置之间的参数差异。</li>
+</ul>
+</li>
+<li><p><strong>构建消融路径</strong>：</p>
+<ul>
+<li>从默认配置 $\theta_{\text{default}}$ 开始，逐步改变参数，直到达到目标配置 $\theta_{\text{target}}$。</li>
+<li>在每次迭代 $i$ 中，从前一次的配置 $\theta_{i-1}$ 开始，考虑所有剩余的特征变化 $\delta \in \Delta(\theta_{\text{default}}, \theta_{\text{target}})$。</li>
+<li>将每个特征变化 $\delta$ 应用于前一次的配置 $\theta_{i-1}$，得到候选配置 $\theta_{i-1}[\delta]$。</li>
+<li>选择性能最好的候选配置作为下一次迭代的配置 $\theta_i$。</li>
+<li>性能评估通过代理模型（surrogate）进行，以提高效率。</li>
+</ul>
+</li>
+<li><p><strong>特征重要性排序</strong>：</p>
+<ul>
+<li>特征改变的顺序即为消融分析中的重要性排序。</li>
+<li>对于一个观察集中的多个目标配置，进行多次消融分析。</li>
+<li>每个特征的最终重要性排序是其在每条消融路径中的平均排名。</li>
+</ul>
+</li>
+</ol>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>假设我们有一个系统，默认配置 $\theta_{\text{default}}$ 和目标配置 $\theta_{\text{target}}$ 如下：</p>
+<ul>
+<li>**默认配置 $\theta_{\text{default}}$**：${A &#x3D; 1, B &#x3D; 2, C &#x3D; 3}$</li>
+<li>**目标配置 $\theta_{\text{target}}$**：${A &#x3D; 2, B &#x3D; 3, C &#x3D; 5}$</li>
+</ul>
+<p>特征差异 $\Delta(\theta_{\text{default}}, \theta_{\text{target}})$ 是：</p>
+<ul>
+<li>$A$ 从 1 变为 2</li>
+<li>$B$ 从 2 变为 3</li>
+<li>$C$ 从 3 变为 5</li>
+</ul>
+<p><strong>消融路径构建</strong>：</p>
+<ol>
+<li><p><strong>初始配置</strong>：$\theta_0 &#x3D; \theta_{\text{default}} &#x3D; {A &#x3D; 1, B &#x3D; 2, C &#x3D; 3}$</p>
+</li>
+<li><p><strong>第一次迭代</strong>：</p>
+<ul>
+<li>候选配置：<ul>
+<li>$\theta_0[A] &#x3D; {A &#x3D; 2, B &#x3D; 2, C &#x3D; 3}$</li>
+<li>$\theta_0[B] &#x3D; {A &#x3D; 1, B &#x3D; 3, C &#x3D; 3}$</li>
+<li>$\theta_0[C] &#x3D; {A &#x3D; 1, B &#x3D; 2, C &#x3D; 5}$</li>
+</ul>
+</li>
+<li>选择性能最好的候选配置（假设是 $\theta_0[C]$），所以 $\theta_1 &#x3D; {A &#x3D; 1, B &#x3D; 2, C &#x3D; 5}$</li>
+</ul>
+</li>
+<li><p><strong>第二次迭代</strong>：</p>
+<ul>
+<li>候选配置：<ul>
+<li>$\theta_1[A] &#x3D; {A &#x3D; 2, B &#x3D; 2, C &#x3D; 5}$</li>
+<li>$\theta_1[B] &#x3D; {A &#x3D; 1, B &#x3D; 3, C &#x3D; 5}$</li>
+</ul>
+</li>
+<li>选择性能最好的候选配置（假设是 $\theta_1[A]$），所以 $\theta_2 &#x3D; {A &#x3D; 2, B &#x3D; 2, C &#x3D; 5}$</li>
+</ul>
+</li>
+<li><p><strong>第三次迭代</strong>：</p>
+<ul>
+<li>剩下的唯一候选配置：<ul>
+<li>$\theta_2[B] &#x3D; {A &#x3D; 2, B &#x3D; 3, C &#x3D; 5}$</li>
+</ul>
+</li>
+<li>所以 $\theta_3 &#x3D; {A &#x3D; 2, B &#x3D; 3, C &#x3D; 5}$ 即 $\theta_{\text{target}}$</li>
+</ul>
+</li>
+</ol>
+<p><strong>特征重要性排序</strong>：</p>
+<ul>
+<li>第一次改变的是 $C$，所以 $C$ 的重要性最高。</li>
+<li>第二次改变的是 $A$，所以 $A$ 的重要性次之。</li>
+<li>最后改变的是 $B$，所以 $B$ 的重要性最低。</li>
+</ul>
+<h2 id="SHAP"><a href="#SHAP" class="headerlink" title="SHAP"></a>SHAP</h2><p>SHapley Additive exPlanations 是一种基于博弈论的解释方法，用于解释机器学习模型的预测。它通过计算每个特征对预测结果的贡献来解释模型的输出。SHAP值是基于Shapley值的，这是一种源自合作博弈论的分配方法，用于公平地分配合作收益。</p>
+<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>SHAP值的定义</strong>：</p>
+<ul>
+<li>SHAP值使用<u>原始模型的条件期望函数的</u>Shapley值来<u>解释每个特征对模型预测的贡献</u></li>
+<li>每个特征的SHAP值表示在<u>考虑该特征时，期望模型预测的变化</u></li>
+</ul>
+</li>
+<li><p><strong>基值和当前输出</strong>：</p>
+<ul>
+<li>基值（base value）是指在<u>不了解</u>任何特征时模型的预测值。</li>
+<li>当前输出是指在给定所有特征时<u>模型的预测值</u></li>
+</ul>
+</li>
+<li><p><strong>特征添加顺序的重要性</strong>：</p>
+<ul>
+<li>当模型是非线性的或输入特征不是独立的，特征添加到期望值中的顺序会影响SHAP值。</li>
+<li>SHAP值通过<u>对所有可能的特征添加顺序进行平均</u>来计算</li>
+</ul>
+</li>
+<li><p><strong>SHAP值的计算</strong>：</p>
+<ul>
+<li>通过Shapley采样值方法或Kernel SHAP方法来<u>估计</u>SHAP值</li>
+<li>精确计算会比较困难</li>
+</ul>
+</li>
+</ol>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>使用机器学习模型来预测不同配置下的数据库性能，并希望解释每个配置参数对性能的影响。</p>
+<h4 id="示例配置参数"><a href="#示例配置参数" class="headerlink" title="示例配置参数"></a>示例配置参数</h4><ul>
+<li>**<code>innodb_buffer_pool_size</code>**：InnoDB缓冲池大小</li>
+<li>**<code>max_connections</code>**：最大连接数</li>
+<li>**<code>query_cache_size</code>**：查询缓存大小</li>
+</ul>
+<p>假设有以下两个配置：</p>
+<ul>
+<li><p>**默认配置 $\theta_{\text{default}}$**：</p>
+<ul>
+<li><code>innodb_buffer_pool_size</code> &#x3D; 1GB</li>
+<li><code>max_connections</code> &#x3D; 100</li>
+<li><code>query_cache_size</code> &#x3D; 64MB</li>
+</ul>
+</li>
+<li><p>**目标配置 $\theta_{\text{target}}$**：</p>
+<ul>
+<li><code>innodb_buffer_pool_size</code> &#x3D; 4GB</li>
+<li><code>max_connections</code> &#x3D; 200</li>
+<li><code>query_cache_size</code> &#x3D; 128MB</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用SHAP值解释配置对性能的影响"><a href="#使用SHAP值解释配置对性能的影响" class="headerlink" title="使用SHAP值解释配置对性能的影响"></a>使用SHAP值解释配置对性能的影响</h4><ol>
+<li><p><strong>基值和当前输出</strong>：</p>
+<ul>
+<li><strong>基值</strong>：如果我们不知道任何配置参数，模型预测的性能基值（例如每秒查询数QPS）是 1000 QPS</li>
+<li><strong>当前输出</strong>：给定目标配置，模型预测的性能是 1400 QPS</li>
+</ul>
+</li>
+<li><p><strong>计算SHAP值</strong>：</p>
+<ul>
+<li>**<code>innodb_buffer_pool_size</code>**：<ul>
+<li>如果只考虑 <code>innodb_buffer_pool_size</code>，从1GB增加到4GB，模型预测的性能是 1150 QPS</li>
+<li>因此，<code>innodb_buffer_pool_size</code> 的 SHAP 值是 $1150 - 1000 &#x3D; 150$ QPS</li>
+</ul>
+</li>
+<li>**<code>max_connections</code>**：<ul>
+<li>如果只考虑 <code>max_connections</code>，从100增加到200，模型预测的性能是 1250 QPS</li>
+<li>因此，<code>max_connections</code> 的 SHAP 值是 $1250 - 1000 &#x3D; 250$ QPS</li>
+</ul>
+</li>
+<li>**<code>query_cache_size</code>**：<ul>
+<li>如果只考虑 <code>query_cache_size</code>，从64MB增加到128MB，模型预测的性能是 1100 QPS</li>
+<li>因此，<code>query_cache_size</code> 的 SHAP 值是 $1100 - 1000 &#x3D; 100$ QPS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>特征的顺序</strong>：</p>
+<ul>
+<li>由于数据库性能模型可能是非线性的，配置参数的顺序会影响SHAP值的计算</li>
+<li>SHAP值通过对所有可能的配置参数顺序进行平均来计算</li>
+</ul>
+</li>
+<li><p><strong>总贡献</strong>：</p>
+<ul>
+<li><code>innodb_buffer_pool_size</code> 的 SHAP 值：$150$ QPS</li>
+<li><code>max_connections</code> 的 SHAP 值：$250$ QPS</li>
+<li><code>query_cache_size</code> 的 SHAP 值：$100$ QPS</li>
+<li>总贡献：$150 + 250 + 100 &#x3D; 500$ QPS</li>
+<li>加上基值 $1000$ QPS，总预测值是 $1500$ QPS（与模型预测的 $1400$ QPS 接近，可能有一些近似误差）</li>
+</ul>
+</li>
+</ol>
+<h2 id="SMAC"><a href="#SMAC" class="headerlink" title="SMAC"></a>SMAC</h2><h3 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>构建随机森林模型</strong>：</p>
+<ul>
+<li>收集一些初始数据点（例如，不同配置下的性能数据）</li>
+<li>使用这些数据点构建随机森林，每棵树是在从整个数据集中随机抽样得到的n个数据点上构建的</li>
+<li>随着更多配置被评估，模型会不断更新，以包含新的数据点</li>
+</ul>
+</li>
+<li><p><strong>预测均值和方差</strong>：</p>
+<ul>
+<li>对于每个候选配置 $\theta$，模型会生成一个预测分布，同时计算其预测均值 $\hat{\mu}(\theta)$ 和方差 $\hat{\sigma}^2(\theta)$。</li>
+</ul>
+</li>
+<li><p><strong>计算期望正改进（EI）</strong>：</p>
+<ul>
+<li><p>使用前面生成的预测分布<u>计算每个候选配置 $\theta$ 的EI值</u>，$\text{EI}(\theta)$，它能够考虑预测性能和预测不确定性；</p>
+</li>
+<li><p>EI值的计算公式如下：</p>
+<p>$$<br>\text{EI}(\theta) &#x3D; \mathbb{E}[\max(0, f(\theta) - f(\theta_{\text{best}}))]<br>$$</p>
+<p>其中，$f(\theta)$ 是配置 $\theta$ 的预测性能，$f(\theta_{\text{best}})$ 是目前最佳配置的性能；</p>
+</li>
+<li><p>例如，假设目前最佳配置的性能是 2000 QPS。如果新配置 $\theta$ 的预测均值是 2100 QPS，预测方差是 100 QPS，那么 $\theta$ 的EI值会较高，因为它既有较高的预测性能，又有一定的不确定性。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>多起点局部搜索</strong>：</p>
+<ul>
+<li>从多个初始配置开始，每个初始配置都进行局部优化以找到局部最大EI的配置。</li>
+<li>例如，从默认配置 $\theta_{\text{default}}$ 开始，逐步调整 <code>innodb_buffer_pool_size</code>，<code>max_connections</code>，和 <code>query_cache_size</code>，寻找使EI值最大的配置。</li>
+</ul>
+</li>
+<li><p><strong>选择最优配置</strong>：</p>
+<ul>
+<li>选择具有最高EI值的配置作为下一个评估的配置，实际评估该配置的性能，并将结果添加到数据集中，更新随机森林模型</li>
+<li>例如，假设找到的最优配置是 <code>innodb_buffer_pool_size</code> &#x3D; 2GB，<code>max_connections</code> &#x3D; 150，<code>query_cache_size</code> &#x3D; 128MB，并且在实际评估中，它的性能提升到 2200 QPS。</li>
+</ul>
+</li>
+</ol>
+<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><h4 id="示例配置参数-1"><a href="#示例配置参数-1" class="headerlink" title="示例配置参数"></a>示例配置参数</h4><ul>
+<li>**<code>innodb_buffer_pool_size</code>**：InnoDB缓冲池大小</li>
+<li>**<code>max_connections</code>**：最大连接数</li>
+<li>**<code>query_cache_size</code>**：查询缓存大小</li>
+</ul>
+<p>假设有以下默认配置：</p>
+<ul>
+<li>**默认配置 $\theta_{\text{default}}$**：<ul>
+<li><code>innodb_buffer_pool_size</code> &#x3D; 1GB</li>
+<li><code>max_connections</code> &#x3D; 100</li>
+<li><code>query_cache_size</code> &#x3D; 64MB</li>
+</ul>
+</li>
+</ul>
+<p>目标是找到一个比默认配置更好的配置，以提高数据库的性能（例如每秒查询数QPS）</p>
+<h4 id="使用SMAC进行调优"><a href="#使用SMAC进行调优" class="headerlink" title="使用SMAC进行调优"></a>使用SMAC进行调优</h4><p>初始性能测量结果：$\theta_{\text{default}}$ 的性能是 1000 QPS</p>
+<p>随机生成一些初始配置并测量它们的性能：</p>
+<ul>
+<li><p>配置A：<code>innodb_buffer_pool_size</code> &#x3D; 2GB, <code>max_connections</code> &#x3D; 100, <code>query_cache_size</code> &#x3D; 64MB，性能是 1100 QPS；</p>
+</li>
+<li><p>配置B：<code>innodb_buffer_pool_size</code> &#x3D; 1GB, <code>max_connections</code> &#x3D; 200, <code>query_cache_size</code> &#x3D; 64MB，性能是 1050 QPS；</p>
+<p>……</p>
+</li>
+<li><p>配置E：<code>innodb_buffer_pool_size</code> &#x3D; 1GB, <code>max_connections</code> &#x3D; 100, <code>query_cache_size</code> &#x3D; 128MB，性能是 1020 QPS；</p>
+</li>
+</ul>
+<p>使用这些初始数据，SMAC构建了一个随机森林模型，<u>并计算了每个候选配置的预测均值和方差</u></p>
+<p>下一步，SMAC计算每个候选配置的EI值，选择EI值最高的配置进行评估。例如：</p>
+<ul>
+<li>配置D：<code>innodb_buffer_pool_size</code> &#x3D; 2GB, <code>max_connections</code> &#x3D; 150, <code>query_cache_size</code> &#x3D; 128MB，预测均值是 1200 QPS，预测方差是 50 QPS，EI值最高</li>
+</ul>
+<p>实际评估配置D的性能，结果是 1150 QPS，将这个结果添加到数据集中，并更新随机森林模型</p>
+<p>通过多次迭代，SMAC逐步探索和优化配置参数，最终找到一个最佳配置</p>
+<h2 id="RGPE"><a href="#RGPE" class="headerlink" title="RGPE"></a>RGPE</h2><p>RGPE（Ranked Gaussian Process Ensemble）是一种可扩展的元学习框架，用于加速基于贝叶斯优化的优化器</p>
+<h3 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h3><ol>
+<li><p><strong>基本过程</strong>：</p>
+<ul>
+<li>对于每个先前的调优任务 $T_i$，RGPE都在相应的观察数据 $H_i$ 上训练一个基本高斯过程（GP）模型 $M_i$</li>
+<li>然后，它构建一个代理模型 $M_{\text{meta}}$，结合这些基本GP模型，而不是仅仅使用拟合在目标任务 $H_T$ 上的原始代理模型 $M_T$。</li>
+</ul>
+</li>
+<li><p><strong>预测</strong>：</p>
+<ul>
+<li>在点 $\theta$ 处，$M_{\text{meta}}$ 的预测由以下公式给出：<br>$$<br>y \sim N\left(\sum_i w_i \mu_i(\theta), \sum_i w_i \sigma_i^2(\theta)\right)<br>$$</li>
+<li>其中，$w_i$ 是基本代理 $M_i$ 的权重，$\mu_i$ 和 $\sigma_i^2$ 分别是基本代理 $M_i$ 的预测均值和方差。</li>
+<li>$w_i$ 反映了先前任务与当前任务之间的相似性。</li>
+</ul>
+</li>
+<li><p><strong>相似性度量</strong>：</p>
+<ul>
+<li>$M_{\text{meta}}$ 利用先前调优任务的知识，可以大大加速目标任务的收敛。</li>
+<li>使用以下排名损失函数 $L$ 来度量先前任务与目标任务之间的相似性：<br>$$<br>L(M_j, H_T) &#x3D; \sum_{j&#x3D;1}^{n_t} \sum_{k&#x3D;1}^{n_t} \mathbb{1}\left((M_i(\theta_j) \leq M_i(\theta_k)) \oplus (y_j \leq y_k)\right)<br>$$</li>
+<li>其中，$n_t$ 表示调优任务的数量，$M_i(\theta_j)$ 表示 $M_i$ 在配置 $\theta_j$ 上的预测值。</li>
+</ul>
+</li>
+<li><p><strong>权重计算</strong>：</p>
+<ul>
+<li>基于排名损失函数，权重 $w_i$ 设置为 $M_i$ 在 $H_T$ 上具有最小排名损失的概率：<br>$$<br>w_i &#x3D; \mathbb{P}(i &#x3D; \arg \min_j L(M_j, H_T))<br>$$</li>
+<li>这个概率可以通过MCMC采样估计</li>
+</ul>
+</li>
+</ol>
+<h3 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h3><h4 id="示例配置参数（Knobs）"><a href="#示例配置参数（Knobs）" class="headerlink" title="示例配置参数（Knobs）"></a>示例配置参数（Knobs）</h4><ul>
+<li>**<code>innodb_buffer_pool_size</code>**：InnoDB缓冲池大小</li>
+<li>**<code>max_connections</code>**：最大连接数</li>
+<li>**<code>query_cache_size</code>**：查询缓存大小</li>
+</ul>
+<p>假设我们有以下默认配置：</p>
+<ul>
+<li>**默认配置 $\theta_{\text{default}}$**：<ul>
+<li><code>innodb_buffer_pool_size</code> &#x3D; 1GB</li>
+<li><code>max_connections</code> &#x3D; 100</li>
+<li><code>query_cache_size</code> &#x3D; 64MB</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用RGPE进行调优"><a href="#使用RGPE进行调优" class="headerlink" title="使用RGPE进行调优"></a>使用RGPE进行调优</h4><ol>
+<li><p><strong>训练基本GP模型</strong>：</p>
+<ul>
+<li>对于每个先前的调优任务，我们在相应的观察数据上训练一个基本GP模型 $M_i$。</li>
+</ul>
+</li>
+<li><p>**构建代理模型 $M_{\text{meta}}$**：</p>
+<ul>
+<li>结合这些基本GP模型，构建 $M_{\text{meta}}$，而不是仅仅使用拟合在目标任务上的原始代理模型。</li>
+</ul>
+</li>
+<li><p><strong>预测均值和方差</strong>：</p>
+<ul>
+<li>对于新配置 $\theta$，计算其预测均值 $\sum_i w_i \mu_i(\theta)$ 和方差 $\sum_i w_i \sigma_i^2(\theta)$。</li>
+</ul>
+</li>
+<li><p><strong>计算相似性和权重</strong>：</p>
+<ul>
+<li>使用排名损失函数 $L$ 来度量先前任务与目标任务之间的相似性。</li>
+<li>基于排名损失函数，计算每个基本GP模型的权重 $w_i$。</li>
+</ul>
+</li>
+<li><p><strong>选择最优配置</strong>：</p>
+<ul>
+<li>选择具有最高预测性能的配置作为下一个评估的配置。</li>
+<li>实际评估该配置的性能，并将结果添加到数据集中，更新代理模型。</li>
+</ul>
+</li>
+</ol>
+<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><p>假设我们正在优化一个MySQL数据库的配置参数，目标是最大化每秒查询数（QPS）。我们有以下配置参数：</p>
+<ul>
+<li>**<code>innodb_buffer_pool_size</code>**：InnoDB缓冲池大小</li>
+<li>**<code>max_connections</code>**：最大连接数</li>
+<li>**<code>query_cache_size</code>**：查询缓存大小</li>
+</ul>
+<p>初始配置 $\theta_{\text{default}}$：</p>
+<ul>
+<li><code>innodb_buffer_pool_size</code> &#x3D; 1GB</li>
+<li><code>max_connections</code> &#x3D; 100</li>
+<li><code>query_cache_size</code> &#x3D; 64MB</li>
+</ul>
+<p>初始性能测量结果：</p>
+<ul>
+<li>$\theta_{\text{default}}$ 的性能是 1000 QPS。</li>
+</ul>
+<p>我们在先前的调优任务上训练了一些基本GP模型，并结合这些模型构建了 $M_{\text{meta}}$。</p>
+<p>下一步，RGPE计算每个候选配置的预测均值和方差，并选择具有最高预测性能的配置进行评估。例如：</p>
+<ul>
+<li>配置A：<code>innodb_buffer_pool_size</code> &#x3D; 2GB, <code>max_connections</code> &#x3D; 150, <code>query_cache_size</code> &#x3D; 128MB，预测均值是 1200 QPS，预测方差是 50 QPS。</li>
+</ul>
+<p>实际评估配置A的性能，结果是 1150 QPS。将这个结果添加到数据集中，并更新代理模型。</p>
+<p>通过多次迭代，RGPE逐步探索和优化配置参数，最终找到一个最佳配置，显著提高了数据库的性能。</p>
+<h1 id="experiments"><a href="#experiments" class="headerlink" title="experiments"></a>experiments</h1><h2 id="general-setup"><a href="#general-setup" class="headerlink" title="general setup"></a>general setup</h2><p>Q1: How to determine the tuning knobs? (i.e., Which importance measurements to use and how many knobs to tune?) </p>
+<p>Q2: Which optimizer is the winner given different scenarios? </p>
+<p>Q3: Can we transfer knowledge to speed up the target tuning task? We describe the general setup of the evaluation in this section and leave the specific setting (e.g., procedure, metrics) when answering the corresponding questions.</p>
+<h3 id="hardware"><a href="#hardware" class="headerlink" title="hardware"></a>hardware</h3><p>所有的默认配置都适用mysql的默认配置，除了一个knob那就是buffer pool size因为mysql默认的这个值太小了。实验中这个值最终使用的大小是内存的60%，16GB*60%。</p>
+<h3 id="workloads"><a href="#workloads" class="headerlink" title="workloads"></a>workloads</h3><p>Q1和Q2 &#x3D;&gt; 分析型负载JOB和事务性负载SYSBENCH</p>
+<p>Q3 &#x3D;&gt; 使用OLTP负载，SYSBENCH&#x2F; TPC-C&#x2F; Twitter</p>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240921212620567.png" alt="image-20240921212620567"></p>
+<h3 id="tuning-setting"><a href="#tuning-setting" class="headerlink" title="tuning setting"></a>tuning setting</h3><ul>
+<li><p>mysql里一共197个knob，把实验的配置空间分为小、中、大三个大小，按照knob的重要性排序后调整的knob的数量分别是5、20、197。</p>
+</li>
+<li><p>OLTP负载使用吞吐量作为最大化目标，OLAP负载使用95%分位的延迟作为最小化目标。</p>
+</li>
+<li><p>每个optimizer运行三个tuning sessions，每个session由200轮迭代组成，并且最后报告最好性能的中位数和四分位数</p>
+<ul>
+<li>由于很多knob的改变都需要重新启动数据库，所以实验中会进行三分钟的压力测试，回放给定的工作负载</li>
+<li>对于造成DBMS崩溃或者无法启动的负载，都将其迭代的结果设置为迭代过程中最差的performance</li>
+<li>iTuned和OtterTune方法后都执行LHS采样然后生成10个配置用于BO的初始化</li>
+</ul>
+</li>
+<li><p>每个报告里都记录调优后相对于knob默认配置下性能的提升</p>
+</li>
+</ul>
+<h2 id="knob-selection-1"><a href="#knob-selection-1" class="headerlink" title="knob selection"></a>knob selection</h2><h3 id="which-importance-measurement-to-use"><a href="#which-importance-measurement-to-use" class="headerlink" title="which importance measurement to use"></a>which importance measurement to use</h3><h4 id="性能排名分析"><a href="#性能排名分析" class="headerlink" title="性能排名分析"></a>性能排名分析</h4><blockquote>
+<p> <strong>图3</strong>展示了不同重要性测量方法生成的调优集的性能排名，<strong>表5</strong>总结了这些方法的总体性能排名。</p>
+</blockquote>
+<ul>
+<li><strong>SHAP</strong>方法在性能上表现最佳，因为它推荐值得调优的参数。当更改参数值导致数据库性能下降时，SHAP会建议不调优该参数，而基于方差的测量方法会认为该参数对性能有较大影响，需要调优。</li>
+<li>数据库参数的默认值设计得较为稳健，是一个好的起点，因此基于方差的测量方法效果较差。</li>
+<li><strong>消融分析</strong>由于很大程度上依赖于高质量的训练样本，其性能不稳定，整体排名倒数第二。</li>
+<li>在基于方差的测量方法中，<strong>Gini</strong>得分表现最好，而<strong>Lasso</strong>的改进效果最差，因为Lasso假设配置空间是线性或二次的，而实际存在复杂的依赖关系。</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922143451295.png" alt="image-20240922143451295"></p>
+<h4 id="灵敏度分析"><a href="#灵敏度分析" class="headerlink" title="灵敏度分析"></a>灵敏度分析</h4><blockquote>
+<p> 为了进一步了解不同重要性测量方法的性能差异，对SYSBENCH工作负载进行了训练样本数量的灵敏度分析，如图4所示。样本从6250个样本中随机选择，每种重要性测量方法执行10次取平均值。</p>
+<p>左图的y轴是前5个重要参数的相似度得分（交集-并集指数），较大的相似度得分表明该测量方法更稳定，因为它能通过较少的观察找到最终的重要参数。右图绘制了验证集上的决定系数（R²），较大的R²表明代理模型能更好地建模配置与数据库性能之间的关系。</p>
+</blockquote>
+<ul>
+<li><strong>Lasso</strong>在性能与配置之间的关系建模上效果很差，但它非常稳定。</li>
+<li><strong>消融分析</strong>的稳定性最低，因为其计算高度依赖于高质量样本。</li>
+<li><strong>Gini</strong>得分的相似度最高，表明其样本效率高。</li>
+<li><strong>SHAP</strong>的相似度得分与基于方差的测量方法相当，考虑到SHAP的总体性能最佳且稳定性可比，在后续研究中默认使用SHAP。</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922143503728.png" alt="image-20240922143503728"></p>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ul>
+<li><strong>SHAP</strong>方法在性能和稳定性方面表现最佳，成为推荐的默认重要性测量方法。</li>
+<li><strong>基于方差的测量方法</strong>（如Gini）在样本效率上表现良好，但在整体性能上不如SHAP。</li>
+<li><strong>消融分析</strong>依赖于高质量样本，稳定性较差。</li>
+<li><strong>Lasso</strong>假设配置空间是线性或二次的，在实际应用中效果不佳。</li>
+</ul>
+<h3 id="how-many-knobs-to-choose"><a href="#how-many-knobs-to-choose" class="headerlink" title="how many knobs to choose"></a>how many knobs to choose</h3><blockquote>
+<p>探索不同数量的knob对性能的影响:</p>
+<ul>
+<li>首先使用SHAP对knob的重要性进行排名，然后选择不同大小的knob配置，分别观察vanilla BO在SYSBENCH和JOB上的调优性能；</li>
+<li>对每个knob集合都进行600次迭代调优，记录最大性能提升和相应的调优成本（找到最大提升配置所需的迭代次数）。</li>
+</ul>
+</blockquote>
+<h4 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h4><ul>
+<li>JOB<ul>
+<li>性能提升相对稳定，但调优成本随参数数量增加而增加。</li>
+</ul>
+</li>
+<li>SYSBENCH<ul>
+<li>初期性能提升微不足道，因为少量参数对性能影响小。</li>
+<li>随参数数量从5增加到20，性能提升从133.10%增加到250.33%。</li>
+<li>之后，性能提升因调优复杂性增加而下降。</li>
+</ul>
+</li>
+<li>结论<ul>
+<li>对JOB，调优前5个参数效果最好。</li>
+<li>对SYSBENCH，调优前20个参数效果最好。</li>
+<li>在有限的调优预算下，调优参数数量应设定为适当值，小参数集影响小，大参数集调优成本高。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922145013846.png" alt="image-20240922145013846"></p>
+<h4 id="增量参数选择"><a href="#增量参数选择" class="headerlink" title="增量参数选择"></a>增量参数选择</h4><ul>
+<li>传统方法高成本，不适用于生产环境。</li>
+<li>两种增量调优启发式方法：<ol>
+<li><strong>增加参数数量</strong>（OtterTune）：从调优前4个参数开始，每4次迭代增加2个参数。</li>
+<li><strong>减少参数数量</strong>（Tuneful）：从调优所有参数开始，每20次迭代移除40%的参数。</li>
+</ol>
+</li>
+<li>实验结果<ul>
+<li><strong>JOB</strong>：增加或减少参数数量均不如固定调优前5个参数。</li>
+<li><strong>SYSBENCH</strong>：增加参数数量效果更好，减少参数数量限制性能提升。</li>
+</ul>
+</li>
+<li>结论<ul>
+<li>对JOB，<u>重要参数数量少</u>，增量参数选择无额外收益。</li>
+<li>对SYSBENCH，增加参数数量方法允许优化器先探索影响最大的参数，再扩展到更大的空间。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922151247839.png" alt="image-20240922151247839"></p>
+<h2 id="optimizer-selection"><a href="#optimizer-selection" class="headerlink" title="optimizer selection"></a>optimizer selection</h2><blockquote>
+<ul>
+<li><strong>评估对象</strong>：八种优化器在JOB和SYSBENCH工作负载下的性能。</li>
+<li><strong>混合型配置空间验证</strong>：在JOB上构建对比实验，控制组为前20个整数参数（连续空间），测试组为前5个离散参数和前15个整数参数（混合空间）。</li>
+<li><strong>算法开销</strong>：测量推荐配置的执行时间。</li>
+</ul>
+</blockquote>
+<h3 id="不同大小配置空间的性能"><a href="#不同大小配置空间的性能" class="headerlink" title="不同大小配置空间的性能"></a>不同大小配置空间的性能</h3><ul>
+<li><strong>结果</strong>：SMAC整体性能最佳，TPE表现最差。</li>
+<li><strong>原因</strong>：SMAC采用随机森林代理，适应高维和分类输入；TPE不能建模参数间的相互作用。</li>
+<li><strong>其他优化器表现</strong><ul>
+<li>GA在小和中等配置空间表现不佳。</li>
+<li>SMAC和混合核BO在小和中等配置空间表现出色。</li>
+<li>DDPG在小和中等空间表现差，调优成本高。</li>
+<li>大空间下，只有SMAC和DDPG找到比默认延迟更好的配置。</li>
+<li>SYSBENCH大空间下，所有方法均找到改进配置，其中SMAC最佳，TuRBO次之。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922163232551.png" alt="image-20240922163232551"></p>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922163211833.png" alt="image-20240922163211833"></p>
+<h3 id="参数异构性的比较实验"><a href="#参数异构性的比较实验" class="headerlink" title="参数异构性的比较实验"></a>参数异构性的比较实验</h3><ul>
+<li><strong>结果</strong>：BO-based优化器在连续空间表现相似，但在异构空间表现差异较大。</li>
+<li><strong>原因</strong><ul>
+<li>混合核BO采用不同核函数处理整数和分类参数，表现最好。</li>
+<li>SMAC在两种空间表现均良好。</li>
+<li>DDPG调优成本高。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922163253028.png" alt="image-20240922163253028"></p>
+<h3 id="算法生成配置的开销"><a href="#算法生成配置的开销" class="headerlink" title="算法生成配置的开销"></a>算法生成配置的开销</h3><ul>
+<li><strong>结果</strong>：BO-based优化器在连续空间表现相似，但在异构空间表现差异较大。</li>
+<li><strong>原因</strong><ul>
+<li>混合核BO采用不同核函数处理整数和分类参数，表现最好。</li>
+<li>SMAC在两种空间表现均良好。</li>
+<li>DDPG调优成本高。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2024/09/21/dair-db-tuning-exps/image-20240922163305887.png" alt="image-20240922163305887"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>SMAC整体性能最佳，能同时处理高维和异构配置空间，相比传统优化器（如vanilla BO, DDPG）平均性能提升21.17%。</li>
+<li>TPE在大多数情况下表现最差，难以建模参数间相互作用。</li>
+<li>DDPG在小和中等配置空间调优成本高，但在大配置空间表现较好。</li>
+<li>小和中等配置空间下，SMAC和混合核BO排名前二；大配置空间下，SMAC、DDPG和TuRBO表现良好。</li>
+<li>混合核BO在异构空间表现优于其他BO-based优化器。</li>
+<li>全局GP-based优化器（如vanilla BO, one-hot BO和混合核BO）算法开销呈立方增长。</li>
+</ul>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2024/10/29/automl-mfes-hb/" title="automl-mfes-hb">
+                    <div class="nextTitle">automl-mfes-hb</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/09/05/knob-tunning/" title="knob-tuning">
+                    <div class="prevTitle">knob-tuning</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#methodology"><span class="toc-number">1.</span> <span class="toc-text">methodology</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-selection"><span class="toc-number">1.1.</span> <span class="toc-text">knob selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#variance-based"><span class="toc-number">1.1.1.</span> <span class="toc-text">variance-based</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tunability-based"><span class="toc-number">1.1.2.</span> <span class="toc-text">tunability-based</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#configuration-optimization"><span class="toc-number">1.2.</span> <span class="toc-text">configuration optimization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knowledge-transfer"><span class="toc-number">1.3.</span> <span class="toc-text">knowledge transfer</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#intra-algorithms"><span class="toc-number">2.</span> <span class="toc-text">intra-algorithms</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ablation-analysis"><span class="toc-number">2.1.</span> <span class="toc-text">ablation analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-number">2.1.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHAP"><span class="toc-number">2.2.</span> <span class="toc-text">SHAP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">示例配置参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SHAP%E5%80%BC%E8%A7%A3%E9%87%8A%E9%85%8D%E7%BD%AE%E5%AF%B9%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">使用SHAP值解释配置对性能的影响</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SMAC"><span class="toc-number">2.3.</span> <span class="toc-text">SMAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0-1"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">示例配置参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SMAC%E8%BF%9B%E8%A1%8C%E8%B0%83%E4%BC%98"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">使用SMAC进行调优</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RGPE"><span class="toc-number">2.4.</span> <span class="toc-text">RGPE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-3"><span class="toc-number">2.4.2.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%EF%BC%88Knobs%EF%BC%89"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">示例配置参数（Knobs）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8RGPE%E8%BF%9B%E8%A1%8C%E8%B0%83%E4%BC%98"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">使用RGPE进行调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90"><span class="toc-number">2.4.2.3.</span> <span class="toc-text">具体例子</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#experiments"><span class="toc-number">3.</span> <span class="toc-text">experiments</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#general-setup"><span class="toc-number">3.1.</span> <span class="toc-text">general setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hardware"><span class="toc-number">3.1.1.</span> <span class="toc-text">hardware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#workloads"><span class="toc-number">3.1.2.</span> <span class="toc-text">workloads</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tuning-setting"><span class="toc-number">3.1.3.</span> <span class="toc-text">tuning setting</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knob-selection-1"><span class="toc-number">3.2.</span> <span class="toc-text">knob selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#which-importance-measurement-to-use"><span class="toc-number">3.2.1.</span> <span class="toc-text">which importance measurement to use</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8E%92%E5%90%8D%E5%88%86%E6%9E%90"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">性能排名分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">3.2.1.2.</span> <span class="toc-text">灵敏度分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.2.1.3.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-many-knobs-to-choose"><span class="toc-number">3.2.2.</span> <span class="toc-text">how many knobs to choose</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">实验结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E5%8F%82%E6%95%B0%E9%80%89%E6%8B%A9"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">增量参数选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#optimizer-selection"><span class="toc-number">3.3.</span> <span class="toc-text">optimizer selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%A4%A7%E5%B0%8F%E9%85%8D%E7%BD%AE%E7%A9%BA%E9%97%B4%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-number">3.3.1.</span> <span class="toc-text">不同大小配置空间的性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%BC%82%E6%9E%84%E6%80%A7%E7%9A%84%E6%AF%94%E8%BE%83%E5%AE%9E%E9%AA%8C"><span class="toc-number">3.3.2.</span> <span class="toc-text">参数异构性的比较实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%BC%80%E9%94%80"><span class="toc-number">3.3.3.</span> <span class="toc-text">算法生成配置的开销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.3.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/note-quant-math/">量化笔记</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2024/10/29/automl-mfes-hb/">automl-mfes-hb</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span>
+            <a class="archive-post-title" href="/2024/09/21/dair-db-tuning-exps/">knobs调优实验</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="database">
+                <span class="iconfont-archer">&#xe606;</span>
+                database
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>

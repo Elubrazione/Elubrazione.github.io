@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://elubrazione.github.io/2024/06/20/automl-paper-survey/image-20240827201109456.png">
 <meta property="og:image" content="https://elubrazione.github.io/2024/06/20/automl-paper-survey/333.png">
 <meta property="article:published_time" content="2024-06-20T09:12:40.000Z">
-<meta property="article:modified_time" content="2024-09-21T06:02:14.166Z">
+<meta property="article:modified_time" content="2024-10-30T15:55:31.419Z">
 <meta property="article:author" content="Elubrazione">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://elubrazione.github.io/2024/06/20/automl-paper-survey/image-20240826125411325.png">
@@ -602,8 +602,7 @@
 </li>
 </ul>
 <p>we want to find:</p>
-<p>$$A^*, \theta^* &#x3D; \arg\min\limits_{A \in \mathcal{A}, \theta \in \Theta} \space \mathbb{E}<em>\mathcal{pT} [\mathcal{L_T}(A_\theta(D</em>{train}))]$$</p>
-<p>where</p>
+<p>$$<br>A^*, \theta^* &#x3D; \arg\min\limits_{A \in \mathcal{A}, \theta \in \Theta} \space \mathbb{E}<em>\mathcal{pT} [\mathcal{L_T}(A_\theta(D</em>{train}))]<br>$$<br>where</p>
 <ul>
 <li><p>hyperparameter vector $\theta &#x3D; [\theta_1 \theta_2 \dots \theta_n]$</p>
 <ul>
@@ -619,21 +618,13 @@
 </ul>
 <p>in short, we want to find the <strong>best of algorithm and hyperparameter</strong> such that we minimize…</p>
 <h2 id="definition-of-HPO"><a href="#definition-of-HPO" class="headerlink" title="definition of HPO"></a>definition of HPO</h2><p>based on definition of CASH, assume that the algorithm is given so we no longer want to find a best algorithm</p>
-<p><strong>given</strong> a certain learning algorithm, we only want to <strong>find</strong> the best hyperparameters:</p>
-<p>$$\theta^* &#x3D; \arg\min\limits_{\theta \in \Theta} \space \mathbb{E}<em>\mathcal{pT} [\mathcal{L_T}(A_\theta(D</em>{train}))]$$</p>
+<p><strong>given</strong> a certain learning algorithm, we only want to <strong>find</strong> the best hyperparameters:<br>$$<br>\theta^* &#x3D; \arg\min\limits_{\theta \in \Theta} \space \mathbb{E}<em>\mathcal{pT} [\mathcal{L_T}(A_\theta(D</em>{train}))]<br>$$</p>
 <h2 id="relationship"><a href="#relationship" class="headerlink" title="relationship"></a>relationship</h2><p>HPO &#x3D; CASH when <strong>including the algorithm as “hyperparameters”</strong></p>
 <p>&#x3D;&gt; <u>将【算法】作为超参数包含在我们的结果$\theta$中</u></p>
 <h1 id="GS-vs-RS"><a href="#GS-vs-RS" class="headerlink" title="GS vs RS"></a>GS vs RS</h1><h2 id="grid-search"><a href="#grid-search" class="headerlink" title="grid search"></a>grid search</h2><h3 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h3><ul>
 <li>define sets of values you want to try for some (or all)  hyperparameters, evaluate <strong>all possible combinations</strong> &#x3D;&gt; traversal</li>
 </ul>
-<p><strong>value sets</strong>:</p>
-<p>$v(\theta_1) &#x3D; { 0.1, 0.01, 0.001 }$</p>
-<p>$v(\theta_2) &#x3D; { 0.99, 9.9,  0.8 }$</p>
-<p>$\dots$</p>
-<p>$v(\theta_n) &#x3D; { True, False }$</p>
-<p><strong>evaluate</strong>:</p>
-<p>$v(\theta_1) \times v(\theta_2) \times \dots \times v(\theta_n)$</p>
-<p>this evaluation procedure is often done on a validation set, not training set because that will give us a biased view and may lead to over-fitting</p>
+<p><strong>value sets</strong>:<br>$$<br>v(\theta_1) &#x3D; { 0.1, 0.01, 0.001 }\<br>v(\theta_2) &#x3D; { 0.99, 9.9,  0.8 }\<br>\dots\<br>v(\theta_n) &#x3D; { True, False }<br>$$<br><strong>evaluate</strong>:<br>$$<br>v(\theta_1) \times v(\theta_2) \times \dots \times v(\theta_n)<br>$$<br>this evaluation procedure is often done on a validation set, not training set because that will give us a biased view and may lead to over-fitting</p>
 <h3 id="pros-and-cons"><a href="#pros-and-cons" class="headerlink" title="pros and cons"></a>pros and cons</h3><ul>
 <li>pro<ul>
 <li>simple</li>
@@ -657,13 +648,9 @@
 </li>
 </ul>
 <p><strong>distributions</strong>:</p>
-<p>$p(\theta_1) &#x3D; LogUniform(0.001, 0.1)$ &#x3D;&gt; we transform both of these two values (minimum and maximum) into log space, we sample in the log space and then we transform the sampled values back to the original space</p>
-<p>$p(\theta_2) &#x3D; Uniform(0.8, 0.99)$</p>
-<p>$\dots$</p>
-<p>$p(\theta_n) &#x3D; Categorical({ True, False })$</p>
+<p>$$<br>p(\theta_1) &#x3D; LogUniform(0.001, 0.1)\<br>p(\theta_2) &#x3D; Uniform(0.8, 0.99)\<br>\dots\<br>p(\theta_n) &#x3D; Categorical({ True, False })<br>$$<br>we transform both of these two values (minimum and maximum) into log space, we sample in the log space and then we transform the sampled values back to the original space</p>
 <p> <strong>evaluate M configurations</strong>:</p>
-<p>$\theta \sim p(\theta_1, \theta_2, \dots, \theta_n)$</p>
-<p>we evaluate samples from <strong>the joint distribution</strong></p>
+<p>$$<br>\theta \sim p(\theta_1, \theta_2, \dots, \theta_n)<br>$$<br>we evaluate samples from <strong>the joint distribution</strong></p>
 <p>in order to <strong>sample one configuration</strong>, we have to sample the first value from the first distribution, the second value from the second distribution etc</p>
 <p>so we need to sample <strong>in total from M times</strong> in n distributions</p>
 <h3 id="pros-and-cons-1"><a href="#pros-and-cons-1" class="headerlink" title="pros and cons"></a>pros and cons</h3><ul>
@@ -866,7 +853,7 @@
 <p>$$L(\theta|D_0) &#x3D; P(D &#x3D; D_0|\theta)$$</p>
 <p>$P(D&#x3D;D_0|θ)$ 表示在参数 $θ$ （果）的条件下，数据 $D_0$ （因）出现的概率，后验概率。</p>
 <p>通过最大化似然函数，我们可以找到参数 $θ$ 的最优估计值，也即使观测数据出现概率最大的参数值。</p>
-<h2 id="problem-description"><a href="#problem-description" class="headerlink" title="problem description"></a>problem description</h2><p>$x^{*} &#x3D; arg\space \max\limits _{x \in \mathcal{X}} f(x)$</p>
+<h2 id="problem-description"><a href="#problem-description" class="headerlink" title="problem description"></a>problem description</h2><p>$$<br>x^{*} &#x3D; arg\space \max\limits _{x \in \mathcal{X}} f(x)<br>$$</p>
 <ul>
 <li>这里 $\mathcal{X}$ 是超参数空间，比如对于一个随机森林模型，这里 $\mathcal{X}$ 就是模型和模型对应的参数，即 {  random_forest, n_ estimators, max_depth }。</li>
 <li>$f(x)$ 是参数空间到我们感兴趣的一个指标的映射函数，如回归问题中的MSE或者分类问题中的accuracy和AUC指标。注意不是数据集到预测结果的映射，而是**在某个数据集下，某个模型及其相关的参数$\mathcal{X}$到我们关心的指标的映射 **，如 $f(x): \mathcal{X} \rightarrow acc$。</li>
@@ -876,23 +863,28 @@
 <h2 id="iterating-method"><a href="#iterating-method" class="headerlink" title="iterating method"></a>iterating method</h2><p>对于 $y&#x3D;f(x)$，假设有个先验概率，每次有新的数据 ${ x_{data}, f(x_{data}) }$，求出y的后验概率 $p(y | (x_{data}, f(x_{data})))$，并把这个后验概率作为下一条数据的先验概率，如此迭代更新。</p>
 <p><strong>重点是</strong>我们需要一个规则来找到基于当前情况的下一个迭代数据 $x_{next}$。所以我们需要基于当前 $y$ 的后验概率，定义一个acquisition function： $a_n(x | data)$，$x \rightarrow R$，这个函数用于计算在当前情况下不同的数据 $x$ 对 $y$ 的作用，从而去选择新的下一条数据 $x_{next}$ 以最大化 $a_n$。</p>
 <h2 id="algorithm-procedure"><a href="#algorithm-procedure" class="headerlink" title="algorithm procedure"></a>algorithm procedure</h2><ol>
-<li>给定一个 $y&#x3D;f(x)$ 的先验概率 $p_0$，最大迭代次数 $N$</li>
-<li>随机初始化 $n_0$ 个点，并得到 $n_0$ 个点结果，即 ${ (x_1, f(x_1)), (x_2, f(x_2), …, (x_{n_0}, f(x_{n_0}))) }$</li>
-<li>利用初始化的$n_0$个点，更新先验概率，并更新 $n \leftarrow n_0$</li>
-<li>当 $n \leq N$ 时：<ul>
+<li><p>给定一个 $y&#x3D;f(x)$ 的先验概率 $p_0$，最大迭代次数 $N$</p>
+</li>
+<li><p>随机初始化 $n_0$ 个点，并得到 $n_0$ 个点结果，即<br>$$<br>{ (x_1, f(x_1)), (x_2, f(x_2), …, (x_{n_0}, f(x_{n_0}))) }<br>$$</p>
+</li>
+<li><p>利用初始化的$n_0$个点，更新先验概率，并更新 $n \leftarrow n_0$</p>
+</li>
+<li><p>当 $n \leq N$ 时：</p>
+<ul>
 <li>根据当前的后验概率 $p(y | { (x_1, f(x_1)), (x_2, f(x_2), …, (x_{n_0}, f(x_{n_0}))) })$ 来计算 $a_n (x)$</li>
 <li>选择能够最大化 $a_n(x)$ 的点作为 $x_{n+1}$。<strong>注：这一步是重点，该如何找到下一个迭代点 $x_{next}$ 以及过程中如何对 $p(y \vert x)$ 和 $p(y|x_{next})$ 进行建模</strong></li>
 <li>将新的点 $x_{n+1}$ 带入得到 $f(x_{n+1})$ ，会非常耗时</li>
 <li>$x \leftarrow n + 1$</li>
 </ul>
 </li>
-<li>返回评估过的数据中使得 $f(x)$ 最大的点 $x^{*}$​</li>
+<li><p>返回评估过的数据中使得 $f(x)$ 最大的点 $x^{*}$​</p>
+</li>
 </ol>
 <h1 id="GP"><a href="#GP" class="headerlink" title="GP"></a>GP</h1><p>Gaussian Process Regression</p>
 <p>主要解决前面提到的贝叶斯推断中的两个重点问题：1）概率建模；2）下一个迭代数据点的确认。</p>
 <h2 id="probability-modeling"><a href="#probability-modeling" class="headerlink" title="probability modeling"></a>probability modeling</h2><h3 id="多维正态分布的似然函数"><a href="#多维正态分布的似然函数" class="headerlink" title="多维正态分布的似然函数"></a>多维正态分布的似然函数</h3><p>对于贝叶斯优化的初始化数据 ${ (x_1, f(x_1)), (x_2, f(x_2), …, (x_{n_0}, f(x_{n_0}))) }$，假设多维似然函数 $L$ 服从多维正态分布，后验概率密度为：</p>
-<p>$p(y) &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \end{matrix} \right) \sim N\left( \left(\begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \end{matrix}\right), \Sigma_{n_0 * n_0}\right)$</p>
-<p>$\Sigma_{n_0 * n_0} &#x3D; \left [ \begin{matrix} k_{11}&amp;\dots&amp;k_{1 n_0} \ \vdots &amp; \ddots &amp; \vdots \ k_{n_01} &amp; \dots  &amp; k_{n_0n_0} \end{matrix} \right]$</p>
+<p>$$<br>p(y) &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \end{matrix} \right) \sim N\left( \left(\begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \end{matrix}\right), \Sigma_{n_0 * n_0}\right)<br>$$</p>
+<p>$$<br>\Sigma_{n_0 * n_0} &#x3D; \left [ \begin{matrix} k_{11}&amp;\dots&amp;k_{1 n_0} \ \vdots &amp; \ddots &amp; \vdots \ k_{n_01} &amp; \dots  &amp; k_{n_0n_0} \end{matrix} \right]<br>$$</p>
 <p>注意这里 $\Sigma$ 是大写的 $\sigma$，一般来说 $\Sigma$ 是一个 $n_0 \times n_0$ 的协方差矩阵，这个矩阵描述了 $n_0$ 个数据两两之间的相关性。其计算方法：</p>
 <ul>
 <li>对角线元素 $\Sigma_{ii} &#x3D; Cov(x_i, x_i) &#x3D; K(x_i, x_i)$；</li>
@@ -913,17 +905,16 @@
 <p>而均值向量中的 $u_0$ 是先验信息，即对于一个 $x$​ 先验的均值，在一开始就确定（一般设置为0）。</p>
 <p>如此就根据已有数据确定了一个高斯过程。</p>
 <h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>新加入的数据与之前数据继续构成多维正态分布，这一步需要得到当前数据点下 $p(y | x)$ 的分布，假设新的数据点为 $(x^*, f(x^*))$，且根据联合高斯概率密度函数：</p>
-<p>$p(y, y_*) &#x3D; N\left( \left( \begin{matrix} \mu_y \ \mu_{y_*} \end{matrix} \right), \left( \begin{matrix} K &amp; K_* \ K_*^T &amp; k_{**}  \end{matrix} \right) \right)$</p>
-<p>带入展开则得到新的数据点与之前的数据点一起构成新表达式：</p>
-<p>$p(y, y_*) &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \ y_* \end{matrix} \right) \sim N \left( \left(\begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \ u_0(x*) \end{matrix}\right), \Sigma_{(n_0 + 1) * (n_0 + 1)} \right) \ \Sigma_{(n_0 + 1) * (n_0 + 1)} &#x3D; \left [ \begin{matrix} k_{11} &amp; \dots &amp; k_{1{n_0}} &amp; k_{1*} \ \vdots &amp; \ddots &amp; \vdots &amp; \vdots \ k_{n_01} &amp; \dots  &amp; k_{n_0n_0} &amp; k_{n_0*}\ k_{*1} &amp; \dots &amp; k_{*n_0} &amp; k_{**} \end{matrix} \right]$</p>
-<p>这里的 $K$ 即为原来 $y$ 的协方差矩阵，而 $K_* &#x3D; \left[ \begin{matrix} k_{*1} \ \vdots \ k_{*n_0} \end{matrix} \right]$ </p>
-<p>同理，这里 $u_0(x^*)$ 页数对于任意一个 $x^*$ 来说模型最开始的先验概率均值，当先验确定时，该均值也相应确定。</p>
+<p>$$<br>p(y, y_*) &#x3D; N\left( \left( \begin{matrix} \mu_y \ \mu_{y_*} \end{matrix} \right), \left( \begin{matrix} K &amp; K_* \ K_*^T &amp; k_{**}  \end{matrix} \right) \right)<br>$$<br>带入展开则得到新的数据点与之前的数据点一起构成新表达式：</p>
+<p>$$<br>p(y, y_*) &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \ y_* \end{matrix} \right) \sim N \left( \left(\begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \ u_0(x*) \end{matrix}\right), \Sigma_{(n_0 + 1) * (n_0 + 1)} \right)<br>$$</p>
+<p>$$<br>\Sigma_{(n_0 + 1) * (n_0 + 1)} &#x3D; \left [ \begin{matrix} k_{11} &amp; \dots &amp; k_{1{n_0}} &amp; k_{1*} \ \vdots &amp; \ddots &amp; \vdots &amp; \vdots \ k_{n_01} &amp; \dots  &amp; k_{n_0n_0} &amp; k_{n_0*}\ k_{*1} &amp; \dots &amp; k_{*n_0} &amp; k_{**} \end{matrix} \right]<br>$$</p>
+<p>这里的 $K$ 即为原来 $y$ 的协方差矩阵，而<br>$$<br>K_* &#x3D; \left[ \begin{matrix} k_{<em>1} \ \vdots \ k_{<em>n_0} \end{matrix} \right]<br>$$<br> 同理，这里 $u_0(x^</em>)$ 页数对于任意一个 $x^</em>$ 来说模型最开始的先验概率均值，当先验确定时，该均值也相应确定。</p>
 <h3 id="final-modeling"><a href="#final-modeling" class="headerlink" title="final modeling"></a>final modeling</h3><p>接下来根据贝叶斯公式：</p>
-<p>$p(y, y_*) &#x3D; p(y_* \vert y)p(y)$</p>
-<p>以及前面的内容推导后得到似然概率密度为：</p>
-<p>$$p(y_* \vert y) &#x3D; N(K_*^T K^{-1}(y-\mu_y), k_{**} - K_<em>^T K K_</em>)$$</p>
-<p>统一写法后即：</p>
-<p>$p(y_* \vert x^*) \sim N\left({K_*^T} {\Sigma_{n_0 * n_0}}^{-1} (y_{n_0} - u_{n_0}), k_{**} - K_<em>^T \Sigma_{n_0 * n_0} K_</em> \right)\ y_{n_0} &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \end{matrix} \right) \ u_{n_0} &#x3D; \left( \begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \end{matrix} \right)$</p>
+<p>$$<br>p(y, y_*) &#x3D; p(y_* \vert y)p(y)<br>$$<br>以及前面的内容推导后得到似然概率密度为：</p>
+<p>$$<br>p(y_* \vert y) &#x3D; N(K_*^T K^{-1}(y-\mu_y), k_{**} - K_<em>^T K K_</em>)<br>$$<br>统一写法后即：</p>
+<p>$$<br>p(y_* \vert x^*) \sim N\left({K_*^T} {\Sigma_{n_0 * n_0}}^{-1} (y_{n_0} - u_{n_0}), k_{**} - K_<em>^T \Sigma_{n_0 * n_0} K_</em> \right)<br>$$</p>
+<p>$$<br>y_{n_0} &#x3D; \left( \begin{matrix} y_1 \ y_2 \ … \ y_{n_0} \end{matrix} \right)<br>$$</p>
+<p>$$<br>u_{n_0} &#x3D; \left( \begin{matrix} u_0(x_1) \ u_0(x_2) \ … \ u_0(x_{n_0}) \end{matrix} \right)<br>$$</p>
 <p>那么基于当前数据，有先验概率（即上次计算得到的后验概率 $p(y)$），对于每个新的点 $(x^*, y_*)$，都可以通过计算联合高斯密度函数计算出 $p(y, y_*)$，从而计算出 $p(y_* \vert x^*)$</p>
 <h2 id="next-observation"><a href="#next-observation" class="headerlink" title="next observation"></a>next observation</h2><p>当解决了在确认数据下对 $y$ 的概率分布建模后，接下来的关键就是如何确定下一个迭代点 $x_{next}$，前面提到过是通过最大化 $a_n(·)$ 函数来确认。</p>
 <p>关于 $a_n(·)$ 的定义有很多$^{[5]}$：</p>
@@ -1070,7 +1061,7 @@
 <li><strong>Bandit-bansed</strong> configuration evaluation approach <strong>based on random search</strong> lack guidance and do not converge to the best configurations as quickly</li>
 </ul>
 <p>what bohb to do is to <strong>combine</strong> the benefits of these two methods (in particular, hyperband)  </p>
-<p>&#x3D;&gt; model-based hyper band, <u>strong anytime performance and fast convergence to optimal configurations</u></p>
+<p>&#x3D;&gt; model-based hyperband, <u>strong anytime performance and fast convergence to optimal configurations</u></p>
 <h2 id="idea-4"><a href="#idea-4" class="headerlink" title="idea"></a>idea</h2><p>BOHB relies on HB to determine how many configurations to evaluate with which budget, but it <strong>replaces the random selection of configurations</strong> at the beginning of each HB iteration <strong>by a model-based search</strong></p>
 <ul>
 <li>once the desired number of configurations for the ieration is reached, the standard successive halving procedure is carried out using these configurations.</li>
@@ -1666,44 +1657,7 @@
         
         
         
-        
-        
-        
-        
-        
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -2326,7 +2280,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 68
+        Total : 67
         </div>
         <!-- search  -->
         
@@ -2337,13 +2291,34 @@
         
             
             
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/note-quant-math/">量化笔记</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">09/19</span>
-            <a class="archive-post-title" href="/2024/09/19/dair-everything-envs/">服务器相关</a>
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2024/10/29/automl-mfes-hb/">automl-mfes-hb</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span>
+            <a class="archive-post-title" href="/2024/09/21/dair-db-tuning-exps/">knobs调优实验</a>
         </li>
     
         
@@ -2409,12 +2384,6 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/31</span>
-            <a class="archive-post-title" href="/2023/12/31/essay-3/">2023年末总结</a>
-        </li>
-    
         
         <li class="archive-post-item">
             <span class="archive-post-date">12/17</span>
@@ -2684,12 +2653,6 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/04</span>
-            <a class="archive-post-title" href="/2022/08/04/essay-2/">七月的最后一个周末</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
         </li>
@@ -2710,12 +2673,6 @@
         <li class="archive-post-item">
             <span class="archive-post-date">06/26</span>
             <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/10</span>
-            <a class="archive-post-title" href="/2022/06/10/essay-1/">如若还能下一场2018年的银杏雨</a>
         </li>
     
         
@@ -2850,9 +2807,14 @@
                 GNN
             </span>
         
-            <span class="sidebar-tag-name" data-tags="随笔">
+            <span class="sidebar-tag-name" data-tags="database">
                 <span class="iconfont-archer">&#xe606;</span>
-                随笔
+                database
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
             </span>
         
             <span class="sidebar-tag-name" data-tags="故障诊断">
@@ -2880,11 +2842,6 @@
                 环境问题
             </span>
         
-            <span class="sidebar-tag-name" data-tags="托福">
-                <span class="iconfont-archer">&#xe606;</span>
-                托福
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多维索引">
                 <span class="iconfont-archer">&#xe606;</span>
                 多维索引
@@ -2895,14 +2852,14 @@
                 磁盘故障
             </span>
         
-            <span class="sidebar-tag-name" data-tags="列存分区">
-                <span class="iconfont-archer">&#xe606;</span>
-                列存分区
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="迁移学习">
                 <span class="iconfont-archer">&#xe606;</span>
                 迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
             </span>
         
             <span class="sidebar-tag-name" data-tags="链表">
@@ -2945,9 +2902,24 @@
                 树的遍历
             </span>
         
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="字符串">
                 <span class="iconfont-archer">&#xe606;</span>
                 字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
             </span>
         
             <span class="sidebar-tag-name" data-tags="数学模拟">
@@ -2965,21 +2937,6 @@
                 最短路径
             </span>
         
-            <span class="sidebar-tag-name" data-tags="哈希">
-                <span class="iconfont-archer">&#xe606;</span>
-                哈希
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="排序">
-                <span class="iconfont-archer">&#xe606;</span>
-                排序
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="二叉搜索树">
-                <span class="iconfont-archer">&#xe606;</span>
-                二叉搜索树
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="贪心">
                 <span class="iconfont-archer">&#xe606;</span>
                 贪心
@@ -2990,19 +2947,9 @@
                 图论
             </span>
         
-            <span class="sidebar-tag-name" data-tags="图模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                图模拟
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Set">
                 <span class="iconfont-archer">&#xe606;</span>
                 Set
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="AVL树">
-                <span class="iconfont-archer">&#xe606;</span>
-                AVL树
             </span>
         
             <span class="sidebar-tag-name" data-tags="DFS">
@@ -3010,9 +2957,29 @@
                 DFS
             </span>
         
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="栈">
                 <span class="iconfont-archer">&#xe606;</span>
                 栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="拓扑排序">
@@ -3023,16 +2990,6 @@
             <span class="sidebar-tag-name" data-tags="递推">
                 <span class="iconfont-archer">&#xe606;</span>
                 递推
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="快乐模拟">
-                <span class="iconfont-archer">&#xe606;</span>
-                快乐模拟
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="图的遍历">
-                <span class="iconfont-archer">&#xe606;</span>
-                图的遍历
             </span>
         
             <span class="sidebar-tag-name" data-tags="前端">
@@ -3071,6 +3028,11 @@
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
         <span class="sidebar-category-name" data-categories="华科课程">
             <span class="iconfont-archer">&#xe60a;</span>
             华科课程
@@ -3086,24 +3048,14 @@
             学习笔记
         </span>
     
-        <span class="sidebar-category-name" data-categories="年末总结">
-            <span class="iconfont-archer">&#xe60a;</span>
-            年末总结
-        </span>
-    
-        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
-            <span class="iconfont-archer">&#xe60a;</span>
-            腾讯AI训练营
-        </span>
-    
         <span class="sidebar-category-name" data-categories="英语">
             <span class="iconfont-archer">&#xe60a;</span>
             英语
         </span>
     
-        <span class="sidebar-category-name" data-categories="database">
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
             <span class="iconfont-archer">&#xe60a;</span>
-            database
+            腾讯AI训练营
         </span>
     
     </div>

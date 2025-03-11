@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Elubrazione">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Elubrazione">
+    
+        <meta name="keywords" content="elubrazione,lingching">
+    
+    <meta name="description" content="">
+    <meta name="description" content="bandit-based and multi-fidelity methods">
+<meta property="og:type" content="article">
+<meta property="og:title" content="automl-mfes-hb">
+<meta property="og:url" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="bandit-based and multi-fidelity methods">
+<meta property="og:locale">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241029205253336.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241029203113578.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241029230057824.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241029230321940.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030105658073.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030164609230.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030211245243.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20250310015359089.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030195758052.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030210400873.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030213109764.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030214158090.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030214210442.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030213511308.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030213935092.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030214906692.png">
+<meta property="og:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241030214923744.png">
+<meta property="article:published_time" content="2024-10-29T12:13:17.000Z">
+<meta property="article:modified_time" content="2025-03-11T09:33:29.325Z">
+<meta property="article:author" content="Elubrazione">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elubrazione.github.io/2024/10/29/automl-mfes-hb/image-20241029205253336.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon1.ico">
+    
+    <title>automl-mfes-hb · TUNIVERSE</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu header-sidebar-menu-rounded">
+        
+            
+                <i class="fas fa-bars"></i>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>TUNIVERSE</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">TUNIVERSE</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">automl-mfes-hb</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden back-top-rounded">
+        
+        
+            <i class="fas fa-chevron-up"></i>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index_dark-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                automl-mfes-hb
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">3.5k</span>阅读时长: <span class="post-count reading-time">13 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/10/29</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>bandit-based and multi-fidelity methods</p>
+<span id="more"></span>
+
+<h1 id="MFES-HB"><a href="#MFES-HB" class="headerlink" title="MFES-HB"></a>MFES-HB</h1><p>bohb或者hyperband在不同的bracket的内部sh过程中会产生非常多各种精度下验证的结果（即不同的 $r_i$），我们可以将这些不同的精度、验证的配置及对应的结果保存下来，并根据精度的不同分为 $K$ 组：$D_1, \dots, D_K$，并且从hyperband一文我们可以知道这里 $K$ 和单轮最大资源 $R$ 的关系是：<br>$$<br>K &#x3D; \lfloor log_{\eta}(R) \rfloor + 1<br>$$<br>然后我们还可以知道的是高精度下对目标函数 $f$ 的验证结果是unbiased的，与之相反低精度的验证结果 $D_i(i &#x3D; 1 \to K-1)$ 是biased的。所以之前的方法比如bohb和hyperband的做法是直接抛弃了所有低精度的验证结果，用高精度即 $r_{K}&#x3D; R$ 下的测量结果来训练代理模型 $M_K$，并直接将 $M_K$ 作为最终的模型。但mfes-hb认为虽然使用每个低精度结果拟合出来的 $f^{1: K-1}$ 和高精度没有偏置的拟合 $f^K$ 有些差距和不同，但他们之间其实存在着一些关系，所以我们可以将这部分低精度的结果利用起来。这里的关系具体是说，随着精度增加，越接近全精度，产生的验证结果拟合的目标函数就越接近真正的 $f$，如下面四张图，图中黄色的部分是指在验证集上的错误率低的那些较好的配置，我们可以看到从左到右随着精度的不短增加，这部分黄色的区域是在逐步向没有偏置的结果接近的。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241029205253336.png" alt="image-20241029205253336"></p>
+<p>此外，由于sh策略的特性，随着精度的增加，验证配置的数量减少。即对于 $D_i$，若其验证的配置数量为 $N_i &#x3D; \vert D_i \vert$，我们可以得到 $N_1 &gt; N_2 &gt; \dots &gt; N_K$。对于下面这张表，有精度 $r_i &#x3D; { 1, 3, 9, 27, 81 }$，$N_i &#x3D; { 81, 54, 27, 15, 10 }$。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241029203113578.png" alt="image-20241029203113578"></p>
+<p>因此，高精度验证结果的数量比较少，是不足以拟合模型的。所以作者认为说可以综合高精度和低精度的结果来拟合最终的模型。</p>
+<p>首先要做的是就是对各组精度的结果进行normalize。然后对每个精度组都单独拟合一个模型 $M_i$，最后的集成代理模型 $M_{ens}$ 是这些模型的加权，基础模型 $M_i$ 的权重为 $w_i \in [0, 1]$ 并且 $\sum^{K}_{i &#x3D; 1}w_i &#x3D; 1$，这里的权重反应了当前精度 $r_i$ 对集成代理模型的贡献。</p>
+<p>还有一个问题，上面阐述过每个基础模型之间并不是独立的，那么我们就不能粗暴地用每个基础模型的均值和方差进行加和或者平方和来计算集成代理模型的均值和方差。所以这里引入了如下公式（gPoE）来计算：<br>$$<br>\mu_{ens}(\mathcal{x}) &#x3D; (\sum\limits_{i}\mu_i(\mathcal{x})w_i \sigma_{i}^{-2}(\mathcal{x})) \sigma^2_{ens}(\mathcal{x})\<br>\sigma^2_{ens}(\mathcal{x}) &#x3D; (\sum\limits_{i}w_i \sigma_{i}^{-2}(\mathcal{x}))^{-1}<br>$$<br>下一个问题是，我们到底应该如何去计算每个基础模型的权重，直觉上这个权重的值应该和这个基础模型最最终 $f$ 的近似程度成正比。所以呢一个可行的方法是使用 <strong>pairwise ranking loss</strong>，也就是说我们并不关心配置验证得到的均方误差，我们只关心每个配置之间的排名关系。其定义如下：<br>$$<br>\mathcal{L}(M_i) &#x3D; \sum \limits ^{N_K} _{j &#x3D; 1} \sum \limits ^{N_K} _{k &#x3D; 1} \mathbb{1}((\mu _i(\mathcal{x _j}) &lt; \mu _i(\mathcal{x _k}))  \oplus  (y _j &lt; y _k))<br>$$<br>这个公式是什么意思，它表示基于模型预测和真实值排序关系不一致的成对数量，其实就是计算：对于精度 $r_i$，其验证结果集合 $D_i$ 里，两两配置预测和真实值大小关系不一致的数量，统计出来，对每个低精度的都这样的统计。这里的真实值就是配置在高精度下跑出来的值，预测值则是这个配置曾经在低精度下跑出来的结果。</p>
+<p>然后呢利用这个不一致数量来计算一致比例 $p_i$，就是1减去不一致的比例：<br>$$<br>p_i &#x3D; 1 - \frac{\mathcal{L}(M_i; D_K)}{N_{pairs}} \<br>N_{pairs} &#x3D; C^{2}<em>{\vert D_K \vert}<br>$$<br>然后计算权重，这里的意思就是每个模型的 $p_i$ 的 $\theta$  次方占所有模型对应值的 $\theta$ 次方和，也是在算占比，只是进行了缩放。<br>$$<br>w_i &#x3D; \frac{p^{\theta}<em>i}{\sum^{K}</em>{k&#x3D;1}p^{\theta}</em>{k}}, \theta \in \mathbb{N}<br>$$<br>当然以上这个计算公式（3）只是适用于低精度模型的权重计算中的loss计算，对于高精度模型的权重计算是这样的。首先是进行留一法交叉验证，也就是对于全精度的配置验证结果对集合 $D_K$ ，每次拿掉其中的一个 $(\mathcal{x}<em>i, y_i)$ 训练一个去除该点的代理模型 $M</em>{K}^{-j}$，而总共会有 $N_K$ 个这样的代理模型。计算公式：<br>$$<br>\mathcal{L^{‘}}(M_K) &#x3D; \sum^{N_K}_{j&#x3D;1}\sum _{k&#x3D;1}^{N_K} \mathbb{1} ((\mu_K^{-j}(\mathcal{x_j}) &lt; \mu_K^{-j}(\mathcal{x_k}))  \oplus  (y_j &lt; y_k))<br>$$<br>这里 $-j$ 代表拿掉 $(x_j, y_j)$，在每个代理模型 $M_K^{-j}$ 上统计配置的验证结果和真实结果（高精度结果）不一致数量，当 $\vert D_K \vert$ 大于5之后统一都只有五折交叉验证。举个例子：</p>
+<p>假设 $D_K &#x3D; {(x_1, y_1), (x_2, y_2), (x_3, y_3), (x_4, y_4), (x_5, y_5) }$，那么我们先拿掉 $(x_1, y_1)$ 用剩下的数据训练得到 $M_K^{-1}$，验证的时候比较 $y_1$ 和其它配置的性能 $y_i$ 的大小关系并统计和真实值（高精度结果）不一致的数量。对每个模型都重复这样的过程。</p>
+<p>还有值得注意的时候，如果一开始高精度验证结果的数量小于3，则对于低精度权重统一设置为 $w_i &#x3D; \frac{1}{K - 1}$，高精度的权重为0，这是因为此时低精度的拟合比高精度的拟合更可信。</p>
+<p>算法的伪代码如下：</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241029230057824.png" alt="image-20241029230057824"></p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241029230321940.png" alt="image-20241029230321940"></p>
+<h1 id="FlexHB"><a href="#FlexHB" class="headerlink" title="FlexHB"></a>FlexHB</h1><p>对MFES-HB做了改进。</p>
+<h2 id="FGF"><a href="#FGF" class="headerlink" title="FGF"></a>FGF</h2><p>首先是作者认为说不同精度的数据分布不够平坦，低精度的数据很多而高精度的验证数据比之相比特别少；并且在早期能够用来拟合模型的数据很少并且数据的增加也很慢；还有就是使用的精度不够多，并且精度之间的过渡过于陡峭，基础模型的个数比较少。</p>
+<p>所以作者做的第一个改进是增加了每个bracket内部sh过程中评估配置的精度组，从原来的按照 $\eta$ 进行指数增加变成了每间隔 $\eta$ 一组，与普通sh相比增加出来多评估的精度组中配置的数量与本bracket内最高精度组也就是 $r_i &#x3D; R$ 时配置的数量相同。如下所示。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030105658073.png" alt="image-20241030105658073"></p>
+<p>有了这样的改进后每个低精度基础模型的权重计算方法和MFES-HB保持一致，但作者改进了MFES-HB高精度模型使用交叉验证计算权重的方法，后面有实验表明这种做法计算出来的权重 $w_K$ 比其它基础模型的权重 $w_i$ 小很多。由于经FGF改进之后的fidelity的数值大小是线性增长的，并且现在前一个精度验证的配置个数和最后一个是一样的，即 $\vert D_k \vert &#x3D; \vert D_{K-1} \vert$，所以我们可以用前一个的精度的loss的结果进行缩放。现在的做法是对 $D_{K-1}$ 和 $D_K$ 都计算交叉验证的 ranking loss，如公式（6），分别得到 $L_{K-1}^{‘}$ 和 $L_{K}^{‘}$ ，然后根据如下公式计算 $p_{K}$：<br>$$<br>p_K &#x3D; p_{K-1} · \frac{L_K^{‘}}{L_{K-1}^{‘}}<br>$$</p>
+<h2 id="GloSH"><a href="#GloSH" class="headerlink" title="GloSH"></a>GloSH</h2><p>其次是作者认为呢一个配置在低精度场景下性能一般不能代表说它在高精度场景表现就一定不好（？那是否可以说sh这个算法其实是不完备的）下面这个图是在所有精度下都验证了所有的配置，越蓝是越好的配置，最后一张子图里面打叉的是在低精度场景表现不好而被提前终止的配置，可以看到在精度为27的情况下很多表现比较好呈现蓝色的点对应到最后一张子图都被打叉即提前终止了。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030164609230.png" alt="image-20241030164609230"></p>
+<p>所以作者的第二个想法是能不能设置一个复活机制，让前面bracket被抛弃的配置能在后面复活且被再次进行验证，也就是说对于相同精度验证下的资源应该进行全局排序而不是在bracket内部进行排序，这样这个原来被抛弃的配置很有可能在其它bracket被进行进一步在更多精度下进行验证。</p>
+<p>这部分的实现通过维护一个集合 $S &#x3D; { S_0, \dots, S_m }$ 来实现，这个集合包含了原先其它bracket中所有在精度 $r_i$ 下早停的配置，是否重启一个配置 $S_i$ 使用参数 $\lambda_i$ 来控制，当 $\lambda_i &#x3D; 0$  的时候GloSH其实就退化成了普通的 sh。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030211245243.png" alt="image-20241030211245243"></p>
+<h2 id="FlexBand"><a href="#FlexBand" class="headerlink" title="FlexBand"></a>FlexBand</h2><p>最后是作者认为对每个bracket使用固定的 $n_i$ 和 $r_i$ 是不合理的，他认为应该一个优秀的算法应该是能进行自适应调整的，他的改进策略是衡量<strong>相同的配置</strong>在两个bracket初始精度下的 <strong>metric ranking of configuration</strong>的相似度，也就是说如果一组相同的配置在两个bracket初始情况下的排名是一致的，其实没必要再浪费资源跑两个bracket（If rankings at two fidelity levels are similar, we can expect the capability for fulfilling the potential of a candidate of these two levels are almost same）</p>
+<p>具体来说呢，给定一组在精度 $r_i$ 下已经验证过的结果 $D_i &#x3D; { (X_{i,1}, y_{i,1}), \dots, (X_{i,n}, y_{i,n})}$ ，在上一个更低精度下 $r_{i-1}$ 验证的结果 $D_{i-1}$ 中找到它们对应的结果，即 $D_{i; i-1} &#x3D; { (X_{i}, y_{i-1}) \in D_{i-1} \vert X_i \in D_i}$。然后计算这两个集合的相似关系，这里用到了Kendall-tau系数，其范围在-1到1之间，通常用于评价预测排序和真实排序的相关性。如果为1则代表完全正相关，为-1为完全负相关，为0则代表无关联。这里的concordant和disconcordant分别是在两个相邻精度下预测结果排序的一致和不一致，通常这个 $\tau$ 设置为0.55。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20250310015359089.png" alt="image-20250310015359089"></p>
+<p> FlexBand的算法伪代码如下所示。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030195758052.png" alt="image-20241030195758052"></p>
+<p>这里的 $D$ 应该是预先根据bohb每个bracket的初始化方法都只跑了每个bracket的第一轮的结果，根据这个结果去从最exploitation的bracket开始计算两两间隔精度结果的相似性从而分配每个bracket初始化对应的 $n$ 和 $r$。所有分配完成后就正常开始在每个bracket执行sh或者前面说的glosh。下面这张图是一个示例。</p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030210400873.png" alt="image-20241030210400873"></p>
+<h2 id="experiment"><a href="#experiment" class="headerlink" title="experiment"></a>experiment</h2><h3 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h3><ul>
+<li>baselines<ul>
+<li>random search</li>
+<li>smac</li>
+<li>batch-bo (a parallelized BO method that concurrently evaluating candidates)</li>
+<li>hyperband</li>
+<li>bohb</li>
+<li>mfes</li>
+<li>tse (a multi-fidelity BO method samples smaller subsets of training data and utilizes their low fidelity measurements)</li>
+<li>boms (BO with Median Stop, a candidate is stopped if its best metric at some step is worse than a median value calculated based on history configurations)</li>
+<li>bocf (BO using Curve Fitting method to predict fullfidelity metric for early stopping determination)</li>
+</ul>
+</li>
+<li>tuning task<ul>
+<li>MLP: Tuning a 2-layer MLP on MNIST.</li>
+<li>ResNet: Tuning ResNet on CIFAR-10.</li>
+<li>LSTM: Tuning a 2-layer LSTM on Penn Treebank</li>
+<li>Traditional ML model: Tuning XGBoost on several classification datasets: Covertype, Adult, Pokerhand and Bank Marketing</li>
+<li>LCBench: a public HPO benchmark, containing learning curve data for 35 OpenML datasets.</li>
+</ul>
+</li>
+</ul>
+<h3 id="results"><a href="#results" class="headerlink" title="results"></a>results</h3><ol>
+<li>hpo performance</li>
+</ol>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030213109764.png" alt="image-20241030213109764"></p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030214158090.png" alt="image-20241030214158090"></p>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030214210442.png" alt="image-20241030214210442"></p>
+<ol start="2">
+<li><p>analysis of fgf weights</p>
+<p>在MFES中，最低和最高精度的权重远小于中间精度模型的权重。当r &#x3D; 27时，权重值没有显著增加，直觉来看这是非常不合理的（因为这部分的策略应该可以更好地估计f）。在FlexHB中，最低精度的权重随着调优的进行而减小，同时，高精度模型的权重在不断增加。而且随着更多高精度测量值的收集，高精度和中等精度模型的权重的差异逐渐增大。这样的结果显然是更合理的。</p>
+</li>
+</ol>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030213511308.png" alt="image-20241030213511308"></p>
+<ol start="3">
+<li><p>analysis of glosh</p>
+<p>复活后的一些配置最终有取得较好结果的（蓝色点）</p>
+</li>
+</ol>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030213935092.png" alt="image-20241030213935092"></p>
+<ol start="4">
+<li><p>analysis of sh arrangements</p>
+<p>造了一个数据集并且用参数 $\phi$ 来控制生成的配置的方差，$\phi$ 值越大的话生成的配置的方就差越大，这种不稳定性对于小精度来说是很难区分的。</p>
+<p>从下图中我们可以看到在左图中hyperband和all exploration（也就在所有bracket里面初始化精度都为 $r_0 &#x3D; 1$ ）方法的效率是相似的，但在总体方差更小的配置上all exploration效率是更高的且收敛结果更好。</p>
+<p>所以虽然说相比于all exploitation（也就是所有bracket里面初始化精度都为 $r_0 &#x3D; R$）hyperband可以通过低精度尝试和探索更多更优秀的配置并且取得更好的效果，但在配置反差较大的时候他取得的性能确实一般，在反差较小的时候还不如直接从最低精度开始搜索的效率高。</p>
+<p>从实验结果看FlexHB这种self-adaptive的方法确实可以更好balance各种情况。</p>
+</li>
+</ol>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030214906692.png" alt="image-20241030214906692"></p>
+<ol start="5">
+<li><p>ablation study</p>
+<p>这里的improve是相对于hyperband的，$\Delta$ 是相对于FlexHB。</p>
+</li>
+</ol>
+<p><img src="/2024/10/29/automl-mfes-hb/image-20241030214923744.png" alt="image-20241030214923744"></p>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2025/03/06/note-quant-math/" title="量化笔记">
+                    <div class="nextTitle">量化笔记</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/09/21/dair-db-tuning-exps/" title="knobs调优实验">
+                    <div class="prevTitle">knobs调优实验</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+        
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:elubrazione@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Elubrazione" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/lingchingram/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info"><a target="_blank">Elubrazione</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MFES-HB"><span class="toc-number">1.</span> <span class="toc-text">MFES-HB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FlexHB"><span class="toc-number">2.</span> <span class="toc-text">FlexHB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FGF"><span class="toc-number">2.1.</span> <span class="toc-text">FGF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GloSH"><span class="toc-number">2.2.</span> <span class="toc-text">GloSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FlexBand"><span class="toc-number">2.3.</span> <span class="toc-text">FlexBand</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#experiment"><span class="toc-number">2.4.</span> <span class="toc-text">experiment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#settings"><span class="toc-number">2.4.1.</span> <span class="toc-text">settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#results"><span class="toc-number">2.4.2.</span> <span class="toc-text">results</span></a></li></ol></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 67
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2025/03/06/note-quant-math/">量化笔记</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2024/10/29/automl-mfes-hb/">automl-mfes-hb</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/21</span>
+            <a class="archive-post-title" href="/2024/09/21/dair-db-tuning-exps/">knobs调优实验</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2024/09/05/knob-tunning/">knob-tuning</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2024/06/20/automl-paper-survey/">automl-paper-survey</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span>
+            <a class="archive-post-title" href="/2024/03/18/algorithm-backtracking/">回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span>
+            <a class="archive-post-title" href="/2024/03/14/algorithm-mst/">最小生成树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/09</span>
+            <a class="archive-post-title" href="/2024/03/09/algorithm-dp-stock/">动态规划股票买卖问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/06</span>
+            <a class="archive-post-title" href="/2024/03/06/algorithm-stack-and-queue/">栈与队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/29</span>
+            <a class="archive-post-title" href="/2024/02/29/algorithm-two-pointers/">双指针</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/07</span>
+            <a class="archive-post-title" href="/2024/02/07/algorithm-dp-bag/">动态规划背包问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/algorithm-dynamic-programming/">动态规划子序列问题</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span>
+            <a class="archive-post-title" href="/2023/12/17/pa-virtual-machine/">HUST系统能力培养之虚拟机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/27</span>
+            <a class="archive-post-title" href="/2023/11/27/cs224w-heterogeneous-graphs/">heterogeneous graphs</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2023/11/18/idsm-env-problems/">Greenplum环境问题合集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/devign/">HUST图神经网络Devign模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2023/11/11/cs224w-graph-neural-network/">graph neural network</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/2023/11/10/cs224w-message-passing-and-node-classification/">message passing and node classification</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/2023/11/09/cs224w-node-embedding/">node embeddings</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span>
+            <a class="archive-post-title" href="/2023/11/07/cs224w-traditional-feature-based-methods/">traditional feature-based methods</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/13</span>
+            <a class="archive-post-title" href="/2023/09/13/idsm-tsunami-indexes/">Tsunami：a learned multi-dimensional index for correlated data and skewed workloads</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2023/09/11/pat-2023-summer/">PAT甲级2023夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/10</span>
+            <a class="archive-post-title" href="/2023/09/10/pat-2018-spring/">PAT甲级2018春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span>
+            <a class="archive-post-title" href="/2023/09/09/pat-2017-winter/">PAT甲级2017冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span>
+            <a class="archive-post-title" href="/2023/09/07/pat-2017-fall/">PAT甲级2017秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span>
+            <a class="archive-post-title" href="/2023/09/05/pat-linked-note/">PAT链表笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span>
+            <a class="archive-post-title" href="/2023/09/03/pat-2017-summer/">PAT甲级2017夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span>
+            <a class="archive-post-title" href="/2023/09/02/pat-primarily-note/">PAT算法杂烩笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2023/09/01/pat-2020-fall/">PAT甲级2020秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2020-spring/">PAT甲级2020春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/31</span>
+            <a class="archive-post-title" href="/2023/08/31/pat-2017-spring/">PAT甲级2017春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2023/08/30/idsm-learning-multi-dimensional-indexes/">Learning Multi-dimensional Indexes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2023/08/29/pat-2016-winter/">PAT甲级2016冬真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-2016-fall/">PAT甲级2016秋真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/26</span>
+            <a class="archive-post-title" href="/2023/08/26/pat-union-find-set-note/">PAT并查集笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span>
+            <a class="archive-post-title" href="/2023/08/25/pat-2016-summer/">PAT甲级2016夏真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/21</span>
+            <a class="archive-post-title" href="/2023/08/21/pat-2016-spring/">PAT甲级2016春真题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span>
+            <a class="archive-post-title" href="/2023/08/20/pat-graph-note/">PAT图笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span>
+            <a class="archive-post-title" href="/2023/08/19/idsm-z-order/">Z-Order</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span>
+            <a class="archive-post-title" href="/2023/08/13/pat-tree-note/">PAT树笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/26</span>
+            <a class="archive-post-title" href="/2023/07/26/idsm-env-debugs/">Greenplum操作遇到的问题记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span>
+            <a class="archive-post-title" href="/2023/06/29/idsm-env-installation/">Greenplum & PostgreSQL安装记录</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span>
+            <a class="archive-post-title" href="/2023/04/30/3d-reconstruction/">HUST基于深度学习的三维重建</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/26</span>
+            <a class="archive-post-title" href="/2023/04/26/bigdata-management-4/">HUST大数据管理lab4教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/13</span>
+            <a class="archive-post-title" href="/2023/04/13/bigdata-management-3/">HUST大数据管理lab3教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span>
+            <a class="archive-post-title" href="/2023/04/04/idsm-slalom/">Slalom：Costing Through Raw Data via Adaptive Partitioning and Indexing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/bigdata-management-2/">HUST大数据管理lab2教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span>
+            <a class="archive-post-title" href="/2023/03/12/bigdata-management-1/">HUST大数据管理lab1教程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/22</span>
+            <a class="archive-post-title" href="/2023/01/22/idsm-automap/">AutoMAP：Diagnose Your Microservice-based Web Applications Automatically</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/19</span>
+            <a class="archive-post-title" href="/2023/01/19/idsm-lifelong-disk-failure-prediction/">Lifelong Disk Failure Prediction via GAN-based Anomaly Detection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2023/01/15/idsm-minority-disk-failure-prediction/">Minority Disk Failure Prediction Based on Transfer Learning in Large Data Centers of Heterogeneous Disk Systems</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2022/11/20/idsm-git-tool/">Git其它用法补充</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/react-note/">React笔记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span>
+            <a class="archive-post-title" href="/2022/10/17/react-refs-and-dom/">Refs and the DOM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2022/10/16/react-webpack/">Webpack</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2022/07/29/leetcode-18/">18.四数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/27</span>
+            <a class="archive-post-title" href="/2022/07/27/leetcode-142/">142.环形链表Ⅱ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2022/07/24/leetcode-15/">15.三数之和</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span>
+            <a class="archive-post-title" href="/2022/06/26/dl-transformer/">预训练语言模型</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/12</span>
+            <a class="archive-post-title" href="/2022/05/12/ml-ensemble-learning/">机器学习-集成学习</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2022/04/27/ml-support-vector-machine/">机器学习-支持向量机</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span>
+            <a class="archive-post-title" href="/2022/04/23/ml-decision-tree/">机器学习-决策树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2022/04/16/ml-linear-model/">机器学习-线性模型</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2021/04/15/algorithm-finding/">数据结构-查找</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span>
+            <a class="archive-post-title" href="/2021/03/30/virtual-env-install/">虚拟机/服务器基础环境配置</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/05</span>
+            <a class="archive-post-title" href="/2021/01/05/english-toefl-subjects-words/">托福学科单词</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span>
+            <a class="archive-post-title" href="/2020/12/22/welcome/">欢迎来到我的博客</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="计算机视觉">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机视觉
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="三维重建">
+                <span class="iconfont-archer">&#xe606;</span>
+                三维重建
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="深度学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                深度学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="动态规划">
+                <span class="iconfont-archer">&#xe606;</span>
+                动态规划
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="查找">
+                <span class="iconfont-archer">&#xe606;</span>
+                查找
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="教程">
+                <span class="iconfont-archer">&#xe606;</span>
+                教程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Neo4j">
+                <span class="iconfont-archer">&#xe606;</span>
+                Neo4j
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="机器学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                机器学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="GNN">
+                <span class="iconfont-archer">&#xe606;</span>
+                GNN
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="database">
+                <span class="iconfont-archer">&#xe606;</span>
+                database
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="托福">
+                <span class="iconfont-archer">&#xe606;</span>
+                托福
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="故障诊断">
+                <span class="iconfont-archer">&#xe606;</span>
+                故障诊断
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Greenplum操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                Greenplum操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux磁盘扩容">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux磁盘扩容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug记录">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug记录
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="环境问题">
+                <span class="iconfont-archer">&#xe606;</span>
+                环境问题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多维索引">
+                <span class="iconfont-archer">&#xe606;</span>
+                多维索引
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="磁盘故障">
+                <span class="iconfont-archer">&#xe606;</span>
+                磁盘故障
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移学习">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移学习
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列存分区">
+                <span class="iconfont-archer">&#xe606;</span>
+                列存分区
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="链表">
+                <span class="iconfont-archer">&#xe606;</span>
+                链表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="LeetCode">
+                <span class="iconfont-archer">&#xe606;</span>
+                LeetCode
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="双指针">
+                <span class="iconfont-archer">&#xe606;</span>
+                双指针
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="剪枝">
+                <span class="iconfont-archer">&#xe606;</span>
+                剪枝
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="素数">
+                <span class="iconfont-archer">&#xe606;</span>
+                素数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="逻辑题">
+                <span class="iconfont-archer">&#xe606;</span>
+                逻辑题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并查集">
+                <span class="iconfont-archer">&#xe606;</span>
+                并查集
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="树的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                树的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="哈希">
+                <span class="iconfont-archer">&#xe606;</span>
+                哈希
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="字符串">
+                <span class="iconfont-archer">&#xe606;</span>
+                字符串
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="二叉搜索树">
+                <span class="iconfont-archer">&#xe606;</span>
+                二叉搜索树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数学模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                数学模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="完全二叉树">
+                <span class="iconfont-archer">&#xe606;</span>
+                完全二叉树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最短路径">
+                <span class="iconfont-archer">&#xe606;</span>
+                最短路径
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="贪心">
+                <span class="iconfont-archer">&#xe606;</span>
+                贪心
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图论">
+                <span class="iconfont-archer">&#xe606;</span>
+                图论
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Set">
+                <span class="iconfont-archer">&#xe606;</span>
+                Set
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DFS">
+                <span class="iconfont-archer">&#xe606;</span>
+                DFS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AVL树">
+                <span class="iconfont-archer">&#xe606;</span>
+                AVL树
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                图模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="快乐模拟">
+                <span class="iconfont-archer">&#xe606;</span>
+                快乐模拟
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="栈">
+                <span class="iconfont-archer">&#xe606;</span>
+                栈
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图的遍历">
+                <span class="iconfont-archer">&#xe606;</span>
+                图的遍历
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="拓扑排序">
+                <span class="iconfont-archer">&#xe606;</span>
+                拓扑排序
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="递推">
+                <span class="iconfont-archer">&#xe606;</span>
+                递推
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="React">
+                <span class="iconfont-archer">&#xe606;</span>
+                React
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Webpack">
+                <span class="iconfont-archer">&#xe606;</span>
+                Webpack
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Eslint">
+                <span class="iconfont-archer">&#xe606;</span>
+                Eslint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="top">
+                <span class="iconfont-archer">&#xe606;</span>
+                top
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="database">
+            <span class="iconfont-archer">&#xe60a;</span>
+            database
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="华科课程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            华科课程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="算法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            算法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="学习笔记">
+            <span class="iconfont-archer">&#xe60a;</span>
+            学习笔记
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="英语">
+            <span class="iconfont-archer">&#xe60a;</span>
+            英语
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="腾讯AI训练营">
+            <span class="iconfont-archer">&#xe60a;</span>
+            腾讯AI训练营
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://elubrazione.github.io",
+        root: siteMetaRoot,
+        author: "Elubrazione"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'Noto Sans SC:n3,n4,n5,n7'
+            var customFontUrl = 'https://fonts.googleapis.cnpmjs.org/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/scripts/customFontLoader.js?v=20211217" defer></script>
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+            <script src='https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js'></script>
+            <script>
+                if (window.mermaid) {
+                    mermaid.initialize({theme: 'dark'});
+                }
+            </script>
+        
+    </body>
+</html>
